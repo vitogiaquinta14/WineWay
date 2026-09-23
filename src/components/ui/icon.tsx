@@ -21,6 +21,12 @@ const icons = {
   chevronRight: { ios: 'chevron.right', android: 'chevron_right', web: 'chevron_right' },
   eye: { ios: 'eye', android: 'visibility', web: 'visibility' },
   eyeOff: { ios: 'eye.slash', android: 'visibility_off', web: 'visibility_off' },
+  star: { ios: 'star.fill', android: 'star', web: 'star' },
+  pin: { ios: 'mappin', android: 'location_on', web: 'location_on' },
+  arrowRight: { ios: 'arrow.right', android: 'arrow_forward', web: 'arrow_forward' },
+  winery: { ios: 'building.2', android: 'domain', web: 'domain' },
+  restaurant: { ios: 'fork.knife', android: 'restaurant', web: 'restaurant' },
+  camera: { ios: 'camera.aperture', android: 'camera', web: 'camera' },
 } satisfies Record<string, SymbolName>;
 
 export type IconName = keyof typeof icons;
