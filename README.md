@@ -1,56 +1,87 @@
-# Welcome to your Expo app 👋
+# WineWay - App móvil de turismo
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> Planeá. Recorré. Brindá. Recordá.
 
-## Get started
+Aplicación móvil de turismo bodeguero para personas que viajan a Mendoza. Acompaña al usuario antes, durante y después del viaje: ayuda a descubrir bodegas, armar itinerarios de visita y guardar un registro personal de los vinos que probó.
 
-1. Install dependencies
+## El problema
 
-   ```bash
-   npm install
-   ```
+Organizar una recorrida por bodegas hoy implica cruzar información dispersa entre webs, redes y recomendaciones sueltas, sin una forma simple de planificar días, presupuesto y traslados, ni de recordar después qué vinos probaste y qué te parecieron.
 
-2. Start the app
+## Público objetivo
 
-   ```bash
-   npx expo start
-   ```
+Personas que viajan a Mendoza y quieren organizar visitas a bodegas según su tiempo, presupuesto, ubicación e intereses — y también quienes solo quieren explorar la oferta bodeguera y guardar un recuerdo personal de los vinos que probaron.
 
-In the output, you'll find options to open the app in a
+## Estado del proyecto
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+🚧 En desarrollo — **Sprint 1 (FrontEnd)**. Todavía no hay backend: las pantallas se construyen con datos estáticos, y el foco de esta etapa es la navegación y el frontend con Expo.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Stack técnico
 
-## Get a fresh project
+- **React Native** + **Expo**
+- **Expo Router** (navegación basada en archivos)
+- _(completar acá a medida que se sumen: gestor de estado, librería de UI, etc.)_
 
-When you're ready, run:
+## Alcance del MVP
+
+WineWay permite **planificar** una visita, no reservarla dentro de la app:
+
+- Registro, login y exploración como invitado.
+- Exploración de bodegas en lista y mapa, con búsqueda y filtros.
+- Detalle de bodega: info, experiencias, vinos destacados, rating y reseñas.
+- Armado de rutas (automático o manual), edición y guardado.
+- Exportar el itinerario a Google Calendar (visita planificada, no reserva).
+- Escaneo de etiquetas con la cámara e identificación del vino.
+- **Mi Cava**: colección personal de vinos con rating y nota privados.
+- Perfil de usuario y favoritos.
+
+**Fuera del MVP:** reservas y confirmaciones dentro de la app, pagos/checkout, cancelaciones y disponibilidad en tiempo real. Para reservar, la app deriva al sitio externo de la bodega.
+
+📄 Documentación funcional completa en [`/wiki`](./wiki):
+
+| Documento | Contenido |
+|---|---|
+| [01 · Idea y alcance](./wiki/01-idea-y-alcance.md) | Problema, propuesta de valor, alcance del MVP |
+| [02 · Funcionalidades](./wiki/02-funcionalidades-mvp.md) | Detalle funcional de cada módulo |
+| [03 · Pantallas y diseño](./wiki/03-pantallas-y-diseno.md) | Inventario de pantallas, userflows, branding |
+| [04 · APIs e integraciones](./wiki/04-apis-e-integraciones.md) | Google Maps/Routes/Places/Calendar, Gemini, cámara |
+| [05 · Dudas pendientes](./wiki/05-dudas-pendientes.md) | Decisiones de producto todavía abiertas |
+
+## Componentes nativos
+
+| Componente | Uso en WineWay |
+|---|---|
+| 📷 **Cámara** | Fotografiar la etiqueta de un vino para identificarlo. |
+| 📍 **GPS / Geolocalización** | Centrar el mapa en el usuario y mostrar bodegas cercanas. |
+
+## Branding
+
+| Color | HEX | Uso |
+|---|---|---|
+| Malbec | `#722F37` | CTA principal, branding |
+| Wine Dark | `#321E20` | Títulos, headers |
+| Crema | `#F7F2EA` | Fondo principal |
+| Verde Oliva | `#6F7255` | Estados secundarios, referencias a viñedos |
+| Terracota | `#C4775A` | Acentos y detalles |
+| Carbón | `#252525` | Texto principal |
+
+Tipografía: sans-serif limpia para la interfaz + serif elegante de uso puntual en títulos/branding (familias definitivas a confirmar).
+
+## Cómo correr el proyecto
 
 ```bash
-npm run reset-project
+npm install
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Escaneá el QR con **Expo Go** (Android/iOS) o iniciá un emulador desde la terminal.
 
-### Other setup steps
+## Enlaces
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+- 🎨 Mockup / prototipo interactivo en Figma
 
-## Learn more
+## Autores
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+[@vitogiaquinta14](https://github.com/vitogiaquinta14)
+[@valencalzetta](https://github.com/valencalzetta)
+— Proyecto académico, PUCA (Facultad de Ingeniería y Ciencias Agrarias).
