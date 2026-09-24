@@ -13,7 +13,10 @@ type HomeHeroProps = {
 };
 
 /** Portada de la Home: foto a sangre con título y CTA para crear una ruta. */
-export function HomeHero({ onCreateRoute, image }: HomeHeroProps) {
+export function HomeHero({
+  onCreateRoute,
+  image = require('../../../assets/images/mendoza.jpeg'),
+}: HomeHeroProps) {
   const insets = useSafeAreaInsets();
 
   return (
@@ -26,10 +29,10 @@ export function HomeHero({ onCreateRoute, image }: HomeHeroProps) {
       <View style={styles.overlay} />
 
       <View style={styles.content}>
-        <AppText variant="label" color="terracota">
+        <AppText variant="label" color="terracota" style={styles.locationLabel}>
           Mendoza, Argentina
         </AppText>
-        <AppText variant="display" color="textOnPrimary">
+        <AppText variant="display" color="textOnPrimary" style={styles.title}>
           Explorá la cuna del Malbec
         </AppText>
         <Pressable
@@ -61,8 +64,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(50, 30, 32, 0.35)',
   },
   content: {
+    position: "relative",
     gap: Spacing.sm,
     maxWidth: 280,
+  },
+  locationLabel: {
+    position: "absolute",
+    bottom: 132,
+  },
+  title: {
+    position: "absolute",
+    bottom: 132,
   },
   cta: {
     flexDirection: 'row',

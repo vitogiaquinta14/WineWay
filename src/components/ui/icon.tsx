@@ -18,6 +18,7 @@ const icons = {
   wine: { ios: 'wineglass', android: 'wine_bar', web: 'wine_bar' },
   back: { ios: 'chevron.left', android: 'arrow_back', web: 'arrow_back' },
   search: { ios: 'magnifyingglass', android: 'search', web: 'search' },
+  filter: { ios: 'line.3.horizontal.decrease.circle', android: 'tune', web: 'tune' },
   chevronRight: { ios: 'chevron.right', android: 'chevron_right', web: 'chevron_right' },
   eye: { ios: 'eye', android: 'visibility', web: 'visibility' },
   eyeOff: { ios: 'eye.slash', android: 'visibility_off', web: 'visibility_off' },

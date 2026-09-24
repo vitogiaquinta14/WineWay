@@ -26,6 +26,9 @@ export function Chip({ label, selected = false, onPress }: ChipProps) {
 
 const styles = StyleSheet.create({
   chip: {
+    minHeight: 44,
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingHorizontal: Spacing.md,
     paddingVertical: Spacing.sm,
     borderRadius: Radius.pill,
@@ -41,6 +44,8 @@ const styles = StyleSheet.create({
     opacity: 0.85,
   },
   label: {
+    fontSize: 13,
+    lineHeight: 18,
     fontWeight: '600',
   },
 });

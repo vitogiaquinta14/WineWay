@@ -14,6 +14,15 @@ const tabIcons: Record<string, IconName> = {
   'mi-cava': 'cellar',
 };
 
+/** Etiquetas estables para que cada categoría siempre se vea bajo su ícono. */
+const tabLabels: Record<string, string> = {
+  index: 'Inicio',
+  explorar: 'Explorar',
+  escanear: 'Escanear',
+  'mi-ruta': 'Mi Ruta',
+  'mi-cava': 'Mi Cava',
+};
+
 /** La pestaña central se dibuja como un botón circular destacado. */
 const CENTER_TAB = 'escanear';
 
@@ -23,7 +32,7 @@ export function TabBar({ state, descriptors, navigation, insets }: BottomTabBarP
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const focused = state.index === index;
-        const label = options.title ?? route.name;
+        const label = tabLabels[route.name] ?? options.title ?? route.name;
         const icon = tabIcons[route.name] ?? 'home';
 
         const onPress = () => {
@@ -37,6 +46,13 @@ export function TabBar({ state, descriptors, navigation, insets }: BottomTabBarP
           }
         };
 
+        const onLongPress = () => {
+          navigation.emit({
+            type: 'tabLongPress',
+            target: route.key,
+          });
+        };
+
         if (route.name === CENTER_TAB) {
           return (
             <Pressable
@@ -45,10 +61,17 @@ export function TabBar({ state, descriptors, navigation, insets }: BottomTabBarP
               accessibilityLabel={label}
               accessibilityState={{ selected: focused }}
               onPress={onPress}
+              onLongPress={onLongPress}
               style={styles.tab}>
               <View style={[styles.centerButton, focused && styles.centerButtonFocused]}>
                 <Icon name={icon} size={24} color="textOnPrimary" />
               </View>
+              <AppText
+                variant="caption"
+                color={focused ? 'malbec' : 'textMuted'}
+                style={[styles.label, focused && styles.labelFocused]}>
+                {label}
+              </AppText>
             </Pressable>
           );
         }
@@ -60,6 +83,7 @@ export function TabBar({ state, descriptors, navigation, insets }: BottomTabBarP
             accessibilityLabel={label}
             accessibilityState={{ selected: focused }}
             onPress={onPress}
+            onLongPress={onLongPress}
             style={styles.tab}>
             <Icon name={icon} size={20} color={focused ? 'malbec' : 'textMuted'} />
             <AppText
@@ -83,6 +107,7 @@ const styles = StyleSheet.create({
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: Colors.border,
     paddingTop: Spacing.sm,
+    minHeight: 66,
   },
   tab: {
     flex: 1,

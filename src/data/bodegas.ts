@@ -54,6 +54,9 @@ export const bodegas: Bodega[] = [
     descripcion:
       'Inspirada en las pirámides mayas, la bodega de Agrelo es un ícono de la arquitectura del vino. Pionera en el estudio de viñedos de altura, sus Malbec son referencia mundial.',
     sitioWeb: 'https://www.catenawines.com',
+    imagen: {
+      uri: 'https://winebow-files.s3.amazonaws.com/public/styles/slideshow_new/public/2019-09/P0010270_BodegaCatenaZapata.jpg?VersionId=aorLRVsYysInOXgxgoOacKX2Pmr6IOXu&itok=OruSo1io',
+    },
     recomendada: true,
     experiencias: [
       {
@@ -79,6 +82,9 @@ export const bodegas: Bodega[] = [
     descripcion:
       'Construida con piedras del propio viñedo en Paraje Altamira, Piedra Infinita integra arquitectura y paisaje. Su filosofía busca expresar el lugar en cada vino.',
     sitioWeb: 'https://www.zuccardiwines.com',
+    imagen: {
+      uri: 'https://cloudfront-us-east-1.images.arcpublishing.com/elcronista/EJML4CZORZECXIZC3II57FBF3M.jpg',
+    },
     recomendada: true,
     experiencias: [
       {
@@ -109,6 +115,9 @@ export const bodegas: Bodega[] = [
     descripcion:
       'Ubicada a 1200 metros sobre el nivel del mar, Salentein es pionera en el Valle de Uco. Su arquitectura en forma de cruz alberga una cava subterránea diseñada como templo del vino, donde las barricas descansan bajo acústica clásica.',
     sitioWeb: 'https://www.bodegasalentein.com',
+    imagen: {
+      uri: 'https://www.tangol.com/Fotos/Tours/cata-de-vinos-en-bodega-salentein_12038_202306051147170.JPG',
+    },
     recomendada: true,
     experiencias: [
       {
@@ -143,6 +152,9 @@ export const bodegas: Bodega[] = [
     descripcion:
       'Primera bodega de Moët & Chandon fuera de Francia, referente de los espumantes argentinos. Sus jardines invitan a degustar al aire libre frente a la cordillera.',
     sitioWeb: 'https://www.chandon.com.ar',
+    imagen: {
+      uri: 'https://midias.agazeta.com.br/2023/09/21/816x461/vinicola-chandon-argentina-em-mendoza-1871031.jpg',
+    },
     experiencias: [
       {
         id: 'chandon-tour',
@@ -165,6 +177,9 @@ export const bodegas: Bodega[] = [
     descripcion:
       'Bodega boutique al pie de la cordillera, con vistas abiertas a los viñedos de Gualtallary y una propuesta gastronómica de autor.',
     sitioWeb: 'https://www.andeluna.com.ar',
+    imagen: {
+      uri: 'https://files-p.pxsol.com/6107/company/library/user/2304672929087049b8bd21236e916f1547936011283.jpg',
+    },
     experiencias: [
       {
         id: 'andeluna-almuerzo',
@@ -187,6 +202,9 @@ export const bodegas: Bodega[] = [
     descripcion:
       'Una bodega que combina diseño contemporáneo y paisaje andino, con recorridos que muestran cómo la arquitectura acompaña la elaboración.',
     sitioWeb: 'https://www.alfacrux.com.ar',
+    imagen: {
+      uri: 'https://cdn.sanity.io/images/cpvxwd28/production/e3abfdc9364934ee7d54c5c66b25e80af63d8b9a-1600x1035.jpg',
+    },
     experiencias: [
       {
         id: 'alfa-crux-cata',
