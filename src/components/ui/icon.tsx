@@ -35,6 +35,9 @@ const icons = {
   clock: { ios: 'clock', android: 'schedule', web: 'schedule' },
   external: { ios: 'arrow.up.right.square', android: 'open_in_new', web: 'open_in_new' },
   map: { ios: 'map', android: 'map', web: 'map' },
+  car: { ios: 'car', android: 'directions_car', web: 'directions_car' },
+  edit: { ios: 'pencil', android: 'edit', web: 'edit' },
+  delete: { ios: 'trash', android: 'delete', web: 'delete' },
 } satisfies Record<string, SymbolName>;
 
 export type IconName = keyof typeof icons;

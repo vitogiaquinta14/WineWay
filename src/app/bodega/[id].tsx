@@ -14,6 +14,7 @@ import { Screen } from '@/components/ui/screen';
 import { SectionHeader } from '@/components/ui/section-header';
 import { Spacing } from '@/constants/theme';
 import { getBodega } from '@/data/bodegas';
+import { useRuta } from '@/state/ruta-context';
 
 function volver() {
   if (router.canGoBack()) {
@@ -27,9 +28,9 @@ export default function BodegaScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const bodega = getBodega(id);
 
+  const { tieneBodega, agregarBodega, quitarBodega } = useRuta();
   // Estado local hasta que exista backend.
   const [favorita, setFavorita] = useState(false);
-  const [enRuta, setEnRuta] = useState(false);
 
   if (!bodega) {
     return (
@@ -43,6 +44,8 @@ export default function BodegaScreen() {
       </Screen>
     );
   }
+
+  const enRuta = tieneBodega(bodega.id);
 
   return (
     <Screen scroll padded={false} edges={['bottom']}>
@@ -70,7 +73,7 @@ export default function BodegaScreen() {
                 title={enRuta ? 'En tu ruta' : 'Agregar a mi ruta'}
                 icon={enRuta ? 'check' : 'plus'}
                 variant="secondary"
-                onPress={() => setEnRuta((value) => !value)}
+                onPress={() => (enRuta ? quitarBodega(bodega.id) : agregarBodega(bodega))}
               />
             </View>
             <Button

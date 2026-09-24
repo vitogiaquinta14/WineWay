@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 
 import { Colors } from '@/constants/theme';
+import { RutaProvider } from '@/state/ruta-context';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,7 +24,7 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <RutaProvider>
       <StatusBar style="dark" />
       <Stack
         screenOptions={{
@@ -35,6 +36,6 @@ export default function RootLayout() {
         <Stack.Screen name="bodega/[id]" />
         <Stack.Screen name="crear-ruta" />
       </Stack>
-    </>
+    </RutaProvider>
   );
 }
