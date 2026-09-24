@@ -10,13 +10,14 @@ import { Screen } from '@/components/ui/screen';
 import { TextDivider } from '@/components/ui/text-divider';
 import { TextField } from '@/components/ui/text-field';
 import { Spacing } from '@/constants/theme';
+import { useSesion } from '@/state/sesion-context';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // Sin backend todavía: cualquier acceso lleva a la Home.
-  const goHome = () => router.replace('/');
+  // Sin backend todavía: cualquier acceso inicia la sesión simulada y el layout redirige a la Home.
+  const { iniciarSesion } = useSesion();
 
   return (
     <Screen scroll edges={['top', 'bottom']}>
@@ -54,9 +55,9 @@ export default function LoginScreen() {
         </View>
 
         <View style={styles.actions}>
-          <Button title="Iniciar sesión" onPress={goHome} />
+          <Button title="Iniciar sesión" onPress={iniciarSesion} />
           <TextDivider text="o continuar con" />
-          <GoogleButton title="Continuar con Google" onPress={goHome} />
+          <GoogleButton title="Continuar con Google" onPress={iniciarSesion} />
         </View>
       </View>
 

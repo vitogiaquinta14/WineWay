@@ -1,6 +1,6 @@
 import { router, useIsFocused } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet, View } from 'react-native';
 
 import { BodegaCompactCard } from '@/components/bodega/bodega-compact-card';
 import { HomeHero } from '@/components/home/home-hero';
@@ -11,16 +11,25 @@ import { SectionHeader } from '@/components/ui/section-header';
 import { Spacing } from '@/constants/theme';
 import { bodegasRecomendadas } from '@/data/bodegas';
 import { proximoViaje } from '@/data/viajes';
+import { useSesion } from '@/state/sesion-context';
 
 export default function HomeScreen() {
   // El hero es oscuro: la barra de estado va en blanco solo mientras se ve la Home.
   const focused = useIsFocused();
+  const { cerrarSesion } = useSesion();
+
+  // Hasta que exista la pantalla de Perfil, el botón solo ofrece cerrar sesión.
+  const abrirPerfil = () =>
+    Alert.alert('Mi cuenta', 'El perfil va a estar disponible pronto.', [
+      { text: 'Cancelar', style: 'cancel' },
+      { text: 'Cerrar sesión', style: 'destructive', onPress: cerrarSesion },
+    ]);
 
   return (
     <Screen scroll padded={false} edges={[]}>
       {focused && <StatusBar style="light" />}
 
-      <HomeHero onCreateRoute={() => router.push('/crear-ruta')} />
+      <HomeHero onCreateRoute={() => router.push('/crear-ruta')} onProfilePress={abrirPerfil} />
 
       <View style={styles.sections}>
         {proximoViaje && (

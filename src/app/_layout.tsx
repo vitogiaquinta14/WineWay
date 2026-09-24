@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 
 import { Colors } from '@/constants/theme';
 import { RutaProvider } from '@/state/ruta-context';
+import { SesionProvider, useSesion } from '@/state/sesion-context';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,18 +25,37 @@ export default function RootLayout() {
   }
 
   return (
-    <RutaProvider>
-      <StatusBar style="dark" />
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          contentStyle: { backgroundColor: Colors.background },
-        }}>
+    <SesionProvider>
+      <RutaProvider>
+        <StatusBar style="dark" />
+        <RootNavigator />
+      </RutaProvider>
+    </SesionProvider>
+  );
+}
+
+/**
+ * Sin sesión solo se puede acceder a (auth); con sesión, al resto de la app.
+ * Cuando la sesión cambia, Expo Router redirige a la primera pantalla disponible.
+ */
+function RootNavigator() {
+  const { sesionIniciada } = useSesion();
+
+  return (
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        contentStyle: { backgroundColor: Colors.background },
+      }}>
+      <Stack.Protected guard={sesionIniciada}>
         <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="(auth)" />
         <Stack.Screen name="bodega/[id]" />
         <Stack.Screen name="crear-ruta" />
-      </Stack>
-    </RutaProvider>
+      </Stack.Protected>
+
+      <Stack.Protected guard={!sesionIniciada}>
+        <Stack.Screen name="(auth)" />
+      </Stack.Protected>
+    </Stack>
   );
 }

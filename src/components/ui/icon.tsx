@@ -36,6 +36,7 @@ const icons = {
   external: { ios: 'arrow.up.right.square', android: 'open_in_new', web: 'open_in_new' },
   map: { ios: 'map', android: 'map', web: 'map' },
   car: { ios: 'car', android: 'directions_car', web: 'directions_car' },
+  profile: { ios: 'person.crop.circle', android: 'person', web: 'person' },
   edit: { ios: 'pencil', android: 'edit', web: 'edit' },
   delete: { ios: 'trash', android: 'delete', web: 'delete' },
 } satisfies Record<string, SymbolName>;

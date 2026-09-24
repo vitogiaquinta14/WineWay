@@ -4,17 +4,21 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { AppText } from '@/components/ui/app-text';
 import { Icon } from '@/components/ui/icon';
+import { IconButton } from '@/components/ui/icon-button';
 import { Photo } from '@/components/ui/photo';
 import { Colors, Radius, Spacing } from '@/constants/theme';
 
 type HomeHeroProps = {
   onCreateRoute: () => void;
+  /** Botón de perfil arriba a la derecha (según la wiki, el Perfil se abre desde la Home). */
+  onProfilePress: () => void;
   image?: ImageSource | number;
 };
 
 /** Portada de la Home: foto a sangre con título y CTA para crear una ruta. */
 export function HomeHero({
   onCreateRoute,
+  onProfilePress,
   image = require('../../../assets/images/mendoza.jpeg'),
 }: HomeHeroProps) {
   const insets = useSafeAreaInsets();
@@ -27,6 +31,15 @@ export function HomeHero({
         <View style={[StyleSheet.absoluteFill, styles.fallback]} />
       )}
       <View style={styles.overlay} />
+
+      <View style={[styles.profile, { top: insets.top + Spacing.sm }]}>
+        <IconButton
+          icon="profile"
+          variant="overlay"
+          accessibilityLabel="Perfil"
+          onPress={onProfilePress}
+        />
+      </View>
 
       <View style={styles.content}>
         <AppText variant="label" color="terracota" style={styles.locationLabel}>
@@ -62,6 +75,10 @@ const styles = StyleSheet.create({
   overlay: {
     ...StyleSheet.absoluteFill,
     backgroundColor: 'rgba(50, 30, 32, 0.35)',
+  },
+  profile: {
+    position: 'absolute',
+    right: Spacing.lg,
   },
   content: {
     position: "relative",

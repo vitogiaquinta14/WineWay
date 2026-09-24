@@ -10,6 +10,7 @@ import { Screen } from '@/components/ui/screen';
 import { TextDivider } from '@/components/ui/text-divider';
 import { TextField } from '@/components/ui/text-field';
 import { Spacing } from '@/constants/theme';
+import { useSesion } from '@/state/sesion-context';
 
 export default function RegistroScreen() {
   const [name, setName] = useState('');
@@ -17,8 +18,8 @@ export default function RegistroScreen() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  // Sin backend todavía: crear la cuenta lleva directo a la Home.
-  const goHome = () => router.replace('/');
+  // Sin backend todavía: cualquier acceso inicia la sesión simulada y el layout redirige a la Home.
+  const { iniciarSesion } = useSesion();
 
   const goToLogin = () => {
     if (router.canGoBack()) {
@@ -77,9 +78,9 @@ export default function RegistroScreen() {
         </View>
 
         <View style={styles.actions}>
-          <Button title="Crear cuenta" onPress={goHome} />
+          <Button title="Crear cuenta" onPress={iniciarSesion} />
           <TextDivider text="o registrarte con" />
-          <GoogleButton title="Registrarme con Google" onPress={goHome} />
+          <GoogleButton title="Registrarme con Google" onPress={iniciarSesion} />
         </View>
       </View>
 
