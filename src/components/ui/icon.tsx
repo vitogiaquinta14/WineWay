@@ -27,6 +27,13 @@ const icons = {
   winery: { ios: 'building.2', android: 'domain', web: 'domain' },
   restaurant: { ios: 'fork.knife', android: 'restaurant', web: 'restaurant' },
   camera: { ios: 'camera.aperture', android: 'camera', web: 'camera' },
+  heart: { ios: 'heart', android: 'favorite', web: 'favorite' },
+  heartFill: { ios: 'heart.fill', android: 'favorite', web: 'favorite' },
+  plus: { ios: 'plus', android: 'add', web: 'add' },
+  check: { ios: 'checkmark', android: 'check', web: 'check' },
+  clock: { ios: 'clock', android: 'schedule', web: 'schedule' },
+  external: { ios: 'arrow.up.right.square', android: 'open_in_new', web: 'open_in_new' },
+  map: { ios: 'map', android: 'map', web: 'map' },
 } satisfies Record<string, SymbolName>;
 
 export type IconName = keyof typeof icons;
