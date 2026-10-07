@@ -1,22 +1,30 @@
 import { Pressable, StyleSheet } from 'react-native';
 
 import { AppText } from '@/components/ui/app-text';
-import { Colors, Radius, Spacing } from '@/constants/theme';
+import { Colors, Fonts, Radius, Spacing } from '@/constants/theme';
+
+type ChipTone = 'malbec' | 'terracota' | 'oliva';
 
 type ChipProps = {
   label: string;
   selected?: boolean;
+  /** Color cuando está seleccionado. */
+  tone?: ChipTone;
   onPress?: () => void;
 };
 
 /** Opción seleccionable en forma de píldora (filtros, preferencias). */
-export function Chip({ label, selected = false, onPress }: ChipProps) {
+export function Chip({ label, selected = false, tone = 'malbec', onPress }: ChipProps) {
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityState={{ selected }}
       onPress={onPress}
-      style={({ pressed }) => [styles.chip, selected && styles.selected, pressed && styles.pressed]}>
+      style={({ pressed }) => [
+        styles.chip,
+        selected && { backgroundColor: Colors[tone], borderColor: Colors[tone] },
+        pressed && styles.pressed,
+      ]}>
       <AppText variant="caption" color={selected ? 'textOnPrimary' : 'text'} style={styles.label}>
         {label}
       </AppText>
@@ -36,16 +44,12 @@ const styles = StyleSheet.create({
     borderColor: Colors.border,
     backgroundColor: Colors.surface,
   },
-  selected: {
-    backgroundColor: Colors.malbec,
-    borderColor: Colors.malbec,
-  },
   pressed: {
     opacity: 0.85,
   },
   label: {
+    fontFamily: Fonts.semiBold,
     fontSize: 13,
     lineHeight: 18,
-    fontWeight: '600',
   },
 });

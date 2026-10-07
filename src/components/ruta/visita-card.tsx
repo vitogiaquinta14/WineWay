@@ -12,12 +12,22 @@ type VisitaCardProps = {
   visita: Visita;
   bodega: Bodega;
   onPress: () => void;
-  onEdit: () => void;
-  onDelete: () => void;
+  /** Por defecto "Planificado": la visita está planificada, no reservada. */
+  badge?: string;
+  /** Sin onEdit/onDelete no se muestran acciones (ej. en una propuesta). */
+  onEdit?: () => void;
+  onDelete?: () => void;
 };
 
 /** Una visita del itinerario: horario, bodega, actividad y acciones. */
-export function VisitaCard({ visita, bodega, onPress, onEdit, onDelete }: VisitaCardProps) {
+export function VisitaCard({
+  visita,
+  bodega,
+  onPress,
+  badge = 'Planificado',
+  onEdit,
+  onDelete,
+}: VisitaCardProps) {
   return (
     <Card onPress={onPress} style={styles.card} accessibilityLabel={bodega.nombre}>
       <View style={styles.time}>
@@ -36,12 +46,17 @@ export function VisitaCard({ visita, bodega, onPress, onEdit, onDelete }: Visita
       </View>
 
       <View style={styles.side}>
-        {/* Planificada, no reservada: la app no gestiona reservas. */}
-        <Badge label="Planificado" tone="terracota" />
-        <View style={styles.actions}>
-          <SmallAction icon="edit" label={`Editar ${bodega.nombre}`} onPress={onEdit} />
-          <SmallAction icon="delete" label={`Quitar ${bodega.nombre}`} onPress={onDelete} />
-        </View>
+        <Badge label={badge} tone="terracota" />
+        {(onEdit || onDelete) && (
+          <View style={styles.actions}>
+            {onEdit && (
+              <SmallAction icon="edit" label={`Editar ${bodega.nombre}`} onPress={onEdit} />
+            )}
+            {onDelete && (
+              <SmallAction icon="delete" label={`Quitar ${bodega.nombre}`} onPress={onDelete} />
+            )}
+          </View>
+        )}
       </View>
     </Card>
   );

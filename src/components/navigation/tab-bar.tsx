@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/app-text';
 import { Icon, type IconName } from '@/components/ui/icon';
-import { Colors, Shadow, Spacing } from '@/constants/theme';
+import { Colors, Fonts, Shadow, Spacing } from '@/constants/theme';
 
 /** Ícono de cada pestaña según el nombre del archivo de la ruta. */
 const tabIcons: Record<string, IconName> = {
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   labelFocused: {
-    fontWeight: '700',
+    fontFamily: Fonts.bold,
   },
   centerButton: {
     width: 56,

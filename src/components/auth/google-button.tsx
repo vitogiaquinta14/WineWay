@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/app-text';
 import { Button } from '@/components/ui/button';
-import { Colors } from '@/constants/theme';
+import { Colors, Fonts } from '@/constants/theme';
 
 type GoogleButtonProps = {
   title: string;
@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
   letter: {
     fontSize: 10,
     lineHeight: 12,
-    fontWeight: '700',
+    fontFamily: Fonts.bold,
   },
 });

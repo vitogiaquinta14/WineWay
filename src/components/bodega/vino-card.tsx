@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { AppText } from '@/components/ui/app-text';
 import { Card } from '@/components/ui/card';
 import { Photo } from '@/components/ui/photo';
-import { Spacing } from '@/constants/theme';
+import { Fonts, Spacing } from '@/constants/theme';
 import type { VinoDestacado } from '@/data/bodegas';
 
 /** Tarjeta de vino destacado para el carrusel del detalle de bodega. */
@@ -43,6 +43,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   score: {
-    fontWeight: '700',
+    fontFamily: Fonts.bold,
   },
 });

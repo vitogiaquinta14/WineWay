@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Screen } from '@/components/ui/screen';
 import { TextDivider } from '@/components/ui/text-divider';
 import { TextField } from '@/components/ui/text-field';
-import { Spacing } from '@/constants/theme';
+import { Fonts, Spacing } from '@/constants/theme';
 import { useSesion } from '@/state/sesion-context';
 
 export default function LoginScreen() {
@@ -94,6 +94,6 @@ const styles = StyleSheet.create({
     marginTop: Spacing.xxl,
   },
   link: {
-    fontWeight: '700',
+    fontFamily: Fonts.bold,
   },
 });

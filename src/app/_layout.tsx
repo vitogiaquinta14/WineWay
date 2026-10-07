@@ -11,6 +11,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 
 import { Colors } from '@/constants/theme';
+import { CavaProvider } from '@/state/cava-context';
 import { RutaProvider } from '@/state/ruta-context';
 import { SesionProvider, useSesion } from '@/state/sesion-context';
 
@@ -38,8 +39,10 @@ export default function RootLayout() {
   return (
     <SesionProvider>
       <RutaProvider>
-        <StatusBar style="dark" />
-        <RootNavigator />
+        <CavaProvider>
+          <StatusBar style="dark" />
+          <RootNavigator />
+        </CavaProvider>
       </RutaProvider>
     </SesionProvider>
   );

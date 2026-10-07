@@ -1,14 +1,13 @@
 import { router } from 'expo-router';
 import { Alert, StyleSheet, View } from 'react-native';
 
-import { TrasladoInfo } from '@/components/ruta/traslado-info';
-import { VisitaCard } from '@/components/ruta/visita-card';
+import { ItinerarioDia } from '@/components/ruta/itinerario-dia';
 import { AppText } from '@/components/ui/app-text';
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
 import { Screen } from '@/components/ui/screen';
 import { Spacing } from '@/constants/theme';
-import { getBodega, type Bodega } from '@/data/bodegas';
+import type { Bodega } from '@/data/bodegas';
 import type { Visita } from '@/data/rutas';
 import { useRuta } from '@/state/ruta-context';
 
@@ -48,41 +47,27 @@ export default function MiRutaScreen() {
           <EmptyState
             icon="route"
             title="Tu ruta está vacía"
-            description="Agregá bodegas desde Explorar para armar tu itinerario."
+            description="Generá una ruta a tu medida o agregá bodegas desde Explorar."
           />
-          <Button title="Explorar bodegas" onPress={() => router.navigate('/explorar')} />
+          <Button title="Crear mi ruta" onPress={() => router.push('/crear-ruta')} />
+          <Button
+            title="Explorar bodegas"
+            variant="outline"
+            onPress={() => router.navigate('/explorar')}
+          />
         </View>
       ) : (
         <>
           {ruta.dias.map((dia) => (
             <View key={dia.id} style={styles.day}>
-              <AppText variant="heading">{dia.titulo}</AppText>
-
-              {dia.visitas.length === 0 && (
-                <AppText variant="caption">Sin visitas para este día.</AppText>
-              )}
-
-              {dia.visitas.map((visita, index) => {
-                const bodega = getBodega(visita.bodegaId);
-                if (!bodega) return null;
-
-                return (
-                  <View key={visita.id} style={styles.visit}>
-                    {index > 0 && visita.trasladoMin !== undefined && (
-                      <TrasladoInfo minutos={visita.trasladoMin} destino={bodega.nombre} />
-                    )}
-                    <VisitaCard
-                      visita={visita}
-                      bodega={bodega}
-                      onPress={() =>
-                        router.push({ pathname: '/bodega/[id]', params: { id: bodega.id } })
-                      }
-                      onEdit={editarVisita}
-                      onDelete={() => confirmarQuitar(visita, bodega)}
-                    />
-                  </View>
-                );
-              })}
+              <ItinerarioDia
+                dia={dia}
+                onVisitaPress={(bodega) =>
+                  router.push({ pathname: '/bodega/[id]', params: { id: bodega.id } })
+                }
+                onEditarVisita={editarVisita}
+                onQuitarVisita={confirmarQuitar}
+              />
             </View>
           ))}
 
@@ -111,10 +96,6 @@ const styles = StyleSheet.create({
   },
   day: {
     marginTop: Spacing.xl,
-    gap: Spacing.md,
-  },
-  visit: {
-    gap: Spacing.md,
   },
   actions: {
     marginTop: Spacing.xxl,

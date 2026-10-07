@@ -10,6 +10,8 @@ type RutaContextValue = {
   agregarBodega: (bodega: Bodega) => void;
   quitarBodega: (bodegaId: string) => void;
   quitarVisita: (visitaId: string) => void;
+  /** Reemplaza toda la ruta (ej. con una propuesta generada). */
+  reemplazarRuta: (ruta: Ruta) => void;
 };
 
 const RutaContext = createContext<RutaContextValue | null>(null);
@@ -62,7 +64,15 @@ export function RutaProvider({ children }: { children: ReactNode }) {
   const quitarVisita = (visitaId: string) => filtrarVisitas((visita) => visita.id !== visitaId);
 
   return (
-    <RutaContext value={{ ruta, tieneBodega, agregarBodega, quitarBodega, quitarVisita }}>
+    <RutaContext
+      value={{
+        ruta,
+        tieneBodega,
+        agregarBodega,
+        quitarBodega,
+        quitarVisita,
+        reemplazarRuta: setRuta,
+      }}>
       {children}
     </RutaContext>
   );
