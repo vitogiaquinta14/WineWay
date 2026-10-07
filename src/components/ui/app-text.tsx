@@ -3,10 +3,10 @@ import { StyleSheet, Text, type TextProps } from 'react-native';
 import { Colors, Fonts, type ColorName } from '@/constants/theme';
 
 export type AppTextVariant =
-  | 'display' // Títulos grandes serif (ej. "Bienvenido de nuevo")
-  | 'title' // Título de pantalla serif (ej. "Explorar Bodegas")
-  | 'heading' // Título de sección serif (ej. "Próximo viaje")
-  | 'subtitle' // Nombre de tarjeta en sans bold
+  | 'display' // Títulos grandes (ej. "Bienvenido de nuevo")
+  | 'title' // Título de pantalla (ej. "Explorar Bodegas")
+  | 'heading' // Título de sección (ej. "Próximo viaje")
+  | 'subtitle' // Nombre de tarjeta en semibold
   | 'body'
   | 'bodyBold'
   | 'caption' // Texto secundario pequeño
@@ -45,47 +45,44 @@ export function AppText({ variant = 'body', color, align, style, ...rest }: AppT
 
 const styles = StyleSheet.create({
   display: {
-    fontFamily: Fonts.serif,
+    fontFamily: Fonts.bold,
     fontSize: 30,
     lineHeight: 36,
   },
   title: {
-    fontFamily: Fonts.serif,
+    fontFamily: Fonts.semiBold,
     fontSize: 24,
     lineHeight: 30,
   },
   heading: {
-    fontFamily: Fonts.serif,
+    fontFamily: Fonts.semiBold,
     fontSize: 19,
     lineHeight: 24,
   },
   subtitle: {
-    fontFamily: Fonts.sans,
+    fontFamily: Fonts.semiBold,
     fontSize: 15,
     lineHeight: 20,
-    fontWeight: '600',
   },
   body: {
-    fontFamily: Fonts.sans,
+    fontFamily: Fonts.regular,
     fontSize: 14,
     lineHeight: 20,
   },
   bodyBold: {
-    fontFamily: Fonts.sans,
+    fontFamily: Fonts.semiBold,
     fontSize: 14,
     lineHeight: 20,
-    fontWeight: '600',
   },
   caption: {
-    fontFamily: Fonts.sans,
+    fontFamily: Fonts.regular,
     fontSize: 12,
     lineHeight: 16,
   },
   label: {
-    fontFamily: Fonts.sans,
+    fontFamily: Fonts.bold,
     fontSize: 11,
     lineHeight: 14,
-    fontWeight: '700',
     letterSpacing: 0.5,
     textTransform: 'uppercase',
   },

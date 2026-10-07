@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Pressable, StyleSheet, TextInput, View, type TextInputProps } from 'react-native';
+import { Pressable, StyleSheet, View, type TextInputProps } from 'react-native';
 
 import { AppText } from '@/components/ui/app-text';
+import { AppTextInput } from '@/components/ui/app-text-input';
 import { Icon } from '@/components/ui/icon';
 import { Colors, Radius, Spacing } from '@/constants/theme';
 
@@ -19,7 +20,7 @@ export function TextField({ label, password = false, style, onFocus, onBlur, ...
     <View style={styles.container}>
       <AppText variant="label">{label}</AppText>
       <View style={[styles.inputWrapper, focused && styles.inputWrapperFocused]}>
-        <TextInput
+        <AppTextInput
           style={[styles.input, style]}
           placeholderTextColor={Colors.textMuted}
           selectionColor={Colors.malbec}

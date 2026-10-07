@@ -1,4 +1,10 @@
-import { YoungSerif_400Regular, useFonts } from '@expo-google-fonts/young-serif';
+import {
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  useFonts,
+} from '@expo-google-fonts/inter';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
@@ -11,7 +17,12 @@ import { SesionProvider, useSesion } from '@/state/sesion-context';
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [fontsLoaded, fontError] = useFonts({ YoungSerif_400Regular });
+  const [fontsLoaded, fontError] = useFonts({
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold,
+  });
   const ready = fontsLoaded || fontError;
 
   useEffect(() => {

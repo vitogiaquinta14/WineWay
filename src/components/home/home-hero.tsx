@@ -45,7 +45,7 @@ export function HomeHero({
         <AppText variant="label" color="terracota" style={styles.locationLabel}>
           Mendoza, Argentina
         </AppText>
-        <AppText variant="display" color="textOnPrimary" style={styles.title}>
+        <AppText variant="display" color="terracotaSoft" style={styles.title}>
           Explorá la cuna del Malbec
         </AppText>
         <Pressable
@@ -74,23 +74,23 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFill,
-    backgroundColor: 'rgba(50, 30, 32, 0.35)',
+    backgroundColor: 'rgba(50, 30, 32, 0.55)',
   },
   profile: {
     position: 'absolute',
     right: Spacing.lg,
   },
   content: {
-    position: "relative",
+    position: 'relative',
     gap: Spacing.sm,
     maxWidth: 280,
   },
   locationLabel: {
-    position: "absolute",
-    bottom: 132,
+    position: 'absolute',
+    bottom: 200,
   },
   title: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 132,
   },
   cta: {

@@ -1,5 +1,6 @@
-import { StyleSheet, TextInput, View, type TextInputProps } from 'react-native';
+import { StyleSheet, View, type TextInputProps } from 'react-native';
 
+import { AppTextInput } from '@/components/ui/app-text-input';
 import { Icon } from '@/components/ui/icon';
 import { Colors, Radius, Spacing } from '@/constants/theme';
 
@@ -9,7 +10,7 @@ export function SearchField(props: SearchFieldProps) {
   return (
     <View style={styles.container}>
       <Icon name="search" size={16} color="textMuted" />
-      <TextInput
+      <AppTextInput
         style={styles.input}
         placeholderTextColor={Colors.textMuted}
         selectionColor={Colors.malbec}

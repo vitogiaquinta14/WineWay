@@ -1,4 +1,3 @@
-import { Platform } from 'react-native';
 
 /**
  * Paleta de Bodegueando (ver wiki/03-pantallas-y-diseno.md).
@@ -36,12 +35,14 @@ export const Colors = {
 export type ColorName = keyof typeof Colors;
 
 /**
- * Familias tipográficas. La serif (Young Serif) se carga en src/app/_layout.tsx
- * y solo tiene peso 400: no combinarla con fontWeight.
+ * Inter se carga en src/app/_layout.tsx. Cada peso tiene una familia explícita
+ * para que se vea igual en Android, iOS y web.
  */
 export const Fonts = {
-  sans: Platform.select({ ios: 'System', default: 'sans-serif' }),
-  serif: 'YoungSerif_400Regular',
+  regular: 'Inter_400Regular',
+  medium: 'Inter_500Medium',
+  semiBold: 'Inter_600SemiBold',
+  bold: 'Inter_700Bold',
 };
 
 export const Spacing = {
