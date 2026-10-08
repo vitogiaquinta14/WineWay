@@ -80,7 +80,7 @@ Escaneá el QR con **Expo Go** (Android/iOS) o iniciá un emulador desde la term
 
 ## Enlaces
 
-- 🎨 Mockup / prototipo interactivo en Figma: _(agregar link público)_
+- 🎨 Mockup / prototipo interactivo en Figma: (https://www.figma.com/proto/35T3xVmut0tRXGnD8jqEXx/WineWay?node-id=0-1&t=jKvqwIdq09QxSpdQ-1)
 - 📦 Repositorio: _(agregar si corresponde)_
 
 ## Autores
