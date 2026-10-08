@@ -1,8 +1,8 @@
-import { StyleSheet, View } from 'react-native';
+import { Image } from "expo-image";
+import { StyleSheet, View } from "react-native";
 
-import { AppText } from '@/components/ui/app-text';
-import { Icon } from '@/components/ui/icon';
-import { Colors, Spacing } from '@/constants/theme';
+import { AppText } from "@/components/ui/app-text";
+import { Spacing } from "@/constants/theme";
 
 type AuthHeaderProps = {
   title: string;
@@ -14,10 +14,20 @@ export function AuthHeader({ title, subtitle }: AuthHeaderProps) {
   return (
     <View style={styles.container}>
       <View style={styles.brand}>
-        <View style={styles.logo}>
-          <Icon name="wine" size={24} color="textOnPrimary" />
-        </View>
-        <AppText variant="heading">WineWay</AppText>
+        <Image
+          source={require("../../../assets/images/wineway-wordmark.png")}
+          style={styles.wordmark}
+          contentFit="contain"
+          accessibilityLabel="WineWay"
+        />
+        <AppText
+          variant="subtitle"
+          color="malbec"
+          align="center"
+          style={styles.tagline}
+        >
+          De bodega en bodega, coleccionando recuerdos.
+        </AppText>
       </View>
 
       <View style={styles.texts}>
@@ -34,20 +44,20 @@ export function AuthHeader({ title, subtitle }: AuthHeaderProps) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    gap: Spacing.xl,
+    alignItems: "center",
+    gap: Spacing.xl + Spacing.xs,
   },
   brand: {
-    alignItems: 'center',
-    gap: Spacing.sm,
+    alignItems: "center",
+    gap: 0,
   },
-  logo: {
-    width: 52,
-    height: 52,
-    borderRadius: 26,
-    backgroundColor: Colors.malbec,
-    alignItems: 'center',
-    justifyContent: 'center',
+  wordmark: {
+    width: 256,
+    height: 102,
+  },
+  tagline: {
+    maxWidth: 320,
+    transform: [{ translateY: -12 }],
   },
   texts: {
     gap: Spacing.sm,

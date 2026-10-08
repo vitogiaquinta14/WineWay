@@ -8,18 +8,18 @@ Este documento define la identidad visual de **WineWay**: nombre, paleta de colo
 
 Combina "wine" con "way" (camino/ruta), comunicando en una sola palabra la propuesta central del producto: planificar y recorrer un camino entre bodegas.
 
-**Slogan:** *Planeá. Recorré. Brindá. Recordá.*
+**Slogan:** _De bodega en bodega, coleccionando recuerdos._
 
 ## 2. Paleta de colores
 
-| Color | HEX | Uso sugerido |
-|---|---|---|
-| Malbec | `#722F37` | CTA principal, botones, elementos seleccionados |
-| Wine Dark | `#321E20` | Títulos, headers, sombras de tarjetas |
-| Crema | `#F7F2EA` | Fondo principal |
-| Verde Oliva | `#6F7255` | Estados secundarios, referencias a viñedos |
-| Terracota | `#C4775A` | Acentos, botón secundario, rating |
-| Carbón | `#252525` | Texto principal |
+| Color       | HEX       | Uso sugerido                                    |
+| ----------- | --------- | ----------------------------------------------- |
+| Malbec      | `#722F37` | CTA principal, botones, elementos seleccionados |
+| Wine Dark   | `#321E20` | Títulos, headers, sombras de tarjetas           |
+| Crema       | `#F7F2EA` | Fondo principal                                 |
+| Verde Oliva | `#6F7255` | Estados secundarios, referencias a viñedos      |
+| Terracota   | `#C4775A` | Acentos, botón secundario, rating               |
+| Carbón      | `#252525` | Texto principal                                 |
 
 Implementada en `src/constants/theme.ts`, con una capa adicional de tokens funcionales derivados de estos 6 colores (`surface`, `border`, `textMuted`, variantes `Soft` para estados, `error`).
 
@@ -27,30 +27,37 @@ Implementada en `src/constants/theme.ts`, con una capa adicional de tokens funci
 
 **Inter**, en cuatro pesos, cargada vía `@expo-google-fonts/inter`.
 
-| Variante | Peso | Tamaño | Uso |
-|---|---|---|---|
-| `display` | Bold | 30 | Títulos grandes (ej. "Bienvenido de nuevo") |
-| `title` | SemiBold | 24 | Título de pantalla (ej. "Explorar Bodegas") |
-| `heading` | SemiBold | 19 | Título de sección (ej. "Próximo viaje") |
-| `subtitle` | SemiBold | 15 | Nombre de tarjeta |
-| `body` | Regular | 14 | Texto de cuerpo |
-| `bodyBold` | SemiBold | 14 | Texto de cuerpo con énfasis |
-| `caption` | Regular | 12 | Texto secundario |
-| `label` | Bold | 11 | Etiquetas en mayúsculas (ej. "EMAIL") |
+| Variante   | Peso     | Tamaño | Uso                                         |
+| ---------- | -------- | ------ | ------------------------------------------- |
+| `display`  | Bold     | 30     | Títulos grandes (ej. "Bienvenido de nuevo") |
+| `title`    | SemiBold | 24     | Título de pantalla (ej. "Explorar Bodegas") |
+| `heading`  | SemiBold | 19     | Título de sección (ej. "Próximo viaje")     |
+| `subtitle` | SemiBold | 15     | Nombre de tarjeta                           |
+| `body`     | Regular  | 14     | Texto de cuerpo                             |
+| `bodyBold` | SemiBold | 14     | Texto de cuerpo con énfasis                 |
+| `caption`  | Regular  | 12     | Texto secundario                            |
+| `label`    | Bold     | 11     | Etiquetas en mayúsculas (ej. "EMAIL")       |
 
 - Specimen: [Inter en Google Fonts](https://fonts.google.com/specimen/Inter)
 - Por qué: una sola familia con una escala de pesos clara es más simple de mantener en un equipo de dos personas que una combinación sans + serif, sin perder jerarquía visual.
 
-## 4. Isotipo / logotipo
+## 4. Isotipo y logotipo
 
-**Pendiente.** Los assets de ícono siguen siendo los default de la plantilla de Expo. Falta definir y aplicar un isotipo propio antes de la entrega. Al hacerlo hay que reemplazar:
+La identidad visual de WineWay se compone de dos assets complementarios:
 
-- `assets/images/icon.png`: ícono general de la app.
-- `assets/expo.icon/`: ícono de iOS (configurado en `app.json` → `ios.icon`).
-- `assets/images/android-icon-*.png`: ícono adaptativo de Android (fondo, frente y monocromo).
-- `assets/images/splash-icon.png`: imagen del splash.
-- `assets/images/favicon.png`: ícono de la versión web.
-- El logo provisorio dentro de la app: un ícono de copa sobre un círculo Malbec en `src/components/auth/auth-header.tsx`.
+<p align="center">
+  <img src="../assets/images/wineway-logo.png" width="180" alt="Isotipo de WineWay: copa de vino con montañas" />
+  <img src="../assets/images/wineway-wordmark.png" width="420" alt="Logotipo WineWay" />
+</p>
+
+- **Isotipo:** una copa de vino con montañas en tonos Malbec. Está en `assets/images/wineway-logo.png` y se utiliza como icono de la aplicación en iOS, Android y web, además de la pantalla de inicio.
+- **Logotipo:** la firma tipográfica “WineWay” con montañas integradas. Está en `assets/images/wineway-wordmark.png` y se muestra en las pantallas de acceso mediante `src/components/auth/auth-header.tsx`.
+
+El isotipo se configura en `app.json` como `icon`, `ios.icon`, `android.adaptiveIcon.foregroundImage`, `web.favicon` y la imagen de `expo-splash-screen`. El logotipo tiene fondo transparente y debe mostrarse con `contain` para respetar su proporción horizontal.
+
+**Eslogan:** _De bodega en bodega, coleccionando recuerdos._
+
+Uso recomendado: el isotipo identifica espacios compactos (launcher, favicon, splash); el logotipo identifica piezas de bienvenida, documentación y comunicaciones donde haya ancho disponible.
 
 ## 5. Dirección visual
 

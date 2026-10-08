@@ -5,8 +5,9 @@ Este documento identifica las APIs, los SDKs y las capacidades externas necesari
 ## Clasificación general
 
 - **APIs externas:** Google Routes API, Google Places API, Google Calendar API y Gemini API.
-- **SDKs externos:** Google Maps SDK correspondiente a la plataforma móvil que se elija.
-- **Capacidades nativas:** cámara y, opcionalmente para el MVP, geolocalización del dispositivo.
+- **SDKs externos:** `react-native-maps` para representar el mapa nativo; Google Maps Platform para servicios de mapas, lugares y rutas cuando se integren.
+- **Framework actual:** React Native con Expo SDK 57 y Expo Router.
+- **Capacidades nativas implementadas:** cámara con `expo-camera` y geolocalización puntual en primer plano con `expo-location`.
 - **Servicios propios por definir:** persistencia, backend y autenticación.
 - **Integraciones futuras:** disponibilidad, reservas, pagos y sistemas externos de bodegas.
 
@@ -31,7 +32,8 @@ El Maps SDK resuelve la **visualización**. No es, por sí solo, la lógica que 
 
 ### Consideraciones
 
-- La variante concreta del SDK depende del framework y las plataformas móviles que se definan.
+- La implementación actual usa `react-native-maps`: Google Maps en Android y Apple Maps en iOS. La versión web muestra un estado alternativo.
+- WineWay soporta iOS, Android y web mediante Expo SDK 57.
 - Las pantallas deben contemplar carga y error del mapa.
 - La implementación deberá respetar los requisitos vigentes de atribución y uso de Google Maps Platform.
 
@@ -305,19 +307,19 @@ La geolocalización es **opcional para el MVP**, porque no resulta imprescindibl
 
 ## Resumen de integraciones del MVP
 
-| Tecnología o integración | Uso en WineWay | MVP |
-|---|---|---|
-| Google Maps / Maps SDK | Mostrar mapas, bodegas y rutas | Sí |
-| Google Routes API | Calcular distancias, tiempos y recorridos entre bodegas | Sí |
-| Google Places API | Buscar lugares y obtener información geográfica de bodegas | Sí |
-| Google Calendar API | Agregar el itinerario al calendario | Sí |
-| Cámara del dispositivo | Fotografiar etiquetas | Sí |
-| Gemini API | Analizar e identificar datos visibles de un vino desde una imagen | Sí |
-| Persistencia propia | Guardar usuarios, bodegas, reseñas, rutas, Mi Cava y favoritos | Sí |
-| Sistema de autenticación | Gestionar cuentas, sesiones y recuperación | Sí, proveedor pendiente |
-| Geolocalización | Usar posición actual y mostrar bodegas cercanas | Opcional |
-| API de reservas | Reservar bodegas | No |
-| Pasarela de pagos | Procesar pagos | No |
+| Tecnología o integración | Uso en WineWay                                                    | MVP                     |
+| ------------------------ | ----------------------------------------------------------------- | ----------------------- |
+| Google Maps / Maps SDK   | Mostrar mapas, bodegas y rutas                                    | Sí                      |
+| Google Routes API        | Calcular distancias, tiempos y recorridos entre bodegas           | Sí                      |
+| Google Places API        | Buscar lugares y obtener información geográfica de bodegas        | Sí                      |
+| Google Calendar API      | Agregar el itinerario al calendario                               | Sí                      |
+| Cámara del dispositivo   | Fotografiar etiquetas                                             | Sí                      |
+| Gemini API               | Analizar e identificar datos visibles de un vino desde una imagen | Sí                      |
+| Persistencia propia      | Guardar usuarios, bodegas, reseñas, rutas, Mi Cava y favoritos    | Sí                      |
+| Sistema de autenticación | Gestionar cuentas, sesiones y recuperación                        | Sí, proveedor pendiente |
+| Geolocalización          | Usar posición actual y mostrar bodegas cercanas                   | Opcional                |
+| API de reservas          | Reservar bodegas                                                  | No                      |
+| Pasarela de pagos        | Procesar pagos                                                    | No                      |
 
 ## Diagrama conceptual de integraciones
 
@@ -378,8 +380,6 @@ Fuera del MVP quedan:
 
 Estas decisiones no se resuelven en este documento:
 
-- Framework mobile.
-- Plataformas móviles y variante correspondiente de cada SDK.
 - Backend.
 - Base de datos.
 - Sistema de autenticación.

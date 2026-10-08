@@ -4,24 +4,22 @@
     "slug": "WineWay",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/wineway-logo.png",
     "scheme": "wineway",
     "userInterfaceStyle": "light",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/images/wineway-logo.png"
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#F7F2EA",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "foregroundImage": "./assets/images/wineway-logo.png"
       },
       "predictiveBackGestureEnabled": false
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/wineway-logo.png"
     },
     "plugins": [
       "expo-router",
@@ -29,8 +27,8 @@
         "expo-splash-screen",
         {
           "backgroundColor": "#F7F2EA",
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
+          "image": "./assets/images/wineway-logo.png",
+          "imageWidth": 180
         }
       ],
       [

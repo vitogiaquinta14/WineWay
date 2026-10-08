@@ -1,6 +1,6 @@
 # WineWay: idea y alcance
 
-> **Slogan:** *Planeá. Recorré. Brindá. Recordá.*
+> **Slogan:** _De bodega en bodega, coleccionando recuerdos._
 
 ## 1. Descripción del producto
 
