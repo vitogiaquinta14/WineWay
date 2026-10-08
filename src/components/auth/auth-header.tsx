@@ -9,7 +9,7 @@ type AuthHeaderProps = {
   subtitle: string;
 };
 
-/** Logo de Bodegueando + título y subtítulo de las pantallas de acceso. */
+/** Logo de WineWay + título y subtítulo de las pantallas de acceso. */
 export function AuthHeader({ title, subtitle }: AuthHeaderProps) {
   return (
     <View style={styles.container}>
@@ -17,7 +17,7 @@ export function AuthHeader({ title, subtitle }: AuthHeaderProps) {
         <View style={styles.logo}>
           <Icon name="wine" size={24} color="textOnPrimary" />
         </View>
-        <AppText variant="heading">Bodegueando</AppText>
+        <AppText variant="heading">WineWay</AppText>
       </View>
 
       <View style={styles.texts}>

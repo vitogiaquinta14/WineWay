@@ -1,6 +1,6 @@
 
 /**
- * Paleta de Bodegueando (ver wiki/03-pantallas-y-diseno.md).
+ * Paleta de WineWay (ver wiki/06-branding.md).
  * La app se diseña solo en modo claro.
  */
 export const Colors = {

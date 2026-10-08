@@ -1,10 +1,10 @@
-# Bodegueando: idea y alcance
+# WineWay: idea y alcance
 
 > **Slogan:** *Planeá. Recorré. Brindá. Recordá.*
 
 ## 1. Descripción del producto
 
-**Bodegueando** es una aplicación móvil de turismo bodeguero destinada a personas que viajan a Mendoza. Su propósito es acompañarlas antes, durante y después del viaje para que puedan descubrir bodegas, organizar itinerarios de visitas y conservar un registro personal de los vinos que probaron.
+**WineWay** es una aplicación móvil de turismo bodeguero destinada a personas que viajan a Mendoza. Su propósito es acompañarlas antes, durante y después del viaje para que puedan descubrir bodegas, organizar itinerarios de visitas y conservar un registro personal de los vinos que probaron.
 
 El producto busca resolver tres necesidades relacionadas:
 
@@ -12,11 +12,11 @@ El producto busca resolver tres necesidades relacionadas:
 - La dispersión de la información necesaria para descubrir y comparar bodegas.
 - La falta de un espacio personal donde recordar los vinos probados y registrar una valoración propia.
 
-En el MVP, Bodegueando permite **planificar visitas**, pero no realiza ni confirma reservas. Cuando corresponda, el usuario puede dirigirse al sitio externo de una bodega para obtener más información o reservar.
+En el MVP, WineWay permite **planificar visitas**, pero no realiza ni confirma reservas. Cuando corresponda, el usuario puede dirigirse al sitio externo de una bodega para obtener más información o reservar.
 
 ## 2. Propuesta de valor
 
-La propuesta de Bodegueando se apoya en tres pilares.
+La propuesta de WineWay se apoya en tres pilares.
 
 ### Planificar
 
@@ -101,7 +101,7 @@ Las acciones persistentes requieren iniciar sesión:
 ### Fuera del MVP
 
 - Reservas automáticas de bodegas.
-- Confirmación de reservas dentro de Bodegueando.
+- Confirmación de reservas dentro de WineWay.
 - Pagos dentro de la aplicación.
 - Checkout.
 - Tarjetas o métodos de pago guardados.
@@ -114,7 +114,7 @@ Las acciones persistentes requieren iniciar sesión:
 Las siguientes capacidades no pertenecen al MVP:
 
 1. Consultar disponibilidad en tiempo real.
-2. Reservar directamente desde Bodegueando.
+2. Reservar directamente desde WineWay.
 3. Incorporar pagos, cancelaciones y gestión de reservas.
 4. Crear recomendaciones más avanzadas.
 5. Integrarse con los sistemas externos de las bodegas.
