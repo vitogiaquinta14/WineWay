@@ -1,12 +1,13 @@
 # Pantallas y diseño
 
-Este documento enumera las pantallas necesarias para crear los mockups iniciales de Bodegueando. Las descripciones se limitan al alcance funcional definido para el MVP.
+Este documento enumera las pantallas necesarias para crear los mockups iniciales de WineWay. Las descripciones se limitan al alcance funcional definido para el MVP.
 
 ## A. Onboarding y autenticación
 
 ### 1. Splash Screen
 
-- Logo de Bodegueando.
+- Isotipo de WineWay en el splash; el logotipo horizontal se usa en las pantallas de acceso.
+- Eslogan: _De bodega en bodega, coleccionando recuerdos._
 - Estado breve de carga inicial.
 - Derivación a Onboarding, autenticación o Home según corresponda.
 
@@ -24,6 +25,8 @@ Este documento enumera las pantallas necesarias para crear los mockups iniciales
 
 ### 4. Registro
 
+- Logotipo WineWay y eslogan visibles en el encabezado.
+
 - Nombre.
 - Email.
 - Contraseña.
@@ -31,6 +34,8 @@ Este documento enumera las pantallas necesarias para crear los mockups iniciales
 - Apple Login únicamente si se confirma su implementación.
 
 ### 5. Login
+
+- Logotipo WineWay y eslogan visibles en el encabezado.
 
 - Email y contraseña.
 - Acceso con Google.
@@ -118,7 +123,7 @@ El avatar permite acceder al Perfil.
 - Acción para marcar o quitar de Favoritos.
 - Enlace externo para obtener más información o reservar en el sitio de la bodega.
 
-La interfaz no debe presentar la visita como reservada dentro de Bodegueando.
+La interfaz no debe presentar la visita como reservada dentro de WineWay.
 
 ### 14. Favoritos
 
@@ -387,16 +392,15 @@ Si el vino no se identifica, el usuario puede reintentar o buscar manualmente.
 
 ## Naming y slogan
 
-- **Nombre de la aplicación:** Bodegueando.
-- **Slogan:** *Planeá. Recorré. Brindá. Recordá.*
+- **Nombre de la aplicación:** WineWay.
+- **Slogan:** _De bodega en bodega, coleccionando recuerdos._
 
-“Bodegueando” presenta la experiencia como una acción en curso: explorar bodegas, recorrer Mendoza y construir recuerdos alrededor del vino. El slogan acompaña los momentos principales del producto:
+“WineWay” combina _wine_ con _way_ (camino/ruta) y comunica en una sola palabra la propuesta central del producto: planificar y recorrer un camino entre bodegas. El nombre definitivo y su fundamento están en [06 · Branding](./06-branding.md). El slogan acompaña los momentos principales del producto:
 
 - **Planeá:** creación y organización de rutas.
 - **Recorré:** visitas y exploración de bodegas.
 - **Brindá:** experiencia vinculada con el vino.
 - **Recordá:** Mi Cava, ratings y notas personales.
-
 
 ## Dirección visual
 
@@ -412,14 +416,14 @@ Se priorizan fotografías grandes de viñedos, bodegas y vinos. Debe evitarse un
 
 ## Paleta principal propuesta
 
-| Color | Valor | Uso sugerido |
-|---|---|---|
-| Malbec | `#722F37` | CTA principal, botones, elementos seleccionados y branding |
-| Wine Dark | `#321E20` | Títulos, fondos oscuros puntuales y encabezados |
-| Crema | `#F7F2EA` | Fondo principal, tarjetas y superficies |
+| Color       | Valor     | Uso sugerido                                                       |
+| ----------- | --------- | ------------------------------------------------------------------ |
+| Malbec      | `#722F37` | CTA principal, botones, elementos seleccionados y branding         |
+| Wine Dark   | `#321E20` | Títulos, fondos oscuros puntuales y encabezados                    |
+| Crema       | `#F7F2EA` | Fondo principal, tarjetas y superficies                            |
 | Verde Oliva | `#6F7255` | Naturaleza, etiquetas, estados secundarios y referencias a viñedos |
-| Terracota | `#C4775A` | Acentos, detalles, ilustraciones y elementos complementarios |
-| Carbón | `#252525` | Texto principal |
+| Terracota   | `#C4775A` | Acentos, detalles, ilustraciones y elementos complementarios       |
+| Carbón      | `#252525` | Texto principal                                                    |
 
 ## Proporción de uso
 
@@ -429,8 +433,7 @@ Las grandes superficies completamente bordó deben reservarse para casos puntual
 
 ## Tipografía
 
-- Sans-serif limpia y moderna para la interfaz.
-- Serif elegante, de uso muy limitado, para títulos destacados o branding si el sistema visual lo requiere.
+- Una sola familia sans-serif, **Inter**, para toda la interfaz, con una escala de pesos (Regular, SemiBold, Bold) para marcar la jerarquía.
 - Legibilidad móvil como criterio prioritario.
 
-La selección de familias tipográficas definitivas queda para una instancia posterior de diseño.
+La propuesta inicial contemplaba sumar una serif para títulos destacados; se descartó en favor de una única familia, más simple de mantener. Las variantes, pesos y tamaños definitivos están en [06 · Branding](./06-branding.md).

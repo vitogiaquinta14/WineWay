@@ -1,6 +1,6 @@
 # WineWay - App móvil de turismo
 
-> Planeá. Recorré. Brindá. Recordá.
+> De bodega en bodega, coleccionando recuerdos.
 
 Aplicación móvil de turismo bodeguero para personas que viajan a Mendoza. Acompaña al usuario antes, durante y después del viaje: ayuda a descubrir bodegas, armar itinerarios de visita y guardar un registro personal de los vinos que probó.
 
@@ -20,7 +20,8 @@ Personas que viajan a Mendoza y quieren organizar visitas a bodegas según su ti
 
 - **React Native** + **Expo**
 - **Expo Router** (navegación basada en archivos)
-- _(completar acá a medida que se sumen: gestor de estado, librería de UI, etc.)_
+- **Context API de React** (gestión de estado: sesión, ruta en construcción, Mi Cava)
+- Componentes de UI propios en `src/components/ui`
 
 ## Alcance del MVP
 
@@ -39,33 +40,46 @@ WineWay permite **planificar** una visita, no reservarla dentro de la app:
 
 📄 Documentación funcional completa en [`/wiki`](./wiki):
 
-| Documento | Contenido |
-|---|---|
-| [01 · Idea y alcance](./wiki/01-idea-y-alcance.md) | Problema, propuesta de valor, alcance del MVP |
-| [02 · Funcionalidades](./wiki/02-funcionalidades-mvp.md) | Detalle funcional de cada módulo |
-| [03 · Pantallas y diseño](./wiki/03-pantallas-y-diseno.md) | Inventario de pantallas, userflows, branding |
-| [04 · APIs e integraciones](./wiki/04-apis-e-integraciones.md) | Google Maps/Routes/Places/Calendar, Gemini, cámara |
-| [05 · Dudas pendientes](./wiki/05-dudas-pendientes.md) | Decisiones de producto todavía abiertas |
+| Documento                                                                     | Contenido                                              |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------ |
+| [01 · Idea y alcance](./wiki/01-idea-y-alcance.md)                            | Problema, propuesta de valor, alcance del MVP          |
+| [02 · Funcionalidades](./wiki/02-funcionalidades-mvp.md)                      | Detalle funcional de cada módulo                       |
+| [03 · Pantallas y diseño](./wiki/03-pantallas-y-diseno.md)                    | Inventario de pantallas, userflows, branding           |
+| [04 · APIs e integraciones](./wiki/04-apis-e-integraciones.md)                | Google Maps/Routes/Places/Calendar, Gemini, cámara     |
+| [05 · Dudas pendientes](./wiki/05-dudas-pendientes.md)                        | Decisiones de producto todavía abiertas                |
+| [06 · Branding](./wiki/06-branding.md)                                        | Nombre, eslogan, paleta, tipografía e identidad visual |
+| [07 · Sensores, cámara y ubicación](./wiki/06-sensores-camara-y-ubicacion.md) | Implementación de cámara, ubicación y mapa             |
 
 ## Componentes nativos
 
-| Componente | Uso en WineWay |
-|---|---|
-| 📷 **Cámara** | Fotografiar la etiqueta de un vino para identificarlo. |
-| 📍 **GPS / Geolocalización** | Centrar el mapa en el usuario y mostrar bodegas cercanas. |
+| Componente                   | Uso en WineWay                                            | Estado                            |
+| ---------------------------- | --------------------------------------------------------- | --------------------------------- |
+| 📷 **Cámara**                | Fotografiar la etiqueta de un vino para identificarlo.    | ✅ Implementado (`expo-camera`)   |
+| 📍 **GPS / Geolocalización** | Centrar el mapa en el usuario y mostrar bodegas cercanas. | ✅ Implementado (`expo-location`) |
 
 ## Branding
 
-| Color | HEX | Uso |
-|---|---|---|
-| Malbec | `#722F37` | CTA principal, branding |
-| Wine Dark | `#321E20` | Títulos, headers |
-| Crema | `#F7F2EA` | Fondo principal |
+| Color       | HEX       | Uso                                        |
+| ----------- | --------- | ------------------------------------------ |
+| Malbec      | `#722F37` | CTA principal, branding                    |
+| Wine Dark   | `#321E20` | Títulos, headers                           |
+| Crema       | `#F7F2EA` | Fondo principal                            |
 | Verde Oliva | `#6F7255` | Estados secundarios, referencias a viñedos |
-| Terracota | `#C4775A` | Acentos y detalles |
-| Carbón | `#252525` | Texto principal |
+| Terracota   | `#C4775A` | Acentos y detalles                         |
+| Carbón      | `#252525` | Texto principal                            |
 
-Tipografía: sans-serif limpia para la interfaz + serif elegante de uso puntual en títulos/branding (familias definitivas a confirmar).
+Tipografía: **Inter**, en cuatro pesos (Regular, Medium, SemiBold, Bold). La identidad definida incluye isotipo, logotipo y el eslogan **“De bodega en bodega, coleccionando recuerdos.”** Ver [`wiki/06-branding.md`](./wiki/06-branding.md) para el detalle completo.
+
+## Identidad visual
+
+<p align="center">
+  <img src="./assets/images/wineway-logo.png" width="180" alt="Isotipo de WineWay: copa de vino con montañas" />
+  <img src="./assets/images/wineway-wordmark.png" width="420" alt="Logotipo WineWay" />
+</p>
+
+- **Isotipo:** copa de vino con montañas, usado como icono de la aplicación, favicon y splash.
+- **Logotipo:** firma tipográfica WineWay con montañas, usado en las pantallas de acceso.
+- **Eslogan:** _De bodega en bodega, coleccionando recuerdos._
 
 ## Cómo correr el proyecto
 
@@ -78,7 +92,8 @@ Escaneá el QR con **Expo Go** (Android/iOS) o iniciá un emulador desde la term
 
 ## Enlaces
 
-- 🎨 Mockup / prototipo interactivo en Figma
+- 🎨 Mockup / prototipo interactivo en Figma: (https://www.figma.com/proto/35T3xVmut0tRXGnD8jqEXx/WineWay?node-id=0-1&t=jKvqwIdq09QxSpdQ-1)
+- 📦 Repositorio: [vitogiaquinta14/WineWay](https://github.com/vitogiaquinta14/WineWay)
 
 ## Autores
 

@@ -1,0 +1,75 @@
+import {
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  useFonts,
+} from '@expo-google-fonts/inter';
+import { Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
+
+import { Colors } from '@/constants/theme';
+import { CavaProvider } from '@/state/cava-context';
+import { RutaProvider } from '@/state/ruta-context';
+import { SesionProvider, useSesion } from '@/state/sesion-context';
+
+SplashScreen.preventAutoHideAsync();
+
+export default function RootLayout() {
+  const [fontsLoaded, fontError] = useFonts({
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold,
+  });
+  const ready = fontsLoaded || fontError;
+
+  useEffect(() => {
+    if (ready) {
+      SplashScreen.hideAsync();
+    }
+  }, [ready]);
+
+  if (!ready) {
+    return null;
+  }
+
+  return (
+    <SesionProvider>
+      <RutaProvider>
+        <CavaProvider>
+          <StatusBar style="dark" />
+          <RootNavigator />
+        </CavaProvider>
+      </RutaProvider>
+    </SesionProvider>
+  );
+}
+
+/**
+ * Sin sesión solo se puede acceder a (auth); con sesión, al resto de la app.
+ * Cuando la sesión cambia, Expo Router redirige a la primera pantalla disponible.
+ */
+function RootNavigator() {
+  const { sesionIniciada } = useSesion();
+
+  return (
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        contentStyle: { backgroundColor: Colors.background },
+      }}>
+      <Stack.Protected guard={sesionIniciada}>
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="bodega/[id]" />
+        <Stack.Screen name="crear-ruta" />
+      </Stack.Protected>
+
+      <Stack.Protected guard={!sesionIniciada}>
+        <Stack.Screen name="(auth)" />
+      </Stack.Protected>
+    </Stack>
+  );
+}

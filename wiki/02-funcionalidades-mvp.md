@@ -80,9 +80,9 @@ Cuando el invitado intente guardar información, sincronizar Calendar o publicar
 
 ### Ir al sitio externo
 
-- **Qué puede hacer el usuario:** abrir el enlace de la bodega para obtener más información o realizar una reserva fuera de Bodegueando.
+- **Qué puede hacer el usuario:** abrir el enlace de la bodega para obtener más información o realizar una reserva fuera de WineWay.
 - **Información que interviene:** enlace externo disponible.
-- **Resultado esperado:** salida explícita al canal de la bodega, sin afirmar que Bodegueando realizó una reserva.
+- **Resultado esperado:** salida explícita al canal de la bodega, sin afirmar que WineWay realizó una reserva.
 
 ## 5. Ratings y reseñas de bodegas
 
@@ -140,7 +140,7 @@ Cuando el invitado intente guardar información, sincronizar Calendar o publicar
 - **Información que interviene:** ubicación de las bodegas y secuencia de visitas.
 - **Resultado esperado:** comprensión espacial de la ruta.
 
-**Integraciones relacionadas:** Google Maps para visualizar el recorrido y Google Routes para aportar distancias, trayectos y tiempos estimados. La selección y recomendación de bodegas pertenece a la lógica de Bodegueando.
+**Integraciones relacionadas:** Google Maps para visualizar el recorrido y Google Routes para aportar distancias, trayectos y tiempos estimados. La selección y recomendación de bodegas pertenece a la lógica de WineWay.
 
 ## 9. Mis Rutas
 
@@ -252,7 +252,7 @@ La especificación contempla una pantalla de Notificaciones, pero no define even
 
 - Una visita agregada a una ruta o a Google Calendar está **planificada**; no significa que esté reservada.
 - Las reservas reales no forman parte del MVP.
-- Bodegueando no incluye checkout, pagos, cancelaciones ni reembolsos en el MVP.
+- WineWay no incluye checkout, pagos, cancelaciones ni reembolsos en el MVP.
 - El rating de una bodega es público y colaborativo.
 - El rating de un vino es personal y privado.
 - La nota de un vino es un campo libre y privado.
@@ -264,7 +264,7 @@ La especificación contempla una pantalla de Notificaciones, pero no define even
 ## Funcionalidades futuras
 
 - Consulta de disponibilidad en tiempo real.
-- Reserva automática desde Bodegueando.
+- Reserva automática desde WineWay.
 - Pagos y gestión de cancelaciones.
 - Recomendaciones más avanzadas.
 - Integraciones con sistemas externos de las bodegas.

@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "WineWay",
+    "slug": "WineWay",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/wineway-logo.png",
+    "scheme": "wineway",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "icon": "./assets/images/wineway-logo.png"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#F7F2EA",
+        "foregroundImage": "./assets/images/wineway-logo.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/wineway-logo.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#F7F2EA",
+          "image": "./assets/images/wineway-logo.png",
+          "imageWidth": 180
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "WineWay usa la cámara para escanear etiquetas de vino.",
+          "recordAudioAndroid": false
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "WineWay usa tu ubicación para centrar el mapa de bodegas cercanas."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

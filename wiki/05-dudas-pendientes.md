@@ -104,7 +104,7 @@ Las preguntas no modifican el alcance actual. Su objetivo es hacer visibles las 
 ### D-14 — Ratings externos
 
 - **Prioridad:** Alta.
-- **Pregunta:** ¿los ratings de Google se mostrarán junto al rating de Bodegueando, identificados por separado, o no se mostrarán en el MVP?
+- **Pregunta:** ¿los ratings de Google se mostrarán junto al rating de WineWay, identificados por separado, o no se mostrarán en el MVP?
 - **Por qué importa:** el producto exige no mezclar ambos promedios, pero no define si se visualizan los dos.
 
 ### D-15 — Filtros y unidades
@@ -212,7 +212,7 @@ Las preguntas no modifican el alcance actual. Su objetivo es hacer visibles las 
 ### D-31 — Sincronización posterior
 
 - **Prioridad:** Alta.
-- **Pregunta:** si una ruta cambia después de exportarla, ¿Bodegueando debe actualizar los eventos existentes o crear nuevos?
+- **Pregunta:** si una ruta cambia después de exportarla, ¿WineWay debe actualizar los eventos existentes o crear nuevos?
 - **Por qué importa:** sin una regla pueden aparecer eventos duplicados o desactualizados.
 
 ### D-32 — Eliminación de eventos
@@ -305,17 +305,15 @@ Las preguntas no modifican el alcance actual. Su objetivo es hacer visibles las 
 
 ## 10. Permisos, conectividad y estados
 
-### D-46 — Momento de solicitar permisos
+### D-46 — Momento de solicitar permisos — Resuelta
 
-- **Prioridad:** Alta.
-- **Pregunta:** ¿los permisos se solicitan durante el primer uso o de forma contextual al abrir Cámara, Mapa o una función basada en ubicación?
-- **Por qué importa:** la pantalla 7 propone permisos iniciales, mientras que los flujos también contemplan solicitudes al usar cada función.
+- **Decisión:** los permisos se solicitan de forma contextual, al abrir Cámara o al usar la acción **Usar mi ubicación** en el mapa.
+- **Aplicación:** la cámara y el mapa presentan estados claros para permiso pendiente, denegado o no disponible.
 
-### D-47 — Geolocalización en el MVP
+### D-47 — Geolocalización en el MVP — Resuelta
 
-- **Prioridad:** Alta.
-- **Pregunta:** ¿se confirma la geolocalización o se excluye del MVP inicial?
-- **Por qué importa:** actualmente figura como opcional, pero afecta permisos, distancia, mapa y bodegas cercanas.
+- **Decisión:** se incluye geolocalización puntual en primer plano para centrar el mapa, sin seguimiento en segundo plano.
+- **Aplicación:** `expo-location` solicita una única lectura con precisión equilibrada y conserva Mendoza como fallback.
 
 ### D-48 — Comportamiento sin conexión
 
@@ -325,17 +323,17 @@ Las preguntas no modifican el alcance actual. Su objetivo es hacer visibles las 
 
 ## 11. Diseño y contenido
 
-### D-49 — Identidad disponible
+### D-49 — Identidad disponible — Resuelta
 
-- **Prioridad:** Alta.
-- **Pregunta:** ¿ya existen logo, variantes, fotografías, íconos o lineamientos de marca que deban utilizarse en Figma?
-- **Por qué importa:** la paleta está propuesta, pero los activos visuales todavía no están documentados.
+- **Decisión:** WineWay cuenta con un isotipo (copa de vino con montañas) y un logotipo horizontal. Ambos se encuentran en `assets/images/wineway-logo.png` y `assets/images/wineway-wordmark.png`, respectivamente.
+- **Eslogan:** _De bodega en bodega, coleccionando recuerdos._
+- **Aplicación:** el isotipo se usa para iconos y splash; el logotipo, para piezas con espacio horizontal como las pantallas de acceso y la documentación.
+- **Referencia:** [06 · Branding](./06-branding.md).
 
-### D-50 — Tipografías
+### D-50 — Tipografías — Resuelta
 
-- **Prioridad:** Media.
-- **Pregunta:** ¿hay restricciones de licencia o preferencias para seleccionar las familias tipográficas definitivas?
-- **Por qué importa:** la documentación solo define categorías tipográficas.
+- **Decisión:** la familia tipográfica de la aplicación es Inter, en los pesos Regular, Medium, SemiBold y Bold, cargada con `-google-fonts/inter`.
+- **Referencia:** [06 · Branding](./06-branding.md).
 
 ### D-51 — Accesibilidad
 
@@ -345,10 +343,10 @@ Las preguntas no modifican el alcance actual. Su objetivo es hacer visibles las 
 
 ## 12. Decisiones técnicas generales
 
-### D-52 — Framework y arquitectura móvil
+### D-52 — Framework y arquitectura móvil — Resuelta
 
-- **Prioridad:** Técnica.
-- **Pregunta:** ¿qué framework y enfoque de arquitectura se utilizarán para la aplicación móvil?
+- **Decisión:** WineWay utiliza React Native con Expo SDK 57 y Expo Router para la navegación basada en archivos.
+- **Estado:** las rutas viven en `src/app/`; los componentes y la lógica reutilizable se mantienen fuera de ese directorio.
 
 ### D-53 — Backend y persistencia
 
@@ -391,6 +389,6 @@ Para avanzar con los mockups sin definir todavía la arquitectura, conviene reso
 5. Calendar: D-30 a D-33.
 6. Identificación y Mi Cava: D-36 a D-40.
 7. Perfil, permisos y notificaciones: D-42 a D-48.
-8. Identidad visual: D-49 a D-51.
+8. Identidad visual: D-50 y D-51 (D-49 resuelta).
 
 Las decisiones técnicas D-12, D-34, D-35 y D-41, junto con D-52 a D-58, pueden resolverse durante la definición de arquitectura, siempre que no bloqueen los estados visuales del MVP.
