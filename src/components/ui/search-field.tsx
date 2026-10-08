@@ -4,7 +4,7 @@ import { AppTextInput } from '@/components/ui/app-text-input';
 import { Icon } from '@/components/ui/icon';
 import { Colors, Radius, Spacing } from '@/constants/theme';
 
-type SearchFieldProps = Pick<TextInputProps, 'value' | 'onChangeText' | 'placeholder'>;
+type SearchFieldProps = Pick<TextInputProps, 'value' | 'onChangeText' | 'onSubmitEditing' | 'placeholder'>;
 
 export function SearchField(props: SearchFieldProps) {
   return (

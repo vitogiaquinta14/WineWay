@@ -7,6 +7,8 @@ import type { Bodega } from '@/data/bodegas';
 
 type BodegasMapProps = {
   bodegas: Bodega[];
+  bodegaDestacada?: Bodega;
+  onBodegaPress: (bodega: Bodega) => void;
 };
 
 /** react-native-maps es nativo; en web se conserva una alternativa clara. */

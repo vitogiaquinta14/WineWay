@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { FlatList, Modal, PanResponder, Pressable, ScrollView, StyleSheet, View, type LayoutChangeEvent } from 'react-native';
+import { FlatList, Keyboard, Modal, PanResponder, Pressable, ScrollView, StyleSheet, View, type LayoutChangeEvent } from 'react-native';
 
 import { BodegaCard } from '@/components/bodega/bodega-card';
 import { BodegasMap } from '@/components/explorar/bodegas-map';
@@ -48,6 +48,7 @@ export default function ExplorarScreen() {
   const [precioMinimo, setPrecioMinimo] = useState<Precio>(PRECIO_MINIMO);
   const [precioMaximo, setPrecioMaximo] = useState<Precio>(PRECIO_MAXIMO);
   const [filtrosAbiertos, setFiltrosAbiertos] = useState(false);
+  const [bodegaSeleccionada, setBodegaSeleccionada] = useState<Bodega>();
 
   const resultados = bodegas.filter(
     (bodega) =>
@@ -65,6 +66,17 @@ export default function ExplorarScreen() {
     setPrecioMinimo(PRECIO_MINIMO);
     setPrecioMaximo(PRECIO_MAXIMO);
   };
+  const buscarEnMapa = () => {
+    const consulta = normalizar(busqueda.trim());
+    const bodega =
+      resultados.find((resultado) => normalizar(resultado.nombre) === consulta) ?? resultados[0];
+    if (!bodega) return;
+
+    Keyboard.dismiss();
+    setBodegaSeleccionada(bodega);
+    setVista('mapa');
+  };
+
 
   return (
     <Screen padded={false}>
@@ -75,7 +87,8 @@ export default function ExplorarScreen() {
             <SearchField
               value={busqueda}
               onChangeText={setBusqueda}
-              placeholder="Buscar bodegas, experiencias, vinos..."
+              placeholder="Escribí una bodega y tocá buscar"
+              onSubmitEditing={buscarEnMapa}
             />
           </View>
           <IconButton
@@ -101,7 +114,13 @@ export default function ExplorarScreen() {
       />
 
       {vista === 'mapa' ? (
-        <BodegasMap bodegas={resultados} />
+        <BodegasMap
+          bodegas={resultados}
+          bodegaDestacada={bodegaSeleccionada}
+          onBodegaPress={(bodega) =>
+            router.push({ pathname: '/bodega/[id]', params: { id: bodega.id } })
+          }
+        />
       ) : (
         <FlatList
           data={resultados}

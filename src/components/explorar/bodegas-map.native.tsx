@@ -1,5 +1,5 @@
 import * as Location from 'expo-location';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Linking, StyleSheet, View } from 'react-native';
 import MapView, { Marker, type Region } from 'react-native-maps';
 
@@ -11,6 +11,8 @@ import type { Bodega, Coordenadas } from '@/data/bodegas';
 
 type BodegasMapProps = {
   bodegas: Bodega[];
+  bodegaDestacada?: Bodega;
+  onBodegaPress: (bodega: Bodega) => void;
 };
 
 type EstadoUbicacion =
@@ -28,12 +30,10 @@ const REGION_MENDOZA: Region = {
   longitudeDelta: 0.86,
 };
 
-function mensajeUbicacion(estado: EstadoUbicacion) {
+function mensajeUbicacion(estado: EstadoUbicacion): string | undefined {
   switch (estado) {
     case 'buscando':
       return 'Buscando tu ubicación…';
-    case 'lista':
-      return 'Mapa centrado en tu ubicación.';
     case 'permisoDenegado':
       return 'Mostramos Mendoza. Podés habilitar tu ubicación cuando quieras.';
     case 'servicioDesactivado':
@@ -41,17 +41,29 @@ function mensajeUbicacion(estado: EstadoUbicacion) {
     case 'noDisponible':
       return 'No pudimos obtener tu ubicación. El mapa sigue disponible.';
     default:
-      return 'Bodegas ubicadas en Mendoza.';
+      return undefined;
   }
 }
 
 /** Mapa nativo con marcadores de las bodegas y ubicación puntual opcional. */
-export function BodegasMap({ bodegas }: BodegasMapProps) {
+export function BodegasMap({ bodegas, bodegaDestacada, onBodegaPress }: BodegasMapProps) {
   const mapRef = useRef<MapView>(null);
   const [estadoUbicacion, setEstadoUbicacion] = useState<EstadoUbicacion>('inicial');
   const [ubicacion, setUbicacion] = useState<Coordenadas>();
   const [puedePedirPermiso, setPuedePedirPermiso] = useState(true);
 
+  useEffect(() => {
+    if (!bodegaDestacada) return;
+
+    mapRef.current?.animateToRegion(
+      {
+        ...bodegaDestacada.coordenadas,
+        latitudeDelta: 0.12,
+        longitudeDelta: 0.12,
+      },
+      500,
+    );
+  }, [bodegaDestacada]);
   const usarMiUbicacion = async () => {
     if (estadoUbicacion === 'permisoDenegado' && !puedePedirPermiso) {
       await Linking.openSettings();
@@ -104,6 +116,7 @@ export function BodegasMap({ bodegas }: BodegasMapProps) {
   }
 
   const abrirConfiguracion = estadoUbicacion === 'permisoDenegado' && !puedePedirPermiso;
+  const mensaje = mensajeUbicacion(estadoUbicacion);
 
   return (
     <View style={styles.container}>
@@ -118,22 +131,25 @@ export function BodegasMap({ bodegas }: BodegasMapProps) {
             key={bodega.id}
             coordinate={bodega.coordenadas}
             title={bodega.nombre}
-            description={`${bodega.zona} · ${bodega.rating.toFixed(1)} ★`}
+            description="Tocá para ver la bodega"
+            onCalloutPress={() => onBodegaPress(bodega)}
             pinColor={Colors.malbec}
           />
         ))}
       </MapView>
 
       <View style={styles.overlay} pointerEvents="box-none">
-        <View style={styles.statusCard} pointerEvents="none">
-          <AppText variant="caption" color="text">
-            {mensajeUbicacion(estadoUbicacion)}
-          </AppText>
-        </View>
+        {mensaje && (
+          <View style={styles.statusCard} pointerEvents="none">
+            <AppText variant="caption" color="text">
+              {mensaje}
+            </AppText>
+          </View>
+        )}
         <View pointerEvents="auto">
           <Button
             title={abrirConfiguracion ? 'Abrir configuración' : 'Usar mi ubicación'}
-            variant="outline"
+            variant={estadoUbicacion === 'lista' ? 'secondary' : 'outline'}
             icon="pin"
             disabled={estadoUbicacion === 'buscando'}
             onPress={() => void usarMiUbicacion()}
