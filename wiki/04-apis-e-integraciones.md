@@ -178,6 +178,8 @@ La interfaz debe contemplar:
 - Permiso denegado y orientación para recuperarlo.
 - Error de captura.
 
+La guía técnica de cámara, ubicación y mapa se documenta en [06 · Sensores: cámara, ubicación y mapa](./06-sensores-camara-y-ubicacion.md).
+
 ## 6. Gemini API para identificación de vinos
 
 Gemini API es el servicio multimodal propuesto para analizar la fotografía de una etiqueta.

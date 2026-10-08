@@ -68,7 +68,7 @@ export function CameraViewfinder({
       )}
 
       {/* Guía para encuadrar la etiqueta. */}
-      <View style={styles.guide} pointerEvents="none" />
+      {!fotoUri && active && <View style={styles.guide} pointerEvents="none" />}
 
       {procesando && (
         <View style={styles.processing}>

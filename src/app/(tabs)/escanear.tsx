@@ -34,16 +34,16 @@ export default function EscanearScreen() {
   }, [fase]);
 
   const capturar = async () => {
-    // En simuladores o sin cámara lista se sigue igual, sin foto, para poder probar el flujo.
-    if (camaraLista) {
-      try {
-        const foto = await cameraRef.current?.takePictureAsync({ quality: 0.5 });
-        setFotoUri(foto?.uri);
-      } catch {
-        setFotoUri(undefined);
-      }
+    if (!camaraLista) return;
+
+    try {
+      const foto = await cameraRef.current?.takePictureAsync({ quality: 0.7 });
+      if (!foto?.uri) return;
+      setFotoUri(foto.uri);
+      setFase('procesando');
+    } catch {
+      return;
     }
-    setFase('procesando');
   };
 
   const reintentar = () => {
