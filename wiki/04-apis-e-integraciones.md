@@ -1,6 +1,6 @@
 # APIs e integraciones
 
-Este documento identifica las APIs, los SDKs y las capacidades externas necesarias para implementar el MVP de Bodegueando. Describe responsabilidades conceptuales, no código, credenciales, endpoints propios ni una arquitectura técnica definitiva.
+Este documento identifica las APIs, los SDKs y las capacidades externas necesarias para implementar el MVP de WineWay. Describe responsabilidades conceptuales, no código, credenciales, endpoints propios ni una arquitectura técnica definitiva.
 
 ## Clasificación general
 
@@ -18,7 +18,7 @@ Google Maps Platform soporta tres necesidades diferentes del producto: visualiza
 
 El Maps SDK de la plataforma móvil elegida permite mostrar mapas interactivos dentro de la aplicación.
 
-#### Uso en Bodegueando
+#### Uso en WineWay
 
 - Mostrar bodegas en un mapa.
 - Mostrar la ubicación de una bodega en su detalle.
@@ -39,7 +39,7 @@ El Maps SDK resuelve la **visualización**. No es, por sí solo, la lógica que 
 
 Google Routes API aporta información de movilidad entre bodegas.
 
-### Uso en Bodegueando
+### Uso en WineWay
 
 - Calcular la distancia entre dos bodegas.
 - Obtener tiempos estimados de viaje.
@@ -61,19 +61,19 @@ La información geográfica puede utilizarse tanto para presentar el itinerario 
 
 ### Límite de responsabilidad
 
-Google Routes no determina qué bodegas son las mejores para un usuario. La selección de bodegas, la ponderación de preferencias, el rating, el presupuesto y la generación de recomendaciones pertenecen a Bodegueando. Routes aporta recorridos, distancias y tiempos.
+Google Routes no determina qué bodegas son las mejores para un usuario. La selección de bodegas, la ponderación de preferencias, el rating, el presupuesto y la generación de recomendaciones pertenecen a WineWay. Routes aporta recorridos, distancias y tiempos.
 
 ### Consideraciones
 
 - Los resultados deben manejar estados de error o indisponibilidad.
-- La forma de ordenar múltiples paradas debe definirse junto con la estrategia de recomendación de Bodegueando.
+- La forma de ordenar múltiples paradas debe definirse junto con la estrategia de recomendación de WineWay.
 - El uso, almacenamiento y representación de resultados debe cumplir las condiciones vigentes de Google Maps Platform.
 
 ## 3. Google Places API
 
 Google Places API puede funcionar como fuente de búsqueda e información geográfica de lugares reales.
 
-### Uso en Bodegueando
+### Uso en WineWay
 
 - Buscar bodegas o lugares.
 - Autocompletar búsquedas geográficas.
@@ -92,28 +92,28 @@ Google Places API puede funcionar como fuente de búsqueda e información geogr�
 
 Que un dato esté disponible en Places no implica automáticamente que deba copiarse o almacenarse de forma permanente. La implementación deberá revisar las condiciones de uso, almacenamiento, actualización y atribución vigentes. El identificador de lugar puede servir como vínculo entre el registro propio y Google Places.
 
-### Datos propios de Bodegueando
+### Datos propios de WineWay
 
-- Identidad y ficha canónica que Bodegueando decida mantener para cada bodega.
+- Identidad y ficha canónica que WineWay decida mantener para cada bodega.
 - Información propia sobre experiencias y vinos destacados.
-- Ratings y reseñas publicados dentro de Bodegueando.
+- Ratings y reseñas publicados dentro de WineWay.
 - Relaciones con rutas creadas por usuarios.
 - Favoritos.
 - Información editorial o específica incorporada al sistema.
 
 ### Separación de ratings
 
-Un rating externo de Google y el rating público creado por usuarios de Bodegueando son fuentes diferentes. No deben mezclarse en un único promedio ni presentarse sin identificar su origen.
+Un rating externo de Google y el rating público creado por usuarios de WineWay son fuentes diferentes. No deben mezclarse en un único promedio ni presentarse sin identificar su origen.
 
 ### Estrategia conceptual de datos
 
-Bodegueando necesita mantener sus relaciones y contenido propio en su persistencia. Los datos externos pueden consultarse para complementar o actualizar información geográfica, siempre conforme a las políticas del proveedor. Queda pendiente definir qué campos serán propios, cuáles se consultarán bajo demanda y cómo se resolverán actualizaciones o discrepancias.
+WineWay necesita mantener sus relaciones y contenido propio en su persistencia. Los datos externos pueden consultarse para complementar o actualizar información geográfica, siempre conforme a las políticas del proveedor. Queda pendiente definir qué campos serán propios, cuáles se consultarán bajo demanda y cómo se resolverán actualizaciones o discrepancias.
 
 ## 4. Google Calendar API
 
 Google Calendar permite exportar un itinerario guardado al calendario conectado por el usuario.
 
-### Uso en Bodegueando
+### Uso en WineWay
 
 Al seleccionar **“Agregar itinerario a Google Calendar”**, la aplicación crea un evento independiente por cada visita planificada.
 
@@ -139,7 +139,7 @@ Ubicación: dirección de la bodega
 
 ### Regla de producto
 
-Agregar una visita a Google Calendar **no significa que exista una reserva confirmada**. Bodegueando está calendarizando una visita planificada.
+Agregar una visita a Google Calendar **no significa que exista una reserva confirmada**. WineWay está calendarizando una visita planificada.
 
 ### Autorización y estados
 
@@ -156,7 +156,7 @@ El usuario deberá autorizar el acceso necesario a Google Calendar. La experienc
 
 La cámara es una capacidad nativa del teléfono, no una API externa.
 
-### Uso en Bodegueando
+### Uso en WineWay
 
 ```text
 Usuario toca “Escanear”
@@ -205,7 +205,7 @@ Cámara
 
 ### Límite de responsabilidad
 
-El modelo de visión no debe considerarse necesariamente la fuente definitiva de toda la información. Su función principal puede ser extraer o inferir datos visibles de la etiqueta. Bodegueando puede validar y complementar el resultado con datos propios u otra fuente que se defina posteriormente.
+El modelo de visión no debe considerarse necesariamente la fuente definitiva de toda la información. Su función principal puede ser extraer o inferir datos visibles de la etiqueta. WineWay puede validar y complementar el resultado con datos propios u otra fuente que se defina posteriormente.
 
 La respuesta del modelo debe tratarse como un resultado con incertidumbre. Si no existe certeza suficiente, la aplicación muestra **“Vino no identificado”** y permite:
 
@@ -216,7 +216,7 @@ El modelo específico de Gemini y la estrategia de validación quedan pendientes
 
 ## 7. Base de datos propia
 
-Bodegueando necesita persistencia propia aunque la tecnología todavía no esté elegida.
+WineWay necesita persistencia propia aunque la tecnología todavía no esté elegida.
 
 ### Usuarios
 
@@ -264,7 +264,7 @@ No se define en esta instancia un motor de base de datos, proveedor de almacenam
 
 ## 8. Autenticación
 
-Bodegueando requiere autenticación para asociar información persistente a cada persona.
+WineWay requiere autenticación para asociar información persistente a cada persona.
 
 ### Acciones que requieren una cuenta
 
@@ -303,7 +303,7 @@ La geolocalización es **opcional para el MVP**, porque no resulta imprescindibl
 
 ## Resumen de integraciones del MVP
 
-| Tecnología o integración | Uso en Bodegueando | MVP |
+| Tecnología o integración | Uso en WineWay | MVP |
 |---|---|---|
 | Google Maps / Maps SDK | Mostrar mapas, bodegas y rutas | Sí |
 | Google Routes API | Calcular distancias, tiempos y recorridos entre bodegas | Sí |
@@ -321,7 +321,7 @@ La geolocalización es **opcional para el MVP**, porque no resulta imprescindibl
 
 ```mermaid
 flowchart LR
-    U[Usuario] --> APP[Bodegueando]
+    U[Usuario] --> APP[WineWay]
     APP --> MAPS[Google Maps SDK]
     APP --> PLACES[Google Places API]
     APP --> ROUTES[Google Routes API]
@@ -336,7 +336,7 @@ flowchart LR
 ```mermaid
 flowchart LR
     U[Usuario] --> CONFIG[Configura el viaje]
-    CONFIG --> APP[Bodegueando]
+    CONFIG --> APP[WineWay]
     APP --> DATA[Información de bodegas]
     DATA <--> PLACES[Google Places]
     APP --> ROUTES[Google Routes]

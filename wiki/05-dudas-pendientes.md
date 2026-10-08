@@ -104,7 +104,7 @@ Las preguntas no modifican el alcance actual. Su objetivo es hacer visibles las 
 ### D-14 — Ratings externos
 
 - **Prioridad:** Alta.
-- **Pregunta:** ¿los ratings de Google se mostrarán junto al rating de Bodegueando, identificados por separado, o no se mostrarán en el MVP?
+- **Pregunta:** ¿los ratings de Google se mostrarán junto al rating de WineWay, identificados por separado, o no se mostrarán en el MVP?
 - **Por qué importa:** el producto exige no mezclar ambos promedios, pero no define si se visualizan los dos.
 
 ### D-15 — Filtros y unidades
@@ -212,7 +212,7 @@ Las preguntas no modifican el alcance actual. Su objetivo es hacer visibles las 
 ### D-31 — Sincronización posterior
 
 - **Prioridad:** Alta.
-- **Pregunta:** si una ruta cambia después de exportarla, ¿Bodegueando debe actualizar los eventos existentes o crear nuevos?
+- **Pregunta:** si una ruta cambia después de exportarla, ¿WineWay debe actualizar los eventos existentes o crear nuevos?
 - **Por qué importa:** sin una regla pueden aparecer eventos duplicados o desactualizados.
 
 ### D-32 — Eliminación de eventos

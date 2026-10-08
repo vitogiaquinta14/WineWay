@@ -1,12 +1,12 @@
 # Pantallas y diseño
 
-Este documento enumera las pantallas necesarias para crear los mockups iniciales de Bodegueando. Las descripciones se limitan al alcance funcional definido para el MVP.
+Este documento enumera las pantallas necesarias para crear los mockups iniciales de WineWay. Las descripciones se limitan al alcance funcional definido para el MVP.
 
 ## A. Onboarding y autenticación
 
 ### 1. Splash Screen
 
-- Logo de Bodegueando.
+- Logo de WineWay.
 - Estado breve de carga inicial.
 - Derivación a Onboarding, autenticación o Home según corresponda.
 
@@ -118,7 +118,7 @@ El avatar permite acceder al Perfil.
 - Acción para marcar o quitar de Favoritos.
 - Enlace externo para obtener más información o reservar en el sitio de la bodega.
 
-La interfaz no debe presentar la visita como reservada dentro de Bodegueando.
+La interfaz no debe presentar la visita como reservada dentro de WineWay.
 
 ### 14. Favoritos
 
@@ -387,10 +387,10 @@ Si el vino no se identifica, el usuario puede reintentar o buscar manualmente.
 
 ## Naming y slogan
 
-- **Nombre de la aplicación:** Bodegueando.
+- **Nombre de la aplicación:** WineWay.
 - **Slogan:** *Planeá. Recorré. Brindá. Recordá.*
 
-“Bodegueando” presenta la experiencia como una acción en curso: explorar bodegas, recorrer Mendoza y construir recuerdos alrededor del vino. El slogan acompaña los momentos principales del producto:
+“WineWay” combina *wine* con *way* (camino/ruta) y comunica en una sola palabra la propuesta central del producto: planificar y recorrer un camino entre bodegas. El nombre definitivo y su fundamento están en [06 · Branding](./06-branding.md). El slogan acompaña los momentos principales del producto:
 
 - **Planeá:** creación y organización de rutas.
 - **Recorré:** visitas y exploración de bodegas.
@@ -429,8 +429,7 @@ Las grandes superficies completamente bordó deben reservarse para casos puntual
 
 ## Tipografía
 
-- Sans-serif limpia y moderna para la interfaz.
-- Serif elegante, de uso muy limitado, para títulos destacados o branding si el sistema visual lo requiere.
+- Una sola familia sans-serif, **Inter**, para toda la interfaz, con una escala de pesos (Regular, SemiBold, Bold) para marcar la jerarquía.
 - Legibilidad móvil como criterio prioritario.
 
-La selección de familias tipográficas definitivas queda para una instancia posterior de diseño.
+La propuesta inicial contemplaba sumar una serif para títulos destacados; se descartó en favor de una única familia, más simple de mantener. Las variantes, pesos y tamaños definitivos están en [06 · Branding](./06-branding.md).

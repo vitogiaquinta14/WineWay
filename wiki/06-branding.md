@@ -43,7 +43,14 @@ Implementada en `src/constants/theme.ts`, con una capa adicional de tokens funci
 
 ## 4. Isotipo / logotipo
 
-**Pendiente.** Los assets de ícono (`assets/images/icon.png`, splash, favicon) siguen siendo los default de la plantilla de Expo. Falta definir y aplicar un isotipo propio antes de la entrega.
+**Pendiente.** Los assets de ícono siguen siendo los default de la plantilla de Expo. Falta definir y aplicar un isotipo propio antes de la entrega. Al hacerlo hay que reemplazar:
+
+- `assets/images/icon.png`: ícono general de la app.
+- `assets/expo.icon/`: ícono de iOS (configurado en `app.json` → `ios.icon`).
+- `assets/images/android-icon-*.png`: ícono adaptativo de Android (fondo, frente y monocromo).
+- `assets/images/splash-icon.png`: imagen del splash.
+- `assets/images/favicon.png`: ícono de la versión web.
+- El logo provisorio dentro de la app: un ícono de copa sobre un círculo Malbec en `src/components/auth/auth-header.tsx`.
 
 ## 5. Dirección visual
 

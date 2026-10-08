@@ -36,7 +36,7 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "Bodegueando usa la cámara para escanear etiquetas de vino.",
+          "cameraPermission": "WineWay usa la cámara para escanear etiquetas de vino.",
           "recordAudioAndroid": false
         }
       ]
