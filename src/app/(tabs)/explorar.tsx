@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react';
 import { FlatList, Modal, PanResponder, Pressable, ScrollView, StyleSheet, View, type LayoutChangeEvent } from 'react-native';
 
 import { BodegaCard } from '@/components/bodega/bodega-card';
+import { BodegasMap } from '@/components/explorar/bodegas-map';
 import { AppText } from '@/components/ui/app-text';
 import { Button } from '@/components/ui/button';
 import { Chip } from '@/components/ui/chip';
@@ -100,11 +101,7 @@ export default function ExplorarScreen() {
       />
 
       {vista === 'mapa' ? (
-        <EmptyState
-          icon="map"
-          title="Mapa en camino"
-          description="Pronto vas a poder ver las bodegas sobre el mapa de Mendoza."
-        />
+        <BodegasMap bodegas={resultados} />
       ) : (
         <FlatList
           data={resultados}

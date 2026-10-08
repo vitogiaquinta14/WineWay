@@ -22,12 +22,19 @@ export type VinoDestacado = {
   imagen?: ImageSource | number;
 };
 
+export type Coordenadas = {
+  latitude: number;
+  longitude: number;
+};
+
 export type Bodega = {
   id: string;
   nombre: string;
   zona: Zona;
   /** Departamento o localidad (ej. "Tupungato"). */
   localidad: string;
+  /** Coordenadas verificadas de la bodega para mostrarla en el mapa. */
+  coordenadas: Coordenadas;
   rating: number;
   /** Rango de precio de 1 a 5 ($ a $$$$$). */
   precio: 1 | 2 | 3 | 4 | 5;
@@ -48,6 +55,7 @@ export const bodegas: Bodega[] = [
     nombre: 'Catena Zapata',
     zona: 'Luján de Cuyo',
     localidad: 'Luján de Cuyo',
+    coordenadas: { latitude: -33.1639614, longitude: -68.9193917 },
     rating: 4.9,
     precio: 5,
     experienciaDestacada: 'Visita a la pirámide y degustación',
@@ -76,6 +84,7 @@ export const bodegas: Bodega[] = [
     nombre: 'Familia Zuccardi',
     zona: 'Valle de Uco',
     localidad: 'San Carlos',
+    coordenadas: { latitude: -33.7727778, longitude: -69.1547222 },
     rating: 4.9,
     precio: 5,
     experienciaDestacada: 'Premium Tasting & Lunch',
@@ -109,6 +118,7 @@ export const bodegas: Bodega[] = [
     nombre: 'Bodega Salentein',
     zona: 'Valle de Uco',
     localidad: 'Tupungato',
+    coordenadas: { latitude: -33.4984651, longitude: -69.2521467 },
     rating: 4.8,
     precio: 4,
     experienciaDestacada: 'Tasting & Art Gallery',
@@ -146,6 +156,7 @@ export const bodegas: Bodega[] = [
     nombre: 'Chandon Argentina',
     zona: 'Luján de Cuyo',
     localidad: 'Agrelo',
+    coordenadas: { latitude: -33.1389354, longitude: -68.8892323 },
     rating: 4.6,
     precio: 3,
     experienciaDestacada: 'Sparkling Tour & Garden',
@@ -171,6 +182,7 @@ export const bodegas: Bodega[] = [
     nombre: 'Andeluna Cellars',
     zona: 'Valle de Uco',
     localidad: 'Tupungato',
+    coordenadas: { latitude: -33.4525069, longitude: -69.2233773 },
     rating: 4.7,
     precio: 4,
     experienciaDestacada: 'Almuerzo de 5 pasos',
@@ -196,6 +208,7 @@ export const bodegas: Bodega[] = [
     nombre: 'Bodega Alfa Crux',
     zona: 'Valle de Uco',
     localidad: 'Tupungato',
+    coordenadas: { latitude: -33.803531, longitude: -69.118413 },
     rating: 4.7,
     precio: 4,
     experienciaDestacada: 'Cata arquitectónica',

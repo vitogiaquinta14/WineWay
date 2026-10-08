@@ -20,8 +20,11 @@ Para WineWay, la cámara sirve para capturar la etiqueta del vino. La ubicación
 
 ### Ubicación y mapa
 
-- `expo-location` todavía no está instalado ni declarado en `app.json`.
-- Tampoco hay un proveedor de mapa interactivo configurado. Las bodegas pueden mostrar datos estáticos mientras se decide el proveedor.
+- `expo-location` está instalado y configurado en `app.json` solo con el mensaje de permiso de primer plano. No se habilitó ubicación en segundo plano ni un servicio persistente.
+- `react-native-maps` muestra el mapa nativo en `src/components/explorar/bodegas-map.native.tsx`: Google Maps en Android y Apple Maps en iOS. En Expo Go no requiere una configuración adicional para probarlo.
+- La pestaña **Mapa** de Explorar conserva los mismos filtros de la lista y muestra un marcador por cada resultado. Las coordenadas reales se almacenan junto a cada bodega en `src/data/bodegas.ts`; no se geocodifican desde el teléfono en cada apertura.
+- El botón **Usar mi ubicación** verifica que el servicio del dispositivo esté activo, solicita permiso de primer plano y obtiene una única posición con `Location.Accuracy.Balanced`. Si falla, queda el mapa navegable y centrado en Mendoza; si el permiso fue bloqueado permanentemente, ofrece abrir Ajustes.
+- La vista web informa que el mapa está disponible en la app móvil. No se incluye un mapa web diferente ni se simula una ubicación.
 
 ## Cámara: patrón acordado
 
@@ -54,16 +57,16 @@ La cámara se prueba en un teléfono físico. Expo Go permite validar el permiso
 
 ## Mapa: responsabilidad separada
 
-El módulo de ubicación no resuelve la visualización del mapa, los marcadores ni las rutas dibujadas. Para esta capa se debe elegir el SDK/componente de mapas compatible con el producto y configurar sus credenciales, atribución y proveedor. Google Places y Routes siguen siendo fuentes separadas: Places aporta lugares y coordenadas; Routes, distancias y tiempos; el mapa solo los representa.
+El módulo de ubicación no resuelve la visualización del mapa, los marcadores ni las rutas dibujadas. Para esta capa WineWay usa `react-native-maps`, compatible con Expo SDK 57: Google Maps en Android y Apple Maps en iOS. Google Places y Routes siguen siendo fuentes separadas: Places aporta lugares y coordenadas; Routes, distancias y tiempos; el mapa solo los representa.
 
-Antes de elegir el componente de mapa se debe confirmar si el MVP usa Google Maps, otro proveedor o una vista externa. La decisión debe documentarse junto con las claves, la política de atribución y las plataformas objetivo.
+En Expo Go no hace falta una clave para validar el mapa. Antes de publicar un binario con Google Maps se deberá crear y restringir una clave de Maps SDK, declararla mediante el config plugin de `react-native-maps` y recompilar. La política de atribución y cualquier proveedor adicional deben documentarse con ese cambio.
 
 ## Orden de implementación recomendado
 
 1. Terminar la cámara real: estados de permiso, captura, error y reintento en la pantalla existente.
 2. Definir el contrato del servicio de identificación de la etiqueta y conectar la URI de la foto.
-3. Instalar y configurar `expo-location`; incorporar el estado de ubicación puntual y sus mensajes de error.
-4. Elegir e integrar el componente de mapa; usar la ubicación solo para centrarlo y mantener una alternativa manual.
+3. Revisar en teléfonos Android e iOS los permisos y el fallback de ubicación del mapa ya integrado.
+4. Cuando se defina el despliegue móvil, configurar las claves de Google Maps para el binario publicado.
 5. Recién entonces añadir marcadores, Google Places/Routes y, si hay una necesidad real, seguimiento continuo o rumbo.
 
 ## Pruebas mínimas

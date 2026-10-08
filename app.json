@@ -39,6 +39,12 @@
           "cameraPermission": "WineWay usa la cámara para escanear etiquetas de vino.",
           "recordAudioAndroid": false
         }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "WineWay usa tu ubicación para centrar el mapa de bodegas cercanas."
+        }
       ]
     ],
     "experiments": {
