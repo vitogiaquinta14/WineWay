@@ -43,6 +43,8 @@ function coincide(bodega: Bodega, busqueda: string) {
 
 export default function ExplorarScreen() {
   const [busqueda, setBusqueda] = useState('');
+  const [busquedaAplicada, setBusquedaAplicada] = useState('');
+  const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
   const [vista, setVista] = useState<Vista>('lista');
   const [zona, setZona] = useState<Zona | null>(null);
   const [precioMinimo, setPrecioMinimo] = useState<Precio>(PRECIO_MINIMO);
@@ -55,8 +57,12 @@ export default function ExplorarScreen() {
       (zona === null || bodega.zona === zona) &&
       bodega.precio >= precioMinimo &&
       bodega.precio <= precioMaximo &&
-      coincide(bodega, busqueda),
+      coincide(bodega, busquedaAplicada),
   );
+  const sugerencias = busqueda.trim()
+    ? bodegas.filter((bodega) => normalizar(bodega.nombre).includes(normalizar(busqueda.trim())))
+    : [];
+
 
   const hayFiltrosActivos =
     zona !== null || precioMinimo !== PRECIO_MINIMO || precioMaximo !== PRECIO_MAXIMO;
@@ -66,15 +72,37 @@ export default function ExplorarScreen() {
     setPrecioMinimo(PRECIO_MINIMO);
     setPrecioMaximo(PRECIO_MAXIMO);
   };
-  const buscarEnMapa = () => {
+  const escribirBusqueda = (texto: string) => {
+    setBusqueda(texto);
+    setMostrarSugerencias(Boolean(texto.trim()));
+    if (!texto.trim()) {
+      setBusquedaAplicada('');
+      setBodegaSeleccionada(undefined);
+    }
+  };
+
+  const seleccionarBodega = (bodega: Bodega) => {
+    Keyboard.dismiss();
+    setBusqueda(bodega.nombre);
+    setBusquedaAplicada(bodega.nombre);
+    setBodegaSeleccionada(vista === 'mapa' ? bodega : undefined);
+    setMostrarSugerencias(false);
+  };
+
+  const buscar = () => {
+    Keyboard.dismiss();
+    setMostrarSugerencias(false);
+
+    if (vista === 'lista') {
+      setBusquedaAplicada(busqueda.trim());
+      setBodegaSeleccionada(undefined);
+      return;
+    }
+
     const consulta = normalizar(busqueda.trim());
     const bodega =
-      resultados.find((resultado) => normalizar(resultado.nombre) === consulta) ?? resultados[0];
-    if (!bodega) return;
-
-    Keyboard.dismiss();
-    setBodegaSeleccionada(bodega);
-    setVista('mapa');
+      sugerencias.find((resultado) => normalizar(resultado.nombre) === consulta) ?? sugerencias[0];
+    if (bodega) seleccionarBodega(bodega);
   };
 
 
@@ -86,9 +114,9 @@ export default function ExplorarScreen() {
           <View style={styles.searchField}>
             <SearchField
               value={busqueda}
-              onChangeText={setBusqueda}
+              onChangeText={escribirBusqueda}
               placeholder="Escribí una bodega y tocá buscar"
-              onSubmitEditing={buscarEnMapa}
+              onSubmitEditing={buscar}
             />
           </View>
           <IconButton
@@ -99,6 +127,25 @@ export default function ExplorarScreen() {
           />
         </View>
         <SegmentedControl options={vistas} value={vista} onChange={setVista} />
+        {mostrarSugerencias && sugerencias.length > 0 && (
+          <View style={styles.suggestions}>
+            {sugerencias.map((bodega) => (
+              <Pressable
+                key={bodega.id}
+                accessibilityRole="button"
+                accessibilityLabel={`Elegir ${bodega.nombre}`}
+                onPress={() => seleccionarBodega(bodega)}
+                style={styles.suggestion}>
+                <AppText variant="body" numberOfLines={1} style={styles.suggestionName}>
+                  {bodega.nombre}
+                </AppText>
+                <AppText variant="caption" color="textMuted" numberOfLines={1}>
+                  {bodega.localidad}
+                </AppText>
+              </Pressable>
+            ))}
+          </View>
+        )}
       </View>
 
       <FiltersSheet
@@ -416,6 +463,24 @@ const styles = StyleSheet.create({
     gap: Spacing.sm,
   },
   searchField: {
+    flex: 1,
+  },
+  suggestions: {
+    overflow: 'hidden',
+    borderRadius: Radius.md,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    backgroundColor: Colors.surface,
+  },
+  suggestion: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    minHeight: 44,
+    paddingHorizontal: Spacing.md,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: Colors.border,
+  },
+  suggestionName: {
     flex: 1,
   },
   list: {
