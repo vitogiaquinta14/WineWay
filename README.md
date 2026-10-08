@@ -20,7 +20,8 @@ Personas que viajan a Mendoza y quieren organizar visitas a bodegas según su ti
 
 - **React Native** + **Expo**
 - **Expo Router** (navegación basada en archivos)
-- _(completar acá a medida que se sumen: gestor de estado, librería de UI, etc.)_
+- **Context API de React** (gestión de estado: sesión, ruta en construcción, Mi Cava)
+- Componentes de UI propios en `src/components/ui`
 
 ## Alcance del MVP
 
@@ -46,13 +47,14 @@ WineWay permite **planificar** una visita, no reservarla dentro de la app:
 | [03 · Pantallas y diseño](./wiki/03-pantallas-y-diseno.md) | Inventario de pantallas, userflows, branding |
 | [04 · APIs e integraciones](./wiki/04-apis-e-integraciones.md) | Google Maps/Routes/Places/Calendar, Gemini, cámara |
 | [05 · Dudas pendientes](./wiki/05-dudas-pendientes.md) | Decisiones de producto todavía abiertas |
+| [06 · Branding](./wiki/06-branding.md) | Nombre, paleta, tipografía e isologo |
 
 ## Componentes nativos
 
-| Componente | Uso en WineWay |
-|---|---|
-| 📷 **Cámara** | Fotografiar la etiqueta de un vino para identificarlo. |
-| 📍 **GPS / Geolocalización** | Centrar el mapa en el usuario y mostrar bodegas cercanas. |
+| Componente | Uso en WineWay | Estado |
+|---|---|---|
+| 📷 **Cámara** | Fotografiar la etiqueta de un vino para identificarlo. | ✅ Implementado (`expo-camera`) |
+| 📍 **GPS / Geolocalización** | Centrar el mapa en el usuario y mostrar bodegas cercanas. | ⏳ Pendiente de implementar |
 
 ## Branding
 
@@ -65,7 +67,7 @@ WineWay permite **planificar** una visita, no reservarla dentro de la app:
 | Terracota | `#C4775A` | Acentos y detalles |
 | Carbón | `#252525` | Texto principal |
 
-Tipografía: sans-serif limpia para la interfaz + serif elegante de uso puntual en títulos/branding (familias definitivas a confirmar).
+Tipografía: **Inter**, en cuatro pesos (Regular, Medium, SemiBold, Bold). Isotipo/logotipo todavía pendiente de definir. Ver [`wiki/06-branding.md`](./wiki/06-branding.md) para el detalle completo.
 
 ## Cómo correr el proyecto
 
@@ -78,7 +80,8 @@ Escaneá el QR con **Expo Go** (Android/iOS) o iniciá un emulador desde la term
 
 ## Enlaces
 
-- 🎨 Mockup / prototipo interactivo en Figma
+- 🎨 Mockup / prototipo interactivo en Figma: _(agregar link público)_
+- 📦 Repositorio: _(agregar si corresponde)_
 
 ## Autores
 
