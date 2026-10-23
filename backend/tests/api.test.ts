@@ -86,6 +86,25 @@ test('código textual exacto y desconocido inequívoco', async () => {
   );
   await request(app).get('/api/vinos/codigo/0000000000000').expect(404);
 });
+test('VinoCepa acepta porcentajes de 1 a 100 y la API los expone', async () => {
+  const vino = await db.vino.findFirstOrThrow({ include: { cepas: true } });
+  const asociacion = vino.cepas[0];
+  assert.equal(
+    (await request(app).get(`/api/vinos/${vino.id}`).expect(200)).body.cepas[0].porcentaje,
+    null,
+  );
+  await assert.rejects(
+    db.$executeRaw`UPDATE VinoCepa SET porcentaje = 0 WHERE vinoId = ${vino.id} AND cepaId = ${asociacion.cepaId}`,
+  );
+  await assert.rejects(
+    db.$executeRaw`UPDATE VinoCepa SET porcentaje = 101 WHERE vinoId = ${vino.id} AND cepaId = ${asociacion.cepaId}`,
+  );
+  await db.$executeRaw`UPDATE VinoCepa SET porcentaje = 100 WHERE vinoId = ${vino.id} AND cepaId = ${asociacion.cepaId}`;
+  assert.equal(
+    (await request(app).get(`/api/vinos/${vino.id}`).expect(200)).body.cepas[0].porcentaje,
+    100,
+  );
+});
 test('registro exige mayoría, contraseña segura y fechas reales', async () => {
   for (const cambio of [
     { fechaNacimiento: '2020-01-01' },

@@ -27,7 +27,7 @@ const vino = z.object({
   codigoDePrueba: z.boolean(),
   tipo: texto,
   perfil: texto,
-  cepaIds: z.array(id).min(1),
+  cepas: z.array(z.object({ cepaId: id, porcentaje: z.number().int().min(1).max(100).nullable() })).min(1),
 });
 const catalogo = z.object({
   nota: z.string(),
@@ -76,12 +76,12 @@ export async function seed(db: DB) {
             data: horarios.map((h) => ({ ...h, experienciaId: exp.id })),
           });
         }
-        for (const { cepaIds, ...vino } of vinos) {
+        for (const { cepas, ...vino } of vinos) {
           const data = { ...vino, bodegaId: bodega.id };
           await tx.vino.upsert({ where: { id: vino.id }, create: data, update: data });
           await tx.vinoCepa.deleteMany({ where: { vinoId: vino.id } });
           await tx.vinoCepa.createMany({
-            data: cepaIds.map((cepaId) => ({ vinoId: vino.id, cepaId })),
+            data: cepas.map(({ cepaId, porcentaje }) => ({ vinoId: vino.id, cepaId, porcentaje })),
           });
         }
       }

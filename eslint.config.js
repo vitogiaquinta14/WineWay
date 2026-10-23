@@ -7,4 +7,14 @@ module.exports = defineConfig([
   {
     ignores: ['dist/*', 'backend/**'],
   },
+  {
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: './tsconfig.json',
+          extensions: ['.native.tsx', '.web.tsx', '.ts', '.tsx', '.js', '.jsx'],
+        },
+      },
+    },
+  },
 ]);

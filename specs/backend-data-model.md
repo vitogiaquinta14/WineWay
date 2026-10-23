@@ -25,7 +25,7 @@ Se postergan el algoritmo de generación de rutas, Google Login, recuperación d
 | `HorarioExperiencia` | experiencia, día de semana, tipo `FIJO`/`FLEXIBLE`, desde, hasta | Una experiencia tiene varias reglas. No se repite una combinación idéntica de experiencia, día, tipo y horas. |
 | `Vino` | bodega, nombre, descripción, precio en ARS, código de barras textual, tipo de vino, perfil/intensidad cuando corresponda, referencia de foto opcional | Es la ficha compartida del producto. Su código se asocia a ese producto, no a una botella individual ni a la añada personal. No incluye puntajes externos de 100 puntos. |
 | `Cepa` | nombre único | Se relaciona con muchos vinos. |
-| `VinoCepa` | vino, cepa | Relación N:M; combinación vino–cepa única. Un vino del catálogo debe tener al menos una cepa. |
+| `VinoCepa` | vino, cepa, porcentaje opcional entero (1–100) | Relación N:M; combinación vino–cepa única. Un vino del catálogo debe tener al menos una cepa. El porcentaje se expone en la API y queda nulo si la composición no está verificada. |
 
 La clasificación permite filtros por zona, distancia, precio, rating disponible, tipo de bodega, tipo de experiencia, gastronomía, tipo de vino y cepas. La distancia se calcula respecto del punto de consulta; no es un dato fijo de la bodega. La gastronomía surge de datos explícitos del tipo de experiencia, sin buscar palabras en la descripción.
 

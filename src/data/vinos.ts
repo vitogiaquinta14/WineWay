@@ -15,7 +15,7 @@ export type VinoAPI = {
   nombre: string;
   imagenUrl?: string | null;
   bodega: { nombre: string; zona: string };
-  cepas: { cepa: { nombre: string } }[];
+  cepas: { cepa: { nombre: string }; porcentaje: number | null }[];
 };
 export function identificarVino(v: VinoAPI): VinoIdentificado {
   return {

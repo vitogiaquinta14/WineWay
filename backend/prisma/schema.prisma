@@ -83,6 +83,7 @@ model Cepa {
 model VinoCepa {
   vinoId String
   cepaId String
+  porcentaje Int?
   vino Vino @relation(fields: [vinoId], references: [id], onDelete: Cascade)
   cepa Cepa @relation(fields: [cepaId], references: [id], onDelete: Restrict)
   @@id([vinoId, cepaId])
