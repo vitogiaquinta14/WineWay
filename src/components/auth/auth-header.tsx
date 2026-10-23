@@ -2,42 +2,67 @@ import { Image } from "expo-image";
 import { StyleSheet, View } from "react-native";
 
 import { AppText } from "@/components/ui/app-text";
-import { Spacing } from "@/constants/theme";
+import { Fonts, Spacing } from "@/constants/theme";
 
 type AuthHeaderProps = {
-  title: string;
-  subtitle: string;
+  title?: string;
+  subtitle?: string;
+  eyebrow?: string;
+  showTagline?: boolean;
 };
 
 /** Logo de WineWay + título y subtítulo de las pantallas de acceso. */
-export function AuthHeader({ title, subtitle }: AuthHeaderProps) {
+export function AuthHeader({
+  title,
+  subtitle,
+  eyebrow,
+  showTagline = true,
+}: AuthHeaderProps) {
   return (
     <View style={styles.container}>
       <View style={styles.brand}>
+        {eyebrow && (
+          <AppText
+            variant="bodyBold"
+            color="malbec"
+            align="center"
+            style={styles.eyebrow}
+          >
+            {eyebrow}
+          </AppText>
+        )}
         <Image
           source={require("../../../assets/images/wineway-wordmark.png")}
           style={styles.wordmark}
           contentFit="contain"
           accessibilityLabel="WineWay"
         />
-        <AppText
-          variant="subtitle"
-          color="malbec"
-          align="center"
-          style={styles.tagline}
-        >
-          De bodega en bodega, coleccionando recuerdos.
-        </AppText>
+        {showTagline && (
+          <AppText
+            variant="subtitle"
+            color="malbec"
+            align="center"
+            style={styles.tagline}
+          >
+            De bodega en bodega, coleccionando recuerdos.
+          </AppText>
+        )}
       </View>
 
-      <View style={styles.texts}>
-        <AppText variant="display" align="center">
-          {title}
-        </AppText>
-        <AppText variant="body" color="textMuted" align="center">
-          {subtitle}
-        </AppText>
-      </View>
+      {(title || subtitle) && (
+        <View style={styles.texts}>
+          {title && (
+            <AppText variant="display" align="center">
+              {title}
+            </AppText>
+          )}
+          {subtitle && (
+            <AppText variant="body" color="textMuted" align="center">
+              {subtitle}
+            </AppText>
+          )}
+        </View>
+      )}
     </View>
   );
 }
@@ -50,6 +75,10 @@ const styles = StyleSheet.create({
   brand: {
     alignItems: "center",
     gap: 0,
+  },
+  eyebrow: {
+    fontFamily: Fonts.semiBold,
+    marginBottom: Spacing.sm,
   },
   wordmark: {
     width: 256,

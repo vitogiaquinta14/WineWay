@@ -29,9 +29,9 @@ export function BodegaCompactCard({ bodega, onPress }: BodegaCompactCardProps) {
           </AppText>
         </View>
         <View style={styles.rating}>
-          <StarRating value={bodega.rating} />
+          <StarRating value={bodega.rating ?? 0} />
           <AppText variant="caption" color="text">
-            {bodega.rating.toFixed(1)}
+            {bodega.rating === null ? 'Sin rating' : `${bodega.rating.toFixed(1)} · demo`}
           </AppText>
         </View>
       </View>

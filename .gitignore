@@ -37,6 +37,8 @@ yarn-error.*
 *.tsbuildinfo
 
 example
+Seguimiento de desarrollo.md
+/work/spec-review/
 
 # generated native folders
 /ios
@@ -45,3 +47,10 @@ example
 # Claude Code (local)
 .claude/
 CLAUDE.md
+
+# Backend local/generated
+/backend/.env
+/backend/generated/
+/backend/dist/
+/backend/**/*.db*
+/backend/**/*.sqlite*

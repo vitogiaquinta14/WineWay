@@ -16,6 +16,7 @@ type ResultadoCardProps = {
   onRatingChange: (rating: number) => void;
   onNotaChange: (nota: string) => void;
   onGuardar: () => void;
+  guardando?: boolean;
 };
 
 /** Vino identificado + puntuación y nota personales para guardarlo en Mi Cava. */
@@ -26,6 +27,7 @@ export function ResultadoCard({
   onRatingChange,
   onNotaChange,
   onGuardar,
+  guardando,
 }: ResultadoCardProps) {
   return (
     <Card style={styles.card}>
@@ -60,12 +62,12 @@ export function ResultadoCard({
         textAlignVertical="top"
       />
 
-      <Button title="Guardar en Mi Cava" onPress={onGuardar} disabled={rating === 0} />
-      {rating === 0 && (
-        <AppText variant="caption" align="center">
-          Elegí una puntuación para guardarlo.
-        </AppText>
-      )}
+      <Button
+        title={guardando ? 'Guardando…' : 'Guardar en Mi Cava'}
+        onPress={onGuardar}
+        disabled={guardando}
+      />
+      <AppText variant="caption">La valoración y la nota son opcionales.</AppText>
     </Card>
   );
 }

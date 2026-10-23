@@ -1,75 +1,66 @@
-/** Datos de ejemplo mientras no hay backend. */
-
+import type { Bodega } from './bodegas';
 export type Visita = {
   id: string;
   bodegaId: string;
-  /** Formato "HH:MM". Sin definir cuando se agrega desde el detalle de bodega. */
-  hora?: string;
-  actividad: string;
+  experienciaId: string;
+  inicio: string;
+  nombreExperiencia: string;
   duracionMin: number;
-  /** Minutos en auto desde la visita anterior del mismo día. */
-  trasladoMin?: number;
+  trasladoMin?: number | null;
+  advertenciaInactiva: boolean;
+  bodega: Bodega;
+  experiencia: { precioCentavos: number; tipoId: string };
 };
-
-export type DiaRuta = {
-  id: string;
-  titulo: string;
-  visitas: Visita[];
-};
-
+export type DiaRuta = { id: string; titulo: string; visitas: Visita[] };
 export type Ruta = {
   id: string;
   nombre: string;
-  descripcion: string;
-  dias: DiaRuta[];
+  descripcion: string | null;
+  fechaInicio: string;
+  cantidadDias: number;
+  cantidadPersonas: number;
+  presupuestoPersonaCentavos: number;
+  costoPersonaCentavos: number;
+  costoGrupoCentavos: number;
+  presupuestoGrupoCentavos: number;
+  estado: 'HISTORICA' | 'VIGENTE';
+  visitas: Visita[];
+  parametros: Record<string, unknown>;
 };
-
-export const rutaInicial: Ruta = {
-  id: 'valle-de-uco-nov',
-  nombre: 'Fin de semana en Valle de Uco',
-  descripcion: 'Organización diaria de visitas en Valle de Uco',
-  dias: [
-    {
-      id: 'dia-1',
-      titulo: 'Día 1 - Viernes 14 Nov',
-      visitas: [
-        {
-          id: 'v1',
-          bodegaId: 'salentein',
-          hora: '10:00',
-          actividad: 'Cata guiada clásica',
-          duracionMin: 90,
-        },
-        {
-          id: 'v2',
-          bodegaId: 'andeluna',
-          hora: '13:00',
-          actividad: 'Almuerzo de 5 pasos',
-          duracionMin: 180,
-          trasladoMin: 25,
-        },
-      ],
-    },
-    {
-      id: 'dia-2',
-      titulo: 'Día 2 - Sábado 15 Nov',
-      visitas: [
-        {
-          id: 'v3',
-          bodegaId: 'zuccardi',
-          hora: '11:00',
-          actividad: 'Experiencia Piedra Infinita',
-          duracionMin: 120,
-        },
-        {
-          id: 'v4',
-          bodegaId: 'alfa-crux',
-          hora: '15:30',
-          actividad: 'Cata arquitectónica',
-          duracionMin: 90,
-          trasladoMin: 40,
-        },
-      ],
-    },
-  ],
+export type VisitaNueva = { experienciaId: string; inicio: string };
+export type RutaNueva = {
+  nombre: string;
+  descripcion?: string;
+  fechaInicio: string;
+  cantidadDias: number;
+  cantidadPersonas: number;
+  presupuestoPersonaCentavos: number;
+  parametros?: Record<string, unknown>;
+  visitas: VisitaNueva[];
 };
+export function agruparDias(ruta: Ruta): DiaRuta[] {
+  const dias = new Map<string, Visita[]>();
+  for (const visita of ruta.visitas) {
+    const fecha = fechaMendoza(visita.inicio);
+    dias.set(fecha, [...(dias.get(fecha) ?? []), visita]);
+  }
+  return [...dias].map(([fecha, visitas]) => ({ id: fecha, titulo: fecha, visitas }));
+}
+export function fechaMendoza(inicio: string) {
+  const p = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Argentina/Mendoza',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(new Date(inicio));
+  const v = (tipo: string) => p.find((x) => x.type === tipo)!.value;
+  return `${v('year')}-${v('month')}-${v('day')}`;
+}
+export function horaMendoza(inicio: string) {
+  return new Intl.DateTimeFormat('es-AR', {
+    timeZone: 'America/Argentina/Mendoza',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  }).format(new Date(inicio));
+}

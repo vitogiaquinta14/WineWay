@@ -1,323 +1,145 @@
-import { router } from 'expo-router';
-import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { Alert, ScrollView, StyleSheet, Switch, View } from 'react-native';
-
-import { ItinerarioDia } from '@/components/ruta/itinerario-dia';
-import { AppText } from '@/components/ui/app-text';
-import { AppTextInput } from '@/components/ui/app-text-input';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Chip } from '@/components/ui/chip';
-import { EmptyState } from '@/components/ui/empty-state';
-import { IconButton } from '@/components/ui/icon-button';
+import { router, useLocalSearchParams } from 'expo-router';
+import { useState } from 'react';
+import { View } from 'react-native';
 import { Screen } from '@/components/ui/screen';
-import { Stepper } from '@/components/ui/stepper';
-import { Colors, Radius, Spacing } from '@/constants/theme';
-import { zonas } from '@/data/bodegas';
-import type { Ruta } from '@/data/rutas';
+import { AppText } from '@/components/ui/app-text';
+import { Button } from '@/components/ui/button';
+import { IconButton } from '@/components/ui/icon-button';
+import { TextField } from '@/components/ui/text-field';
+import { Chip } from '@/components/ui/chip';
+import { VisitaForm } from '@/components/ruta/visita-form';
 import { useRuta } from '@/state/ruta-context';
-import { generarRuta, type ConfiguracionViaje } from '@/utils/generar-ruta';
-
-const MAX_DIAS = 7;
-const MAX_BODEGAS_POR_DIA = 4;
-const BODEGAS_POR_DIA_INICIAL = 2;
-
-// Las zonas se resaltan en terracota y el resto de las preferencias en oliva, como en el mockup.
-const preferencias = [
-  ...zonas.map((zona) => ({ label: zona, tone: 'terracota' as const })),
-  ...['Tintos intensos', 'Gastronomía', 'Boutique', 'Paisajes', 'Mejor puntuadas'].map(
-    (label) => ({ label, tone: 'oliva' as const }),
-  ),
-];
-
-const configInicial: ConfiguracionViaje = {
-  dias: 3,
-  personas: 2,
-  presupuestoUsd: 150,
-  bodegasPorDia: [2, 3, 2],
-  preferencias: ['Valle de Uco', 'Tintos intensos', 'Boutique'],
-};
-
+import { useCatalogo } from '@/state/catalogo-context';
+import { horaMendoza, type VisitaNueva } from '@/data/rutas';
+import { Spacing } from '@/constants/theme';
 export default function CrearRutaScreen() {
-  const { reemplazarRuta } = useRuta();
-  const scrollRef = useRef<ScrollView>(null);
-
-  const [config, setConfig] = useState(configInicial);
-  const [mismaCantidad, setMismaCantidad] = useState(false);
-  const [propuesta, setPropuesta] = useState<Ruta | null>(null);
-
-  // Al generar, la pantalla baja hasta la propuesta.
-  useEffect(() => {
-    if (!propuesta) return;
-    const timer = setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 100);
-    return () => clearTimeout(timer);
-  }, [propuesta]);
-
-  /** Cualquier cambio en la configuración invalida la propuesta anterior. */
-  const actualizar = (cambio: (actual: ConfiguracionViaje) => Partial<ConfiguracionViaje>) => {
-    setConfig((actual) => ({ ...actual, ...cambio(actual) }));
-    setPropuesta(null);
-  };
-
-  const cambiarDias = (dias: number) =>
-    actualizar((actual) => ({
-      dias,
-      bodegasPorDia: Array.from(
-        { length: dias },
-        (_, i) =>
-          actual.bodegasPorDia[i] ??
-          (mismaCantidad ? actual.bodegasPorDia[0] : BODEGAS_POR_DIA_INICIAL),
-      ),
-    }));
-
-  const cambiarBodegasDelDia = (indice: number, cantidad: number) =>
-    actualizar((actual) => ({
-      bodegasPorDia: actual.bodegasPorDia.map((valor, i) =>
-        mismaCantidad || i === indice ? cantidad : valor,
-      ),
-    }));
-
-  const cambiarMismaCantidad = (valor: boolean) => {
-    setMismaCantidad(valor);
-    if (valor) {
-      actualizar((actual) => ({
-        bodegasPorDia: actual.bodegasPorDia.map(() => actual.bodegasPorDia[0]),
-      }));
+  const params = useLocalSearchParams<{ id?: string }>();
+  const { crear, editar, rutas } = useRuta();
+  const existente = rutas.find((r) => r.id === params.id);
+  const { filtros, zonas, bodegas } = useCatalogo();
+  const [nombre, setNombre] = useState(existente?.nombre ?? '');
+  const [fechaInicio, setFecha] = useState(existente?.fechaInicio ?? '');
+  const [dias, setDias] = useState(String(existente?.cantidadDias ?? 1));
+  const [personas, setPersonas] = useState(String(existente?.cantidadPersonas ?? 1));
+  const [presupuesto, setPresupuesto] = useState(
+    existente ? String(existente.presupuestoPersonaCentavos / 100) : '',
+  );
+  const [visitas, setVisitas] = useState<VisitaNueva[]>([]);
+  const [preferencias, setPreferencias] = useState<string[]>(
+    (existente?.parametros.preferencias as string[] | undefined) ?? [],
+  );
+  const [error, setError] = useState<string | null>(null);
+  const [guardando, setGuardando] = useState(false);
+  const guardar = async () => {
+    setGuardando(true);
+    setError(null);
+    try {
+      const datos = {
+        nombre,
+        fechaInicio,
+        cantidadDias: Number(dias),
+        cantidadPersonas: Number(personas),
+        presupuestoPersonaCentavos: Math.round(Number(presupuesto.replace(',', '.')) * 100),
+        parametros: { preferencias },
+      };
+      if (!presupuesto.trim()) throw new Error('Completá el presupuesto.');
+      if (existente) await editar(existente.id, datos);
+      else await crear({ ...datos, visitas });
+      router.dismissTo('/mi-ruta');
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setGuardando(false);
     }
   };
-
-  const alternarPreferencia = (label: string) =>
-    actualizar((actual) => ({
-      preferencias: actual.preferencias.includes(label)
-        ? actual.preferencias.filter((p) => p !== label)
-        : [...actual.preferencias, label],
-    }));
-
-  const cantidadPropuesta = propuesta?.dias.reduce((total, dia) => total + dia.visitas.length, 0);
-
-  const agregarAMiRuta = () => {
-    if (!propuesta) return;
-    Alert.alert('Agregar a Mi Ruta', 'Esta propuesta va a reemplazar tu ruta actual.', [
-      { text: 'Cancelar', style: 'cancel' },
-      {
-        text: 'Reemplazar',
-        onPress: () => {
-          reemplazarRuta(propuesta);
-          router.dismissTo('/mi-ruta');
-        },
-      },
-    ]);
-  };
-
   return (
-    <Screen scroll edges={['top', 'bottom']} scrollRef={scrollRef}>
-      <View style={styles.header}>
+    <Screen scroll>
+      <View style={{ gap: Spacing.lg, paddingVertical: Spacing.lg }}>
         <IconButton icon="back" accessibilityLabel="Volver" onPress={() => router.back()} />
-        <AppText variant="title">Crear mi ruta</AppText>
-      </View>
-
-      <View style={styles.form}>
-        <Field label="Cantidad de días">
-          <Card style={styles.row}>
-            <AppText variant="body">
-              {config.dias} {config.dias === 1 ? 'día' : 'días'}
-            </AppText>
-            <Stepper
-              value={config.dias}
-              onChange={cambiarDias}
-              min={1}
-              max={MAX_DIAS}
-              accessibilityLabel="días"
-            />
-          </Card>
-        </Field>
-
-        <View style={styles.twoColumns}>
-          <View style={styles.column}>
-            <Field label="Personas">
-              <Card style={styles.row}>
-                <Stepper
-                  value={config.personas}
-                  onChange={(personas) => actualizar(() => ({ personas }))}
-                  min={1}
-                  max={20}
-                  accessibilityLabel="personas"
-                />
-              </Card>
-            </Field>
-          </View>
-          <View style={styles.column}>
-            <Field label="Presupuesto / persona">
-              <Card style={styles.row}>
-                <AppText variant="body" color="textMuted">
-                  USD
-                </AppText>
-                <AppTextInput
-                  style={styles.budgetInput}
-                  value={config.presupuestoUsd > 0 ? String(config.presupuestoUsd) : ''}
-                  onChangeText={(texto) =>
-                    actualizar(() => ({ presupuestoUsd: Number(texto.replace(/\D/g, '')) || 0 }))
-                  }
-                  placeholder="150"
-                  placeholderTextColor={Colors.textMuted}
-                  selectionColor={Colors.malbec}
-                  keyboardType="number-pad"
-                  maxLength={5}
-                  accessibilityLabel="Presupuesto por persona en dólares"
-                />
-              </Card>
-            </Field>
-          </View>
-        </View>
-
-        <Field label="Bodegas por día">
-          {config.bodegasPorDia.map((cantidad, indice) => (
-            <Card key={indice} style={styles.row}>
-              <AppText variant="body">Día {indice + 1}</AppText>
-              <Stepper
-                value={cantidad}
-                onChange={(valor) => cambiarBodegasDelDia(indice, valor)}
-                min={1}
-                max={MAX_BODEGAS_POR_DIA}
-                accessibilityLabel={`bodegas del día ${indice + 1}`}
-              />
-            </Card>
-          ))}
-          <View style={styles.switchRow}>
-            <AppText variant="caption" color="text">
-              Misma cantidad todos los días
-            </AppText>
-            <Switch
-              value={mismaCantidad}
-              onValueChange={cambiarMismaCantidad}
-              trackColor={{ true: Colors.malbec, false: Colors.border }}
-              thumbColor={Colors.surface}
-              ios_backgroundColor={Colors.border}
-            />
-          </View>
-        </Field>
-
-        <Field label="Preferencias">
-          <View style={styles.chips}>
-            {preferencias.map(({ label, tone }) => (
+        <AppText variant="title">{existente ? 'Editar ruta' : 'Crear mi ruta'}</AppText>
+        <TextField label="Nombre de la ruta" value={nombre} onChangeText={setNombre} />
+        <TextField
+          label="Fecha de inicio (YYYY-MM-DD)"
+          value={fechaInicio}
+          onChangeText={setFecha}
+        />
+        <TextField
+          label="Cantidad de días"
+          value={dias}
+          onChangeText={setDias}
+          keyboardType="number-pad"
+        />
+        <TextField
+          label="Cantidad de personas"
+          value={personas}
+          onChangeText={setPersonas}
+          keyboardType="number-pad"
+        />
+        <TextField
+          label="Presupuesto ARS por persona para todo el viaje"
+          value={presupuesto}
+          onChangeText={setPresupuesto}
+          keyboardType="decimal-pad"
+        />
+        <AppText variant="caption">
+          Presupuesto del grupo: ARS{' '}
+          {(Number(presupuesto.replace(',', '.')) * Number(personas) || 0).toLocaleString('es-AR')}
+        </AppText>
+        <AppText variant="heading">Preferencias de esta ruta</AppText>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.sm }}>
+          {[
+            ...zonas,
+            ...(filtros?.tiposBodega ?? []),
+            ...(filtros?.caracteristicas ?? []),
+            ...(filtros?.tiposExperiencia.map((t) => t.nombre) ?? []),
+          ]
+            .filter((v, i, a) => a.indexOf(v) === i)
+            .map((p) => (
               <Chip
-                key={label}
-                label={label}
-                tone={tone}
-                selected={config.preferencias.includes(label)}
-                onPress={() => alternarPreferencia(label)}
+                key={p}
+                label={p}
+                selected={preferencias.includes(p)}
+                onPress={() =>
+                  setPreferencias((a) => (a.includes(p) ? a.filter((v) => v !== p) : [...a, p]))
+                }
               />
             ))}
-          </View>
-        </Field>
-
+        </View>
+        <AppText variant="caption">
+          La generación automática se incorporará cuando integremos el algoritmo. Podés planificar y
+          guardar tus visitas manualmente.
+        </AppText>
+        {!existente && (
+          <>
+            <VisitaForm
+              fechaInicial={fechaInicio}
+              key={fechaInicio}
+              onGuardar={async (visita) => setVisitas((a) => [...a, visita])}
+            />
+            {visitas.map((v, i) => (
+              <View key={`${i}-${v.inicio}`}>
+                <AppText>
+                  {i + 1}.{' '}
+                  {bodegas.flatMap((b) => b.experiencias).find((e) => e.id === v.experienciaId)
+                    ?.nombre ?? 'Experiencia'}{' '}
+                  · {v.inicio.slice(0, 10)} {horaMendoza(v.inicio)}
+                </AppText>
+                <Button
+                  title="Quitar del borrador"
+                  variant="outline"
+                  onPress={() => setVisitas((a) => a.filter((_, j) => j !== i))}
+                />
+              </View>
+            ))}
+          </>
+        )}
+        {error && <AppText color="malbec">{error}</AppText>}
         <Button
-          title="Generar mi ruta"
-          onPress={() => setPropuesta(generarRuta(config))}
-          disabled={config.presupuestoUsd === 0}
+          title={guardando ? 'Guardando…' : 'Guardar ruta'}
+          disabled={guardando || (!existente && !visitas.length)}
+          onPress={() => void guardar()}
         />
       </View>
-
-      {propuesta && (
-        <View style={styles.proposal}>
-          <View style={styles.proposalHeader}>
-            <AppText variant="title">Propuesta de Ruta</AppText>
-            <AppText variant="caption">
-              {config.dias} {config.dias === 1 ? 'día optimizado' : 'días optimizados'} para tu
-              perfil
-            </AppText>
-          </View>
-
-          {cantidadPropuesta === 0 ? (
-            <EmptyState
-              icon="search"
-              title="No encontramos bodegas"
-              description="Probá con otras zonas o un presupuesto mayor."
-            />
-          ) : (
-            <>
-              {propuesta.dias.map((dia) => (
-                <ItinerarioDia
-                  key={dia.id}
-                  dia={dia}
-                  badge="Recomendado"
-                  onVisitaPress={(bodega) =>
-                    router.push({ pathname: '/bodega/[id]', params: { id: bodega.id } })
-                  }
-                />
-              ))}
-              <Button title="Agregar a Mi Ruta" onPress={agregarAMiRuta} />
-            </>
-          )}
-        </View>
-      )}
     </Screen>
   );
 }
-
-function Field({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <View style={styles.field}>
-      <AppText variant="label">{label}</AppText>
-      {children}
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing.md,
-    paddingTop: Spacing.lg,
-  },
-  form: {
-    gap: Spacing.xl,
-    marginTop: Spacing.xl,
-  },
-  field: {
-    gap: Spacing.sm,
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: Spacing.sm,
-    minHeight: 52,
-    paddingHorizontal: Spacing.md,
-    borderRadius: Radius.md,
-  },
-  twoColumns: {
-    flexDirection: 'row',
-    gap: Spacing.md,
-  },
-  column: {
-    flex: 1,
-  },
-  budgetInput: {
-    flex: 1,
-    paddingVertical: Spacing.sm,
-    fontSize: 14,
-    color: Colors.text,
-  },
-  switchRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  chips: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: Spacing.sm,
-  },
-  proposal: {
-    marginTop: Spacing.xxl,
-    paddingTop: Spacing.xl,
-    gap: Spacing.xl,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: Colors.border,
-  },
-  proposalHeader: {
-    gap: Spacing.xs,
-  },
-});

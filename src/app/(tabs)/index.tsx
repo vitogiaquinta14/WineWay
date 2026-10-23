@@ -1,6 +1,6 @@
 import { router, useIsFocused } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { Alert, ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 
 import { BodegaCompactCard } from '@/components/bodega/bodega-compact-card';
 import { HomeHero } from '@/components/home/home-hero';
@@ -8,34 +8,64 @@ import { NextTripCard } from '@/components/home/next-trip-card';
 import { ScanBanner } from '@/components/home/scan-banner';
 import { Screen } from '@/components/ui/screen';
 import { SectionHeader } from '@/components/ui/section-header';
+import { Button } from '@/components/ui/button';
 import { Spacing } from '@/constants/theme';
-import { bodegasRecomendadas } from '@/data/bodegas';
-import { proximoViaje } from '@/data/viajes';
+import { useCatalogo } from '@/state/catalogo-context';
+import { useRuta } from '@/state/ruta-context';
+import { AppText } from '@/components/ui/app-text';
+
 import { useSesion } from '@/state/sesion-context';
 
 export default function HomeScreen() {
   // El hero es oscuro: la barra de estado va en blanco solo mientras se ve la Home.
   const focused = useIsFocused();
-  const { cerrarSesion } = useSesion();
-
-  // Hasta que exista la pantalla de Perfil, el botón solo ofrece cerrar sesión.
-  const abrirPerfil = () =>
-    Alert.alert('Mi cuenta', 'El perfil va a estar disponible pronto.', [
-      { text: 'Cancelar', style: 'cancel' },
-      { text: 'Cerrar sesión', style: 'destructive', onPress: cerrarSesion },
-    ]);
+  const { usuario } = useSesion();
+  const { bodegas, error, cargando, recargar } = useCatalogo();
+  const { rutas, seleccionar } = useRuta();
+  const bodegasRecomendadas = bodegas.filter((b) => b.recomendada);
+  const siguiente = rutas
+    .filter((r) => r.estado === 'VIGENTE')
+    .sort((a, b) => a.visitas[0].inicio.localeCompare(b.visitas[0].inicio))[0];
+  const proximoViaje = siguiente
+    ? {
+        id: siguiente.id,
+        titulo: siguiente.nombre,
+        fechas: siguiente.fechaInicio,
+        estado: 'planificado' as const,
+        cantidadBodegas: new Set(siguiente.visitas.map((v) => v.bodegaId)).size,
+        cantidadAlmuerzos: siguiente.visitas.filter(
+          (v) => v.bodega.experiencias.find((e) => e.id === v.experienciaId)?.tipo.gastronomia,
+        ).length,
+      }
+    : null;
 
   return (
     <Screen scroll padded={false} edges={[]}>
       {focused && <StatusBar style="light" />}
 
-      <HomeHero onCreateRoute={() => router.push('/crear-ruta')} onProfilePress={abrirPerfil} />
+      <HomeHero
+        onCreateRoute={() => router.push(usuario ? '/crear-ruta' : '/login')}
+        onProfilePress={() => router.push(usuario ? '/perfil' : '/login')}
+      />
 
       <View style={styles.sections}>
+        {cargando && <AppText>Cargando catálogo…</AppText>}
+        {error && (
+          <>
+            <AppText>{error}</AppText>
+            <Button title="Reintentar" onPress={() => void recargar()} />
+          </>
+        )}
         {proximoViaje && (
           <View style={styles.section}>
             <SectionHeader title="Próximo viaje" />
-            <NextTripCard viaje={proximoViaje} onPress={() => router.navigate('/mi-ruta')} />
+            <NextTripCard
+              viaje={proximoViaje}
+              onPress={() => {
+                seleccionar(siguiente.id);
+                router.navigate('/mi-ruta');
+              }}
+            />
           </View>
         )}
 
@@ -49,14 +79,13 @@ export default function HomeScreen() {
             horizontal
             showsHorizontalScrollIndicator={false}
             style={styles.carousel}
-            contentContainerStyle={styles.carouselContent}>
+            contentContainerStyle={styles.carouselContent}
+          >
             {bodegasRecomendadas.map((bodega) => (
               <BodegaCompactCard
                 key={bodega.id}
                 bodega={bodega}
-                onPress={() =>
-                  router.push({ pathname: '/bodega/[id]', params: { id: bodega.id } })
-                }
+                onPress={() => router.push({ pathname: '/bodega/[id]', params: { id: bodega.id } })}
               />
             ))}
           </ScrollView>

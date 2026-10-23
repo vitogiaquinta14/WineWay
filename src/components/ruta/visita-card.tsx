@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/card';
 import { Icon, type IconName } from '@/components/ui/icon';
 import { Colors, Spacing } from '@/constants/theme';
 import type { Bodega } from '@/data/bodegas';
-import type { Visita } from '@/data/rutas';
+import { horaMendoza, type Visita } from '@/data/rutas';
 
 type VisitaCardProps = {
   visita: Visita;
@@ -31,7 +31,7 @@ export function VisitaCard({
   return (
     <Card onPress={onPress} style={styles.card} accessibilityLabel={bodega.nombre}>
       <View style={styles.time}>
-        <AppText variant="subtitle">{visita.hora ?? '--:--'}</AppText>
+        <AppText variant="subtitle">{horaMendoza(visita.inicio) ?? '--:--'}</AppText>
         <AppText variant="caption">HS</AppText>
       </View>
 
@@ -40,7 +40,7 @@ export function VisitaCard({
           {bodega.nombre}
         </AppText>
         <AppText variant="caption" numberOfLines={1}>
-          {visita.actividad}
+          {visita.nombreExperiencia}
         </AppText>
         <AppText variant="caption">Duración: {visita.duracionMin} min</AppText>
       </View>

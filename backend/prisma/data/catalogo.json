@@ -1,0 +1,1315 @@
+{
+  "nota": "Catálogo de demostración. Precios y horarios ilustrativos, no tarifas verificadas. Códigos DEMO no corresponden a etiquetas reales.",
+  "tiposExperiencia": [
+    {
+      "id": "visita-cata",
+      "nombre": "Visita y cata",
+      "gastronomia": false
+    },
+    {
+      "id": "almuerzo",
+      "nombre": "Almuerzo",
+      "gastronomia": true
+    }
+  ],
+  "cepas": [
+    {
+      "id": "malbec",
+      "nombre": "Malbec"
+    },
+    {
+      "id": "cabernet-sauvignon",
+      "nombre": "Cabernet Sauvignon"
+    },
+    {
+      "id": "merlot",
+      "nombre": "Merlot"
+    }
+  ],
+  "bodegas": [
+    {
+      "id": "catena-zapata",
+      "nombre": "Catena Zapata",
+      "descripcion": "Inspirada en las pirámides mayas, la bodega de Agrelo es un ícono de la arquitectura del vino. Pionera en el estudio de viñedos de altura, sus Malbec son referencia mundial.",
+      "direccion": "Luján de Cuyo",
+      "localidad": "Luján de Cuyo",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.1639614,
+      "longitud": -68.9193917,
+      "sitioWeb": "https://www.catenawines.com",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Paisajes",
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://winebow-files.s3.amazonaws.com/public/styles/slideshow_new/public/2019-09/P0010270_BodegaCatenaZapata.jpg?VersionId=aorLRVsYysInOXgxgoOacKX2Pmr6IOXu&itok=OruSo1io"
+      ],
+      "ratingDemostracion": 4.9,
+      "recomendada": true,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "catena-clasica",
+          "nombre": "Visita clásica",
+          "descripcion": "Recorrido por la pirámide y la cava, con degustación de 3 vinos.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 6000000,
+          "duracionMin": 90,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 1140,
+              "hasta": 1140
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 1140,
+              "hasta": 1140
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "catena-malbec-argentino",
+          "nombre": "Catena Zapata Malbec Argentino",
+          "descripcion": "Vino del catálogo de demostración de Catena Zapata.",
+          "precioCentavos": 2500000,
+          "codigoBarras": "DEMO-catena-malbec-argentino",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepaIds": [
+            "malbec"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zuccardi",
+      "nombre": "Familia Zuccardi",
+      "descripcion": "Construida con piedras del propio viñedo en Paraje Altamira, Piedra Infinita integra arquitectura y paisaje. Su filosofía busca expresar el lugar en cada vino.",
+      "direccion": "San Carlos",
+      "localidad": "San Carlos",
+      "zona": "Valle de Uco",
+      "latitud": -33.7727778,
+      "longitud": -69.1547222,
+      "sitioWeb": "https://www.zuccardiwines.com",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Paisajes",
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://cloudfront-us-east-1.images.arcpublishing.com/elcronista/EJML4CZORZECXIZC3II57FBF3M.jpg"
+      ],
+      "ratingDemostracion": 4.9,
+      "recomendada": true,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "zuccardi-piedra-infinita",
+          "nombre": "Experiencia Piedra Infinita",
+          "descripcion": "Recorrido por la bodega y degustación de vinos de parcela.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 5500000,
+          "duracionMin": 120,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 1140,
+              "hasta": 1140
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 1140,
+              "hasta": 1140
+            }
+          ]
+        },
+        {
+          "id": "zuccardi-almuerzo",
+          "nombre": "Almuerzo en Piedra Infinita Cocina",
+          "descripcion": "Menú de estación con productos locales, maridado con vinos de la bodega.",
+          "tipoId": "almuerzo",
+          "precioCentavos": 11000000,
+          "duracionMin": 180,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 1140,
+              "hasta": 1140
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 1140,
+              "hasta": 1140
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "zuccardi-concreto",
+          "nombre": "Concreto Malbec",
+          "descripcion": "Vino del catálogo de demostración de Familia Zuccardi.",
+          "precioCentavos": 2500000,
+          "codigoBarras": "DEMO-zuccardi-concreto",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepaIds": [
+            "malbec"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "salentein",
+      "nombre": "Bodega Salentein",
+      "descripcion": "Ubicada a 1200 metros sobre el nivel del mar, Salentein es pionera en el Valle de Uco. Su arquitectura en forma de cruz alberga una cava subterránea diseñada como templo del vino, donde las barricas descansan bajo acústica clásica.",
+      "direccion": "Tupungato",
+      "localidad": "Tupungato",
+      "zona": "Valle de Uco",
+      "latitud": -33.4984651,
+      "longitud": -69.2521467,
+      "sitioWeb": "https://www.bodegasalentein.com",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Paisajes",
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://www.tangol.com/Fotos/Tours/cata-de-vinos-en-bodega-salentein_12038_202306051147170.JPG"
+      ],
+      "ratingDemostracion": 4.8,
+      "recomendada": true,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "salentein-iconos",
+          "nombre": "Cata Íconos de la Consulta",
+          "descripcion": "Degustación guiada de 4 vinos Single Vineyard de alta gama con sommelier.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 4500000,
+          "duracionMin": 90,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 1140,
+              "hasta": 1140
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 1140,
+              "hasta": 1140
+            }
+          ]
+        },
+        {
+          "id": "salentein-almuerzo",
+          "nombre": "Almuerzo de Pasos maridado",
+          "descripcion": "Menú degustación de 5 pasos por el chef ejecutivo, maridado con sus mejores cosechas.",
+          "tipoId": "almuerzo",
+          "precioCentavos": 9500000,
+          "duracionMin": 180,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 1140,
+              "hasta": 1140
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 1140,
+              "hasta": 1140
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "salentein-single-vineyard",
+          "nombre": "Salentein Single Vineyard",
+          "descripcion": "Vino del catálogo de demostración de Bodega Salentein.",
+          "precioCentavos": 2500000,
+          "codigoBarras": "DEMO-salentein-single-vineyard",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepaIds": [
+            "malbec"
+          ]
+        },
+        {
+          "id": "salentein-numina",
+          "nombre": "Salentein Numina Gran Corte",
+          "descripcion": "Vino del catálogo de demostración de Bodega Salentein.",
+          "precioCentavos": 2500000,
+          "codigoBarras": "DEMO-salentein-numina",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepaIds": [
+            "malbec",
+            "cabernet-sauvignon",
+            "merlot"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chandon",
+      "nombre": "Chandon Argentina",
+      "descripcion": "Primera bodega de Moët & Chandon fuera de Francia, referente de los espumantes argentinos. Sus jardines invitan a degustar al aire libre frente a la cordillera.",
+      "direccion": "Agrelo",
+      "localidad": "Agrelo",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.1389354,
+      "longitud": -68.8892323,
+      "sitioWeb": "https://www.chandon.com.ar",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Paisajes",
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://midias.agazeta.com.br/2023/09/21/816x461/vinicola-chandon-argentina-em-mendoza-1871031.jpg"
+      ],
+      "ratingDemostracion": 4.6,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "chandon-tour",
+          "nombre": "Sparkling Tour",
+          "descripcion": "Recorrido por el método de elaboración y degustación de 3 espumantes.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 3500000,
+          "duracionMin": 60,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 1140,
+              "hasta": 1140
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 1140,
+              "hasta": 1140
+            }
+          ]
+        }
+      ],
+      "vinos": []
+    },
+    {
+      "id": "andeluna",
+      "nombre": "Andeluna Cellars",
+      "descripcion": "Bodega boutique al pie de la cordillera, con vistas abiertas a los viñedos de Gualtallary y una propuesta gastronómica de autor.",
+      "direccion": "Tupungato",
+      "localidad": "Tupungato",
+      "zona": "Valle de Uco",
+      "latitud": -33.4525069,
+      "longitud": -69.2233773,
+      "sitioWeb": "https://www.andeluna.com.ar",
+      "tipo": "Boutique",
+      "caracteristicas": [
+        "Paisajes",
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://files-p.pxsol.com/6107/company/library/user/2304672929087049b8bd21236e916f1547936011283.jpg"
+      ],
+      "ratingDemostracion": 4.7,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "andeluna-almuerzo",
+          "nombre": "Almuerzo de 5 pasos",
+          "descripcion": "Menú de estación maridado con la línea Pasionado.",
+          "tipoId": "almuerzo",
+          "precioCentavos": 9000000,
+          "duracionMin": 180,
+          "horarios": [
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1320
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1320
+            }
+          ]
+        }
+      ],
+      "vinos": []
+    },
+    {
+      "id": "alfa-crux",
+      "nombre": "Bodega Alfa Crux",
+      "descripcion": "Una bodega que combina diseño contemporáneo y paisaje andino, con recorridos que muestran cómo la arquitectura acompaña la elaboración.",
+      "direccion": "Tupungato",
+      "localidad": "Tupungato",
+      "zona": "Valle de Uco",
+      "latitud": -33.803531,
+      "longitud": -69.118413,
+      "sitioWeb": "https://www.alfacrux.com.ar",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Paisajes",
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://cdn.sanity.io/images/cpvxwd28/production/e3abfdc9364934ee7d54c5c66b25e80af63d8b9a-1600x1035.jpg"
+      ],
+      "ratingDemostracion": 4.7,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "alfa-crux-cata",
+          "nombre": "Cata arquitectónica",
+          "descripcion": "Recorrido por los espacios de la bodega y degustación de 4 vinos.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 4000000,
+          "duracionMin": 120,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 1140,
+              "hasta": 1140
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 540,
+              "hasta": 540
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 1140,
+              "hasta": 1140
+            }
+          ]
+        }
+      ],
+      "vinos": []
+    },
+    {
+      "id": "demo-inactiva",
+      "nombre": "Bodega inactiva de prueba",
+      "descripcion": "Caso de baja lógica.",
+      "direccion": "Mendoza",
+      "localidad": "Mendoza",
+      "zona": "Maipú",
+      "latitud": -33,
+      "longitud": -69,
+      "sitioWeb": "",
+      "tipo": "Prueba",
+      "caracteristicas": [],
+      "fotos": [],
+      "ratingDemostracion": null,
+      "recomendada": false,
+      "activa": false,
+      "experiencias": [],
+      "vinos": []
+    }
+  ]
+}

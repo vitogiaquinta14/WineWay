@@ -1,2 +1,2 @@
-// Entrada tipada para herramientas que no resuelven extensiones por plataforma.
-export { BodegasMap } from './bodegas-map.native';
+// Fallback para renderizado del servidor. Metro elige .native.tsx en Android/iOS.
+export { BodegasMap } from './bodegas-map.web';

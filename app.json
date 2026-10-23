@@ -43,7 +43,8 @@
         {
           "locationWhenInUsePermission": "WineWay usa tu ubicación para centrar el mapa de bodegas cercanas."
         }
-      ]
+      ],
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true,

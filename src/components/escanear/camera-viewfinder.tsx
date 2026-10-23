@@ -1,4 +1,4 @@
-import { CameraView, useCameraPermissions } from 'expo-camera';
+import { CameraView, useCameraPermissions, type BarcodeScanningResult } from 'expo-camera';
 import { Image } from 'expo-image';
 import type { Ref } from 'react';
 import { ActivityIndicator, Linking, StyleSheet, View } from 'react-native';
@@ -16,6 +16,7 @@ type CameraViewfinderProps = {
   /** Foto ya capturada: reemplaza la vista de cámara. */
   fotoUri?: string;
   onCameraReady: () => void;
+  onBarcodeScanned?: (resultado: BarcodeScanningResult) => void;
 };
 
 /** Visor de cámara con guía para encuadrar la etiqueta y manejo del permiso. */
@@ -25,6 +26,7 @@ export function CameraViewfinder({
   procesando,
   fotoUri,
   onCameraReady,
+  onBarcodeScanned,
 }: CameraViewfinderProps) {
   const [permiso, pedirPermiso] = useCameraPermissions();
 
@@ -41,7 +43,7 @@ export function CameraViewfinder({
           Necesitamos acceso a la cámara
         </AppText>
         <AppText variant="caption" align="center" style={styles.permissionText}>
-          La usamos solo para fotografiar etiquetas e identificar el vino.
+          La usamos para leer el código de barras del vino.
         </AppText>
         <Button
           title={permiso.canAskAgain ? 'Permitir cámara' : 'Abrir configuración'}
@@ -63,6 +65,10 @@ export function CameraViewfinder({
             style={StyleSheet.absoluteFill}
             facing="back"
             onCameraReady={onCameraReady}
+            onBarcodeScanned={onBarcodeScanned}
+            barcodeScannerSettings={{
+              barcodeTypes: ['ean13', 'ean8', 'upc_a', 'upc_e', 'code128'],
+            }}
           />
         )
       )}

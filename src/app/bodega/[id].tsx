@@ -1,7 +1,8 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as WebBrowser from 'expo-web-browser';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import { useRecurso } from '@/state/use-recurso';
 import { ScrollView, StyleSheet, View } from 'react-native';
 
 import { BodegaHero } from '@/components/bodega/bodega-hero';
@@ -9,11 +10,19 @@ import { ExperienciaCard } from '@/components/bodega/experiencia-card';
 import { VinoCard } from '@/components/bodega/vino-card';
 import { AppText } from '@/components/ui/app-text';
 import { Button } from '@/components/ui/button';
+import { IconButton } from '@/components/ui/icon-button';
 import { EmptyState } from '@/components/ui/empty-state';
 import { Screen } from '@/components/ui/screen';
 import { SectionHeader } from '@/components/ui/section-header';
 import { Spacing } from '@/constants/theme';
-import { getBodega } from '@/data/bodegas';
+import type { Bodega } from '@/data/bodegas';
+import { useCatalogo } from '@/state/catalogo-context';
+import { useSesion } from '@/state/sesion-context';
+import { api } from '@/services/api';
+import { Chip } from '@/components/ui/chip';
+import { TextField } from '@/components/ui/text-field';
+import { StarRating } from '@/components/ui/star-rating';
+import { VisitaForm } from '@/components/ruta/visita-form';
 import { useRuta } from '@/state/ruta-context';
 
 function volver() {
@@ -26,26 +35,75 @@ function volver() {
 
 export default function BodegaScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const bodega = getBodega(id);
-
-  const { tieneBodega, agregarBodega, quitarBodega } = useRuta();
-  // Estado local hasta que exista backend.
-  const [favorita, setFavorita] = useState(false);
+  const { usuario } = useSesion();
+  return <DetalleBodega key={`${id}-${usuario?.id ?? 'visitante'}`} id={id} />;
+}
+function DetalleBodega({ id }: { id: string }) {
+  const { getBodega, recargar } = useCatalogo();
+  const { sesionIniciada, usuario } = useSesion();
+  const { rutas, ruta, seleccionar, agregarVisita } = useRuta();
+  type Resena = {
+    id: string;
+    valoracion: number;
+    comentario: string | null;
+    usuario: { username: string; apodo: string | null };
+  };
+  const leerDetalle = useCallback(async () => {
+    const [detalle, resenas, favoritos] = await Promise.all([
+      api<Bodega>(`/bodegas/${id}`),
+      api<Resena[]>(`/bodegas/${id}/resenas`),
+      sesionIniciada ? api<Bodega[]>('/favoritos') : Promise.resolve([]),
+    ]);
+    return { detalle, resenas, favorita: favoritos.some((f) => f.id === id) };
+  }, [id, sesionIniciada]);
+  const {
+    datos,
+    cargando,
+    error: errorCarga,
+    recargar: cargar,
+  } = useRecurso<{ detalle: Bodega | null; resenas: Resena[]; favorita: boolean }>(leerDetalle, {
+    detalle: null,
+    resenas: [],
+    favorita: false,
+  });
+  const bodega = datos.detalle ?? getBodega(id);
+  const { resenas, favorita } = datos;
+  const propia = resenas.find((r) => r.usuario.username === usuario?.username);
+  const [valoracionEditada, setValoracion] = useState<number | null>(null);
+  const [comentarioEditado, setComentario] = useState<string | null>(null);
+  const valoracion = valoracionEditada ?? propia?.valoracion ?? 0;
+  const comentario = comentarioEditado ?? propia?.comentario ?? '';
+  const [fallo, setError] = useState<string | null>(null);
+  const error = fallo ?? errorCarga;
+  const [enviando, setEnviando] = useState(false);
+  const mutar = async (path: string, method: string, body?: unknown) => {
+    setEnviando(true);
+    setError(null);
+    try {
+      await api(path, { method, body });
+      await cargar();
+      await recargar();
+      setValoracion(null);
+      setComentario(null);
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setEnviando(false);
+    }
+  };
 
   if (!bodega) {
     return (
       <Screen>
         <EmptyState
           icon="winery"
-          title="Bodega no encontrada"
-          description="Puede que ya no esté disponible."
+          title={cargando ? 'Cargando bodega…' : 'Bodega no encontrada'}
+          description={error ?? 'Puede que ya no esté disponible.'}
         />
-        <Button title="Volver" variant="outline" icon="back" onPress={volver} />
+        <IconButton icon="back" accessibilityLabel="Volver" onPress={volver} />
       </Screen>
     );
   }
-
-  const enRuta = tieneBodega(bodega.id);
 
   return (
     <Screen scroll padded={false} edges={['bottom']}>
@@ -55,10 +113,20 @@ export default function BodegaScreen() {
         bodega={bodega}
         favorita={favorita}
         onBack={volver}
-        onToggleFavorita={() => setFavorita((value) => !value)}
+        onToggleFavorita={() =>
+          sesionIniciada
+            ? void mutar(`/favoritos/${id}`, favorita ? 'DELETE' : 'PUT')
+            : router.push('/login')
+        }
       />
 
       <View style={styles.sections}>
+        {error && <AppText color="malbec">{error}</AppText>}
+        {!bodega.activa && <AppText color="malbec">Esta bodega está inactiva.</AppText>}
+        <AppText variant="caption">
+          Rating de demostración: {bodega.rating ?? 'sin datos'}. WineWay:{' '}
+          {bodega.ratingWineWay?.toFixed(1) ?? 'sin reseñas'} ({bodega.cantidadResenas}).
+        </AppText>
         <View style={styles.section}>
           <AppText variant="label">La bodega</AppText>
           <AppText variant="body" style={styles.description}>
@@ -68,14 +136,6 @@ export default function BodegaScreen() {
 
         <View style={styles.section}>
           <View style={styles.actions}>
-            <View style={styles.primaryAction}>
-              <Button
-                title={enRuta ? 'En tu ruta' : 'Agregar a mi ruta'}
-                icon={enRuta ? 'check' : 'plus'}
-                variant="secondary"
-                onPress={() => (enRuta ? quitarBodega(bodega.id) : agregarBodega(bodega))}
-              />
-            </View>
             <Button
               title="Reservar"
               icon="external"
@@ -97,6 +157,76 @@ export default function BodegaScreen() {
           </View>
         )}
 
+        <View style={styles.section}>
+          <SectionHeader title="Planificar una visita" />
+          {!sesionIniciada ? (
+            <Button title="Iniciar sesión" onPress={() => router.push('/login')} />
+          ) : rutas.length === 0 ? (
+            <Button title="Crear una ruta primero" onPress={() => router.push('/crear-ruta')} />
+          ) : (
+            <>
+              <ScrollView horizontal>
+                {rutas.map((r) => (
+                  <Chip
+                    key={r.id}
+                    label={r.nombre}
+                    selected={ruta?.id === r.id}
+                    onPress={() => seleccionar(r.id)}
+                  />
+                ))}
+              </ScrollView>
+              {ruta && bodega.activa && (
+                <VisitaForm
+                  key={ruta.id}
+                  bodega={bodega}
+                  fechaInicial={ruta.fechaInicio}
+                  onGuardar={(v) => agregarVisita(ruta.id, v)}
+                />
+              )}
+            </>
+          )}
+        </View>
+        <View style={styles.section}>
+          <SectionHeader title="Reseñas WineWay" />
+          {resenas.length === 0 && <AppText>Todavía no hay reseñas.</AppText>}
+          {resenas.map((r) => (
+            <View key={r.id}>
+              <AppText variant="bodyBold">
+                {r.usuario.apodo ?? r.usuario.username} · {r.valoracion}/5
+              </AppText>
+              {r.comentario && <AppText>{r.comentario}</AppText>}
+            </View>
+          ))}
+          {sesionIniciada && (
+            <>
+              <AppText variant="heading">Tu reseña</AppText>
+              <StarRating value={valoracion} onChange={setValoracion} />
+              <TextField
+                label="Comentario (opcional)"
+                value={comentario}
+                onChangeText={setComentario}
+              />
+              <Button
+                title="Guardar reseña"
+                disabled={!valoracion || enviando}
+                onPress={() =>
+                  void mutar(`/bodegas/${id}/mi-resena`, 'PUT', {
+                    valoracion,
+                    comentario: comentario || null,
+                  })
+                }
+              />
+              {resenas.some((r) => r.usuario.username === usuario?.username) && (
+                <Button
+                  title="Eliminar mi reseña"
+                  variant="outline"
+                  disabled={enviando}
+                  onPress={() => void mutar(`/bodegas/${id}/mi-resena`, 'DELETE')}
+                />
+              )}
+            </>
+          )}
+        </View>
         {bodega.vinos.length > 0 && (
           <View style={styles.section}>
             <SectionHeader title="Vinos destacados" />
@@ -104,7 +234,8 @@ export default function BodegaScreen() {
               horizontal
               showsHorizontalScrollIndicator={false}
               style={styles.carousel}
-              contentContainerStyle={styles.carouselContent}>
+              contentContainerStyle={styles.carouselContent}
+            >
               {bodega.vinos.map((vino) => (
                 <VinoCard key={vino.id} vino={vino} />
               ))}

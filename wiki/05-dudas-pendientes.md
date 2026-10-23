@@ -9,6 +9,8 @@ Este documento reúne preguntas surgidas al revisar en conjunto:
 
 Las preguntas no modifican el alcance actual. Su objetivo es hacer visibles las decisiones que todavía deben tomarse antes de cerrar los mockups, la especificación funcional o la implementación.
 
+El trabajo ya acordado que falta implementar está resumido en [Pendientes de implementación](07-pendientes-de-implementacion.md); esta página conserva preguntas de producto abiertas.
+
 ## Prioridades
 
 - **Alta:** afecta el inventario de pantallas, la navegación o un userflow del MVP.

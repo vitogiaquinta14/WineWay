@@ -23,7 +23,11 @@ export function VinoCavaCard({ vino }: { vino: VinoGuardado }) {
           </AppText>
         </View>
         <AppText variant="caption">{vino.bodega}</AppText>
-        <StarRating value={vino.rating} />
+        {vino.rating === null ? (
+          <AppText variant="caption">Sin valoración</AppText>
+        ) : (
+          <StarRating value={vino.rating} />
+        )}
 
         {vino.nota.length > 0 && (
           <View style={styles.note}>
