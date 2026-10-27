@@ -76,12 +76,12 @@ Ejemplo de creación de ruta:
 ```json
 {
   "nombre": "Mi recorrido",
-  "fechaInicio": "2030-01-07",
+  "fechaInicio": "2030-01-08",
   "cantidadDias": 1,
   "cantidadPersonas": 3,
   "presupuestoPersonaCentavos": 20000000,
   "parametros": {"preferencias": ["Paisajes"]},
-  "visitas": [{"experienciaId": "catena-clasica", "inicio": "2030-01-07T09:00:00-03:00"}]
+  "visitas": [{"experienciaId": "catena-clasica", "inicio": "2030-01-08T10:00:00-03:00"}]
 }
 ```
 

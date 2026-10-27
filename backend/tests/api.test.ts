@@ -23,7 +23,8 @@ const registro = {
   password: 'VinoSeguro1!',
   fechaNacimiento: '2000-01-01',
 };
-const visita = { experienciaId: 'catena-clasica', inicio: '2030-01-07T12:00:00Z' };
+// Turnos fijos reales de Zuccardi: 09:30, 11:00, 12:30 y 15:00 (hora de Mendoza, UTC-3), todos los días.
+const visita = { experienciaId: 'zuccardi-piedra-infinita', inicio: '2030-01-07T12:30:00Z' };
 const rutaBody = {
   nombre: 'Mi ruta',
   fechaInicio: '2030-01-07',
@@ -281,9 +282,9 @@ test('favorito idempotente y reseña única editable, promedio propio separado',
 test('rutas se crean completas, rechazan horarios, solapamientos y quedan atómicas', async () => {
   for (const visitas of [
     [],
-    [{ ...visita, inicio: '2030-01-07T12:01:00Z' }],
+    [{ ...visita, inicio: '2030-01-07T12:31:00Z' }],
     [visita, visita],
-    [{ ...visita, inicio: '2030-01-08T12:00:00Z' }],
+    [{ ...visita, inicio: '2030-01-08T12:30:00Z' }],
   ]) {
     await request(app)
       .post('/api/rutas')
@@ -315,11 +316,11 @@ test('visitas se agregan, reprograman y eliminan sin dejar rutas vacías', async
   let r = await request(app)
     .post(`/api/rutas/${ruta.id}/visitas`)
     .set(auth())
-    .send({ ...visita, inicio: '2030-01-07T15:00:00Z' })
+    .send({ ...visita, inicio: '2030-01-07T15:30:00Z' })
     .expect(201);
   assert.equal(r.body.visitas.length, 2);
   const nueva = r.body.visitas.find(
-    (v: { inicio: string }) => v.inicio === '2030-01-07T15:00:00.000Z',
+    (v: { inicio: string }) => v.inicio === '2030-01-07T15:30:00.000Z',
   );
   await request(app)
     .patch(`/api/rutas/${ruta.id}/visitas/${nueva.id}`)
@@ -329,22 +330,23 @@ test('visitas se agregan, reprograman y eliminan sin dejar rutas vacías', async
   r = await request(app)
     .patch(`/api/rutas/${ruta.id}/visitas/${nueva.id}`)
     .set(auth())
-    .send({ inicio: '2030-01-07T19:00:00Z' })
+    .send({ inicio: '2030-01-07T18:00:00Z' })
     .expect(200);
-  assert.equal(r.body.visitas[1].inicio, '2030-01-07T19:00:00.000Z');
+  assert.equal(r.body.visitas[1].inicio, '2030-01-07T18:00:00.000Z');
   await request(app).delete(`/api/rutas/${ruta.id}/visitas/${nueva.id}`).set(auth()).expect(204);
 });
-test('flexible solo fines de semana y con duración completa; histórico derivado', async () => {
+test('flexible exige terminar dentro de la franja; histórico derivado', async () => {
   const base = {
     ...rutaBody,
     fechaInicio: '2030-01-12',
-    visitas: [{ experienciaId: 'andeluna-almuerzo', inicio: '2030-01-12T22:00:00Z' }],
+    // Almuerzo de Andeluna: franja 12:00–18:00 y 150 min, por lo que el último inicio admitido es 15:30.
+    visitas: [{ experienciaId: 'andeluna-almuerzo', inicio: '2030-01-12T18:30:00Z' }],
   };
   const r = await request(app).post('/api/rutas').set(auth()).send(base).expect(201);
   await request(app)
     .post('/api/rutas')
     .set(auth())
-    .send({ ...base, visitas: [{ ...base.visitas[0], inicio: '2030-01-12T22:01:00Z' }] })
+    .send({ ...base, visitas: [{ ...base.visitas[0], inicio: '2030-01-12T18:31:00Z' }] })
     .expect(400);
   await request(app).delete(`/api/rutas/${r.body.id}`).set(auth()).expect(204);
   const historica = await request(app)
@@ -353,7 +355,7 @@ test('flexible solo fines de semana y con duración completa; histórico derivad
     .send({
       ...rutaBody,
       fechaInicio: '2020-01-06',
-      visitas: [{ ...visita, inicio: '2020-01-06T12:00:00Z' }],
+      visitas: [{ ...visita, inicio: '2020-01-06T12:30:00Z' }],
     })
     .expect(201);
   assert.equal(historica.body.estado, 'HISTORICA');

@@ -27,6 +27,7 @@ const vino = z.object({
   codigoDePrueba: z.boolean(),
   tipo: texto,
   perfil: texto,
+  imagenUrl: z.url().nullable().optional(),
   cepas: z.array(z.object({ cepaId: id, porcentaje: z.number().int().min(1).max(100).nullable() })).min(1),
 });
 const catalogo = z.object({

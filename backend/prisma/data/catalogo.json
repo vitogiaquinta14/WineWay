@@ -1,5 +1,5 @@
 {
-  "nota": "Catálogo de demostración. Precios y horarios ilustrativos, no tarifas verificadas. Códigos DEMO no corresponden a etiquetas reales.",
+  "nota": "Catálogo de demostración. Precios \"desde\" por persona en ARS y horarios generales de apertura relevados en octubre de 2026: orientativos, no son tarifas ni turnos confirmados. Importes publicados en USD convertidos a 1 USD = 1.500 ARS. Códigos DEMO no corresponden a etiquetas reales.",
   "tiposExperiencia": [
     {
       "id": "visita-cata",
@@ -20,6 +20,16 @@
       "id": "visita",
       "nombre": "Visita",
       "gastronomia": false
+    },
+    {
+      "id": "tapeo",
+      "nombre": "Tapeo",
+      "gastronomia": true
+    },
+    {
+      "id": "taller",
+      "nombre": "Taller",
+      "gastronomia": false
     }
   ],
   "cepas": [
@@ -34,19 +44,71 @@
     {
       "id": "merlot",
       "nombre": "Merlot"
+    },
+    {
+      "id": "cabernet-franc",
+      "nombre": "Cabernet Franc"
+    },
+    {
+      "id": "bonarda",
+      "nombre": "Bonarda"
+    },
+    {
+      "id": "syrah",
+      "nombre": "Syrah"
+    },
+    {
+      "id": "petit-verdot",
+      "nombre": "Petit Verdot"
+    },
+    {
+      "id": "tannat",
+      "nombre": "Tannat"
+    },
+    {
+      "id": "tempranillo",
+      "nombre": "Tempranillo"
+    },
+    {
+      "id": "pinot-noir",
+      "nombre": "Pinot Noir"
+    },
+    {
+      "id": "chardonnay",
+      "nombre": "Chardonnay"
+    },
+    {
+      "id": "sauvignon-blanc",
+      "nombre": "Sauvignon Blanc"
+    },
+    {
+      "id": "viognier",
+      "nombre": "Viognier"
+    },
+    {
+      "id": "semillon",
+      "nombre": "Semillón"
+    },
+    {
+      "id": "blend",
+      "nombre": "Blend"
+    },
+    {
+      "id": "torrontes",
+      "nombre": "Torrontés"
     }
   ],
   "bodegas": [
     {
       "id": "catena-zapata",
       "nombre": "Catena Zapata",
-      "descripcion": "Inspirada en las pirámides mayas, la bodega de Agrelo es un ícono de la arquitectura del vino. Pionera en el estudio de viñedos de altura, sus Malbec son referencia mundial.",
-      "direccion": "Luján de Cuyo",
-      "localidad": "Luján de Cuyo",
+      "descripcion": "El ícono indiscutido del Malbec argentino a nivel mundial, caracterizada por su bodega en forma de pirámide maya.",
+      "direccion": "Calle Cobos s/n, M5509 Agrelo, Mendoza",
+      "localidad": "Agrelo",
       "zona": "Luján de Cuyo",
-      "latitud": -33.1639614,
-      "longitud": -68.9193917,
-      "sitioWeb": "https://www.catenawines.com",
+      "latitud": -33.1679,
+      "longitud": -68.9041,
+      "sitioWeb": "https://catenazapata.com",
       "tipo": "Tradicional",
       "caracteristicas": [
         "Paisajes",
@@ -64,146 +126,78 @@
           "nombre": "Visita clásica",
           "descripcion": "Recorrido por la pirámide y la cava, con degustación de 3 vinos.",
           "tipoId": "visita-cata",
-          "precioCentavos": 6000000,
-          "duracionMin": 90,
+          "precioCentavos": 19400000,
+          "duracionMin": 120,
           "horarios": [
             {
-              "dia": 1,
-              "tipo": "FIJO",
+              "dia": 2,
+              "tipo": "FLEXIBLE",
               "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 1,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 1,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
-            },
-            {
-              "dia": 2,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 2,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 2,
-              "tipo": "FIJO",
-              "desde": 960,
               "hasta": 960
             },
             {
               "dia": 3,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 540,
-              "hasta": 540
+              "hasta": 960
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 960
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 960
+            }
+          ]
+        },
+        {
+          "id": "catena-almuerzo",
+          "nombre": "Menú degustación de 12 pasos",
+          "descripcion": "Visita y almuerzo integral bajo el concepto Wine First.",
+          "tipoId": "visita-almuerzo",
+          "precioCentavos": 21750000,
+          "duracionMin": 210,
+          "horarios": [
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 960
             },
             {
               "dia": 3,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 3,
-              "tipo": "FIJO",
-              "desde": 960,
               "hasta": 960
             },
             {
               "dia": 4,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 4,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 4,
-              "tipo": "FIJO",
-              "desde": 960,
               "hasta": 960
             },
             {
               "dia": 5,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 5,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 5,
-              "tipo": "FIJO",
-              "desde": 960,
               "hasta": 960
             },
             {
               "dia": 6,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 960,
               "hasta": 960
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 1140,
-              "hasta": 1140
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 1140,
-              "hasta": 1140
             }
           ]
         }
@@ -221,6 +215,54 @@
           "cepas": [
             {
               "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "catena-zapata-adrianna-vineyard-river-stones",
+          "nombre": "Adrianna Vineyard River Stones",
+          "descripcion": "Tinto de Catena Zapata. Malbec.",
+          "precioCentavos": 21000000,
+          "codigoBarras": "DEMO-catena-zapata-adrianna-vineyard-river-stones",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "catena-zapata-white-bones",
+          "nombre": "White Bones",
+          "descripcion": "Blanco de Catena Zapata. Chardonnay.",
+          "precioCentavos": 18000000,
+          "codigoBarras": "DEMO-catena-zapata-white-bones",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "chardonnay",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "catena-zapata-estiba-reservada",
+          "nombre": "Catena Zapata Estiba Reservada",
+          "descripcion": "Tinto de Catena Zapata. Corte de varias cepas.",
+          "precioCentavos": 26000000,
+          "codigoBarras": "DEMO-catena-zapata-estiba-reservada",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
               "porcentaje": null
             }
           ]
@@ -254,146 +296,176 @@
           "nombre": "Experiencia Piedra Infinita",
           "descripcion": "Recorrido por la bodega y degustación de vinos de parcela.",
           "tipoId": "visita-cata",
-          "precioCentavos": 5500000,
-          "duracionMin": 120,
+          "precioCentavos": 8900000,
+          "duracionMin": 90,
           "horarios": [
             {
               "dia": 1,
               "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
+              "desde": 570,
+              "hasta": 570
             },
             {
               "dia": 1,
               "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
+              "desde": 660,
+              "hasta": 660
             },
             {
               "dia": 1,
               "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "desde": 750,
+              "hasta": 750
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
             },
             {
               "dia": 2,
               "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
+              "desde": 570,
+              "hasta": 570
             },
             {
               "dia": 2,
               "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
+              "desde": 660,
+              "hasta": 660
             },
             {
               "dia": 2,
               "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "desde": 750,
+              "hasta": 750
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
             },
             {
               "dia": 3,
               "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
+              "desde": 570,
+              "hasta": 570
             },
             {
               "dia": 3,
               "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
+              "desde": 660,
+              "hasta": 660
             },
             {
               "dia": 3,
               "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "desde": 750,
+              "hasta": 750
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
             },
             {
               "dia": 4,
               "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
+              "desde": 570,
+              "hasta": 570
             },
             {
               "dia": 4,
               "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
+              "desde": 660,
+              "hasta": 660
             },
             {
               "dia": 4,
               "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "desde": 750,
+              "hasta": 750
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
             },
             {
               "dia": 5,
               "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
+              "desde": 570,
+              "hasta": 570
             },
             {
               "dia": 5,
               "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
+              "desde": 660,
+              "hasta": 660
             },
             {
               "dia": 5,
               "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "desde": 750,
+              "hasta": 750
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
             },
             {
               "dia": 6,
               "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
+              "desde": 570,
+              "hasta": 570
             },
             {
               "dia": 6,
               "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
+              "desde": 660,
+              "hasta": 660
             },
             {
               "dia": 6,
               "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "desde": 750,
+              "hasta": 750
             },
             {
               "dia": 6,
               "tipo": "FIJO",
-              "desde": 1140,
-              "hasta": 1140
+              "desde": 900,
+              "hasta": 900
             },
             {
               "dia": 7,
               "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
+              "desde": 570,
+              "hasta": 570
             },
             {
               "dia": 7,
               "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
+              "desde": 660,
+              "hasta": 660
             },
             {
               "dia": 7,
               "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "desde": 750,
+              "hasta": 750
             },
             {
               "dia": 7,
               "tipo": "FIJO",
-              "desde": 1140,
-              "hasta": 1140
+              "desde": 900,
+              "hasta": 900
             }
           ]
         },
@@ -401,147 +473,51 @@
           "id": "zuccardi-almuerzo",
           "nombre": "Almuerzo en Piedra Infinita Cocina",
           "descripcion": "Menú de estación con productos locales, maridado con vinos de la bodega.",
-          "tipoId": "almuerzo",
-          "precioCentavos": 11000000,
+          "tipoId": "visita-almuerzo",
+          "precioCentavos": 18000000,
           "duracionMin": 180,
           "horarios": [
             {
               "dia": 1,
               "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 1,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 1,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "desde": 750,
+              "hasta": 750
             },
             {
               "dia": 2,
               "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 2,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 2,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "desde": 750,
+              "hasta": 750
             },
             {
               "dia": 3,
               "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 3,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 3,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "desde": 750,
+              "hasta": 750
             },
             {
               "dia": 4,
               "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 4,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 4,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "desde": 750,
+              "hasta": 750
             },
             {
               "dia": 5,
               "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 5,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 5,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "desde": 750,
+              "hasta": 750
             },
             {
               "dia": 6,
               "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 1140,
-              "hasta": 1140
+              "desde": 750,
+              "hasta": 750
             },
             {
               "dia": 7,
               "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 1140,
-              "hasta": 1140
+              "desde": 750,
+              "hasta": 750
             }
           ]
         }
@@ -562,18 +538,66 @@
               "porcentaje": null
             }
           ]
+        },
+        {
+          "id": "zuccardi-piedra-infinita",
+          "nombre": "Piedra Infinita",
+          "descripcion": "Tinto de Familia Zuccardi. Malbec.",
+          "precioCentavos": 19500000,
+          "codigoBarras": "DEMO-zuccardi-piedra-infinita",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "zuccardi-aluvional-gualtallary",
+          "nombre": "Aluvional Gualtallary",
+          "descripcion": "Tinto de Familia Zuccardi. Malbec.",
+          "precioCentavos": 12000000,
+          "codigoBarras": "DEMO-zuccardi-aluvional-gualtallary",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "zuccardi-fosil",
+          "nombre": "Fósil",
+          "descripcion": "Blanco de Familia Zuccardi. Chardonnay.",
+          "precioCentavos": 8500000,
+          "codigoBarras": "DEMO-zuccardi-fosil",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "chardonnay",
+              "porcentaje": null
+            }
+          ]
         }
       ]
     },
     {
       "id": "salentein",
       "nombre": "Bodega Salentein",
-      "descripcion": "Ubicada a 1200 metros sobre el nivel del mar, Salentein es pionera en el Valle de Uco. Su arquitectura en forma de cruz alberga una cava subterránea diseñada como templo del vino, donde las barricas descansan bajo acústica clásica.",
-      "direccion": "Tupungato",
-      "localidad": "Tupungato",
+      "descripcion": "Bodega pionera del Valle de Uco, famosa por su majestuosa cava subterránea en cruz y el centro cultural Killka.",
+      "direccion": "Ruta Provincial 89 s/n, M5565 Tunuyán, Mendoza",
+      "localidad": "Los Árboles, Tunuyán",
       "zona": "Valle de Uco",
-      "latitud": -33.4984651,
-      "longitud": -69.2521467,
+      "latitud": -33.495,
+      "longitud": -69.2492,
       "sitioWeb": "https://www.bodegasalentein.com",
       "tipo": "Tradicional",
       "caracteristicas": [
@@ -592,146 +616,44 @@
           "nombre": "Cata Íconos de la Consulta",
           "descripcion": "Degustación guiada de 4 vinos Single Vineyard de alta gama con sommelier.",
           "tipoId": "visita-cata",
-          "precioCentavos": 4500000,
-          "duracionMin": 90,
+          "precioCentavos": 9000000,
+          "duracionMin": 75,
           "horarios": [
             {
-              "dia": 1,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 1,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 1,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
-            },
-            {
               "dia": 2,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 2,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 2,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
             },
             {
               "dia": 3,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 3,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 3,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
             },
             {
               "dia": 4,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 4,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 4,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
             },
             {
               "dia": 5,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 5,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 5,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
             },
             {
               "dia": 6,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 1140,
-              "hasta": 1140
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
             },
             {
               "dia": 7,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 1140,
-              "hasta": 1140
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
             }
           ]
         },
@@ -739,147 +661,45 @@
           "id": "salentein-almuerzo",
           "nombre": "Almuerzo de Pasos maridado",
           "descripcion": "Menú degustación de 5 pasos por el chef ejecutivo, maridado con sus mejores cosechas.",
-          "tipoId": "almuerzo",
-          "precioCentavos": 9500000,
-          "duracionMin": 180,
+          "tipoId": "visita-almuerzo",
+          "precioCentavos": 16000000,
+          "duracionMin": 150,
           "horarios": [
             {
-              "dia": 1,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 1,
-              "tipo": "FIJO",
+              "dia": 2,
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 1,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
-            },
-            {
-              "dia": 2,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 2,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 2,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "hasta": 1020
             },
             {
               "dia": 3,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 3,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 3,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "hasta": 1020
             },
             {
               "dia": 4,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 4,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 4,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "hasta": 1020
             },
             {
               "dia": 5,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 5,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 5,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "hasta": 1020
             },
             {
               "dia": 6,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 1140,
-              "hasta": 1140
+              "hasta": 1020
             },
             {
               "dia": 7,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 1140,
-              "hasta": 1140
+              "hasta": 1020
             }
           ]
         }
@@ -904,9 +724,25 @@
         {
           "id": "salentein-numina",
           "nombre": "Salentein Numina Gran Corte",
-          "descripcion": "Vino del catálogo de demostración de Bodega Salentein.",
-          "precioCentavos": 2500000,
+          "descripcion": "Tinto de Bodega Salentein. Corte de varias cepas.",
+          "precioCentavos": 1840000,
           "codigoBarras": "DEMO-salentein-numina",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "salentein-primus-malbec",
+          "nombre": "Salentein Primus Malbec",
+          "descripcion": "Tinto de Bodega Salentein. Malbec.",
+          "precioCentavos": 6500000,
+          "codigoBarras": "DEMO-salentein-primus-malbec",
           "codigoDePrueba": true,
           "tipo": "Tinto",
           "perfil": "Intenso",
@@ -914,13 +750,21 @@
             {
               "cepaId": "malbec",
               "porcentaje": null
-            },
+            }
+          ]
+        },
+        {
+          "id": "salentein-reserve-sauvignon-blanc",
+          "nombre": "Salentein Reserve Sauvignon Blanc",
+          "descripcion": "Blanco de Bodega Salentein. Sauvignon Blanc.",
+          "precioCentavos": 1150000,
+          "codigoBarras": "DEMO-salentein-reserve-sauvignon-blanc",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
             {
-              "cepaId": "cabernet-sauvignon",
-              "porcentaje": null
-            },
-            {
-              "cepaId": "merlot",
+              "cepaId": "sauvignon-blanc",
               "porcentaje": null
             }
           ]
@@ -954,161 +798,174 @@
           "nombre": "Sparkling Tour",
           "descripcion": "Recorrido por el método de elaboración y degustación de 3 espumantes.",
           "tipoId": "visita-cata",
-          "precioCentavos": 3500000,
+          "precioCentavos": 4800000,
           "duracionMin": 60,
           "horarios": [
             {
               "dia": 1,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 540,
-              "hasta": 540
+              "hasta": 1020
             },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            }
+          ]
+        },
+        {
+          "id": "chandon-almuerzo",
+          "nombre": "Almuerzo en Barros",
+          "descripcion": "Visita y almuerzo maridado en el restaurante Barros.",
+          "tipoId": "visita-almuerzo",
+          "precioCentavos": 11500000,
+          "duracionMin": 150,
+          "horarios": [
             {
               "dia": 1,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 1,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "hasta": 1020
             },
             {
               "dia": 2,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 2,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 2,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "hasta": 1020
             },
             {
               "dia": 3,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 3,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 3,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "hasta": 1020
             },
             {
               "dia": 4,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 4,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 4,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "hasta": 1020
             },
             {
               "dia": 5,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 5,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 5,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "hasta": 1020
             },
             {
               "dia": 6,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 1140,
-              "hasta": 1140
+              "hasta": 1020
             },
             {
               "dia": 7,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
+              "tipo": "FLEXIBLE",
               "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 1140,
-              "hasta": 1140
+              "hasta": 1020
             }
           ]
         }
       ],
-      "vinos": []
+      "vinos": [
+        {
+          "id": "chandon-cuvee-reserve-blanc-de-noirs",
+          "nombre": "Chandon Cuvée Reserve Blanc de Noirs",
+          "descripcion": "Espumante de Chandon Argentina. Pinot Noir.",
+          "precioCentavos": 1650000,
+          "codigoBarras": "DEMO-chandon-cuvee-reserve-blanc-de-noirs",
+          "codigoDePrueba": true,
+          "tipo": "Espumante",
+          "perfil": "Burbujeante",
+          "cepas": [
+            {
+              "cepaId": "pinot-noir",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "chandon-extra-brut",
+          "nombre": "Chandon Extra Brut",
+          "descripcion": "Espumante de Chandon Argentina. Chardonnay, Pinot Noir.",
+          "precioCentavos": 1100000,
+          "codigoBarras": "DEMO-chandon-extra-brut",
+          "codigoDePrueba": true,
+          "tipo": "Espumante",
+          "perfil": "Burbujeante",
+          "cepas": [
+            {
+              "cepaId": "chardonnay",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "pinot-noir",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "chandon-delice",
+          "nombre": "Chandon Délice",
+          "descripcion": "Espumante de Chandon Argentina. Chardonnay, Semillón.",
+          "precioCentavos": 1150000,
+          "codigoBarras": "DEMO-chandon-delice",
+          "codigoDePrueba": true,
+          "tipo": "Espumante",
+          "perfil": "Burbujeante",
+          "cepas": [
+            {
+              "cepaId": "chardonnay",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "semillon",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "andeluna",
       "nombre": "Andeluna Cellars",
-      "descripcion": "Bodega boutique al pie de la cordillera, con vistas abiertas a los viñedos de Gualtallary y una propuesta gastronómica de autor.",
-      "direccion": "Tupungato",
-      "localidad": "Tupungato",
+      "descripcion": "Emplazada frente a la Cordillera de los Andes, destaca por sus vinos frescos de terruño de altura y sus atardeceres gastronómicos.",
+      "direccion": "Ruta Provincial 89 s/n, M5561 Gualtallary, Mendoza",
+      "localidad": "Gualtallary, Tupungato",
       "zona": "Valle de Uco",
-      "latitud": -33.4525069,
-      "longitud": -69.2233773,
+      "latitud": -33.4525,
+      "longitud": -69.2234,
       "sitioWeb": "https://www.andeluna.com.ar",
       "tipo": "Boutique",
       "caracteristicas": [
@@ -1127,36 +984,155 @@
           "nombre": "Almuerzo de 5 pasos",
           "descripcion": "Menú de estación maridado con la línea Pasionado.",
           "tipoId": "almuerzo",
-          "precioCentavos": 9000000,
-          "duracionMin": 180,
+          "precioCentavos": 12000000,
+          "duracionMin": 150,
           "horarios": [
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            }
+          ]
+        },
+        {
+          "id": "andeluna-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por la bodega y degustación de vinos de altura frente a la cordillera.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 5500000,
+          "duracionMin": 60,
+          "horarios": [
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            },
             {
               "dia": 6,
               "tipo": "FLEXIBLE",
               "desde": 600,
-              "hasta": 1320
+              "hasta": 1080
             },
             {
               "dia": 7,
               "tipo": "FLEXIBLE",
               "desde": 600,
-              "hasta": 1320
+              "hasta": 1080
             }
           ]
         }
       ],
-      "vinos": []
+      "vinos": [
+        {
+          "id": "andeluna-pasionado-cuatro-cepas",
+          "nombre": "Andeluna Pasionado Cuatro Cepas",
+          "descripcion": "Tinto de Andeluna Cellars. Corte de varias cepas.",
+          "precioCentavos": 4500000,
+          "codigoBarras": "DEMO-andeluna-pasionado-cuatro-cepas",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "andeluna-altitud-merlot",
+          "nombre": "Andeluna Altitud Merlot",
+          "descripcion": "Tinto de Andeluna Cellars. Merlot.",
+          "precioCentavos": 1800000,
+          "codigoBarras": "DEMO-andeluna-altitud-merlot",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "merlot",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "andeluna-enologos-cabernet-franc",
+          "nombre": "Andeluna Enólogos Cabernet Franc",
+          "descripcion": "Tinto de Andeluna Cellars. Cabernet Franc.",
+          "precioCentavos": 1250000,
+          "codigoBarras": "DEMO-andeluna-enologos-cabernet-franc",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-franc",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "alfa-crux",
-      "nombre": "Bodega Alfa Crux",
-      "descripcion": "Una bodega que combina diseño contemporáneo y paisaje andino, con recorridos que muestran cómo la arquitectura acompaña la elaboración.",
-      "direccion": "Tupungato",
-      "localidad": "Tupungato",
+      "nombre": "Alfa Crux (ex O. Fournier)",
+      "descripcion": "Famosa por su arquitectura contemporánea imponente que asemeja las alas de un cóndor y sus vinos estructurados de altura.",
+      "direccion": "Los Indios s/n, M5567 La Consulta, Mendoza",
+      "localidad": "La Consulta, San Carlos",
       "zona": "Valle de Uco",
-      "latitud": -33.803531,
-      "longitud": -69.118413,
-      "sitioWeb": "https://www.alfacrux.com.ar",
+      "latitud": -33.7982,
+      "longitud": -69.1146,
+      "sitioWeb": "https://www.alfacrux.com",
       "tipo": "Tradicional",
       "caracteristicas": [
         "Paisajes",
@@ -1174,151 +1150,3379 @@
           "nombre": "Cata arquitectónica",
           "descripcion": "Recorrido por los espacios de la bodega y degustación de 4 vinos.",
           "tipoId": "visita-cata",
+          "precioCentavos": 6000000,
+          "duracionMin": 75,
+          "horarios": [
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            }
+          ]
+        },
+        {
+          "id": "alfa-crux-almuerzo",
+          "nombre": "Almuerzo en Crux Cocina",
+          "descripcion": "Visita y almuerzo en el restaurante Crux Cocina.",
+          "tipoId": "visita-almuerzo",
+          "precioCentavos": 13500000,
+          "duracionMin": 150,
+          "horarios": [
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "alfa-crux-malbec",
+          "nombre": "Alfa Crux Malbec",
+          "descripcion": "Tinto de Alfa Crux (ex O. Fournier). Malbec.",
+          "precioCentavos": 4800000,
+          "codigoBarras": "DEMO-alfa-crux-malbec",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "alfa-crux-crux-beta-tempranillo",
+          "nombre": "Crux Beta Tempranillo",
+          "descripcion": "Tinto de Alfa Crux (ex O. Fournier). Tempranillo.",
+          "precioCentavos": 2200000,
+          "codigoBarras": "DEMO-alfa-crux-crux-beta-tempranillo",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "tempranillo",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "alfa-crux-crux-sauvignon-blanc",
+          "nombre": "Crux Sauvignon Blanc",
+          "descripcion": "Blanco de Alfa Crux (ex O. Fournier). Sauvignon Blanc.",
+          "precioCentavos": 1200000,
+          "codigoBarras": "DEMO-alfa-crux-crux-sauvignon-blanc",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "sauvignon-blanc",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "achaval-ferrer",
+      "nombre": "Achaval-Ferrer",
+      "descripcion": "Bodega boutique de renombre internacional especializada en Malbecs de viñedos viejos no injertados y mínima intervención.",
+      "direccion": "Calle Cobos 2601, M5509 Perdriel, Mendoza",
+      "localidad": "Perdriel",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.0554,
+      "longitud": -68.9074,
+      "sitioWeb": "https://www.achaval-ferrer.com",
+      "tipo": "Boutique",
+      "caracteristicas": [],
+      "fotos": [],
+      "ratingDemostracion": 4.7,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "achaval-ferrer-cata",
+          "nombre": "Cata premium",
+          "descripcion": "Cata técnica orientada a coleccionistas.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 8500000,
+          "duracionMin": 90,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 990
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 990
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 990
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 990
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 990
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 990
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 990
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "achaval-ferrer-finca-altamira",
+          "nombre": "Finca Altamira",
+          "descripcion": "Tinto de Achaval-Ferrer. Malbec.",
+          "precioCentavos": 19000000,
+          "codigoBarras": "DEMO-achaval-ferrer-finca-altamira",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "achaval-ferrer-quimera",
+          "nombre": "Achaval-Ferrer Quimera",
+          "descripcion": "Tinto de Achaval-Ferrer. Corte de varias cepas.",
+          "precioCentavos": 4600000,
+          "codigoBarras": "DEMO-achaval-ferrer-quimera",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "achaval-ferrer-finca-bella-vista",
+          "nombre": "Finca Bella Vista",
+          "descripcion": "Tinto de Achaval-Ferrer. Malbec.",
+          "precioCentavos": 19000000,
+          "codigoBarras": "DEMO-achaval-ferrer-finca-bella-vista",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "casarena",
+      "nombre": "Casarena Bodega y Viñedos",
+      "descripcion": "Una bodega centenaria (construida en 1937) totalmente restaurada que funciona como especialista en \"Single Vineyards\" y microterroirs de Luján de Cuyo, produciendo vinos sustentables y 100% veganos.",
+      "direccion": "Brandsen 505, M5509 Luján de Cuyo, Mendoza",
+      "localidad": "Perdriel",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.0669,
+      "longitud": -68.8896,
+      "sitioWeb": "https://www.casarena.com",
+      "tipo": "Boutique",
+      "caracteristicas": [
+        "Arquitectura",
+        "Paisajes"
+      ],
+      "fotos": [
+        "https://www.casarena.com/images/home/hero-home.jpg"
+      ],
+      "ratingDemostracion": 4.6,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "casarena-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por la bodega y degustación de vinos Single Vineyard.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 4200000,
+          "duracionMin": 60,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            }
+          ]
+        },
+        {
+          "id": "casarena-almuerzo",
+          "nombre": "Almuerzo en Savia Cocina",
+          "descripcion": "Visita y almuerzo de pasos maridado en el restaurante Savia Cocina.",
+          "tipoId": "visita-almuerzo",
+          "precioCentavos": 11500000,
+          "duracionMin": 150,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "casarena-owen-s-vineyard-cabernet-sauvignon",
+          "nombre": "Owen's Vineyard Cabernet Sauvignon",
+          "descripcion": "Tinto de Casarena Bodega y Viñedos. Cabernet Sauvignon.",
+          "precioCentavos": 2900000,
+          "codigoBarras": "DEMO-casarena-owen-s-vineyard-cabernet-sauvignon",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "casarena-jamilla-s-vineyard-malbec",
+          "nombre": "Jamilla's Vineyard Malbec",
+          "descripcion": "Tinto de Casarena Bodega y Viñedos. Malbec.",
+          "precioCentavos": 2900000,
+          "codigoBarras": "DEMO-casarena-jamilla-s-vineyard-malbec",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "casarena-505-syrah",
+          "nombre": "Casarena 505 Syrah",
+          "descripcion": "Tinto de Casarena Bodega y Viñedos. Syrah.",
+          "precioCentavos": 900000,
+          "codigoBarras": "DEMO-casarena-505-syrah",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "syrah",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "diamandes",
+      "nombre": "Bodega DiamAndes",
+      "descripcion": "Integrante de Clos de los Siete, destaca por su arquitectura vanguardista, su enfoque sustentable y vinos de perfil franco-argentino.",
+      "direccion": "Clodomiro Silva s/n (Clos de los Siete), M5565 Vista Flores, Mendoza",
+      "localidad": "Vista Flores, Tunuyán",
+      "zona": "Valle de Uco",
+      "latitud": -33.6591,
+      "longitud": -69.2362,
+      "sitioWeb": "https://www.diamandes.com",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://www.diamandes.com/wp-content/uploads/2022/12/bodega-diamandes.jpg"
+      ],
+      "ratingDemostracion": 4.5,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "diamandes-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por la bodega y degustación guiada.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 5800000,
+          "duracionMin": 75,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 960
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 960
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 960
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 960
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 960
+            }
+          ]
+        },
+        {
+          "id": "diamandes-almuerzo",
+          "nombre": "Almuerzo gourmet",
+          "descripcion": "Visita y almuerzo gourmet maridado.",
+          "tipoId": "visita-almuerzo",
+          "precioCentavos": 12500000,
+          "duracionMin": 150,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 960
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 960
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 960
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 960
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 960
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "diamandes-de-uco-gran-reserva",
+          "nombre": "DiamAndes de Uco Gran Reserva",
+          "descripcion": "Tinto de Bodega DiamAndes. Corte de varias cepas.",
+          "precioCentavos": 4200000,
+          "codigoBarras": "DEMO-diamandes-de-uco-gran-reserva",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "diamandes-de-uco-viognier",
+          "nombre": "DiamAndes de Uco Viognier",
+          "descripcion": "Blanco de Bodega DiamAndes. Viognier.",
+          "precioCentavos": 1950000,
+          "codigoBarras": "DEMO-diamandes-de-uco-viognier",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "viognier",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "diamandes-perlita-malbec-syrah",
+          "nombre": "Perlita Malbec – Syrah",
+          "descripcion": "Tinto de Bodega DiamAndes. Malbec, Syrah.",
+          "precioCentavos": 1100000,
+          "codigoBarras": "DEMO-diamandes-perlita-malbec-syrah",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "syrah",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "la-azul",
+      "nombre": "Bodega La Azul",
+      "descripcion": "Bodega boutique relajada y cálida, célebre por su cocina criolla por pasos al aire libre y sus vinos francos y expresivos.",
+      "direccion": "Ruta Provincial 89 s/n, M5561 Tupungato, Mendoza",
+      "localidad": "Agua Amarga, Tupungato",
+      "zona": "Valle de Uco",
+      "latitud": -33.4693,
+      "longitud": -69.2208,
+      "sitioWeb": "https://bodegalaazul.com",
+      "tipo": "Boutique",
+      "caracteristicas": [
+        "Paisajes"
+      ],
+      "fotos": [
+        "https://bodegalaazul.com/wp-content/uploads/2024/07/0011_bodega-03-1024x684.jpg"
+      ],
+      "ratingDemostracion": 4.7,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "la-azul-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por la bodega y degustación.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 4500000,
+          "duracionMin": 45,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            }
+          ]
+        },
+        {
+          "id": "la-azul-almuerzo",
+          "nombre": "Almuerzo de pasos",
+          "descripcion": "Almuerzo informal de pasos libres al aire libre, con vino incluido.",
+          "tipoId": "almuerzo",
+          "precioCentavos": 8500000,
+          "duracionMin": 180,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "la-azul-gran-reserva",
+          "nombre": "La Azul Gran Reserva",
+          "descripcion": "Tinto de Bodega La Azul. Malbec, Cabernet Sauvignon.",
+          "precioCentavos": 3500000,
+          "codigoBarras": "DEMO-la-azul-gran-reserva",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://bodegalaazul.com/wp-content/uploads/2026/08/azul-granreserva-destacado.png"
+        },
+        {
+          "id": "la-azul-reserva-cabernet-franc",
+          "nombre": "La Azul Reserva Cabernet Franc",
+          "descripcion": "Tinto de Bodega La Azul. Cabernet Franc.",
+          "precioCentavos": 1700000,
+          "codigoBarras": "DEMO-la-azul-reserva-cabernet-franc",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-franc",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://bodegalaazul.com/wp-content/uploads/2016/03/azul-reserva-destacado.png"
+        },
+        {
+          "id": "la-azul-sauvignon-blanc",
+          "nombre": "La Azul Sauvignon Blanc",
+          "descripcion": "Blanco de Bodega La Azul. Sauvignon Blanc.",
+          "precioCentavos": 950000,
+          "codigoBarras": "DEMO-la-azul-sauvignon-blanc",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "sauvignon-blanc",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://bodegalaazul.com/wp-content/uploads/2026/08/azul-sauvignon-blanc-destacado.png"
+        }
+      ]
+    },
+    {
+      "id": "luigi-bosca",
+      "nombre": "Bodega Luigi Bosca",
+      "descripcion": "Fundada por la familia Arizu en 1901, es uno de los mayores emblemas de la elegancia y tradición del vino argentino.",
+      "direccion": "San Martín 2045, M5507 Mayor Drummond, Mendoza",
+      "localidad": "Mayor Drummond",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.0189,
+      "longitud": -68.8687,
+      "sitioWeb": "https://luigibosca.com",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://upload.wikimedia.org/wikipedia/commons/d/d8/Bodega_Luigi_Bosca.jpg"
+      ],
+      "ratingDemostracion": 4.6,
+      "recomendada": true,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "luigi-bosca-cata",
+          "nombre": "Cata guiada",
+          "descripcion": "Recorrido y cata guiada en Finca El Paraíso.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 6500000,
+          "duracionMin": 75,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            }
+          ]
+        },
+        {
+          "id": "luigi-bosca-almuerzo",
+          "nombre": "Almuerzo de pasos o picnic",
+          "descripcion": "Experiencia al aire libre en Finca El Paraíso: almuerzo de pasos o picnic.",
+          "tipoId": "almuerzo",
+          "precioCentavos": 13500000,
+          "duracionMin": 150,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "luigi-bosca-los-nobles-field-blend",
+          "nombre": "Luigi Bosca Los Nobles Field Blend",
+          "descripcion": "Tinto de Bodega Luigi Bosca. Corte de varias cepas.",
+          "precioCentavos": 5400000,
+          "codigoBarras": "DEMO-luigi-bosca-los-nobles-field-blend",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "luigi-bosca-de-sangre-malbec-doc",
+          "nombre": "Luigi Bosca De Sangre Malbec DOC",
+          "descripcion": "Tinto de Bodega Luigi Bosca. Malbec.",
+          "precioCentavos": 2600000,
+          "codigoBarras": "DEMO-luigi-bosca-de-sangre-malbec-doc",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "luigi-bosca-gala-1",
+          "nombre": "Luigi Bosca Gala 1",
+          "descripcion": "Tinto de Bodega Luigi Bosca. Malbec, Petit Verdot, Tannat.",
+          "precioCentavos": 3200000,
+          "codigoBarras": "DEMO-luigi-bosca-gala-1",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "petit-verdot",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "tannat",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "norton",
+      "nombre": "Bodega Norton",
+      "descripcion": "Con más de un siglo de historia, combina tradición vitivinícola masiva y de alta gama con talleres enoturísticos interactivos.",
+      "direccion": "Ruta 15 km 23.5, M5509 Perdriel, Mendoza",
+      "localidad": "Perdriel",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.0901,
+      "longitud": -68.8955,
+      "sitioWeb": "https://www.norton.com.ar",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Paisajes"
+      ],
+      "fotos": [
+        "https://www.norton.com.ar/wp-content/uploads/2023/01/home0002.jpg"
+      ],
+      "ratingDemostracion": 4.5,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "norton-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por la bodega y degustación guiada.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 4000000,
+          "duracionMin": 60,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            }
+          ]
+        },
+        {
+          "id": "norton-taller",
+          "nombre": "Enólogo por un día",
+          "descripcion": "Taller interactivo para armar un vino propio.",
+          "tipoId": "taller",
+          "precioCentavos": 7000000,
+          "duracionMin": 120,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            }
+          ]
+        },
+        {
+          "id": "norton-almuerzo",
+          "nombre": "Almuerzo",
+          "descripcion": "Almuerzo en la bodega.",
+          "tipoId": "almuerzo",
+          "precioCentavos": 10500000,
+          "duracionMin": 120,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "norton-gernot-langes",
+          "nombre": "Gernot Langes",
+          "descripcion": "Tinto de Bodega Norton. Corte de varias cepas.",
+          "precioCentavos": 11500000,
+          "codigoBarras": "DEMO-norton-gernot-langes",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "norton-lote-malbec",
+          "nombre": "Norton Lote Malbec",
+          "descripcion": "Tinto de Bodega Norton. Malbec.",
+          "precioCentavos": 2800000,
+          "codigoBarras": "DEMO-norton-lote-malbec",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "norton-elegido-chardonnay",
+          "nombre": "Norton Elegido Chardonnay",
+          "descripcion": "Blanco de Bodega Norton. Chardonnay.",
+          "precioCentavos": 700000,
+          "codigoBarras": "DEMO-norton-elegido-chardonnay",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "chardonnay",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ruca-malen",
+      "nombre": "Bodega Ruca Malen",
+      "descripcion": "Pionera en menús degustación maridados, reconocida hoy por su enología experimental y cocina de productos de huerta.",
+      "direccion": "Ruta Nacional 7 km 1059, M5509 Perdriel, Mendoza",
+      "localidad": "Perdriel",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.0943,
+      "longitud": -68.9289,
+      "sitioWeb": "https://www.bodegarucamalen.com",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Paisajes"
+      ],
+      "fotos": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/ALTURA_Argentina_Wine_Tourism_-_Bodega_Ruca_Malen_-_panoramio.jpg/1280px-ALTURA_Argentina_Wine_Tourism_-_Bodega_Ruca_Malen_-_panoramio.jpg"
+      ],
+      "ratingDemostracion": 4.6,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "ruca-malen-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por la bodega y degustación guiada.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 4800000,
+          "duracionMin": 60,
+          "horarios": [
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 990
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 990
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 990
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 990
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 990
+            }
+          ]
+        },
+        {
+          "id": "ruca-malen-almuerzo",
+          "nombre": "Menú de pasos de autor",
+          "descripcion": "Visita y almuerzo de pasos con productos de la huerta.",
+          "tipoId": "visita-almuerzo",
+          "precioCentavos": 12000000,
+          "duracionMin": 180,
+          "horarios": [
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 990
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 990
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 990
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 990
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 990
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "ruca-malen-capitulos-malbec",
+          "nombre": "Ruca Malen Capítulos Malbec",
+          "descripcion": "Tinto de Bodega Ruca Malen. Malbec.",
+          "precioCentavos": 1650000,
+          "codigoBarras": "DEMO-ruca-malen-capitulos-malbec",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "ruca-malen-infinitos-cabernet-franc",
+          "nombre": "Ruca Malen Infinitos Cabernet Franc",
+          "descripcion": "Tinto de Bodega Ruca Malen. Cabernet Franc.",
+          "precioCentavos": 1100000,
+          "codigoBarras": "DEMO-ruca-malen-infinitos-cabernet-franc",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-franc",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "septima",
+      "nombre": "Bodega Séptima",
+      "descripcion": "Construida en pirca de piedra por el grupo Raventós Codorníu, ofrece una terraza privilegiada para almuerzos panorámicos.",
+      "direccion": "Ruta Nacional 7 km 1061, M5509 Agrelo, Mendoza",
+      "localidad": "Agrelo",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.0922,
+      "longitud": -68.9435,
+      "sitioWeb": "https://www.bodegaseptima.com",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Arquitectura",
+        "Paisajes"
+      ],
+      "fotos": [
+        "https://www.bodegaseptima.com/wp-content/uploads/2023/09/Foto-portada-edited-1.jpg"
+      ],
+      "ratingDemostracion": 4.5,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "septima-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por la bodega de piedra y degustación guiada.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 4500000,
+          "duracionMin": 60,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1050
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1050
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1050
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1050
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1050
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1050
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1050
+            }
+          ]
+        },
+        {
+          "id": "septima-almuerzo",
+          "nombre": "Almuerzo en la terraza",
+          "descripcion": "Almuerzo con vista panorámica a la cordillera.",
+          "tipoId": "almuerzo",
+          "precioCentavos": 11000000,
+          "duracionMin": 120,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1050
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1050
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1050
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1050
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1050
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1050
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1050
+            }
+          ]
+        },
+        {
+          "id": "septima-tapeo",
+          "nombre": "Tapeo de tarde en la terraza",
+          "descripcion": "Tapeo con vinos de la bodega por la tarde.",
+          "tipoId": "tapeo",
           "precioCentavos": 4000000,
           "duracionMin": 120,
           "horarios": [
             {
               "dia": 1,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 1,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 1,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "tipo": "FLEXIBLE",
+              "desde": 900,
+              "hasta": 1050
             },
             {
               "dia": 2,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 2,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 2,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "tipo": "FLEXIBLE",
+              "desde": 900,
+              "hasta": 1050
             },
             {
               "dia": 3,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 3,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 3,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "tipo": "FLEXIBLE",
+              "desde": 900,
+              "hasta": 1050
             },
             {
               "dia": 4,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 4,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 4,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "tipo": "FLEXIBLE",
+              "desde": 900,
+              "hasta": 1050
             },
             {
               "dia": 5,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 5,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 5,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
+              "tipo": "FLEXIBLE",
+              "desde": 900,
+              "hasta": 1050
             },
             {
               "dia": 6,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
-            },
-            {
-              "dia": 6,
-              "tipo": "FIJO",
-              "desde": 1140,
-              "hasta": 1140
+              "tipo": "FLEXIBLE",
+              "desde": 900,
+              "hasta": 1050
             },
             {
               "dia": 7,
-              "tipo": "FIJO",
-              "desde": 540,
-              "hasta": 540
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 720,
-              "hasta": 720
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 960,
-              "hasta": 960
-            },
-            {
-              "dia": 7,
-              "tipo": "FIJO",
-              "desde": 1140,
-              "hasta": 1140
+              "tipo": "FLEXIBLE",
+              "desde": 900,
+              "hasta": 1050
             }
           ]
         }
       ],
-      "vinos": []
+      "vinos": [
+        {
+          "id": "septima-septimo-dia-malbec",
+          "nombre": "Séptimo Día Malbec",
+          "descripcion": "Tinto de Bodega Séptima. Malbec.",
+          "precioCentavos": 1150000,
+          "codigoBarras": "DEMO-septima-septimo-dia-malbec",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "septima-obra-cabernet-sauvignon",
+          "nombre": "Séptima Obra Cabernet Sauvignon",
+          "descripcion": "Tinto de Bodega Séptima. Cabernet Sauvignon.",
+          "precioCentavos": 1600000,
+          "codigoBarras": "DEMO-septima-obra-cabernet-sauvignon",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "septima-maria-codorniu",
+          "nombre": "María Codorníu",
+          "descripcion": "Espumante de Bodega Séptima. Pinot Noir, Chardonnay.",
+          "precioCentavos": 1050000,
+          "codigoBarras": "DEMO-septima-maria-codorniu",
+          "codigoDePrueba": true,
+          "tipo": "Espumante",
+          "perfil": "Burbujeante",
+          "cepas": [
+            {
+              "cepaId": "pinot-noir",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "chardonnay",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sinfin",
+      "nombre": "Bodega SinFin",
+      "descripcion": "Bodega netamente familiar que rescata un edificio histórico totalmente refuncionalizado, donde se apuesta a una propuesta moderna que une la elaboración de vinos de autor y el arte contemporáneo, con una galería de arte y un wine bar en su antigua cava subterránea.",
+      "direccion": "Ruta Provincial 50 Nº 2668, M5529 Rodeo del Medio, Mendoza",
+      "localidad": "Rodeo del Medio",
+      "zona": "Maipú",
+      "latitud": -32.9708,
+      "longitud": -68.7025,
+      "sitioWeb": "https://www.bodegasinfin.com",
+      "tipo": "Boutique",
+      "caracteristicas": [
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://bodegasinfin.com/wp-content/uploads/2020/06/DSC_4429-Editar.jpg"
+      ],
+      "ratingDemostracion": 4.4,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "sinfin-cata",
+          "nombre": "Visita, cata y galería de arte",
+          "descripcion": "Recorrido por la bodega y su galería de arte contemporáneo, con cata temática.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 3200000,
+          "duracionMin": 75,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 780
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "sinfin-el-interminable",
+          "nombre": "SinFin El Interminable",
+          "descripcion": "Tinto de Bodega SinFin. Corte de varias cepas.",
+          "precioCentavos": 3200000,
+          "codigoBarras": "DEMO-sinfin-el-interminable",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "sinfin-guarda-cabernet-franc",
+          "nombre": "SinFin Guarda Cabernet Franc",
+          "descripcion": "Tinto de Bodega SinFin. Cabernet Franc.",
+          "precioCentavos": 1550000,
+          "codigoBarras": "DEMO-sinfin-guarda-cabernet-franc",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-franc",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "sinfin-fugaz-white-blend",
+          "nombre": "Fugaz White Blend",
+          "descripcion": "Blanco de Bodega SinFin. Corte de varias cepas.",
+          "precioCentavos": 900000,
+          "codigoBarras": "DEMO-sinfin-fugaz-white-blend",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trapiche",
+      "nombre": "Bodega Trapiche",
+      "descripcion": "Ícono de la vitivinicultura argentina desde 1883. Funciona en un fastuoso edificio de estilo renacentista italiano de 1912 rodeado de viñedos con prácticas biodinámicas.",
+      "direccion": "Calle Nueva Mayorga s/n, M5513 Maipú, Mendoza",
+      "localidad": "Coquimbito (General Ortega)",
+      "zona": "Maipú",
+      "latitud": -32.9725,
+      "longitud": -68.7469,
+      "sitioWeb": "https://www.trapiche.com.ar",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://www.trapiche.com.ar/img/poster-video-home.jpg"
+      ],
+      "ratingDemostracion": 4.6,
+      "recomendada": true,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "trapiche-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por el edificio histórico y degustación guiada.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 3800000,
+          "duracionMin": 75,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            }
+          ]
+        },
+        {
+          "id": "trapiche-almuerzo",
+          "nombre": "Almuerzo Km 0 en Espacio Trapiche",
+          "descripcion": "Visita y almuerzo de pasos con productos de la huerta en el restaurante Espacio Trapiche.",
+          "tipoId": "visita-almuerzo",
+          "precioCentavos": 12500000,
+          "duracionMin": 150,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "trapiche-iscay-syrah-viognier",
+          "nombre": "Iscay Syrah – Viognier",
+          "descripcion": "Tinto de Bodega Trapiche. Syrah, Viognier.",
+          "precioCentavos": 6800000,
+          "codigoBarras": "DEMO-trapiche-iscay-syrah-viognier",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "syrah",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "viognier",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "trapiche-terroir-series-malbec",
+          "nombre": "Trapiche Terroir Series Malbec",
+          "descripcion": "Tinto de Bodega Trapiche. Malbec.",
+          "precioCentavos": 4500000,
+          "codigoBarras": "DEMO-trapiche-terroir-series-malbec",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "trapiche-fond-de-cave-gran-reserva-cabernet-sauvignon",
+          "nombre": "Fond de Cave Gran Reserva Cabernet Sauvignon",
+          "descripcion": "Tinto de Bodega Trapiche. Cabernet Sauvignon.",
+          "precioCentavos": 2590000,
+          "codigoBarras": "DEMO-trapiche-fond-de-cave-gran-reserva-cabernet-sauvignon",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vistalba",
+      "nombre": "Bodega Vistalba",
+      "descripcion": "Fundada por Carlos Pulenta, elabora vinos de corte bajo una arquitectura criolla construida con muros de adobe.",
+      "direccion": "Roque Sáenz Peña 3531, M5509 Vistalba, Mendoza",
+      "localidad": "Vistalba",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.0351,
+      "longitud": -68.9151,
+      "sitioWeb": "https://www.bodegavistalba.com",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://www.bodegavistalba.com/images/bg.jpg"
+      ],
+      "ratingDemostracion": 4.5,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "vistalba-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por la bodega de adobe y degustación de vinos de corte.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 4500000,
+          "duracionMin": 60,
+          "horarios": [
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1080
+            }
+          ]
+        },
+        {
+          "id": "vistalba-almuerzo",
+          "nombre": "Almuerzo de pasos",
+          "descripcion": "Almuerzo de pasos maridado.",
+          "tipoId": "almuerzo",
+          "precioCentavos": 11000000,
+          "duracionMin": 150,
+          "horarios": [
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "vistalba-corte-a",
+          "nombre": "Vistalba Corte A",
+          "descripcion": "Tinto de Bodega Vistalba. Malbec, Bonarda, Cabernet Sauvignon.",
+          "precioCentavos": 3800000,
+          "codigoBarras": "DEMO-vistalba-corte-a",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "bonarda",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "vistalba-corte-b",
+          "nombre": "Vistalba Corte B",
+          "descripcion": "Tinto de Bodega Vistalba. Malbec, Cabernet Sauvignon, Bonarda.",
+          "precioCentavos": 2100000,
+          "codigoBarras": "DEMO-vistalba-corte-b",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "bonarda",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "vistalba-tomero-petit-verdot",
+          "nombre": "Tomero Petit Verdot",
+          "descripcion": "Tinto de Bodega Vistalba. Petit Verdot.",
+          "precioCentavos": 1050000,
+          "codigoBarras": "DEMO-vistalba-tomero-petit-verdot",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "petit-verdot",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lopez",
+      "nombre": "Bodegas López",
+      "descripcion": "Fundada en 1898, es el máximo baluarte del \"estilo clásico francés y de largas crianzas\" en grandes toneles de roble. Es una de las estructuras más imponentes y tradicionales del departamento.",
+      "direccion": "Ozamis Norte 375, M5511 General Gutiérrez, Mendoza",
+      "localidad": "General Gutiérrez",
+      "zona": "Maipú",
+      "latitud": -32.9633,
+      "longitud": -68.7838,
+      "sitioWeb": "https://bodegaslopez.com.ar",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://bodegaslopez.com.ar/wp-content/uploads/2019/04/resto.jpg"
+      ],
+      "ratingDemostracion": 4.4,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "lopez-visita-cata",
+          "nombre": "Visita guiada y cata",
+          "descripcion": "Recorrido por la bodega y sus grandes toneles, con cata básica.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 2000000,
+          "duracionMin": 60,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 960
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 960
+            }
+          ]
+        },
+        {
+          "id": "lopez-almuerzo",
+          "nombre": "Almuerzo en Rincón de López",
+          "descripcion": "Almuerzo de pasos en el restaurante Rincón de López.",
+          "tipoId": "almuerzo",
+          "precioCentavos": 7500000,
+          "duracionMin": 120,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 960
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 960
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "lopez-montchenot-15-anos",
+          "nombre": "Montchenot 15 Años",
+          "descripcion": "Tinto de Bodegas López. Corte de varias cepas.",
+          "precioCentavos": 4800000,
+          "codigoBarras": "DEMO-lopez-montchenot-15-anos",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "lopez-chateau-vieux",
+          "nombre": "Château Vieux",
+          "descripcion": "Tinto de Bodegas López. Corte de varias cepas.",
+          "precioCentavos": 1630000,
+          "codigoBarras": "DEMO-lopez-chateau-vieux",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "lopez-rincon-de-lopez-malbec",
+          "nombre": "Rincón de López Malbec",
+          "descripcion": "Tinto de Bodegas López. Malbec.",
+          "precioCentavos": 620000,
+          "codigoBarras": "DEMO-lopez-rincon-de-lopez-malbec",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "casa-vigil",
+      "nombre": "Casa Vigil",
+      "descripcion": "El universo del aclamado enólogo Alejandro Vigil. Un restaurante y bodega galardonado con estrella Michelin, inspirado artísticamente en la Divina Comedia de Dante Alighieri.",
+      "direccion": "Videla Aranda 7008, M5519 Maipú, Mendoza",
+      "localidad": "Chachingo (Cruz de Piedra)",
+      "zona": "Maipú",
+      "latitud": -33.0448,
+      "longitud": -68.7241,
+      "sitioWeb": "https://www.universovigil.com",
+      "tipo": "Boutique",
+      "caracteristicas": [
+        "Arquitectura"
+      ],
+      "fotos": [],
+      "ratingDemostracion": 4.8,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "casa-vigil-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por la bodega y degustación de vinos El Enemigo.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 5500000,
+          "duracionMin": 60,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1440
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1440
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1440
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1440
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1440
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1440
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 930
+            }
+          ]
+        },
+        {
+          "id": "casa-vigil-menu",
+          "nombre": "Menú de pasos maridado",
+          "descripcion": "Almuerzo o cena de pasos maridado; desde $141.000 hasta $216.000 por persona según la línea de vinos. Los domingos, solo almuerzo.",
+          "tipoId": "visita-almuerzo",
+          "precioCentavos": 14100000,
+          "duracionMin": 180,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1440
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1440
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1440
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1440
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1440
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1440
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 930
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "casa-vigil-gran-enemigo-gualtallary",
+          "nombre": "Gran Enemigo Gualtallary",
+          "descripcion": "Tinto de Casa Vigil. Cabernet Franc.",
+          "precioCentavos": 6400000,
+          "codigoBarras": "DEMO-casa-vigil-gran-enemigo-gualtallary",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-franc",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "casa-vigil-el-enemigo-chardonnay",
+          "nombre": "El Enemigo Chardonnay",
+          "descripcion": "Blanco de Casa Vigil. Chardonnay.",
+          "precioCentavos": 2600000,
+          "codigoBarras": "DEMO-casa-vigil-el-enemigo-chardonnay",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "chardonnay",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "casa-vigil-el-enemigo-malbec",
+          "nombre": "El Enemigo Malbec",
+          "descripcion": "Tinto de Casa Vigil. Malbec.",
+          "precioCentavos": 2400000,
+          "codigoBarras": "DEMO-casa-vigil-el-enemigo-malbec",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "santa-julia",
+      "nombre": "Bodega Santa Julia",
+      "descripcion": "Sede histórica de la familia Zuccardi y pionera en el enoturismo del país. Un entorno familiar inmejorable que combina vinos sustentables con una gran producción de olivares premium.",
+      "direccion": "Ruta Provincial 33, km 7,5, M5531 Maipú, Mendoza",
+      "localidad": "Maipú",
+      "zona": "Maipú",
+      "latitud": -32.968,
+      "longitud": -68.5697,
+      "sitioWeb": "https://www.santajulia.com.ar",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Paisajes"
+      ],
+      "fotos": [],
+      "ratingDemostracion": 4.5,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "santa-julia-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por la bodega y degustación de vinos sustentables.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 3500000,
+          "duracionMin": 60,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 1020
+            }
+          ]
+        },
+        {
+          "id": "santa-julia-almuerzo",
+          "nombre": "Almuerzo criollo",
+          "descripcion": "Visita y almuerzo criollo en la Casa del Visitante o en Pan y Olivo.",
+          "tipoId": "visita-almuerzo",
+          "precioCentavos": 8500000,
+          "duracionMin": 150,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "santa-julia-magna",
+          "nombre": "Santa Julia Magna",
+          "descripcion": "Tinto de Bodega Santa Julia. Corte de varias cepas.",
+          "precioCentavos": 1250000,
+          "codigoBarras": "DEMO-santa-julia-magna",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "santa-julia-tintillo",
+          "nombre": "Tintillo",
+          "descripcion": "Tinto de Bodega Santa Julia. Malbec, Bonarda.",
+          "precioCentavos": 780000,
+          "codigoBarras": "DEMO-santa-julia-tintillo",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "bonarda",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "santa-julia-organico-malbec",
+          "nombre": "Santa Julia Orgánico Malbec",
+          "descripcion": "Tinto de Bodega Santa Julia. Malbec.",
+          "precioCentavos": 700000,
+          "codigoBarras": "DEMO-santa-julia-organico-malbec",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rutini",
+      "nombre": "Rutini Wines",
+      "descripcion": "Una de las bodegas más tradicionales de Argentina, fundada en 1885. Su bodega de Tupungato, en el Valle de Uco, elabora los vinos de alta gama de la casa, como Apartado y Antología.",
+      "direccion": "Ruta Provincial 89 km 10,5, M5561 Tupungato, Mendoza",
+      "localidad": "Gualtallary, Tupungato",
+      "zona": "Valle de Uco",
+      "latitud": -33.4523,
+      "longitud": -69.2088,
+      "sitioWeb": "https://rutiniwines.com",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Paisajes"
+      ],
+      "fotos": [
+        "https://rutiniwines.com/wp-content/uploads/2024/06/historia.jpg"
+      ],
+      "ratingDemostracion": 4.7,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "rutini-cata",
+          "nombre": "Cata de alta gama",
+          "descripcion": "Experiencia ultra premium con cata de los vinos de alta gama de la bodega. Los sábados, solo con reserva.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 11000000,
+          "duracionMin": 105,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 960
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 960
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 960
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 960
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 540,
+              "hasta": 780
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "rutini-apartado-gran-malbec",
+          "nombre": "Apartado Gran Malbec",
+          "descripcion": "Tinto de Rutini Wines. Malbec.",
+          "precioCentavos": 5500000,
+          "codigoBarras": "DEMO-rutini-apartado-gran-malbec",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "rutini-coleccion-cabernet-franc",
+          "nombre": "Rutini Colección Cabernet Franc",
+          "descripcion": "Tinto de Rutini Wines. Cabernet Franc.",
+          "precioCentavos": 2400000,
+          "codigoBarras": "DEMO-rutini-coleccion-cabernet-franc",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-franc",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "rutini-antologia",
+          "nombre": "Rutini Antología",
+          "descripcion": "Tinto de Rutini Wines. Corte de varias cepas.",
+          "precioCentavos": 8500000,
+          "codigoBarras": "DEMO-rutini-antologia",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "monteviejo",
+      "nombre": "Bodega Monteviejo (Clos de los Siete)",
+      "descripcion": "La primera bodega de Clos de los Siete, el proyecto impulsado por Michel Rolland en Vista Flores. Elabora Lindaflor y Petite Fleur frente a la Cordillera de los Andes.",
+      "direccion": "Clodomiro Silva s/n (Clos de los Siete), M5565 Vista Flores, Mendoza",
+      "localidad": "Vista Flores, Tunuyán",
+      "zona": "Valle de Uco",
+      "latitud": -33.6658,
+      "longitud": -69.2322,
+      "sitioWeb": "https://monteviejo.com.ar",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Paisajes",
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://monteviejo.com.ar/cdn/shop/files/bodega_general.jpg"
+      ],
+      "ratingDemostracion": 4.6,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "monteviejo-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por la bodega y degustación guiada.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 5500000,
+          "duracionMin": 60,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            }
+          ]
+        },
+        {
+          "id": "monteviejo-almuerzo",
+          "nombre": "Almuerzo de pasos",
+          "descripcion": "Visita y almuerzo en el restaurante de pasos de la bodega.",
+          "tipoId": "visita-almuerzo",
+          "precioCentavos": 11500000,
+          "duracionMin": 150,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "monteviejo-lindaflor-malbec",
+          "nombre": "Lindaflor Malbec",
+          "descripcion": "Tinto de Bodega Monteviejo (Clos de los Siete). Malbec.",
+          "precioCentavos": 5800000,
+          "codigoBarras": "DEMO-monteviejo-lindaflor-malbec",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "monteviejo-clos-de-los-siete",
+          "nombre": "Clos de los Siete",
+          "descripcion": "Tinto de Bodega Monteviejo (Clos de los Siete). Malbec y otras cepas.",
+          "precioCentavos": 1650000,
+          "codigoBarras": "DEMO-monteviejo-clos-de-los-siete",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "monteviejo-petite-fleur-chardonnay",
+          "nombre": "Petite Fleur Chardonnay",
+          "descripcion": "Blanco de Bodega Monteviejo (Clos de los Siete). Chardonnay.",
+          "precioCentavos": 1500000,
+          "codigoBarras": "DEMO-monteviejo-petite-fleur-chardonnay",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "chardonnay",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "terrazas",
+      "nombre": "Terrazas de los Andes",
+      "descripcion": "Bodega del grupo Moët Hennessy instalada en una construcción histórica de Perdriel, pionera en elaborar cada varietal según la altitud ideal de su viñedo.",
+      "direccion": "Thames y Cochabamba, M5509 Perdriel, Mendoza",
+      "localidad": "Perdriel",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.0822,
+      "longitud": -68.8964,
+      "sitioWeb": "https://www.terrazasdelosandes.com",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://www.terrazasdelosandes.com/sites/default/files/styles/header_slide_d_/public/media/image/1-Slider%20Conoc%C3%A9%20nuestras%20exp.%20enotur%C3%ADsticas.JPG.webp"
+      ],
+      "ratingDemostracion": 4.6,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "terrazas-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por la bodega histórica y degustación guiada.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 5000000,
+          "duracionMin": 60,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1080
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1080
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1080
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1080
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1080
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1080
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1080
+            }
+          ]
+        },
+        {
+          "id": "terrazas-almuerzo",
+          "nombre": "Almuerzo en la Casa de Huéspedes",
+          "descripcion": "Visita y almuerzo en la histórica Casa de Huéspedes de la bodega.",
+          "tipoId": "visita-almuerzo",
+          "precioCentavos": 12000000,
+          "duracionMin": 150,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            },
+            {
+              "dia": 7,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1080
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "terrazas-de-los-andes-parcel-malbec",
+          "nombre": "Terrazas de los Andes Parcel Malbec",
+          "descripcion": "Tinto de Terrazas de los Andes. Malbec.",
+          "precioCentavos": 13000000,
+          "codigoBarras": "DEMO-terrazas-de-los-andes-parcel-malbec",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "terrazas-de-los-andes-grand-cabernet-sauvignon",
+          "nombre": "Terrazas de los Andes Grand Cabernet Sauvignon",
+          "descripcion": "Tinto de Terrazas de los Andes. Cabernet Sauvignon.",
+          "precioCentavos": 3400000,
+          "codigoBarras": "DEMO-terrazas-de-los-andes-grand-cabernet-sauvignon",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "terrazas-de-los-andes-reserva-torrontes",
+          "nombre": "Terrazas de los Andes Reserva Torrontés",
+          "descripcion": "Blanco de Terrazas de los Andes. Torrontés.",
+          "precioCentavos": 1150000,
+          "codigoBarras": "DEMO-terrazas-de-los-andes-reserva-torrontes",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "torrontes",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nieto-senetiner",
+      "nombre": "Nieto Senetiner",
+      "descripcion": "Bodega con más de un siglo de historia en Vistalba, Luján de Cuyo, que recibe a sus visitantes en una casona tradicional rodeada de viñedos, con almuerzos de cocina criolla.",
+      "direccion": "Guardia Vieja 2000, M5509 Vistalba, Mendoza",
+      "localidad": "Vistalba",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.0138,
+      "longitud": -68.91,
+      "sitioWeb": "https://www.nietosenetiner.com",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Arquitectura"
+      ],
+      "fotos": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/ALTURA_Argentina_Wine_Tourism_-_Bodega_Nieto_Senetiner_-_panoramio.jpg/1280px-ALTURA_Argentina_Wine_Tourism_-_Bodega_Nieto_Senetiner_-_panoramio.jpg"
+      ],
+      "ratingDemostracion": 4.5,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "nieto-senetiner-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por la bodega y degustación guiada.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 4200000,
+          "duracionMin": 60,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 600,
+              "hasta": 1020
+            }
+          ]
+        },
+        {
+          "id": "nieto-senetiner-almuerzo",
+          "nombre": "Almuerzo criollo",
+          "descripcion": "Almuerzo completo de cocina criolla.",
+          "tipoId": "almuerzo",
+          "precioCentavos": 9500000,
+          "duracionMin": 120,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "nieto-senetiner-don-nicanor-barrel-select-malbec",
+          "nombre": "Don Nicanor Barrel Select Malbec",
+          "descripcion": "Tinto de Nieto Senetiner. Malbec.",
+          "precioCentavos": 2200000,
+          "codigoBarras": "DEMO-nieto-senetiner-don-nicanor-barrel-select-malbec",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "nieto-senetiner-don-nicanor-villa-blanca-bonarda",
+          "nombre": "Don Nicanor Villa Blanca Bonarda",
+          "descripcion": "Tinto de Nieto Senetiner. Bonarda.",
+          "precioCentavos": 3500000,
+          "codigoBarras": "DEMO-nieto-senetiner-don-nicanor-villa-blanca-bonarda",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "bonarda",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "nieto-senetiner-emilia-malbec-bonarda",
+          "nombre": "Emilia Malbec – Bonarda",
+          "descripcion": "Tinto de Nieto Senetiner. Malbec, Bonarda.",
+          "precioCentavos": 750000,
+          "codigoBarras": "DEMO-nieto-senetiner-emilia-malbec-bonarda",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "bonarda",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "decero",
+      "nombre": "Finca Decero",
+      "descripcion": "Bodega de Agrelo dedicada a un único viñedo, Remolinos, del que surgen todos sus vinos, con un restaurante frente a la Cordillera de los Andes.",
+      "direccion": "Bajo Las Cumbres 9003, M5509 Agrelo, Mendoza",
+      "localidad": "Agrelo",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.1224,
+      "longitud": -68.9511,
+      "sitioWeb": "https://decero.com",
+      "tipo": "Boutique",
+      "caracteristicas": [
+        "Paisajes"
+      ],
+      "fotos": [],
+      "ratingDemostracion": 4.6,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "decero-cata",
+          "nombre": "Visita y cata",
+          "descripcion": "Recorrido por la bodega y degustación de vinos del viñedo Remolinos.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 4500000,
+          "duracionMin": 60,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 570,
+              "hasta": 1020
+            }
+          ]
+        },
+        {
+          "id": "decero-almuerzo",
+          "nombre": "Almuerzo frente a la montaña",
+          "descripcion": "Almuerzo a la carta o de pasos con vista a la cordillera.",
+          "tipoId": "almuerzo",
+          "precioCentavos": 11000000,
+          "duracionMin": 150,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 2,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 3,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 4,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 5,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            },
+            {
+              "dia": 6,
+              "tipo": "FLEXIBLE",
+              "desde": 720,
+              "hasta": 1020
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "decero-mini-ediciones-petit-verdot",
+          "nombre": "Decero Mini Ediciones Petit Verdot",
+          "descripcion": "Tinto de Finca Decero. Petit Verdot.",
+          "precioCentavos": 3400000,
+          "codigoBarras": "DEMO-decero-mini-ediciones-petit-verdot",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "petit-verdot",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "decero-owl-bite-cabernet-sauvignon",
+          "nombre": "Decero Owl Bite Cabernet Sauvignon",
+          "descripcion": "Tinto de Finca Decero. Cabernet Sauvignon.",
+          "precioCentavos": 2400000,
+          "codigoBarras": "DEMO-decero-owl-bite-cabernet-sauvignon",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "decero-remolinos-vineyard-malbec",
+          "nombre": "Decero Remolinos Vineyard Malbec",
+          "descripcion": "Tinto de Finca Decero. Malbec.",
+          "precioCentavos": 1450000,
+          "codigoBarras": "DEMO-decero-remolinos-vineyard-malbec",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "demo-inactiva",
