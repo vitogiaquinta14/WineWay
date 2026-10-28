@@ -16,7 +16,8 @@
     "db:init": "prisma migrate deploy && prisma generate && tsx prisma/seed.ts",
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "codigos": "node scripts/generar-codigos-de-prueba.mjs"
   },
   "dependencies": {
     "@prisma/adapter-better-sqlite3": "7.10.1",

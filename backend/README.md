@@ -36,7 +36,7 @@ La estructura y relaciones están definidas en `prisma/schema.prisma`. Los datos
 ## Base y catálogo
 
 - `prisma/schema.prisma`: entidades y relaciones; `prisma/migrations/`: estructura e integridad.
-- `prisma/data/catalogo.json`: bodegas, experiencias, horarios, vinos, cepas, tipos y ratings **de demostración**. Precios ARS y horarios son ilustrativos, no tarifas verificadas. Los códigos `DEMO-...` son de prueba; reemplazarlos por códigos verificados para reconocer botellas reales. Una coincidencia desconocida ofrece carga manual privada.
+- `prisma/data/catalogo.json`: bodegas, experiencias, horarios, vinos, cepas, tipos y ratings **de demostración**. Precios ARS y horarios son ilustrativos, no tarifas verificadas. Los códigos de barras con prefijo `200` son internos de prueba (rango GS1 reservado para uso interno): se pueden escanear con `docs/codigos-de-prueba.html`. Para reconocer botellas reales, reemplazarlos por el EAN impreso en cada botella y poner `codigoDePrueba: false`. Una coincidencia desconocida ofrece carga manual privada.
 - `prisma/seed.ts`: valida ese archivo y lo importa con Prisma, dentro de una transacción. Exige al menos una cepa por vino. Repetir `db:seed` actualiza el catálogo desde el archivo; no borra datos de usuarios. Los registros que se retiran se marcan inactivos en el archivo.
 - `db:init`: aplica migraciones, genera cliente y carga catálogo. No usar `db push`: omitiría las restricciones SQL personalizadas.
 - `db:migrate`: crear una nueva migración tras modificar el schema. Revisar el SQL y conservar CHECK/FK personalizados cuando SQLite reconstruya tablas; ejecutar las pruebas antes de usarla sobre datos existentes.

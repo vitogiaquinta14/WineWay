@@ -47,7 +47,9 @@ export default function EscanearScreen() {
       setFase('resultado');
     } catch (e) {
       if (e instanceof ErrorAPI && e.status === 404) {
-        setError('Código no encontrado. Podés cargar el vino de forma privada.');
+        setError(
+          `Código ${valor.trim()} no encontrado en el catálogo. Podés cargar el vino de forma privada.`,
+        );
         setFase('manual');
       } else {
         setError((e as Error).message);

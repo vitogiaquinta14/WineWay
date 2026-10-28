@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Códigos de prueba</title>
+  <style>
+    :root { --malbec: #722F37; --crema: #F7F2EA; --carbon: #252525; --borde: #E6DED2; --tenue: #8A807A; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 24px 16px; font-family: system-ui, sans-serif; background: var(--crema); color: var(--carbon); }
+    header, section { max-width: 1100px; margin: 0 auto 24px; }
+    h1 { color: var(--malbec); margin: 0 0 8px; }
+    header p { margin: 4px 0; line-height: 1.5; }
+    h2 { font-size: 18px; border-bottom: 2px solid var(--malbec); padding-bottom: 6px; }
+    h2 span { font-weight: 400; font-size: 13px; color: var(--tenue); }
+    .grilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+    figure { margin: 0; background: #fff; border: 1px solid var(--borde); border-radius: 10px; padding: 12px; text-align: center; break-inside: avoid; }
+    svg.codigo { width: 100%; height: auto; }
+    figcaption { font-size: 13px; margin-top: 4px; line-height: 1.4; }
+    small { color: var(--tenue); }
+    @media print { body { background: #fff; padding: 0; } .pantalla { display: none; } section { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>WineWay · Códigos de prueba del escáner</h1>
+    <p>77 vinos del catálogo. Abrí <strong>Escanear</strong> en la app y apuntá la cámara a un código: tiene que aparecer ese vino.</p>
+    <p class="pantalla">Funciona desde la pantalla (con buen brillo) o impreso. Si no lee, acercá o alejá un poco el teléfono.</p>
+    <p>Los códigos con prefijo 200 son internos de prueba (no corresponden a botellas reales). Generado desde <code>backend/prisma/data/catalogo.json</code> con <code>npm run codigos --prefix backend</code>.</p>
+  </header>
+    <section>
+      <h2>Catena Zapata <span>Luján de Cuyo</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000015"></svg>
+        <figcaption><strong>Catena Zapata Malbec Argentino</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000022"></svg>
+        <figcaption><strong>Adrianna Vineyard River Stones</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000039"></svg>
+        <figcaption><strong>White Bones</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000046"></svg>
+        <figcaption><strong>Catena Zapata Estiba Reservada</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Familia Zuccardi <span>Valle de Uco</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000053"></svg>
+        <figcaption><strong>Concreto Malbec</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000060"></svg>
+        <figcaption><strong>Piedra Infinita</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000077"></svg>
+        <figcaption><strong>Aluvional Gualtallary</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000084"></svg>
+        <figcaption><strong>Fósil</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Bodega Salentein <span>Valle de Uco</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000091"></svg>
+        <figcaption><strong>Salentein Single Vineyard</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000107"></svg>
+        <figcaption><strong>Salentein Numina Gran Corte</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000114"></svg>
+        <figcaption><strong>Salentein Primus Malbec</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000121"></svg>
+        <figcaption><strong>Salentein Reserve Sauvignon Blanc</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Chandon Argentina <span>Luján de Cuyo</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000138"></svg>
+        <figcaption><strong>Chandon Cuvée Reserve Blanc de Noirs</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000145"></svg>
+        <figcaption><strong>Chandon Extra Brut</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000152"></svg>
+        <figcaption><strong>Chandon Délice</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Andeluna Cellars <span>Valle de Uco</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000169"></svg>
+        <figcaption><strong>Andeluna Pasionado Cuatro Cepas</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000176"></svg>
+        <figcaption><strong>Andeluna Altitud Merlot</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000183"></svg>
+        <figcaption><strong>Andeluna Enólogos Cabernet Franc</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Alfa Crux (ex O. Fournier) <span>Valle de Uco</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000190"></svg>
+        <figcaption><strong>Alfa Crux Malbec</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000206"></svg>
+        <figcaption><strong>Crux Beta Tempranillo</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000213"></svg>
+        <figcaption><strong>Crux Sauvignon Blanc</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Achaval-Ferrer <span>Luján de Cuyo</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000220"></svg>
+        <figcaption><strong>Finca Altamira</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000237"></svg>
+        <figcaption><strong>Achaval-Ferrer Quimera</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000244"></svg>
+        <figcaption><strong>Finca Bella Vista</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Casarena Bodega y Viñedos <span>Luján de Cuyo</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000251"></svg>
+        <figcaption><strong>Owen's Vineyard Cabernet Sauvignon</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000268"></svg>
+        <figcaption><strong>Jamilla's Vineyard Malbec</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000275"></svg>
+        <figcaption><strong>Casarena 505 Syrah</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Bodega DiamAndes <span>Valle de Uco</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000282"></svg>
+        <figcaption><strong>DiamAndes de Uco Gran Reserva</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000299"></svg>
+        <figcaption><strong>DiamAndes de Uco Viognier</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000305"></svg>
+        <figcaption><strong>Perlita Malbec – Syrah</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Bodega La Azul <span>Valle de Uco</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000312"></svg>
+        <figcaption><strong>La Azul Gran Reserva</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000329"></svg>
+        <figcaption><strong>La Azul Reserva Cabernet Franc</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000336"></svg>
+        <figcaption><strong>La Azul Sauvignon Blanc</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Bodega Luigi Bosca <span>Luján de Cuyo</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000343"></svg>
+        <figcaption><strong>Luigi Bosca Los Nobles Field Blend</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000350"></svg>
+        <figcaption><strong>Luigi Bosca De Sangre Malbec DOC</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000367"></svg>
+        <figcaption><strong>Luigi Bosca Gala 1</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Bodega Norton <span>Luján de Cuyo</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000374"></svg>
+        <figcaption><strong>Gernot Langes</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000381"></svg>
+        <figcaption><strong>Norton Lote Malbec</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000398"></svg>
+        <figcaption><strong>Norton Elegido Chardonnay</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Bodega Ruca Malen <span>Luján de Cuyo</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000404"></svg>
+        <figcaption><strong>Ruca Malen Capítulos Malbec</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000411"></svg>
+        <figcaption><strong>Ruca Malen Infinitos Cabernet Franc</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Bodega Séptima <span>Luján de Cuyo</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000428"></svg>
+        <figcaption><strong>Séptimo Día Malbec</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000435"></svg>
+        <figcaption><strong>Séptima Obra Cabernet Sauvignon</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000442"></svg>
+        <figcaption><strong>María Codorníu</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Bodega SinFin <span>Maipú</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000459"></svg>
+        <figcaption><strong>SinFin El Interminable</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000466"></svg>
+        <figcaption><strong>SinFin Guarda Cabernet Franc</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000473"></svg>
+        <figcaption><strong>Fugaz White Blend</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Bodega Trapiche <span>Maipú</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000480"></svg>
+        <figcaption><strong>Iscay Syrah – Viognier</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000497"></svg>
+        <figcaption><strong>Trapiche Terroir Series Malbec</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000503"></svg>
+        <figcaption><strong>Fond de Cave Gran Reserva Cabernet Sauvignon</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Bodega Vistalba <span>Luján de Cuyo</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000510"></svg>
+        <figcaption><strong>Vistalba Corte A</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000527"></svg>
+        <figcaption><strong>Vistalba Corte B</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000534"></svg>
+        <figcaption><strong>Tomero Petit Verdot</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Bodegas López <span>Maipú</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000541"></svg>
+        <figcaption><strong>Montchenot 15 Años</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000558"></svg>
+        <figcaption><strong>Château Vieux</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000565"></svg>
+        <figcaption><strong>Rincón de López Malbec</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Casa Vigil <span>Maipú</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000572"></svg>
+        <figcaption><strong>Gran Enemigo Gualtallary</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000589"></svg>
+        <figcaption><strong>El Enemigo Chardonnay</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000596"></svg>
+        <figcaption><strong>El Enemigo Malbec</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Bodega Santa Julia <span>Maipú</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000602"></svg>
+        <figcaption><strong>Santa Julia Magna</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000619"></svg>
+        <figcaption><strong>Tintillo</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000626"></svg>
+        <figcaption><strong>Santa Julia Orgánico Malbec</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Rutini Wines <span>Valle de Uco</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000633"></svg>
+        <figcaption><strong>Apartado Gran Malbec</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000640"></svg>
+        <figcaption><strong>Rutini Colección Cabernet Franc</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000657"></svg>
+        <figcaption><strong>Rutini Antología</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Bodega Monteviejo (Clos de los Siete) <span>Valle de Uco</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000664"></svg>
+        <figcaption><strong>Lindaflor Malbec</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000671"></svg>
+        <figcaption><strong>Clos de los Siete</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000688"></svg>
+        <figcaption><strong>Petite Fleur Chardonnay</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Terrazas de los Andes <span>Luján de Cuyo</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000695"></svg>
+        <figcaption><strong>Terrazas de los Andes Parcel Malbec</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000701"></svg>
+        <figcaption><strong>Terrazas de los Andes Grand Cabernet Sauvignon</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000718"></svg>
+        <figcaption><strong>Terrazas de los Andes Reserva Torrontés</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Nieto Senetiner <span>Luján de Cuyo</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000725"></svg>
+        <figcaption><strong>Don Nicanor Barrel Select Malbec</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000732"></svg>
+        <figcaption><strong>Don Nicanor Villa Blanca Bonarda</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000749"></svg>
+        <figcaption><strong>Emilia Malbec – Bonarda</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Finca Decero <span>Luján de Cuyo</span></h2>
+      <div class="grilla">
+      <figure>
+        <svg class="codigo" data-codigo="2000000000756"></svg>
+        <figcaption><strong>Decero Mini Ediciones Petit Verdot</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000763"></svg>
+        <figcaption><strong>Decero Owl Bite Cabernet Sauvignon</strong></figcaption>
+      </figure>
+      <figure>
+        <svg class="codigo" data-codigo="2000000000770"></svg>
+        <figcaption><strong>Decero Remolinos Vineyard Malbec</strong></figcaption>
+      </figure>
+      </div>
+    </section>
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+  <script>
+    document.querySelectorAll('svg.codigo').forEach((svg) => {
+      const codigo = svg.dataset.codigo;
+      JsBarcode(svg, codigo, { format: /^\d{13}$/.test(codigo) ? 'EAN13' : 'CODE128', height: 70, margin: 8, fontSize: 16 });
+    });
+  </script>
+</body>
+</html>
