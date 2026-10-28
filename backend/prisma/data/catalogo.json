@@ -594,6 +594,22 @@
             }
           ],
           "imagenUrl": "https://zuccardiwines.com/wp-content/uploads/2024/03/1.fosil_.png"
+        },
+        {
+          "id": "zuccardi-serie-a-malbec",
+          "nombre": "Zuccardi Serie A Malbec",
+          "descripcion": "Tinto de Familia Zuccardi. Malbec.",
+          "precioCentavos": 1950000,
+          "codigoBarras": "7791728022841",
+          "codigoDePrueba": false,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ]
         }
       ]
     },
