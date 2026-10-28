@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { useRef, useState } from 'react';
-import { View, type ScrollView } from 'react-native';
+import { View, type ScrollViewInstance } from 'react-native';
 import { CamposCuenta } from '@/components/auth/campos-cuenta';
 import { AppText } from '@/components/ui/app-text';
 import { Button } from '@/components/ui/button';
@@ -27,7 +27,7 @@ function valoresUsuario(usuario: Usuario | null) {
 export default function PerfilScreen() {
   const { usuario, actualizarPerfil, cerrarSesion } = useSesion();
   const formulario = useFormularioCuenta(valoresUsuario(usuario), 'perfil', usuario ?? undefined);
-  const scroll = useRef<ScrollView>(null);
+  const scroll = useRef<ScrollViewInstance>(null);
   const [editando, setEditando] = useState(false);
   const [guardando, setGuardando] = useState(false);
   const [guardado, setGuardado] = useState(false);

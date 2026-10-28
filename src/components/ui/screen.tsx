@@ -1,5 +1,5 @@
 import type { ReactNode, Ref } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View, type ScrollViewInstance } from 'react-native';
 import { SafeAreaView, type Edge } from 'react-native-safe-area-context';
 
 import { Colors, Spacing } from '@/constants/theme';
@@ -13,7 +13,7 @@ type ScreenProps = {
   /** Bordes con safe area. Por defecto solo el superior (la tab bar maneja el inferior). */
   edges?: Edge[];
   /** Referencia al ScrollView (solo con scroll), por ejemplo para scrollToEnd. */
-  scrollRef?: Ref<ScrollView>;
+  scrollRef?: Ref<ScrollViewInstance>;
 };
 
 export function Screen({

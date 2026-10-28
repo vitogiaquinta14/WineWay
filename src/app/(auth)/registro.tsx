@@ -1,6 +1,6 @@
 import { router } from "expo-router";
 import { useRef, useState } from "react";
-import { StyleSheet, View, type ScrollView } from "react-native";
+import { StyleSheet, View, type ScrollViewInstance } from "react-native";
 
 import { AuthHeader } from "@/components/auth/auth-header";
 import { CamposCuenta } from "@/components/auth/campos-cuenta";
@@ -15,7 +15,7 @@ import { cuentaVacia } from "@/utils/validar-cuenta";
 
 export default function RegistroScreen() {
   const formulario = useFormularioCuenta(cuentaVacia, "registro");
-  const scroll = useRef<ScrollView>(null);
+  const scroll = useRef<ScrollViewInstance>(null);
   const [enviando, setEnviando] = useState(false);
   const { registrarse } = useSesion();
   const enviar = async () => {
