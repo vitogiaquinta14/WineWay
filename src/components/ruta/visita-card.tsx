@@ -3,10 +3,10 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { AppText } from '@/components/ui/app-text';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
-import { Icon, type IconName } from '@/components/ui/icon';
+import { Icon } from '@/components/ui/icon';
 import { Colors, Spacing } from '@/constants/theme';
 import type { Bodega } from '@/data/bodegas';
-import type { Visita } from '@/data/rutas';
+import { horaMendoza, type Visita } from '@/data/rutas';
 
 type VisitaCardProps = {
   visita: Visita;
@@ -14,8 +14,7 @@ type VisitaCardProps = {
   onPress: () => void;
   /** Por defecto "Planificado": la visita está planificada, no reservada. */
   badge?: string;
-  /** Sin onEdit/onDelete no se muestran acciones (ej. en una propuesta). */
-  onEdit?: () => void;
+  /** Sin onDelete no se muestra el tachito (ej. en una propuesta). */
   onDelete?: () => void;
 };
 
@@ -25,13 +24,12 @@ export function VisitaCard({
   bodega,
   onPress,
   badge = 'Planificado',
-  onEdit,
   onDelete,
 }: VisitaCardProps) {
   return (
     <Card onPress={onPress} style={styles.card} accessibilityLabel={bodega.nombre}>
       <View style={styles.time}>
-        <AppText variant="subtitle">{visita.hora ?? '--:--'}</AppText>
+        <AppText variant="subtitle">{horaMendoza(visita.inicio) ?? '--:--'}</AppText>
         <AppText variant="caption">HS</AppText>
       </View>
 
@@ -40,43 +38,27 @@ export function VisitaCard({
           {bodega.nombre}
         </AppText>
         <AppText variant="caption" numberOfLines={1}>
-          {visita.actividad}
+          {visita.nombreExperiencia}
         </AppText>
         <AppText variant="caption">Duración: {visita.duracionMin} min</AppText>
       </View>
 
       <View style={styles.side}>
         <Badge label={badge} tone="terracota" />
-        {(onEdit || onDelete) && (
-          <View style={styles.actions}>
-            {onEdit && (
-              <SmallAction icon="edit" label={`Editar ${bodega.nombre}`} onPress={onEdit} />
-            )}
-            {onDelete && (
-              <SmallAction icon="delete" label={`Quitar ${bodega.nombre}`} onPress={onDelete} />
-            )}
-          </View>
+        {onDelete && (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={`Quitar ${bodega.nombre}`}
+            hitSlop={8}
+            onPress={onDelete}>
+            <Icon name="delete" size={18} color="malbec" />
+          </Pressable>
         )}
       </View>
     </Card>
   );
 }
 
-function SmallAction({
-  icon,
-  label,
-  onPress,
-}: {
-  icon: IconName;
-  label: string;
-  onPress: () => void;
-}) {
-  return (
-    <Pressable accessibilityRole="button" accessibilityLabel={label} hitSlop={8} onPress={onPress}>
-      <Icon name={icon} size={16} color="malbec" />
-    </Pressable>
-  );
-}
 
 const styles = StyleSheet.create({
   card: {
@@ -101,10 +83,6 @@ const styles = StyleSheet.create({
   side: {
     alignItems: 'flex-end',
     justifyContent: 'space-between',
-    gap: Spacing.md,
-  },
-  actions: {
-    flexDirection: 'row',
     gap: Spacing.md,
   },
 });

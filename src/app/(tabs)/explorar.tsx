@@ -1,6 +1,16 @@
 import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { FlatList, Keyboard, Modal, PanResponder, Pressable, ScrollView, StyleSheet, View, type LayoutChangeEvent } from 'react-native';
+import {
+  FlatList,
+  Keyboard,
+  Modal,
+  PanResponder,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  View,
+  type LayoutChangeEvent,
+} from 'react-native';
 
 import { BodegaCard } from '@/components/bodega/bodega-card';
 import { BodegasMap } from '@/components/explorar/bodegas-map';
@@ -13,26 +23,20 @@ import { Screen } from '@/components/ui/screen';
 import { SearchField } from '@/components/ui/search-field';
 import { SegmentedControl } from '@/components/ui/segmented-control';
 import { Colors, Radius, Spacing } from '@/constants/theme';
-import { bodegas, formatPrecio, zonas, type Bodega, type Zona } from '@/data/bodegas';
+import { formatPrecio, type Bodega, type Zona } from '@/data/bodegas';
+import { useCatalogo } from '@/state/catalogo-context';
+import { normalizar } from '@/utils/texto';
 
 type Vista = 'lista' | 'mapa';
-type Precio = Bodega['precio'];
+type Precio = number;
 
-const PRECIO_MINIMO: Precio = 1;
-const PRECIO_MAXIMO: Precio = 5;
+const PRECIO_MINIMO: Precio = 0;
+const PRECIO_MAXIMO: Precio = 500000;
 
 const vistas = [
   { value: 'lista', label: 'Lista' },
   { value: 'mapa', label: 'Mapa' },
 ] as const;
-
-/** Minúsculas y sin tildes, para que "lujan" encuentre "Luján". */
-function normalizar(texto: string) {
-  return texto
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .toLowerCase();
-}
 
 function coincide(bodega: Bodega, busqueda: string) {
   const texto = normalizar(
@@ -42,6 +46,7 @@ function coincide(bodega: Bodega, busqueda: string) {
 }
 
 export default function ExplorarScreen() {
+  const { bodegas, error, cargando, recargar } = useCatalogo();
   const [busqueda, setBusqueda] = useState('');
   const [busquedaAplicada, setBusquedaAplicada] = useState('');
   const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
@@ -55,14 +60,13 @@ export default function ExplorarScreen() {
   const resultados = bodegas.filter(
     (bodega) =>
       (zona === null || bodega.zona === zona) &&
-      bodega.precio >= precioMinimo &&
-      bodega.precio <= precioMaximo &&
+      (bodega.precio === null ||
+        (bodega.precio >= precioMinimo && bodega.precio <= precioMaximo)) &&
       coincide(bodega, busquedaAplicada),
   );
   const sugerencias = busqueda.trim()
     ? bodegas.filter((bodega) => normalizar(bodega.nombre).includes(normalizar(busqueda.trim())))
     : [];
-
 
   const hayFiltrosActivos =
     zona !== null || precioMinimo !== PRECIO_MINIMO || precioMaximo !== PRECIO_MAXIMO;
@@ -105,11 +109,17 @@ export default function ExplorarScreen() {
     if (bodega) seleccionarBodega(bodega);
   };
 
-
   return (
     <Screen padded={false}>
       <View style={styles.header}>
         <AppText variant="title">Explorar Bodegas</AppText>
+        {cargando && <AppText>Cargando…</AppText>}
+        {error && (
+          <>
+            <AppText>{error}</AppText>
+            <Button title="Reintentar" onPress={() => void recargar()} />
+          </>
+        )}
         <View style={styles.searchRow}>
           <View style={styles.searchField}>
             <SearchField
@@ -121,7 +131,7 @@ export default function ExplorarScreen() {
           </View>
           <IconButton
             icon="filter"
-            color={hayFiltrosActivos ? "malbec" : "text"}
+            color={hayFiltrosActivos ? 'malbec' : 'text'}
             accessibilityLabel="Abrir filtros"
             onPress={() => setFiltrosAbiertos(true)}
           />
@@ -135,7 +145,8 @@ export default function ExplorarScreen() {
                 accessibilityRole="button"
                 accessibilityLabel={`Elegir ${bodega.nombre}`}
                 onPress={() => seleccionarBodega(bodega)}
-                style={styles.suggestion}>
+                style={styles.suggestion}
+              >
                 <AppText variant="body" numberOfLines={1} style={styles.suggestionName}>
                   {bodega.nombre}
                 </AppText>
@@ -219,6 +230,7 @@ function FiltersSheet({
   onPrecioMaximoChange,
   onClear,
 }: FiltersSheetProps) {
+  const { zonas } = useCatalogo();
 
   return (
     <Modal transparent animationType="slide" visible={visible} onRequestClose={onClose}>
@@ -241,7 +253,8 @@ function FiltersSheet({
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
-              contentContainerStyle={filterStyles.chipsContent}>
+              contentContainerStyle={filterStyles.chipsContent}
+            >
               <Chip label="Todas" selected={zona === null} onPress={() => onZonaChange(null)} />
               {zonas.map((item) => (
                 <Chip
@@ -304,7 +317,15 @@ function PriceRangeSlider({
         onStartShouldSetPanResponder: () => true,
         onMoveShouldSetPanResponder: () => true,
         onPanResponderMove: (_, gesture) => {
-          const next = Math.max(PRECIO_MINIMO, Math.min(maximum, Math.round(minimum + (gesture.dx / Math.max(usableWidth, 1)) * (PRECIO_MAXIMO - PRECIO_MINIMO))));
+          const next = Math.max(
+            PRECIO_MINIMO,
+            Math.min(
+              maximum,
+              Math.round(
+                minimum + (gesture.dx / Math.max(usableWidth, 1)) * (PRECIO_MAXIMO - PRECIO_MINIMO),
+              ),
+            ),
+          );
           onMinimumChange(next as Precio);
         },
       }),
@@ -322,8 +343,7 @@ function PriceRangeSlider({
             Math.max(
               minimum,
               Math.round(
-                maximum +
-                  (gesture.dx / Math.max(usableWidth, 1)) * (PRECIO_MAXIMO - PRECIO_MINIMO),
+                maximum + (gesture.dx / Math.max(usableWidth, 1)) * (PRECIO_MAXIMO - PRECIO_MINIMO),
               ),
             ),
           );
@@ -374,15 +394,15 @@ function PriceRangeSlider({
 
 const rangeStyles = StyleSheet.create({
   labels: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   control: {
     height: 48,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   track: {
-    position: "absolute",
+    position: 'absolute',
     top: 22,
     right: THUMB_SIZE / 2,
     left: THUMB_SIZE / 2,
@@ -391,14 +411,14 @@ const rangeStyles = StyleSheet.create({
     backgroundColor: Colors.border,
   },
   selectedTrack: {
-    position: "absolute",
+    position: 'absolute',
     top: 22,
     height: 4,
     borderRadius: Radius.pill,
     backgroundColor: Colors.malbec,
   },
   thumb: {
-    position: "absolute",
+    position: 'absolute',
     top: 10,
     width: THUMB_SIZE,
     height: THUMB_SIZE,
@@ -417,11 +437,11 @@ const rangeStyles = StyleSheet.create({
 const filterStyles = StyleSheet.create({
   modal: {
     flex: 1,
-    justifyContent: "flex-end",
+    justifyContent: 'flex-end',
   },
   backdrop: {
     ...StyleSheet.absoluteFill,
-    backgroundColor: "rgba(37, 37, 37, 0.35)",
+    backgroundColor: 'rgba(37, 37, 37, 0.35)',
   },
   sheet: {
     gap: Spacing.xl,
@@ -432,9 +452,9 @@ const filterStyles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   section: {
     gap: Spacing.sm,
@@ -444,9 +464,9 @@ const filterStyles = StyleSheet.create({
     paddingRight: Spacing.lg,
   },
   priceHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
 
@@ -458,8 +478,8 @@ const styles = StyleSheet.create({
     gap: Spacing.md,
   },
   searchRow: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: Spacing.sm,
   },
   searchField: {

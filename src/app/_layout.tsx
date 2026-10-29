@@ -11,6 +11,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 
 import { Colors } from '@/constants/theme';
+import { CatalogoProvider } from '@/state/catalogo-context';
 import { CavaProvider } from '@/state/cava-context';
 import { RutaProvider } from '@/state/ruta-context';
 import { SesionProvider, useSesion } from '@/state/sesion-context';
@@ -38,38 +39,55 @@ export default function RootLayout() {
 
   return (
     <SesionProvider>
-      <RutaProvider>
-        <CavaProvider>
-          <StatusBar style="dark" />
-          <RootNavigator />
-        </CavaProvider>
-      </RutaProvider>
+      <CatalogoProvider>
+        <DatosPersonales />
+      </CatalogoProvider>
     </SesionProvider>
   );
 }
 
 /**
- * Sin sesión solo se puede acceder a (auth); con sesión, al resto de la app.
- * Cuando la sesión cambia, Expo Router redirige a la primera pantalla disponible.
+ * El catálogo es público. Crear rutas requiere cuenta; las operaciones privadas
+ * se autorizan además en Express.
  */
 function RootNavigator() {
-  const { sesionIniciada } = useSesion();
+  const { sesionIniciada, cargando } = useSesion();
+  if (cargando) return null;
 
   return (
     <Stack
       screenOptions={{
         headerShown: false,
         contentStyle: { backgroundColor: Colors.background },
-      }}>
-      <Stack.Protected guard={sesionIniciada}>
-        <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="bodega/[id]" />
-        <Stack.Screen name="crear-ruta" />
-      </Stack.Protected>
+      }}
+    >
+      <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="bodega/[id]" />
 
+      <Stack.Protected guard={sesionIniciada}>
+        <Stack.Screen name="crear-ruta" />
+        <Stack.Screen name="ruta/[id]" />
+        <Stack.Screen name="perfil" />
+        <Stack.Screen name="mis-datos" />
+        <Stack.Screen name="mis-favoritos" />
+        <Stack.Screen name="mis-resenas" />
+      </Stack.Protected>
       <Stack.Protected guard={!sesionIniciada}>
         <Stack.Screen name="(auth)" />
       </Stack.Protected>
     </Stack>
+  );
+}
+
+/** Cambiar de cuenta desmonta los datos privados de la sesión anterior. */
+function DatosPersonales() {
+  const { usuario } = useSesion();
+  return (
+    <RutaProvider key={usuario?.id ?? 'visitante'}>
+      <CavaProvider>
+        <StatusBar style="dark" />
+        <RootNavigator />
+      </CavaProvider>
+    </RutaProvider>
   );
 }

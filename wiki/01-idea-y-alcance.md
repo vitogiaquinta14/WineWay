@@ -120,3 +120,7 @@ Las siguientes capacidades no pertenecen al MVP:
 5. Integrarse con los sistemas externos de las bodegas.
 
 Estas evoluciones deberán preservar la diferencia entre una visita **planificada** y una visita **reservada**. La palabra “reservada” solo deberá utilizarse cuando exista una confirmación real.
+
+## Estado de implementación
+
+La lista de trabajo que falta luego de la base de datos y la API está en [Pendientes de implementación](08-pendientes-de-implementacion.md). Las decisiones de producto aún abiertas siguen en [Dudas y decisiones pendientes](05-dudas-pendientes.md).

@@ -5,7 +5,7 @@ Este documento identifica las APIs, los SDKs y las capacidades externas necesari
 ## Clasificación general
 
 - **APIs externas:** Google Routes API, Google Places API, Google Calendar API y Gemini API.
-- **SDKs externos:** `react-native-maps` para representar el mapa nativo; Google Maps Platform para servicios de mapas, lugares y rutas cuando se integren.
+- **SDKs externos:** `react-native-maps` para el mapa nativo; Leaflet con teselas de OpenStreetMap para el mapa web; Google Maps Platform para servicios de lugares y rutas cuando se integren.
 - **Framework actual:** React Native con Expo SDK 57 y Expo Router.
 - **Capacidades nativas implementadas:** cámara con `expo-camera` y geolocalización puntual en primer plano con `expo-location`.
 - **Servicios propios por definir:** persistencia, backend y autenticación.
@@ -32,10 +32,11 @@ El Maps SDK resuelve la **visualización**. No es, por sí solo, la lógica que 
 
 ### Consideraciones
 
-- La implementación actual usa `react-native-maps`: Google Maps en Android y Apple Maps en iOS. La versión web muestra un estado alternativo.
+- La implementación actual usa `react-native-maps`: Google Maps en Android y Apple Maps en iOS. En web usa Leaflet y las teselas de OpenStreetMap, con atribución visible. Ambos mapas muestran las coordenadas que devuelve la API.
 - WineWay soporta iOS, Android y web mediante Expo SDK 57.
 - Las pantallas deben contemplar carga y error del mapa.
-- La implementación deberá respetar los requisitos vigentes de atribución y uso de Google Maps Platform.
+- El uso del servidor estándar de teselas de OpenStreetMap es de mejor esfuerzo y debe respetar su [política de uso](https://operations.osmfoundation.org/policies/tiles/); para producción o más tráfico puede requerirse un proveedor de teselas con SLA.
+- Las futuras consultas de Google Maps Platform deben respetar los requisitos vigentes de atribución y uso.
 
 ## 2. Google Routes API
 
@@ -180,7 +181,7 @@ La interfaz debe contemplar:
 - Permiso denegado y orientación para recuperarlo.
 - Error de captura.
 
-La guía técnica de cámara, ubicación y mapa se documenta en [06 · Sensores: cámara, ubicación y mapa](./06-sensores-camara-y-ubicacion.md).
+La guía técnica de cámara, ubicación y mapa se documenta en [07 · Sensores: cámara, ubicación y mapa](./07-sensores-camara-y-ubicacion.md).
 
 ## 6. Gemini API para identificación de vinos
 

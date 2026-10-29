@@ -1,323 +1,197 @@
-import { router } from 'expo-router';
-import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { Alert, ScrollView, StyleSheet, Switch, View } from 'react-native';
-
-import { ItinerarioDia } from '@/components/ruta/itinerario-dia';
-import { AppText } from '@/components/ui/app-text';
-import { AppTextInput } from '@/components/ui/app-text-input';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Chip } from '@/components/ui/chip';
-import { EmptyState } from '@/components/ui/empty-state';
-import { IconButton } from '@/components/ui/icon-button';
+import { router, useLocalSearchParams } from 'expo-router';
+import { useCallback, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { Screen } from '@/components/ui/screen';
-import { Stepper } from '@/components/ui/stepper';
-import { Colors, Radius, Spacing } from '@/constants/theme';
-import { zonas } from '@/data/bodegas';
-import type { Ruta } from '@/data/rutas';
+import { AppText } from '@/components/ui/app-text';
+import { Button } from '@/components/ui/button';
+import { IconButton } from '@/components/ui/icon-button';
+import { TextField } from '@/components/ui/text-field';
+import { SearchField } from '@/components/ui/search-field';
+import { normalizar } from '@/utils/texto';
+import { Chip } from '@/components/ui/chip';
 import { useRuta } from '@/state/ruta-context';
-import { generarRuta, type ConfiguracionViaje } from '@/utils/generar-ruta';
+import { useCatalogo } from '@/state/catalogo-context';
+import { useRecurso } from '@/state/use-recurso';
+import { api } from '@/services/api';
+import type { Bodega } from '@/data/bodegas';
+import { DateRangeField } from '@/components/ui/date-range-field';
+import { TimeField } from '@/components/ui/time-field';
+import { hoyMendoza } from '@/utils/validar-cuenta';
+import { sumarDias, diasEntre, limiteRuta, validarFormularioRuta, ajustarFin } from '@/utils/formulario-ruta';
+import { Colors, Radius, Spacing } from '@/constants/theme';
 
-const MAX_DIAS = 7;
-const MAX_BODEGAS_POR_DIA = 4;
-const BODEGAS_POR_DIA_INICIAL = 2;
-
-// Las zonas se resaltan en terracota y el resto de las preferencias en oliva, como en el mockup.
-const preferencias = [
-  ...zonas.map((zona) => ({ label: zona, tone: 'terracota' as const })),
-  ...['Tintos intensos', 'Gastronomía', 'Boutique', 'Paisajes', 'Mejor puntuadas'].map(
-    (label) => ({ label, tone: 'oliva' as const }),
-  ),
-];
-
-const configInicial: ConfiguracionViaje = {
-  dias: 3,
-  personas: 2,
-  presupuestoUsd: 150,
-  bodegasPorDia: [2, 3, 2],
-  preferencias: ['Valle de Uco', 'Tintos intensos', 'Boutique'],
+const horaValida = (hora: string) => /^([01]\d|2[0-3]):[0-5]\d$/.test(hora);
+const minutos = (hora: string) => {
+  const [h, m] = hora.split(':').map(Number);
+  return h * 60 + m;
 };
 
 export default function CrearRutaScreen() {
-  const { reemplazarRuta } = useRuta();
-  const scrollRef = useRef<ScrollView>(null);
-
-  const [config, setConfig] = useState(configInicial);
-  const [mismaCantidad, setMismaCantidad] = useState(false);
-  const [propuesta, setPropuesta] = useState<Ruta | null>(null);
-
-  // Al generar, la pantalla baja hasta la propuesta.
-  useEffect(() => {
-    if (!propuesta) return;
-    const timer = setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 100);
-    return () => clearTimeout(timer);
-  }, [propuesta]);
-
-  /** Cualquier cambio en la configuración invalida la propuesta anterior. */
-  const actualizar = (cambio: (actual: ConfiguracionViaje) => Partial<ConfiguracionViaje>) => {
-    setConfig((actual) => ({ ...actual, ...cambio(actual) }));
-    setPropuesta(null);
+  // `aviso=sin-rutas` llega desde "Agregar a ruta" cuando todavía no hay ninguna.
+  const params = useLocalSearchParams<{ id?: string; aviso?: string }>();
+  const { generar, editar, rutas } = useRuta();
+  const existente = rutas.find((r) => r.id === params.id);
+  const { bodegas, cargando: cargandoCatalogo, error: errorCatalogo, recargar: recargarCatalogo } = useCatalogo();
+  const [busqueda, setBusqueda] = useState('');
+  const cargarFavoritas = useCallback(
+    () => (existente ? Promise.resolve([]) : api<Bodega[]>('/favoritos')),
+    [existente],
+  );
+  const { datos: favoritas } = useRecurso<Bodega[]>(cargarFavoritas, []);
+  const [nombre, setNombre] = useState(existente?.nombre ?? '');
+  const [fechaInicio, setFecha] = useState(existente?.fechaInicio ?? '');
+  const [fechaFin, setFechaFin] = useState(existente ? sumarDias(existente.fechaInicio, existente.cantidadDias - 1) : '');
+  const [errores, setErrores] = useState<Record<string, string>>({});
+  // La API persiste inicio + duración; las dos fechas son la fuente del formulario.
+  const cantidadDias = diasEntre(fechaInicio, fechaFin);
+  const [personas, setPersonas] = useState(String(existente?.cantidadPersonas ?? 1));
+  const [presupuesto, setPresupuesto] = useState(
+    existente ? String(existente.presupuestoPersonaCentavos / 100) : '',
+  );
+  const [cantidadVisitas, setCantidadVisitas] = useState('2');
+  const [cantidadAlmuerzos, setCantidadAlmuerzos] = useState('0');
+  const [imprescindibles, setImprescindibles] = useState<string[]>([]);
+  const [desde, setDesde] = useState('10:00');
+  const [hasta, setHasta] = useState('18:00');
+  const [finRechazado, setFinRechazado] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [guardando, setGuardando] = useState(false);
+  const validar = (generacion: boolean) => {
+    const fallos = validarFormularioRuta({ fechaInicio, fechaFin, personas, presupuesto, cantidadVisitas, cantidadAlmuerzos, automatico: generacion });
+    if (generacion) {
+      if (Number(cantidadVisitas) < imprescindibles.length) fallos.cantidadVisitas = 'La cantidad debe incluir todas las imprescindibles seleccionadas.';
+      if (!horaValida(desde)) fallos.desde = 'Ingresá una hora válida (HH:MM).';
+      if (!horaValida(hasta)) fallos.hasta = 'Ingresá una hora válida (HH:MM).';
+      if (!fallos.desde && !fallos.hasta && hasta <= desde) fallos.hasta = 'El fin debe ser posterior al comienzo.';
+    }
+    return fallos;
   };
-
-  const cambiarDias = (dias: number) =>
-    actualizar((actual) => ({
-      dias,
-      bodegasPorDia: Array.from(
-        { length: dias },
-        (_, i) =>
-          actual.bodegasPorDia[i] ??
-          (mismaCantidad ? actual.bodegasPorDia[0] : BODEGAS_POR_DIA_INICIAL),
-      ),
-    }));
-
-  const cambiarBodegasDelDia = (indice: number, cantidad: number) =>
-    actualizar((actual) => ({
-      bodegasPorDia: actual.bodegasPorDia.map((valor, i) =>
-        mismaCantidad || i === indice ? cantidad : valor,
-      ),
-    }));
-
-  const cambiarMismaCantidad = (valor: boolean) => {
-    setMismaCantidad(valor);
-    if (valor) {
-      actualizar((actual) => ({
-        bodegasPorDia: actual.bodegasPorDia.map(() => actual.bodegasPorDia[0]),
-      }));
+  const fallosActuales = validar(!existente);
+  const formularioValido = Object.keys(fallosActuales).length === 0;
+  const errorCampo = (campo: string, valor: string) =>
+    valor.trim() ? fallosActuales[campo] : errores[campo];
+  const guardar = async () => {
+    const fallos = validar(!existente);
+    setErrores(fallos);
+    if (Object.keys(fallos).length) { setError('Revisá los campos indicados antes de continuar.'); return; }
+    setGuardando(true);
+    setError(null);
+    try {
+      const datos = {
+        nombre: nombre.trim() || `Mi ruta ${fechaInicio}`,
+        fechaInicio,
+        cantidadDias,
+        cantidadPersonas: Number(personas),
+        presupuestoPersonaCentavos: Number(presupuesto) * 100,
+      };
+      if (existente) {
+        await editar(existente.id, datos);
+        router.back();
+      } else {
+        const nueva = await generar({ ...datos, cantidadVisitas: Number(cantidadVisitas), cantidadAlmuerzos: Number(cantidadAlmuerzos), imprescindibles,
+          desdeMin: minutos(desde), hastaMin: minutos(hasta) });
+        router.replace({ pathname: '/ruta/[id]', params: { id: nueva.id } });
+      }
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setGuardando(false);
     }
   };
-
-  const alternarPreferencia = (label: string) =>
-    actualizar((actual) => ({
-      preferencias: actual.preferencias.includes(label)
-        ? actual.preferencias.filter((p) => p !== label)
-        : [...actual.preferencias, label],
-    }));
-
-  const cantidadPropuesta = propuesta?.dias.reduce((total, dia) => total + dia.visitas.length, 0);
-
-  const agregarAMiRuta = () => {
-    if (!propuesta) return;
-    Alert.alert('Agregar a Mi Ruta', 'Esta propuesta va a reemplazar tu ruta actual.', [
-      { text: 'Cancelar', style: 'cancel' },
-      {
-        text: 'Reemplazar',
-        onPress: () => {
-          reemplazarRuta(propuesta);
-          router.dismissTo('/mi-ruta');
-        },
-      },
-    ]);
+  // Imprescindibles: arriba favoritas y ya elegidas; el buscador suma el resto del catálogo.
+  const fijas = bodegas.filter((b) => b.activa && (imprescindibles.includes(b.id) || favoritas.some((f) => f.id === b.id)));
+  const encontradas = busqueda.trim()
+    ? bodegas.filter((b) => b.activa && !fijas.includes(b) && normalizar(`${b.nombre} ${b.zona}`).includes(normalizar(busqueda)))
+    : [];
+  const alternarImprescindible = (id: string) => {
+    if (imprescindibles.includes(id)) {
+      setImprescindibles(imprescindibles.filter((i) => i !== id));
+    } else if (imprescindibles.length < 12) {
+      const siguientes = [...imprescindibles, id];
+      setImprescindibles(siguientes);
+      setCantidadVisitas((valor) => String(Math.max(Number(valor) || 0, siguientes.length)));
+    }
   };
-
+  const chipImprescindible = (b: Bodega) => (
+    <Chip key={b.id} label={b.nombre} selected={imprescindibles.includes(b.id)} onPress={() => alternarImprescindible(b.id)} />
+  );
   return (
-    <Screen scroll edges={['top', 'bottom']} scrollRef={scrollRef}>
-      <View style={styles.header}>
+    <Screen scroll>
+      <View style={{ gap: Spacing.lg, paddingVertical: Spacing.lg }}>
         <IconButton icon="back" accessibilityLabel="Volver" onPress={() => router.back()} />
-        <AppText variant="title">Crear mi ruta</AppText>
-      </View>
-
-      <View style={styles.form}>
-        <Field label="Cantidad de días">
-          <Card style={styles.row}>
-            <AppText variant="body">
-              {config.dias} {config.dias === 1 ? 'día' : 'días'}
-            </AppText>
-            <Stepper
-              value={config.dias}
-              onChange={cambiarDias}
-              min={1}
-              max={MAX_DIAS}
-              accessibilityLabel="días"
-            />
-          </Card>
-        </Field>
-
-        <View style={styles.twoColumns}>
-          <View style={styles.column}>
-            <Field label="Personas">
-              <Card style={styles.row}>
-                <Stepper
-                  value={config.personas}
-                  onChange={(personas) => actualizar(() => ({ personas }))}
-                  min={1}
-                  max={20}
-                  accessibilityLabel="personas"
-                />
-              </Card>
-            </Field>
+        <AppText variant="title">{existente ? 'Recalcular ruta' : 'Crear mi ruta'}</AppText>
+        {!existente && params.aviso === 'sin-rutas' && (
+          <AppText color="malbec">Todavía no tenés una ruta planeada. Creala para poder agregarle visitas.</AppText>
+        )}
+        {existente && <AppText variant="caption">Cambiá fechas, personas o presupuesto y se recalculan los costos de la ruta. Las visitas se mantienen.</AppText>}
+        <AppText variant="caption">Los campos con * son obligatorios.</AppText>
+        <TextField label="Nombre de la ruta (opcional)" value={nombre} onChangeText={setNombre} />
+        <View style={styles.booking}>
+          <AppText variant="heading">Tu viaje</AppText>
+          <DateRangeField inicio={fechaInicio} fin={fechaFin} minimo={hoyMendoza()} maximo={limiteRuta()} disabled={guardando}
+            error={errorCampo('fechaInicio', fechaInicio) || errorCampo('fechaFin', fechaFin)}
+            onChange={(inicio, fin) => { setFecha(inicio); setFechaFin(fin); }} />
+          <View style={styles.row}>
+            <View style={styles.field}><TextField label="Personas" required value={personas} onChangeText={setPersonas} keyboardType="number-pad" inputMode="numeric" error={errorCampo('personas', personas)} /></View>
           </View>
-          <View style={styles.column}>
-            <Field label="Presupuesto / persona">
-              <Card style={styles.row}>
-                <AppText variant="body" color="textMuted">
-                  USD
-                </AppText>
-                <AppTextInput
-                  style={styles.budgetInput}
-                  value={config.presupuestoUsd > 0 ? String(config.presupuestoUsd) : ''}
-                  onChangeText={(texto) =>
-                    actualizar(() => ({ presupuestoUsd: Number(texto.replace(/\D/g, '')) || 0 }))
-                  }
-                  placeholder="150"
-                  placeholderTextColor={Colors.textMuted}
-                  selectionColor={Colors.malbec}
-                  keyboardType="number-pad"
-                  maxLength={5}
-                  accessibilityLabel="Presupuesto por persona en dólares"
-                />
-              </Card>
-            </Field>
+          <TextField label="Presupuesto por persona (ARS)" required value={presupuesto} onChangeText={setPresupuesto} keyboardType="number-pad" inputMode="numeric" error={errorCampo('presupuesto', presupuesto)} placeholder="Ej. 150000" hint="Para las experiencias de todo el viaje." />
+          <View style={styles.summary}>
+            <AppText variant="caption">Presupuesto total del grupo</AppText>
+            <AppText variant="heading">ARS {(Number(presupuesto) * Number(personas) || 0).toLocaleString('es-AR')}</AppText>
           </View>
         </View>
-
-        <Field label="Bodegas por día">
-          {config.bodegasPorDia.map((cantidad, indice) => (
-            <Card key={indice} style={styles.row}>
-              <AppText variant="body">Día {indice + 1}</AppText>
-              <Stepper
-                value={cantidad}
-                onChange={(valor) => cambiarBodegasDelDia(indice, valor)}
-                min={1}
-                max={MAX_BODEGAS_POR_DIA}
-                accessibilityLabel={`bodegas del día ${indice + 1}`}
-              />
-            </Card>
-          ))}
-          <View style={styles.switchRow}>
-            <AppText variant="caption" color="text">
-              Misma cantidad todos los días
-            </AppText>
-            <Switch
-              value={mismaCantidad}
-              onValueChange={cambiarMismaCantidad}
-              trackColor={{ true: Colors.malbec, false: Colors.border }}
-              thumbColor={Colors.surface}
-              ios_backgroundColor={Colors.border}
-            />
-          </View>
-        </Field>
-
-        <Field label="Preferencias">
-          <View style={styles.chips}>
-            {preferencias.map(({ label, tone }) => (
-              <Chip
-                key={label}
-                label={label}
-                tone={tone}
-                selected={config.preferencias.includes(label)}
-                onPress={() => alternarPreferencia(label)}
-              />
-            ))}
-          </View>
-        </Field>
-
+        {!existente && (
+          <>
+            <View style={styles.booking}>
+              <AppText variant="heading">Tus preferencias</AppText>
+              <View style={styles.row}>
+                <View style={styles.field}><TextField label="Visitas (máx. 12)" required value={cantidadVisitas}
+                  onChangeText={setCantidadVisitas} keyboardType="number-pad" inputMode="numeric" error={errorCampo('cantidadVisitas', cantidadVisitas)} /></View>
+                <View style={styles.field}><TextField label="Almuerzos en bodegas" required value={cantidadAlmuerzos}
+                  onChangeText={setCantidadAlmuerzos} keyboardType="number-pad" inputMode="numeric" error={errorCampo('cantidadAlmuerzos', cantidadAlmuerzos)}
+                  hint="Hasta uno por día." /></View>
+              </View>
+              <View style={styles.row}>
+                <View style={styles.field}><TimeField label="Desde" required value={desde} disabled={guardando} error={errorCampo('desde', desde)}
+                  onChange={(hora) => { setDesde(hora); setHasta((fin) => ajustarFin(hora, fin)); setFinRechazado(false); }} /></View>
+                <View style={styles.field}><TimeField label="Hasta" required value={hasta} minimo={desde} disabled={guardando}
+                  error={finRechazado ? `Elegí una hora posterior a las ${desde}.` : errorCampo('hasta', hasta)}
+                  onChange={(hora) => { setFinRechazado(hora <= desde); if (hora > desde) setHasta(hora); }} /></View>
+              </View>
+            </View>
+            <View style={styles.booking}>
+              <View style={{ gap: Spacing.xs }}>
+                <AppText variant="heading">Bodegas imprescindibles</AppText>
+                <AppText variant="caption">Opcional · {imprescindibles.length} de 12 elegidas</AppText>
+              </View>
+              {cargandoCatalogo && <AppText>Cargando bodegas…</AppText>}
+              {errorCatalogo && <><AppText color="malbec">{errorCatalogo}</AppText><Button title="Reintentar" onPress={() => void recargarCatalogo()} /></>}
+              {fijas.length > 0
+                ? <View style={styles.chips}>{fijas.map(chipImprescindible)}</View>
+                : !cargandoCatalogo && <AppText variant="caption">Todavía no tenés favoritas. Buscá una bodega.</AppText>}
+              <SearchField value={busqueda} onChangeText={setBusqueda} placeholder="Buscar otra bodega o zona" />
+              {encontradas.length > 0 && <View style={styles.chips}>{encontradas.map(chipImprescindible)}</View>}
+              {busqueda.trim() && encontradas.length === 0 && <AppText variant="caption">Sin resultados.</AppText>}
+            </View>
+          </>
+        )}
+        {!formularioValido && <AppText variant="caption" color="textMuted">Completá los campos obligatorios con datos válidos para continuar.</AppText>}
+        {error && <AppText color="malbec">{error}</AppText>}
         <Button
-          title="Generar mi ruta"
-          onPress={() => setPropuesta(generarRuta(config))}
-          disabled={config.presupuestoUsd === 0}
+          title={guardando ? existente ? 'Recalculando…' : 'Analizando recorrido…' : !existente ? 'Generar y guardar ruta' : 'Recalcular ruta'}
+          disabled={guardando || !formularioValido || (!existente && (cargandoCatalogo || !!errorCatalogo))}
+          onPress={() => void guardar()}
         />
+        {guardando && !existente && <AppText variant="caption">Estamos seleccionando experiencias disponibles y organizando los horarios.</AppText>}
       </View>
-
-      {propuesta && (
-        <View style={styles.proposal}>
-          <View style={styles.proposalHeader}>
-            <AppText variant="title">Propuesta de Ruta</AppText>
-            <AppText variant="caption">
-              {config.dias} {config.dias === 1 ? 'día optimizado' : 'días optimizados'} para tu
-              perfil
-            </AppText>
-          </View>
-
-          {cantidadPropuesta === 0 ? (
-            <EmptyState
-              icon="search"
-              title="No encontramos bodegas"
-              description="Probá con otras zonas o un presupuesto mayor."
-            />
-          ) : (
-            <>
-              {propuesta.dias.map((dia) => (
-                <ItinerarioDia
-                  key={dia.id}
-                  dia={dia}
-                  badge="Recomendado"
-                  onVisitaPress={(bodega) =>
-                    router.push({ pathname: '/bodega/[id]', params: { id: bodega.id } })
-                  }
-                />
-              ))}
-              <Button title="Agregar a Mi Ruta" onPress={agregarAMiRuta} />
-            </>
-          )}
-        </View>
-      )}
     </Screen>
   );
 }
 
-function Field({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <View style={styles.field}>
-      <AppText variant="label">{label}</AppText>
-      {children}
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing.md,
-    paddingTop: Spacing.lg,
-  },
-  form: {
-    gap: Spacing.xl,
-    marginTop: Spacing.xl,
-  },
-  field: {
-    gap: Spacing.sm,
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: Spacing.sm,
-    minHeight: 52,
-    paddingHorizontal: Spacing.md,
-    borderRadius: Radius.md,
-  },
-  twoColumns: {
-    flexDirection: 'row',
-    gap: Spacing.md,
-  },
-  column: {
-    flex: 1,
-  },
-  budgetInput: {
-    flex: 1,
-    paddingVertical: Spacing.sm,
-    fontSize: 14,
-    color: Colors.text,
-  },
-  switchRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  chips: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: Spacing.sm,
-  },
-  proposal: {
-    marginTop: Spacing.xxl,
-    paddingTop: Spacing.xl,
-    gap: Spacing.xl,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: Colors.border,
-  },
-  proposalHeader: {
-    gap: Spacing.xs,
-  },
+  booking: { gap: Spacing.lg, padding: Spacing.md, borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.lg, backgroundColor: Colors.surface },
+  row: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.md },
+  field: { flexGrow: 1, flexBasis: 140, minWidth: 0 },
+  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.sm },
+  summary: { gap: Spacing.sm, padding: Spacing.md, borderRadius: Radius.md, backgroundColor: Colors.background },
 });

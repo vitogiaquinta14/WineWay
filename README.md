@@ -31,7 +31,7 @@ WineWay permite **planificar** una visita, no reservarla dentro de la app:
 - Exploración de bodegas en lista y mapa, con búsqueda y filtros.
 - Detalle de bodega: info, experiencias, vinos destacados, rating y reseñas.
 - Armado de rutas (automático o manual), edición y guardado.
-- Exportar el itinerario a Google Calendar (visita planificada, no reserva).
+- Exportar el itinerario como archivo de calendario `.ics` (visita planificada, no reserva).
 - Escaneo de etiquetas con la cámara e identificación del vino.
 - **Mi Cava**: colección personal de vinos con rating y nota privados.
 - Perfil de usuario y favoritos.
@@ -40,15 +40,18 @@ WineWay permite **planificar** una visita, no reservarla dentro de la app:
 
 📄 Documentación funcional completa en [`/wiki`](./wiki):
 
-| Documento                                                                     | Contenido                                              |
-| ----------------------------------------------------------------------------- | ------------------------------------------------------ |
-| [01 · Idea y alcance](./wiki/01-idea-y-alcance.md)                            | Problema, propuesta de valor, alcance del MVP          |
-| [02 · Funcionalidades](./wiki/02-funcionalidades-mvp.md)                      | Detalle funcional de cada módulo                       |
-| [03 · Pantallas y diseño](./wiki/03-pantallas-y-diseno.md)                    | Inventario de pantallas, userflows, branding           |
-| [04 · APIs e integraciones](./wiki/04-apis-e-integraciones.md)                | Google Maps/Routes/Places/Calendar, Gemini, cámara     |
-| [05 · Dudas pendientes](./wiki/05-dudas-pendientes.md)                        | Decisiones de producto todavía abiertas                |
-| [06 · Branding](./wiki/06-branding.md)                                        | Nombre, eslogan, paleta, tipografía e identidad visual |
-| [07 · Sensores, cámara y ubicación](./wiki/06-sensores-camara-y-ubicacion.md) | Implementación de cámara, ubicación y mapa             |
+| Documento                                                                      | Contenido                                              |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------ |
+| [01 · Idea y alcance](./wiki/01-idea-y-alcance.md)                             | Problema, propuesta de valor, alcance del MVP          |
+| [02 · Funcionalidades](./wiki/02-funcionalidades-mvp.md)                       | Detalle funcional de cada módulo                       |
+| [03 · Pantallas y diseño](./wiki/03-pantallas-y-diseno.md)                     | Inventario de pantallas, userflows, branding           |
+| [04 · APIs e integraciones](./wiki/04-apis-e-integraciones.md)                 | Google Maps/Routes/Places/Calendar, Gemini, cámara     |
+| [05 · Dudas pendientes](./wiki/05-dudas-pendientes.md)                         | Decisiones de producto todavía abiertas                |
+| [06 · Branding](./wiki/06-branding.md)                                         | Nombre, eslogan, paleta, tipografía e identidad visual |
+| [07 · Sensores, cámara y ubicación](./wiki/07-sensores-camara-y-ubicacion.md)  | Implementación de cámara, ubicación y mapa             |
+| [08 · Pendientes de implementación](./wiki/08-pendientes-de-implementacion.md) | Trabajo que falta después de la base y la API          |
+| [09 · Generación de rutas](./wiki/09-generacion-de-rutas.md)                   | Especificación histórica del generador (backtracking)  |
+| [10 · Selección voraz de rutas](./wiki/10-seleccion-voraz-de-rutas.md)         | Especificación vigente del generador de rutas          |
 
 ## Componentes nativos
 
@@ -90,7 +93,26 @@ npx expo start
 
 Escaneá el QR con **Expo Go** (Android/iOS) o iniciá un emulador desde la terminal.
 
-## Enlaces
+## Exportar una ruta al calendario
+
+En el detalle de cada ruta, **Agendar en Calendario** genera un archivo `.ics` con un evento por
+visita (bodega, experiencia, inicio y duración), lo envía a la API y abre su enlace en el navegador.
+Usa `expo-linking`, incluido en Expo Go: no requiere Apple Developer ni una development build.
+
+El backend debe estar encendido y su dirección `EXPO_PUBLIC_API_URL` debe ser accesible desde el
+teléfono. El enlace permite leer esta copia durante diez minutos, sin enviar el token de sesión al
+navegador. Se guarda sólo en memoria; al reiniciar el servidor también vence. No es una suscripción.
+La pantalla que aparezca (importación, vista previa o descarga) depende de iOS y del navegador:
+hay que probarla en el dispositivo; no se garantiza el botón «Agregar todo».
+Es una copia del itinerario: los cambios posteriores en WineWay no se sincronizan. Al volver a
+importar, revisá los eventos anteriores para evitar duplicados según la app de calendario.
+
+Referencias: [Expo Linking](https://docs.expo.dev/versions/v58.0.0/sdk/linking/),
+[calendarios en iPhone](https://support.apple.com/en-ph/guide/iphone/-iph3d1110d4/ios).
+
+Verificación del formato y los horarios: `node --test tests/calendario.test.mjs`.
+
+## Enlaces del proyecto
 
 - 🎨 Mockup / prototipo interactivo en Figma: (https://www.figma.com/proto/35T3xVmut0tRXGnD8jqEXx/WineWay?node-id=0-1&t=jKvqwIdq09QxSpdQ-1)
 - 📦 Repositorio: [vitogiaquinta14/WineWay](https://github.com/vitogiaquinta14/WineWay)

@@ -19,14 +19,14 @@ const tabLabels: Record<string, string> = {
   index: 'Inicio',
   explorar: 'Explorar',
   escanear: 'Escanear',
-  'mi-ruta': 'Mi Ruta',
+  'mi-ruta': 'Mis Rutas',
   'mi-cava': 'Mi Cava',
 };
 
 /** La pestaña central se dibuja como un botón circular destacado. */
 const CENTER_TAB = 'escanear';
 
-export function TabBar({ state, descriptors, navigation, insets }: BottomTabBarProps) {
+export function TabBar({ state, descriptors, emitter, navigateToTab, insets }: BottomTabBarProps) {
   return (
     <View style={[styles.container, { paddingBottom: Math.max(insets.bottom, Spacing.sm) }]}>
       {state.routes.map((route, index) => {
@@ -36,18 +36,18 @@ export function TabBar({ state, descriptors, navigation, insets }: BottomTabBarP
         const icon = tabIcons[route.name] ?? 'home';
 
         const onPress = () => {
-          const event = navigation.emit({
+          const event = emitter.emit({
             type: 'tabPress',
             target: route.key,
             canPreventDefault: true,
           });
           if (!focused && !event.defaultPrevented) {
-            navigation.navigate(route.name, route.params);
+            navigateToTab(route.key);
           }
         };
 
         const onLongPress = () => {
-          navigation.emit({
+          emitter.emit({
             type: 'tabLongPress',
             target: route.key,
           });

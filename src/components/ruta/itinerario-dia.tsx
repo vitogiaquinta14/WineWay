@@ -4,7 +4,7 @@ import { TrasladoInfo } from '@/components/ruta/traslado-info';
 import { VisitaCard } from '@/components/ruta/visita-card';
 import { AppText } from '@/components/ui/app-text';
 import { Spacing } from '@/constants/theme';
-import { getBodega, type Bodega } from '@/data/bodegas';
+import type { Bodega } from '@/data/bodegas';
 import type { DiaRuta, Visita } from '@/data/rutas';
 
 type ItinerarioDiaProps = {
@@ -12,7 +12,6 @@ type ItinerarioDiaProps = {
   onVisitaPress: (bodega: Bodega) => void;
   /** Badge de cada visita (por defecto "Planificado"). */
   badge?: string;
-  onEditarVisita?: (visita: Visita, bodega: Bodega) => void;
   onQuitarVisita?: (visita: Visita, bodega: Bodega) => void;
 };
 
@@ -21,7 +20,6 @@ export function ItinerarioDia({
   dia,
   onVisitaPress,
   badge,
-  onEditarVisita,
   onQuitarVisita,
 }: ItinerarioDiaProps) {
   return (
@@ -31,12 +29,12 @@ export function ItinerarioDia({
       {dia.visitas.length === 0 && <AppText variant="caption">Sin visitas para este día.</AppText>}
 
       {dia.visitas.map((visita, index) => {
-        const bodega = getBodega(visita.bodegaId);
+        const bodega = visita.bodega;
         if (!bodega) return null;
 
         return (
           <View key={visita.id} style={styles.visit}>
-            {index > 0 && visita.trasladoMin !== undefined && (
+            {index > 0 && visita.trasladoMin != null && (
               <TrasladoInfo minutos={visita.trasladoMin} destino={bodega.nombre} />
             )}
             <VisitaCard
@@ -44,7 +42,6 @@ export function ItinerarioDia({
               bodega={bodega}
               badge={badge}
               onPress={() => onVisitaPress(bodega)}
-              onEdit={onEditarVisita && (() => onEditarVisita(visita, bodega))}
               onDelete={onQuitarVisita && (() => onQuitarVisita(visita, bodega))}
             />
           </View>

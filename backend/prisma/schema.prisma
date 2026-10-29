@@ -1,0 +1,198 @@
+generator client {
+  provider = "prisma-client"
+  output = "../generated/prisma"
+}
+datasource db {
+  provider = "sqlite"
+}
+model Bodega {
+  id String @id @default(cuid())
+  nombre String
+  descripcion String
+  direccion String
+  localidad String
+  zona String
+  latitud Float
+  longitud Float
+  sitioWeb String
+  tipo String
+  caracteristicas Json @default("[]")
+  fotos Json @default("[]")
+  ratingDemostracion Float?
+  recomendada Boolean @default(false)
+  activa Boolean @default(true)
+  experiencias Experiencia[]
+  vinos Vino[]
+  resenas ResenaBodega[]
+  favoritas BodegaFavorita[]
+  @@index([zona])
+}
+model TipoExperiencia {
+  id String @id @default(cuid())
+  nombre String @unique
+  gastronomia Boolean @default(false)
+  experiencias Experiencia[]
+}
+model Experiencia {
+  id String @id @default(cuid())
+  bodegaId String
+  tipoId String
+  nombre String
+  descripcion String
+  precioCentavos Int
+  duracionMin Int
+  activa Boolean @default(true)
+  bodega Bodega @relation(fields: [bodegaId], references: [id], onDelete: Restrict)
+  tipo TipoExperiencia @relation(fields: [tipoId], references: [id], onDelete: Restrict)
+  horarios HorarioExperiencia[]
+  visitas Visita[]
+  @@index([bodegaId])
+  @@index([tipoId])
+}
+model HorarioExperiencia {
+  id String @id @default(cuid())
+  experienciaId String
+  dia Int
+  tipo String
+  desde Int
+  hasta Int
+  experiencia Experiencia @relation(fields: [experienciaId], references: [id], onDelete: Cascade)
+  @@unique([experienciaId, dia, tipo, desde, hasta])
+}
+model Vino {
+  id String @id @default(cuid())
+  bodegaId String
+  nombre String
+  descripcion String
+  precioCentavos Int
+  codigoBarras String @unique
+  tipo String
+  perfil String?
+  imagenUrl String?
+  codigoDePrueba Boolean @default(false)
+  bodega Bodega @relation(fields: [bodegaId], references: [id], onDelete: Restrict)
+  cepas VinoCepa[]
+  cava VinoEnCava[]
+  @@index([bodegaId])
+}
+model Cepa {
+  id String @id @default(cuid())
+  nombre String @unique
+  vinos VinoCepa[]
+}
+model VinoCepa {
+  vinoId String
+  cepaId String
+  porcentaje Int?
+  vino Vino @relation(fields: [vinoId], references: [id], onDelete: Cascade)
+  cepa Cepa @relation(fields: [cepaId], references: [id], onDelete: Restrict)
+  @@id([vinoId, cepaId])
+  @@index([cepaId])
+}
+model Usuario {
+  id String @id @default(cuid())
+  nombre String
+  apellido String
+  email String @unique
+  username String @unique
+  passwordHash String
+  fechaNacimiento String
+  apodo String?
+  fotoUrl String?
+  creadoEn DateTime @default(now())
+  sesiones Sesion[]
+  cava VinoEnCava[]
+  vinosManuales VinoFueraDeCatalogo[]
+  favoritas BodegaFavorita[]
+  resenas ResenaBodega[]
+  rutas Ruta[]
+}
+model Sesion {
+  id String @id @default(cuid())
+  usuarioId String
+  tokenHash String @unique
+  venceEn DateTime
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  @@index([usuarioId])
+}
+model VinoFueraDeCatalogo {
+  id String @id @default(cuid())
+  usuarioId String
+  nombre String
+  bodegaNombre String?
+  descripcion String?
+  precioCentavos Int?
+  cepasTexto String?
+  tipo String?
+  codigoBarras String?
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  cava VinoEnCava[]
+  @@unique([id, usuarioId])
+  @@index([usuarioId])
+}
+model VinoEnCava {
+  id String @id @default(cuid())
+  usuarioId String
+  vinoId String?
+  vinoManualId String?
+  anada Int?
+  valoracion Int?
+  nota String?
+  creadoEn DateTime @default(now())
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  vino Vino? @relation(fields: [vinoId], references: [id], onDelete: Restrict)
+  vinoManual VinoFueraDeCatalogo? @relation(fields: [vinoManualId, usuarioId], references: [id, usuarioId], onDelete: NoAction, onUpdate: NoAction)
+  @@index([usuarioId, creadoEn])
+  @@index([vinoId])
+  @@index([vinoManualId, usuarioId])
+}
+model ResenaBodega {
+  id String @id @default(cuid())
+  usuarioId String
+  bodegaId String
+  valoracion Int
+  comentario String?
+  creadoEn DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  bodega Bodega @relation(fields: [bodegaId], references: [id], onDelete: Restrict)
+  @@unique([usuarioId, bodegaId])
+  @@index([bodegaId])
+}
+model BodegaFavorita {
+  usuarioId String
+  bodegaId String
+  creadoEn DateTime @default(now())
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  bodega Bodega @relation(fields: [bodegaId], references: [id], onDelete: Restrict)
+  @@id([usuarioId, bodegaId])
+  @@index([bodegaId])
+}
+model Ruta {
+  id String @id @default(cuid())
+  usuarioId String
+  nombre String
+  descripcion String?
+  fechaInicio String
+  cantidadDias Int
+  cantidadPersonas Int
+  presupuestoPersonaCentavos Int
+  parametros Json @default("{}")
+  creadoEn DateTime @default(now())
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  visitas Visita[]
+  @@index([usuarioId])
+}
+model Visita {
+  id String @id @default(cuid())
+  rutaId String
+  experienciaId String
+  inicio DateTime
+  nombreExperiencia String
+  duracionMin Int
+  trasladoMin Int?
+  ruta Ruta @relation(fields: [rutaId], references: [id], onDelete: Cascade)
+  experiencia Experiencia @relation(fields: [experienciaId], references: [id], onDelete: Restrict)
+  @@index([rutaId, inicio])
+  @@index([experienciaId])
+}

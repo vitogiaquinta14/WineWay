@@ -25,7 +25,9 @@ export function BodegaCard({ bodega, onPress }: BodegaCardProps) {
           </AppText>
           <View style={styles.rating}>
             <Icon name="star" size={12} color="star" />
-            <AppText variant="bodyBold">{bodega.rating.toFixed(1)}</AppText>
+            <AppText variant="bodyBold">
+              {bodega.rating === null ? 'Sin rating' : `${bodega.rating.toFixed(1)} · demo`}
+            </AppText>
           </View>
         </View>
 

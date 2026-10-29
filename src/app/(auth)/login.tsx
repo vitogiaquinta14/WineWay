@@ -1,27 +1,44 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { AuthHeader } from '@/components/auth/auth-header';
-import { GoogleButton } from '@/components/auth/google-button';
 import { AppText } from '@/components/ui/app-text';
 import { Button } from '@/components/ui/button';
+import { IconButton } from '@/components/ui/icon-button';
 import { Screen } from '@/components/ui/screen';
-import { TextDivider } from '@/components/ui/text-divider';
 import { TextField } from '@/components/ui/text-field';
 import { Fonts, Spacing } from '@/constants/theme';
 import { useSesion } from '@/state/sesion-context';
+import { volver } from '@/utils/navegacion';
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState('');
+  const [identificador, setIdentificador] = useState('');
   const [password, setPassword] = useState('');
 
-  // Sin backend todavía: cualquier acceso inicia la sesión simulada y el layout redirige a la Home.
   const { iniciarSesion } = useSesion();
+  const [error, setError] = useState<string | null>(null);
+  const [enviando, setEnviando] = useState(false);
+  const enviar = async () => {
+    if (!identificador.trim() || !password) {
+      setError('Ingresá tu email o usuario y contraseña.');
+      return;
+    }
+    setEnviando(true);
+    setError(null);
+    try {
+      await iniciarSesion(identificador, password);
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setEnviando(false);
+    }
+  };
 
   return (
     <Screen scroll edges={['top', 'bottom']}>
       <View style={styles.content}>
+        <IconButton icon="back" accessibilityLabel="Volver" onPress={() => volver('/')} />
         <AuthHeader
           title="Bienvenido de nuevo"
           subtitle="Explorá bodegas exclusivas y creá tu propia ruta del vino."
@@ -29,14 +46,11 @@ export default function LoginScreen() {
 
         <View style={styles.form}>
           <TextField
-            label="Email"
-            placeholder="ejemplo@correo.com"
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
+            label="Email o Usuario"
+            placeholder="tu@email.com o username"
+            value={identificador}
+            onChangeText={setIdentificador}
             autoCapitalize="none"
-            autoComplete="email"
-            textContentType="emailAddress"
           />
           <TextField
             label="Contraseña"
@@ -47,17 +61,15 @@ export default function LoginScreen() {
             autoComplete="current-password"
             textContentType="password"
           />
-          <Pressable accessibilityRole="link" hitSlop={8} style={styles.forgot}>
-            <AppText variant="caption" color="malbec">
-              Olvidé mi contraseña
-            </AppText>
-          </Pressable>
         </View>
 
         <View style={styles.actions}>
-          <Button title="Iniciar sesión" onPress={iniciarSesion} />
-          <TextDivider text="o continuar con" />
-          <GoogleButton title="Continuar con Google" onPress={iniciarSesion} />
+          {error && <AppText color="malbec">{error}</AppText>}
+          <Button
+            title={enviando ? 'Ingresando…' : 'Iniciar sesión'}
+            disabled={enviando}
+            onPress={() => void enviar()}
+          />
         </View>
       </View>
 
@@ -67,7 +79,8 @@ export default function LoginScreen() {
           variant="caption"
           color="malbec"
           style={styles.link}
-          onPress={() => router.push('/registro')}>
+          onPress={() => router.push('/registro')}
+        >
           Registrate
         </AppText>
       </AppText>

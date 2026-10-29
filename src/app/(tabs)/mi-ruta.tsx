@@ -1,104 +1,73 @@
 import { router } from 'expo-router';
-import { Alert, StyleSheet, View } from 'react-native';
-
-import { ItinerarioDia } from '@/components/ruta/itinerario-dia';
+import { StyleSheet, View } from 'react-native';
 import { AppText } from '@/components/ui/app-text';
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { EmptyState } from '@/components/ui/empty-state';
+import { Icon } from '@/components/ui/icon';
 import { Screen } from '@/components/ui/screen';
 import { Spacing } from '@/constants/theme';
-import type { Bodega } from '@/data/bodegas';
-import type { Visita } from '@/data/rutas';
+import { rangoFechas } from '@/data/rutas';
 import { useRuta } from '@/state/ruta-context';
-
+import { useSesion } from '@/state/sesion-context';
 export default function MiRutaScreen() {
-  const { ruta, quitarVisita } = useRuta();
-  const cantidadVisitas = ruta.dias.reduce((total, dia) => total + dia.visitas.length, 0);
-
-  const confirmarQuitar = (visita: Visita, bodega: Bodega) => {
-    Alert.alert('Quitar visita', `¿Querés quitar ${bodega.nombre} de tu ruta?`, [
-      { text: 'Cancelar', style: 'cancel' },
-      { text: 'Quitar', style: 'destructive', onPress: () => quitarVisita(visita.id) },
-    ]);
-  };
-
-  // Sin backend todavía: estas acciones solo muestran lo que va a pasar.
-  const guardarRuta = () => Alert.alert('Ruta guardada', 'Tu itinerario quedó guardado.');
-
-  const agregarACalendar = () =>
-    Alert.alert(
-      'Agregar a Google Calendar',
-      `Se creará un evento por cada visita (${cantidadVisitas} en total).\n\nAgregar una visita al calendario no equivale a reservarla.`,
-      [{ text: 'Cancelar', style: 'cancel' }, { text: 'Agregar' }],
-    );
-
-  const editarVisita = () =>
-    Alert.alert('Editar visita', 'La edición de horarios va a estar disponible pronto.');
-
+  const { rutas, cargando, error, recargar } = useRuta();
+  const { sesionIniciada } = useSesion();
   return (
     <Screen scroll>
-      <View style={styles.header}>
-        <AppText variant="title">Mi Ruta de Viaje</AppText>
-        <AppText variant="caption">{ruta.descripcion}</AppText>
-      </View>
-
-      {cantidadVisitas === 0 ? (
-        <View style={styles.empty}>
+      <View style={{ gap: Spacing.lg, paddingVertical: Spacing.lg }}>
+        <AppText variant="title">Mis rutas</AppText>
+        {!sesionIniciada ? (
+          <Button title="Iniciar sesión para guardar rutas" onPress={() => router.push('/login')} />
+        ) : (
+          <Button title="Crear una ruta" onPress={() => router.push('/crear-ruta')} />
+        )}
+        {cargando && <AppText>Cargando rutas…</AppText>}
+        {error && (
+          <>
+            <AppText color="malbec">{error}</AppText>
+            <Button title="Reintentar" onPress={() => void recargar()} />
+          </>
+        )}
+        {sesionIniciada && !cargando && !error && rutas.length === 0 && (
           <EmptyState
             icon="route"
-            title="Tu ruta está vacía"
-            description="Generá una ruta a tu medida o agregá bodegas desde Explorar."
+            title="Todavía no hay rutas"
+            description="Creá una ruta y agregale visitas desde Explorar."
           />
-          <Button title="Crear mi ruta" onPress={() => router.push('/crear-ruta')} />
-          <Button
-            title="Explorar bodegas"
-            variant="outline"
-            onPress={() => router.navigate('/explorar')}
-          />
-        </View>
-      ) : (
-        <>
-          {ruta.dias.map((dia) => (
-            <View key={dia.id} style={styles.day}>
-              <ItinerarioDia
-                dia={dia}
-                onVisitaPress={(bodega) =>
-                  router.push({ pathname: '/bodega/[id]', params: { id: bodega.id } })
-                }
-                onEditarVisita={editarVisita}
-                onQuitarVisita={confirmarQuitar}
-              />
+        )}
+        {rutas.map((r) => (
+          <Card
+            key={r.id}
+            accessibilityLabel={`${r.nombre}, ${rangoFechas(r)}`}
+            onPress={() => router.push({ pathname: '/ruta/[id]', params: { id: r.id } })}
+            style={styles.fila}>
+            <View style={styles.nombre}>
+              <AppText variant="bodyBold" numberOfLines={1}>
+                {r.nombre}
+              </AppText>
+              {r.estado === 'HISTORICA' && <AppText variant="caption">Histórica</AppText>}
             </View>
-          ))}
-
-          <View style={styles.actions}>
-            <Button title="Guardar ruta" onPress={guardarRuta} />
-            <Button
-              title="Agregar a Google Calendar"
-              icon="route"
-              variant="outline"
-              onPress={agregarACalendar}
-            />
-          </View>
-        </>
-      )}
+            <AppText variant="caption" color="text">
+              {rangoFechas(r)}
+            </AppText>
+            <Icon name="chevronRight" size={16} color="textMuted" />
+          </Card>
+        ))}
+      </View>
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  header: {
-    paddingTop: Spacing.lg,
-    gap: Spacing.xs,
-  },
-  empty: {
-    gap: Spacing.lg,
-  },
-  day: {
-    marginTop: Spacing.xl,
-  },
-  actions: {
-    marginTop: Spacing.xxl,
+  fila: {
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: Spacing.md,
+    padding: Spacing.lg,
+  },
+  nombre: {
+    flex: 1,
+    gap: Spacing.xxs,
   },
 });

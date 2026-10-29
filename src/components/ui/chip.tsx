@@ -10,22 +10,35 @@ type ChipProps = {
   selected?: boolean;
   /** Color cuando está seleccionado. */
   tone?: ChipTone;
+  /** Gris y sin respuesta al toque (ej. un horario ocupado). */
+  disabled?: boolean;
   onPress?: () => void;
 };
 
 /** Opción seleccionable en forma de píldora (filtros, preferencias). */
-export function Chip({ label, selected = false, tone = 'malbec', onPress }: ChipProps) {
+export function Chip({
+  label,
+  selected = false,
+  tone = 'malbec',
+  disabled = false,
+  onPress,
+}: ChipProps) {
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityState={{ selected }}
+      accessibilityState={{ selected, disabled }}
+      disabled={disabled}
       onPress={onPress}
       style={({ pressed }) => [
         styles.chip,
         selected && { backgroundColor: Colors[tone], borderColor: Colors[tone] },
+        disabled && styles.disabled,
         pressed && styles.pressed,
       ]}>
-      <AppText variant="caption" color={selected ? 'textOnPrimary' : 'text'} style={styles.label}>
+      <AppText
+        variant="caption"
+        color={selected ? 'textOnPrimary' : disabled ? 'textMuted' : 'text'}
+        style={styles.label}>
         {label}
       </AppText>
     </Pressable>
@@ -43,6 +56,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.border,
     backgroundColor: Colors.surface,
+  },
+  disabled: {
+    backgroundColor: Colors.surfaceMuted,
+    borderColor: Colors.surfaceMuted,
   },
   pressed: {
     opacity: 0.85,

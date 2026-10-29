@@ -1,120 +1,129 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { FlatList, Pressable, StyleSheet, View } from 'react-native';
-
+import { FlatList, Modal, View } from 'react-native';
 import { VinoCavaCard } from '@/components/cava/vino-cava-card';
 import { AppText } from '@/components/ui/app-text';
 import { Button } from '@/components/ui/button';
-import { EmptyState } from '@/components/ui/empty-state';
-import { Icon } from '@/components/ui/icon';
 import { Screen } from '@/components/ui/screen';
 import { SearchField } from '@/components/ui/search-field';
-import { Colors, Shadow, Spacing } from '@/constants/theme';
+import { TextField } from '@/components/ui/text-field';
+import { StarRating } from '@/components/ui/star-rating';
+import { Spacing } from '@/constants/theme';
+import type { VinoGuardado } from '@/data/vinos';
 import { useCava } from '@/state/cava-context';
+import { useSesion } from '@/state/sesion-context';
 import { normalizar } from '@/utils/texto';
-
+import { confirmar } from '@/utils/confirmar';
 export default function MiCavaScreen() {
-  const { vinos } = useCava();
+  const { vinos, error, cargando, recargar, quitarVino, editarEntrada } = useCava();
+  const { sesionIniciada } = useSesion();
   const [busqueda, setBusqueda] = useState('');
-
-  const consulta = normalizar(busqueda.trim());
-  const resultados = vinos.filter((vino) =>
-    normalizar([vino.nombre, vino.bodega, vino.varietal, vino.anio].join(' ')).includes(consulta),
+  const [editando, setEditando] = useState<VinoGuardado | null>(null);
+  const [anada, setAnada] = useState('');
+  const [rating, setRating] = useState(0);
+  const [nota, setNota] = useState('');
+  const [fallo, setFallo] = useState<string | null>(null);
+  const [guardando, setGuardando] = useState(false);
+  const resultados = vinos.filter((v) =>
+    normalizar([v.nombre, v.bodega, v.varietal, v.anio].join(' ')).includes(normalizar(busqueda)),
   );
-
-  const irAEscanear = () => router.navigate('/escanear');
-
+  const editar = (vino: VinoGuardado) => {
+    setEditando(vino);
+    setAnada(vino.anio ? String(vino.anio) : '');
+    setRating(vino.rating ?? 0);
+    setNota(vino.nota);
+    setFallo(null);
+  };
+  const guardar = async () => {
+    if (!editando) return;
+    setGuardando(true);
+    try {
+      await editarEntrada(editando.id, {
+        anada: anada ? Number(anada) : null,
+        valoracion: rating || null,
+        nota: nota || null,
+      });
+      setEditando(null);
+    } catch (e) {
+      setFallo((e as Error).message);
+    } finally {
+      setGuardando(false);
+    }
+  };
   return (
-    <Screen padded={false}>
-      <View style={styles.header}>
-        <View style={styles.titleRow}>
-          <View style={styles.titles}>
-            <AppText variant="title">Mi Cava</AppText>
-            <AppText variant="caption">Colección personal de vinos degustados</AppText>
-          </View>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Agregar un vino escaneando su etiqueta"
-            onPress={irAEscanear}
-            style={({ pressed }) => [styles.addButton, pressed && styles.pressed]}>
-            <Icon name="plus" size={20} color="textOnPrimary" />
-          </Pressable>
-        </View>
-
-        {vinos.length > 0 && (
-          <SearchField
-            value={busqueda}
-            onChangeText={setBusqueda}
-            placeholder="Buscar por vino, bodega o varietal..."
-          />
-        )}
-      </View>
-
-      {vinos.length === 0 ? (
-        <View style={styles.empty}>
-          <EmptyState
-            icon="cellar"
-            title="Tu cava está vacía"
-            description="Escaneá la etiqueta de un vino que probaste para guardarlo con tu puntuación y tus notas."
-          />
-          <Button title="Escanear un vino" icon="scan" onPress={irAEscanear} />
-        </View>
-      ) : (
-        <FlatList
-          data={resultados}
-          keyExtractor={(vino) => vino.id}
-          renderItem={({ item }) => <VinoCavaCard vino={item} />}
-          contentContainerStyle={styles.list}
-          showsVerticalScrollIndicator={false}
-          keyboardDismissMode="on-drag"
-          ListEmptyComponent={
-            <EmptyState
-              icon="search"
-              title="Sin resultados"
-              description="Ningún vino de tu cava coincide con la búsqueda."
-            />
-          }
+    <Screen>
+      <View style={{ gap: Spacing.md, paddingVertical: Spacing.lg }}>
+        <AppText variant="title">Mi cava</AppText>
+        <Button
+          title={sesionIniciada ? 'Escanear o cargar un vino' : 'Iniciar sesión para guardar vinos'}
+          onPress={() => router.push(sesionIniciada ? '/escanear' : '/login')}
         />
-      )}
+        <SearchField
+          value={busqueda}
+          onChangeText={setBusqueda}
+          placeholder="Buscar vino, bodega o cepa"
+        />
+        {cargando && <AppText>Cargando cava…</AppText>}
+        {(error || fallo) && !editando && <AppText color="malbec">{error ?? fallo}</AppText>}
+        {error && <Button title="Reintentar" onPress={() => void recargar()} />}
+      </View>
+      <FlatList
+        data={resultados}
+        keyExtractor={(v) => v.id}
+        contentContainerStyle={{ gap: Spacing.md, paddingBottom: Spacing.lg }}
+        refreshing={cargando}
+        onRefresh={() => void recargar()}
+        ListEmptyComponent={<AppText>{cargando ? '' : 'No hay vinos para mostrar.'}</AppText>}
+        renderItem={({ item }) => (
+          <View style={{ gap: Spacing.sm }}>
+            <VinoCavaCard
+              vino={item}
+              onQuitar={() =>
+                void (async () => {
+                  if (await confirmar('Quitar vino', 'Solo se elimina esta entrada de tu cava.'))
+                    try {
+                      await quitarVino(item.id);
+                    } catch (e) {
+                      setFallo((e as Error).message);
+                    }
+                })()
+              }
+            />
+            <Button
+              title="Editar añada, valoración o nota"
+              variant="outline"
+              onPress={() => editar(item)}
+            />
+          </View>
+        )}
+      />
+      <Modal
+        visible={editando !== null}
+        onRequestClose={() => setEditando(null)}
+        animationType="slide"
+      >
+        <Screen scroll>
+          <View style={{ gap: Spacing.lg, paddingVertical: Spacing.lg }}>
+            <AppText variant="heading">{editando?.nombre}</AppText>
+            <TextField
+              label="Añada (opcional)"
+              value={anada}
+              onChangeText={setAnada}
+              keyboardType="number-pad"
+            />
+            <StarRating value={rating} onChange={setRating} />
+            <Button title="Omitir valoración" variant="outline" onPress={() => setRating(0)} />
+            <TextField label="Nota privada (opcional)" value={nota} onChangeText={setNota} />
+            {fallo && <AppText color="malbec">{fallo}</AppText>}
+            <Button
+              title={guardando ? 'Guardando…' : 'Guardar cambios'}
+              disabled={guardando}
+              onPress={() => void guardar()}
+            />
+            <Button title="Cancelar" variant="outline" onPress={() => setEditando(null)} />
+          </View>
+        </Screen>
+      </Modal>
     </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  header: {
-    paddingHorizontal: Spacing.lg,
-    paddingTop: Spacing.lg,
-    paddingBottom: Spacing.md,
-    gap: Spacing.md,
-  },
-  titleRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing.md,
-  },
-  titles: {
-    flex: 1,
-    gap: Spacing.xs,
-  },
-  addButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.terracota,
-    ...Shadow.card,
-  },
-  pressed: {
-    opacity: 0.85,
-  },
-  empty: {
-    paddingHorizontal: Spacing.lg,
-    gap: Spacing.lg,
-  },
-  list: {
-    paddingHorizontal: Spacing.lg,
-    paddingBottom: Spacing.xl,
-    gap: Spacing.md,
-  },
-});
