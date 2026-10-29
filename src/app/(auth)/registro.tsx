@@ -1,4 +1,3 @@
-import { router } from "expo-router";
 import { useRef, useState } from "react";
 import { StyleSheet, View, type ScrollViewInstance } from "react-native";
 
@@ -11,6 +10,7 @@ import { Screen } from "@/components/ui/screen";
 import { Fonts, Spacing } from "@/constants/theme";
 import { useFormularioCuenta } from "@/state/use-formulario-cuenta";
 import { useSesion } from "@/state/sesion-context";
+import { volver } from "@/utils/navegacion";
 import { cuentaVacia } from "@/utils/validar-cuenta";
 
 export default function RegistroScreen() {
@@ -42,10 +42,7 @@ export default function RegistroScreen() {
       setEnviando(false);
     }
   };
-  const goToLogin = () => {
-    if (router.canGoBack()) router.back();
-    else router.replace("/login");
-  };
+  const goToLogin = () => volver("/login");
 
   return (
     <Screen scroll scrollRef={scroll} edges={["top", "bottom"]}>

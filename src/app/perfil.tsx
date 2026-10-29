@@ -7,6 +7,7 @@ import { Screen } from '@/components/ui/screen';
 import { Spacing } from '@/constants/theme';
 import { useSesion } from '@/state/sesion-context';
 import { confirmar } from '@/utils/confirmar';
+import { volver } from '@/utils/navegacion';
 
 export default function PerfilScreen() {
   const { usuario, cerrarSesion } = useSesion();
@@ -19,7 +20,7 @@ export default function PerfilScreen() {
     <Screen scroll edges={['top', 'bottom']}>
       <View style={{ gap: Spacing.lg, paddingVertical: Spacing.lg }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: Spacing.sm }}>
-          <IconButton icon="back" accessibilityLabel="Volver" onPress={() => router.canGoBack() ? router.back() : router.replace('/')} />
+          <IconButton icon="back" accessibilityLabel="Volver" onPress={() => volver('/')} />
           <AppText variant="title">Mi perfil</AppText>
         </View>
         <AppText variant="heading">{usuario.apodo ?? usuario.nombre}</AppText>

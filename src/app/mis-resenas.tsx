@@ -9,6 +9,7 @@ import { Screen } from '@/components/ui/screen';
 import { Spacing } from '@/constants/theme';
 import { api } from '@/services/api';
 import { useRecurso } from '@/state/use-recurso';
+import { volver } from '@/utils/navegacion';
 
 type Resena = {
   id: string;
@@ -23,7 +24,7 @@ export default function MisResenasScreen() {
   return (
     <Screen edges={['top', 'bottom']}>
       <View style={{ gap: Spacing.sm, paddingVertical: Spacing.lg }}>
-        <IconButton icon="back" accessibilityLabel="Volver a Mi perfil" onPress={() => router.canGoBack() ? router.back() : router.replace('/perfil')} />
+        <IconButton icon="back" accessibilityLabel="Volver a Mi perfil" onPress={() => volver('/perfil')} />
         <AppText variant="title">Mis reseñas</AppText>
         {error && <><AppText color="malbec">{error}</AppText><Button title="Reintentar" onPress={() => void recargar()} /></>}
       </View>
@@ -41,7 +42,7 @@ export default function MisResenasScreen() {
               <AppText variant="caption">{item.bodega.zona}</AppText>
               <AppText variant="bodyBold">Tu valoración: {item.valoracion}/5</AppText>
               {item.comentario && <AppText>{item.comentario}</AppText>}
-              <AppText variant="caption" color="malbec">Ver bodega y editar reseña</AppText>
+              <AppText variant="caption" color="malbec">Ver bodega</AppText>
             </View>
           </Card>
         )}

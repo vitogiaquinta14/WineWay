@@ -120,7 +120,7 @@ Reglas entre filas —al menos una cepa por vino, una visita por ruta, ausencia 
 - [x] `GET/POST /api/cava`, `PATCH/DELETE /api/cava/:id`: entradas del usuario con añada, valoración y nota opcionales; degustaciones repetidas permitidas.
 - [x] `POST /api/cava/manual`: crear vino privado y primera entrada en una transacción; posteriores entradas pueden reutilizar ese vino propio. Permitir editar la ficha privada mediante un endpoint autenticado de vinos manuales.
 - [x] `GET /api/favoritos`, `PUT/DELETE /api/favoritos/:bodegaId`: agregado idempotente y eliminación del favorito propio.
-- [x] `GET /api/bodegas/:id/resenas` público y `PUT/DELETE /api/bodegas/:id/mi-resena` autenticados: crear/editar la reseña única propia y eliminarla.
+- [x] `GET /api/bodegas/:id/resenas` público y `PUT/DELETE /api/bodegas/:id/mi-resena` autenticados: crear la reseña única propia y eliminarla. La app no ofrece edición.
 - [x] Calcular promedio WineWay desde reseñas existentes; vacío significa sin valoraciones. No alterar el rating de demostración.
 
 **Cierre:** datos privados aislados por usuario y ninguna creación manual a medias. **Materia:** CRUD, relaciones N:M con atributos, autorización, agregaciones y atomicidad.

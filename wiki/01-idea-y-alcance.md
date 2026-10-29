@@ -123,4 +123,4 @@ Estas evoluciones deberán preservar la diferencia entre una visita **planificad
 
 ## Estado de implementación
 
-La lista de trabajo que falta luego de la base de datos y la API está en [Pendientes de implementación](07-pendientes-de-implementacion.md). Las decisiones de producto aún abiertas siguen en [Dudas y decisiones pendientes](05-dudas-pendientes.md).
+La lista de trabajo que falta luego de la base de datos y la API está en [Pendientes de implementación](08-pendientes-de-implementacion.md). Las decisiones de producto aún abiertas siguen en [Dudas y decisiones pendientes](05-dudas-pendientes.md).

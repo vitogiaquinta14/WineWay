@@ -9,7 +9,7 @@ Este documento reúne preguntas surgidas al revisar en conjunto:
 
 Las preguntas no modifican el alcance actual. Su objetivo es hacer visibles las decisiones que todavía deben tomarse antes de cerrar los mockups, la especificación funcional o la implementación.
 
-El trabajo ya acordado que falta implementar está resumido en [Pendientes de implementación](07-pendientes-de-implementacion.md); esta página conserva preguntas de producto abiertas.
+El trabajo ya acordado que falta implementar está resumido en [Pendientes de implementación](08-pendientes-de-implementacion.md); esta página conserva preguntas de producto abiertas.
 
 ## Prioridades
 
@@ -129,11 +129,10 @@ El trabajo ya acordado que falta implementar está resumido en [Pendientes de im
 - **Pregunta:** ¿cualquier usuario registrado puede reseñar una bodega o debe existir alguna forma de comprobar que la visitó?
 - **Por qué importa:** no hay reservas internas en el MVP que puedan verificar la visita.
 
-### D-18 — Cantidad y edición de reseñas
+### D-18 — Cantidad y edición de reseñas — Resuelta
 
-- **Prioridad:** Media.
 - **Pregunta:** ¿cada usuario puede publicar una sola reseña por bodega y puede editarla o eliminarla posteriormente?
-- **Por qué importa:** define estados de la pantalla y reglas del rating promedio.
+- **Decisión:** cada usuario publica una sola reseña por bodega. No se edita: para cambiarla, la elimina y publica otra.
 
 ### D-19 — Moderación
 

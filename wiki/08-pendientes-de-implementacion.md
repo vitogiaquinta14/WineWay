@@ -6,7 +6,7 @@ Este documento resume el trabajo que falta después de implementar la base de da
 
 ### 1. Generación automática de rutas — implementada para esta etapa
 
-- Selección voraz en el backend: filtro por fechas, imprescindibles, favoritas y puntuación, presupuesto por persona, cuota de almuerzos, horarios, descanso y cercanía dentro de cada día. Reglas y casos de aceptación en [Especificación SDD](09-seleccion-voraz-de-rutas.md).
+- Selección voraz en el backend: filtro por fechas, imprescindibles, favoritas y puntuación, presupuesto por persona, cuota de almuerzos, horarios, descanso y cercanía dentro de cada día. Reglas y casos de aceptación en [Especificación SDD](10-seleccion-voraz-de-rutas.md).
 - La app permite marcar imprescindibles, ajustar la franja diaria y la cantidad de almuerzos, y consultar las explicaciones de resultados parciales.
 - Quedan para otra etapa las rutas viales y tráfico, los cupos y excepciones por fechas. La ruta generada sigue siendo una planificación: no confirma reservas.
 

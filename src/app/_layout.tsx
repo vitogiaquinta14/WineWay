@@ -61,10 +61,8 @@ function RootNavigator() {
         contentStyle: { backgroundColor: Colors.background },
       }}
     >
-      <Stack.Protected guard={true}>
-        <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="bodega/[id]" />
-      </Stack.Protected>
+      <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="bodega/[id]" />
 
       <Stack.Protected guard={sesionIniciada}>
         <Stack.Screen name="crear-ruta" />

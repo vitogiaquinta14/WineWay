@@ -25,6 +25,7 @@ import { SegmentedControl } from '@/components/ui/segmented-control';
 import { Colors, Radius, Spacing } from '@/constants/theme';
 import { formatPrecio, type Bodega, type Zona } from '@/data/bodegas';
 import { useCatalogo } from '@/state/catalogo-context';
+import { normalizar } from '@/utils/texto';
 
 type Vista = 'lista' | 'mapa';
 type Precio = number;
@@ -36,11 +37,6 @@ const vistas = [
   { value: 'lista', label: 'Lista' },
   { value: 'mapa', label: 'Mapa' },
 ] as const;
-
-/** Minúsculas y sin tildes, para que "lujan" encuentre "Luján". */
-function normalizar(texto: string) {
-  return texto.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
-}
 
 function coincide(bodega: Bodega, busqueda: string) {
   const texto = normalizar(

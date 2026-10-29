@@ -181,7 +181,7 @@ La interfaz debe contemplar:
 - Permiso denegado y orientación para recuperarlo.
 - Error de captura.
 
-La guía técnica de cámara, ubicación y mapa se documenta en [06 · Sensores: cámara, ubicación y mapa](./06-sensores-camara-y-ubicacion.md).
+La guía técnica de cámara, ubicación y mapa se documenta en [07 · Sensores: cámara, ubicación y mapa](./07-sensores-camara-y-ubicacion.md).
 
 ## 6. Gemini API para identificación de vinos
 

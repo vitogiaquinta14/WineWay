@@ -1,6 +1,6 @@
 # Especificación SDD — selección por prioridad, puntuación y presupuesto
 
-Reemplaza el backtracking de [la especificación anterior](08-generacion-de-rutas.md), según la decisión de usar una construcción voraz y evitar agotar límites de exploración.
+Reemplaza el backtracking de [la especificación anterior](09-generacion-de-rutas.md), según la decisión de usar una construcción voraz y evitar agotar límites de exploración.
 
 ## Entradas
 

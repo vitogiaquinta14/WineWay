@@ -19,6 +19,13 @@ import { TimeField } from '@/components/ui/time-field';
 import { hoyMendoza } from '@/utils/validar-cuenta';
 import { sumarDias, diasEntre, limiteRuta, validarFormularioRuta, ajustarFin } from '@/utils/formulario-ruta';
 import { Colors, Radius, Spacing } from '@/constants/theme';
+
+const horaValida = (hora: string) => /^([01]\d|2[0-3]):[0-5]\d$/.test(hora);
+const minutos = (hora: string) => {
+  const [h, m] = hora.split(':').map(Number);
+  return h * 60 + m;
+};
+
 export default function CrearRutaScreen() {
   // `aviso=sin-rutas` llega desde "Agregar a ruta" cuando todavía no hay ninguna.
   const params = useLocalSearchParams<{ id?: string; aviso?: string }>();
@@ -53,7 +60,6 @@ export default function CrearRutaScreen() {
     const fallos = validarFormularioRuta({ fechaInicio, fechaFin, personas, presupuesto, cantidadVisitas, cantidadAlmuerzos, automatico: generacion });
     if (generacion) {
       if (Number(cantidadVisitas) < imprescindibles.length) fallos.cantidadVisitas = 'La cantidad debe incluir todas las imprescindibles seleccionadas.';
-      const horaValida = (hora: string) => /^([01]\d|2[0-3]):[0-5]\d$/.test(hora);
       if (!horaValida(desde)) fallos.desde = 'Ingresá una hora válida (HH:MM).';
       if (!horaValida(hasta)) fallos.hasta = 'Ingresá una hora válida (HH:MM).';
       if (!fallos.desde && !fallos.hasta && hasta <= desde) fallos.hasta = 'El fin debe ser posterior al comienzo.';
@@ -76,18 +82,12 @@ export default function CrearRutaScreen() {
         fechaInicio,
         cantidadDias,
         cantidadPersonas: Number(personas),
-        presupuestoPersonaCentavos: Math.round(Number(presupuesto.replace(',', '.')) * 100),
+        presupuestoPersonaCentavos: Number(presupuesto) * 100,
       };
-      if (!presupuesto.trim()) throw new Error('Completá el presupuesto.');
       if (existente) {
         await editar(existente.id, datos);
         router.back();
       } else {
-        const minutos = (hora: string) => {
-          if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(hora)) throw new Error('Completá los horarios con formato HH:MM, por ejemplo 10:00.');
-          const [h, m] = hora.split(':').map(Number);
-          return h * 60 + m;
-        };
         const nueva = await generar({ ...datos, cantidadVisitas: Number(cantidadVisitas), cantidadAlmuerzos: Number(cantidadAlmuerzos), imprescindibles,
           desdeMin: minutos(desde), hastaMin: minutos(hasta) });
         router.replace({ pathname: '/ruta/[id]', params: { id: nueva.id } });

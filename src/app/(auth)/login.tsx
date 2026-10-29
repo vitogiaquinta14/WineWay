@@ -10,6 +10,7 @@ import { Screen } from '@/components/ui/screen';
 import { TextField } from '@/components/ui/text-field';
 import { Fonts, Spacing } from '@/constants/theme';
 import { useSesion } from '@/state/sesion-context';
+import { volver } from '@/utils/navegacion';
 
 export default function LoginScreen() {
   const [identificador, setIdentificador] = useState('');
@@ -18,7 +19,6 @@ export default function LoginScreen() {
   const { iniciarSesion } = useSesion();
   const [error, setError] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
-  const volver = () => (router.canGoBack() ? router.back() : router.replace('/'));
   const enviar = async () => {
     if (!identificador.trim() || !password) {
       setError('Ingresá tu email o usuario y contraseña.');
@@ -38,7 +38,7 @@ export default function LoginScreen() {
   return (
     <Screen scroll edges={['top', 'bottom']}>
       <View style={styles.content}>
-        <IconButton icon="back" accessibilityLabel="Volver" onPress={volver} />
+        <IconButton icon="back" accessibilityLabel="Volver" onPress={() => volver('/')} />
         <AuthHeader
           title="Bienvenido de nuevo"
           subtitle="Explorá bodegas exclusivas y creá tu propia ruta del vino."

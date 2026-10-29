@@ -40,15 +40,18 @@ WineWay permite **planificar** una visita, no reservarla dentro de la app:
 
 📄 Documentación funcional completa en [`/wiki`](./wiki):
 
-| Documento                                                                     | Contenido                                              |
-| ----------------------------------------------------------------------------- | ------------------------------------------------------ |
-| [01 · Idea y alcance](./wiki/01-idea-y-alcance.md)                            | Problema, propuesta de valor, alcance del MVP          |
-| [02 · Funcionalidades](./wiki/02-funcionalidades-mvp.md)                      | Detalle funcional de cada módulo                       |
-| [03 · Pantallas y diseño](./wiki/03-pantallas-y-diseno.md)                    | Inventario de pantallas, userflows, branding           |
-| [04 · APIs e integraciones](./wiki/04-apis-e-integraciones.md)                | Google Maps/Routes/Places/Calendar, Gemini, cámara     |
-| [05 · Dudas pendientes](./wiki/05-dudas-pendientes.md)                        | Decisiones de producto todavía abiertas                |
-| [06 · Branding](./wiki/06-branding.md)                                        | Nombre, eslogan, paleta, tipografía e identidad visual |
-| [07 · Sensores, cámara y ubicación](./wiki/06-sensores-camara-y-ubicacion.md) | Implementación de cámara, ubicación y mapa             |
+| Documento                                                                      | Contenido                                              |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------ |
+| [01 · Idea y alcance](./wiki/01-idea-y-alcance.md)                             | Problema, propuesta de valor, alcance del MVP          |
+| [02 · Funcionalidades](./wiki/02-funcionalidades-mvp.md)                       | Detalle funcional de cada módulo                       |
+| [03 · Pantallas y diseño](./wiki/03-pantallas-y-diseno.md)                     | Inventario de pantallas, userflows, branding           |
+| [04 · APIs e integraciones](./wiki/04-apis-e-integraciones.md)                 | Google Maps/Routes/Places/Calendar, Gemini, cámara     |
+| [05 · Dudas pendientes](./wiki/05-dudas-pendientes.md)                         | Decisiones de producto todavía abiertas                |
+| [06 · Branding](./wiki/06-branding.md)                                         | Nombre, eslogan, paleta, tipografía e identidad visual |
+| [07 · Sensores, cámara y ubicación](./wiki/07-sensores-camara-y-ubicacion.md)  | Implementación de cámara, ubicación y mapa             |
+| [08 · Pendientes de implementación](./wiki/08-pendientes-de-implementacion.md) | Trabajo que falta después de la base y la API          |
+| [09 · Generación de rutas](./wiki/09-generacion-de-rutas.md)                   | Especificación histórica del generador (backtracking)  |
+| [10 · Selección voraz de rutas](./wiki/10-seleccion-voraz-de-rutas.md)         | Especificación vigente del generador de rutas          |
 
 ## Componentes nativos
 

@@ -163,7 +163,7 @@ Pendientes del frontend al implementar estos flujos:
 7. El mismo vino y añada pueden guardarse dos veces en la cava del mismo usuario, con notas y valoraciones distintas o vacías.
 8. Un código desconocido permite crear un vino manual privado y su entrada de cava; ese vino no aparece en el catálogo ni en la ficha pública de una bodega.
 9. Una entrada de cava con ambas referencias de vino completas o ambas vacías se rechaza. Tampoco puede apuntar al vino manual de otro usuario.
-10. Un usuario sin visitas anteriores puede publicar una valoración de bodega sin comentario. No puede publicar una segunda reseña de esa bodega; sí editar o eliminar la existente.
+10. Un usuario sin visitas anteriores puede publicar una valoración de bodega sin comentario. No puede publicar una segunda reseña de esa bodega ni editar la existente; puede eliminarla y publicar otra.
 11. Desactivar una bodega conserva sus referencias y muestra advertencia en visitas futuras ya guardadas.
 12. Eliminar la última visita requiere confirmar la eliminación de la ruta; cancelar conserva ambas.
 13. Eliminar una cuenta elimina sus reseñas y datos privados, sin borrar el catálogo compartido.

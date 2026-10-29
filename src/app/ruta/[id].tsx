@@ -19,6 +19,7 @@ import { ErrorAPI } from '@/services/api-core';
 import { exportarCalendario } from '@/services/exportar-calendario';
 import { useRuta } from '@/state/ruta-context';
 import { confirmar } from '@/utils/confirmar';
+import { volver } from '@/utils/navegacion';
 
 const vistas = [
   { value: 'itinerario', label: 'Itinerario' },
@@ -26,11 +27,6 @@ const vistas = [
 ] as const;
 /** Un color por día para las paradas y la línea del mapa. */
 const COLORES_DIA = [Colors.malbec, Colors.terracota, Colors.oliva, Colors.wineDark, Colors.carbon];
-
-function volver() {
-  if (router.canGoBack()) router.back();
-  else router.replace('/mi-ruta');
-}
 
 export default function RutaScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -64,7 +60,7 @@ export default function RutaScreen() {
   if (!ruta) {
     return (
       <Screen>
-        <IconButton icon="back" accessibilityLabel="Volver" onPress={volver} />
+        <IconButton icon="back" accessibilityLabel="Volver" onPress={() => volver('/mi-ruta')} />
         <EmptyState
           icon="route"
           title={cargando ? 'Cargando ruta…' : 'Ruta no encontrada'}
@@ -77,7 +73,7 @@ export default function RutaScreen() {
   const eliminarRuta = async () => {
     try {
       await eliminar(ruta.id);
-      volver();
+      volver('/mi-ruta');
     } catch (e) {
       setFallo((e as Error).message);
     }
@@ -98,7 +94,7 @@ export default function RutaScreen() {
   return (
     <Screen scroll>
       <View style={styles.contenido}>
-        <IconButton icon="back" accessibilityLabel="Volver" onPress={volver} />
+        <IconButton icon="back" accessibilityLabel="Volver" onPress={() => volver('/mi-ruta')} />
         <View style={{ gap: Spacing.xs }}>
           <AppText variant="title">{ruta.nombre}</AppText>
           <AppText variant="caption">

@@ -1,7 +1,6 @@
 import { router, useIsFocused } from 'expo-router';
 import { useRef, useState } from 'react';
 import { View } from 'react-native';
-import { CameraView } from 'expo-camera';
 import { CameraViewfinder } from '@/components/escanear/camera-viewfinder';
 import { ResultadoCard } from '@/components/escanear/resultado-card';
 import { AppText } from '@/components/ui/app-text';
@@ -19,7 +18,6 @@ export default function EscanearScreen() {
   const focused = useIsFocused();
   const { sesionIniciada } = useSesion();
   const { guardarVino, guardarManual } = useCava();
-  const cameraRef = useRef<CameraView>(null);
   const bloqueado = useRef(false);
   const [fase, setFase] = useState<'camara' | 'procesando' | 'resultado' | 'manual'>('camara');
   const [codigo, setCodigo] = useState('');
@@ -117,10 +115,8 @@ export default function EscanearScreen() {
           />
         )}
         <CameraViewfinder
-          cameraRef={cameraRef}
           active={focused && fase === 'camara'}
           procesando={fase === 'procesando'}
-          onCameraReady={() => {}}
           onBarcodeScanned={(r) => void buscar(r.data)}
         />
         {error && <AppText color="malbec">{error}</AppText>}

@@ -1,6 +1,4 @@
 import { CameraView, useCameraPermissions, type BarcodeScanningResult } from 'expo-camera';
-import { Image } from 'expo-image';
-import type { Ref } from 'react';
 import { ActivityIndicator, Linking, StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/app-text';
@@ -9,23 +7,16 @@ import { Icon } from '@/components/ui/icon';
 import { Colors, Radius, Spacing } from '@/constants/theme';
 
 type CameraViewfinderProps = {
-  cameraRef: Ref<CameraView>;
   /** Solo se enciende la cámara cuando la pantalla está visible. */
   active: boolean;
   procesando: boolean;
-  /** Foto ya capturada: reemplaza la vista de cámara. */
-  fotoUri?: string;
-  onCameraReady: () => void;
   onBarcodeScanned?: (resultado: BarcodeScanningResult) => void;
 };
 
 /** Visor de cámara con guía para encuadrar la etiqueta y manejo del permiso. */
 export function CameraViewfinder({
-  cameraRef,
   active,
   procesando,
-  fotoUri,
-  onCameraReady,
   onBarcodeScanned,
 }: CameraViewfinderProps) {
   const [permiso, pedirPermiso] = useCameraPermissions();
@@ -56,25 +47,19 @@ export function CameraViewfinder({
 
   return (
     <View style={styles.container}>
-      {fotoUri ? (
-        <Image source={{ uri: fotoUri }} style={StyleSheet.absoluteFill} contentFit="cover" />
-      ) : (
-        active && (
-          <CameraView
-            ref={cameraRef}
-            style={StyleSheet.absoluteFill}
-            facing="back"
-            onCameraReady={onCameraReady}
-            onBarcodeScanned={onBarcodeScanned}
-            barcodeScannerSettings={{
-              barcodeTypes: ['ean13', 'ean8', 'upc_a', 'upc_e', 'code128'],
-            }}
-          />
-        )
+      {active && (
+        <CameraView
+          style={StyleSheet.absoluteFill}
+          facing="back"
+          onBarcodeScanned={onBarcodeScanned}
+          barcodeScannerSettings={{
+            barcodeTypes: ['ean13', 'ean8', 'upc_a', 'upc_e', 'code128'],
+          }}
+        />
       )}
 
       {/* Guía para encuadrar la etiqueta. */}
-      {!fotoUri && active && <View style={styles.guide} pointerEvents="none" />}
+      {active && <View style={styles.guide} pointerEvents="none" />}
 
       {procesando && (
         <View style={styles.processing}>

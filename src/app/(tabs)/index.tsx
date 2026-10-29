@@ -10,6 +10,7 @@ import { Screen } from '@/components/ui/screen';
 import { SectionHeader } from '@/components/ui/section-header';
 import { Button } from '@/components/ui/button';
 import { Spacing } from '@/constants/theme';
+import { rangoFechas } from '@/data/rutas';
 import { useCatalogo } from '@/state/catalogo-context';
 import { useRuta } from '@/state/ruta-context';
 import { AppText } from '@/components/ui/app-text';
@@ -28,10 +29,8 @@ export default function HomeScreen() {
     .sort((a, b) => a.visitas[0].inicio.localeCompare(b.visitas[0].inicio))[0];
   const proximoViaje = siguiente
     ? {
-        id: siguiente.id,
         titulo: siguiente.nombre,
-        fechas: siguiente.fechaInicio,
-        estado: 'planificado' as const,
+        fechas: rangoFechas(siguiente),
         cantidadBodegas: new Set(siguiente.visitas.map((v) => v.bodegaId)).size,
         cantidadAlmuerzos: siguiente.visitas.filter(
           (v) => v.bodega.experiencias.find((e) => e.id === v.experienciaId)?.tipo.gastronomia,

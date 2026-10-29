@@ -11,6 +11,7 @@ import { useSesion, type Usuario } from '@/state/sesion-context';
 import { useFormularioCuenta } from '@/state/use-formulario-cuenta';
 import { cuentaVacia, fechaVisible } from '@/utils/validar-cuenta';
 import { confirmar } from '@/utils/confirmar';
+import { volver } from '@/utils/navegacion';
 
 function valoresUsuario(usuario: Usuario | null) {
   return {
@@ -70,14 +71,13 @@ export default function PerfilScreen() {
     }
     router.replace('/login');
   };
-  const volver = () => (router.canGoBack() ? router.back() : router.replace('/'));
   if (!usuario) return null;
 
   return (
     <Screen scroll scrollRef={scroll}>
       <View style={{ gap: Spacing.lg, paddingVertical: Spacing.lg }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: Spacing.sm }}>
-          <IconButton icon="back" accessibilityLabel="Volver" onPress={volver} />
+          <IconButton icon="back" accessibilityLabel="Volver" onPress={() => volver('/')} />
           <AppText variant="title" style={{ flex: 1 }}>
             Mis datos personales
           </AppText>
