@@ -7,6 +7,7 @@ import { rutasAuth } from './routes/auth.js';
 import { rutasCatalogo } from './routes/catalogo.js';
 import { rutasPersonales } from './routes/personales.js';
 import { rutasItinerarios } from './routes/rutas.js';
+import { rutasCalendarios } from './routes/calendarios.js';
 export function crearApp(db: DB) {
   const app = express();
   app.disable('x-powered-by');
@@ -26,6 +27,7 @@ export function crearApp(db: DB) {
   app.get('/api/health', (_req, res) => res.json({ ok: true }));
   app.use('/api', rutasAuth(db), rutasCatalogo(db), rutasPersonales(db));
   app.use('/api/rutas', rutasItinerarios(db));
+  app.use('/api', rutasCalendarios(db));
   app.use((_req, res) =>
     res.status(404).json({ error: { codigo: 'NO_ENCONTRADO', mensaje: 'Endpoint inexistente.' } }),
   );

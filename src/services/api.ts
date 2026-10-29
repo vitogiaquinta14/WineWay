@@ -5,8 +5,9 @@ export function configurarSesion(valor: string | null, alVencer?: () => void) {
   token = valor;
   if (alVencer) sesionVencida = alVencer;
 }
+export const baseUrlAPI = process.env.EXPO_PUBLIC_API_URL ?? '';
 export const api = crearCliente({
-  baseUrl: process.env.EXPO_PUBLIC_API_URL ?? '',
+  baseUrl: baseUrlAPI,
   getToken: () => token,
   onUnauthorized: () => sesionVencida(),
 });

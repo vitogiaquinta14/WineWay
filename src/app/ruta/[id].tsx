@@ -16,6 +16,7 @@ import { Colors, Spacing } from '@/constants/theme';
 import { formatPrecio } from '@/data/bodegas';
 import { agruparDias, horaMendoza, rangoFechas, type Visita } from '@/data/rutas';
 import { ErrorAPI } from '@/services/api-core';
+import { exportarCalendario } from '@/services/exportar-calendario';
 import { useRuta } from '@/state/ruta-context';
 import { confirmar } from '@/utils/confirmar';
 
@@ -36,6 +37,7 @@ export default function RutaScreen() {
   const { rutas, cargando, quitarVisita, eliminar } = useRuta();
   const ruta = rutas.find((r) => r.id === id);
   const [fallo, setFallo] = useState<string | null>(null);
+  const [exportando, setExportando] = useState(false);
   const [vista, setVista] = useState<'itinerario' | 'mapa'>('itinerario');
   // Fecha del día elegido; vacío muestra todos.
   const [diaElegido, setDiaElegido] = useState('');
@@ -114,6 +116,26 @@ export default function RutaScreen() {
             alerta={ruta.costoGrupoCentavos > ruta.presupuestoGrupoCentavos}
           />
         </Card>
+
+        <View style={{ gap: Spacing.sm }}>
+          <Button
+            title={exportando ? 'Preparando calendario…' : 'Agendar en Calendario'}
+            variant="outline"
+            disabled={exportando || ruta.visitas.length === 0}
+            onPress={() => {
+              if (exportando) return;
+              setExportando(true);
+              setFallo(null);
+              void exportarCalendario(ruta)
+                .catch((error: unknown) => setFallo(error instanceof Error ? error.message : 'No pudimos abrir el calendario. Intentá nuevamente.'))
+                .finally(() => setExportando(false));
+            }}
+          />
+          <AppText variant="caption">
+            Abre un enlace de calendario con todas las visitas. Confirmá la importación si tu
+            dispositivo lo permite. Es una copia: los cambios en la ruta no se sincronizan.
+          </AppText>
+        </View>
 
         {fallo && <AppText color="malbec">{fallo}</AppText>}
         <SegmentedControl options={vistas} value={vista} onChange={setVista} />

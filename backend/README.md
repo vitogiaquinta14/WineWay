@@ -53,6 +53,8 @@ Base `/api`. Recursos privados: header `Authorization: Bearer TOKEN`. Cada usuar
 | Métodos y recurso | Uso |
 |---|---|
 | `GET /health` | Salud del servidor |
+| `POST /calendarios` | Con sesión: valida `{contenido: "...ics..."}` (hasta 90 KB) y devuelve `{path}` temporal |
+| `GET /calendarios/:clave.ics` | Sin sesión del navegador: sirve la copia durante diez minutos como `text/calendar` inline |
 | `GET /bodegas`, `/bodegas/:id` | Catálogo/detalle; lista paginada `{items,total,pagina,limite}` |
 | `GET /catalogo/filtros`, `/cepas`, `/tipos-experiencia` | Opciones derivadas del catálogo |
 | `GET /vinos/:id`, `/vinos/codigo/:codigo` | Ficha/escaneo por código exacto textual |
