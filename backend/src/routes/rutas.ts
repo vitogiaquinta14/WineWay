@@ -6,6 +6,13 @@ import { exigirSesion } from './auth.js';
 import { incluirBodega, presentarBodega } from './catalogo.js';
 import { ErrorHTTP, encontrado, exigir, texto, fecha, dinero, id } from '../utils/http.js';
 import {
+  generarItinerario,
+  puntuacionBodega,
+  ALMUERZO_INICIO_ANTES_DE_MIN,
+  MARGEN_DESCANSO_MIN,
+  type BodegaPlan,
+} from '../utils/planificador.js';
+import {
   fechaLocal,
   minutosLocales,
   horarioAdmite,
@@ -118,6 +125,77 @@ export function rutasItinerarios(db: DB) {
       ).map(presentarRuta),
     ),
   );
+  r.post('/generar', async (req, res) => {
+    const datos = datosRuta.pick({ nombre: true, fechaInicio: true, cantidadDias: true,
+      cantidadPersonas: true, presupuestoPersonaCentavos: true }).extend({
+      cantidadVisitas: z.number().int().min(1).max(12),
+      cantidadAlmuerzos: z.number().int().min(0).max(14).default(0),
+      imprescindibles: z.array(id).max(12).default([]),
+      desdeMin: z.number().int().min(0).max(1439).default(600),
+      hastaMin: z.number().int().min(1).max(1440).default(1080),
+    }).refine((v) => v.desdeMin < v.hastaMin, 'La franja diaria debe terminar después de comenzar.')
+      .refine((v) => new Set(v.imprescindibles).size === v.imprescindibles.length, 'No repitas imprescindibles.')
+      .refine((v) => v.imprescindibles.length <= v.cantidadVisitas, 'La cantidad deseada debe incluir al menos todas las imprescindibles.')
+      .refine((v) => v.cantidadAlmuerzos <= v.cantidadDias, 'Los almuerzos no pueden superar la cantidad de días.')
+      .refine((v) => v.cantidadAlmuerzos <= v.cantidadVisitas, 'Los almuerzos deben estar incluidos en la cantidad de visitas.')
+      .parse(req.body);
+    exigir(datos.cantidadDias <= 14, 'La generación automática admite hasta 14 días.');
+    const favoritas = (await db.bodegaFavorita.findMany({
+      where: { usuarioId: req.usuarioId }, select: { bodegaId: true },
+      orderBy: { bodegaId: 'asc' },
+    })).map((f) => f.bodegaId);
+    const elegidas = await db.bodega.count({ where: { id: { in: datos.imprescindibles }, activa: true } });
+    exigir(elegidas === datos.imprescindibles.length, 'Elegí bodegas activas del catálogo como imprescindibles.');
+    const bodegas = await db.bodega.findMany({
+      where: { OR: [{ activa: true }, { id: { in: favoritas } }] },
+      include: { experiencias: { where: { activa: true }, include: { tipo: true, horarios: true } },
+        resenas: { select: { valoracion: true } } },
+    });
+    const candidatas: BodegaPlan[] = bodegas.map((b) => ({
+      id: b.id, nombre: b.nombre, zona: b.zona, tipo: b.tipo,
+      caracteristicas: b.caracteristicas as string[], latitud: b.latitud, longitud: b.longitud,
+      rating: puntuacionBodega(b.ratingDemostracion, b.resenas.map((r) => r.valoracion)),
+      activa: b.activa,
+      experiencias: (b.activa ? b.experiencias : []).map((e) => ({ id: e.id, nombre: e.nombre,
+        precioCentavos: e.precioCentavos, duracionMin: e.duracionMin, tipo: e.tipo.nombre,
+        gastronomia: e.tipo.gastronomia, almuerzo: /\balmuerzo\b/iu.test(e.tipo.nombre), horarios: e.horarios })),
+    }));
+    const plan = generarItinerario(candidatas, { ...datos, favoritas });
+    if (!plan.visitas.length) throw new ErrorHTTP(422, 'SIN_VISITAS',
+      ['No se pudo proponer ninguna visita.', ...plan.advertencias,
+        ...plan.noIncluidas.map((b) => `${b.nombre}: ${b.mensaje}`)].join(' '));
+    const ruta = await db.$transaction(async (tx) => {
+      const preparadas = [];
+      for (const visita of plan.visitas) preparadas.push(await prepararVisita(tx, visita));
+      validarConjunto(preparadas, datos.fechaInicio, datos.cantidadDias);
+      const preciosActuales = await tx.experiencia.findMany({
+        where: { id: { in: plan.visitas.map((v) => v.experienciaId) } },
+      });
+      const originales = candidatas.flatMap((b) => b.experiencias);
+      if (preciosActuales.some((e) => {
+        const original = originales.find((o) => o.id === e.id)!;
+        return original.precioCentavos !== e.precioCentavos || original.duracionMin !== e.duracionMin;
+      })) throw new ErrorHTTP(409, 'CATALOGO_CAMBIO', 'El catálogo cambió durante la generación. Volvé a intentar.');
+      return tx.ruta.create({ data: {
+        nombre: datos.nombre, fechaInicio: datos.fechaInicio,
+        cantidadDias: datos.cantidadDias, cantidadPersonas: datos.cantidadPersonas,
+        presupuestoPersonaCentavos: datos.presupuestoPersonaCentavos, usuarioId: req.usuarioId,
+        parametros: { favoritas, imprescindibles: datos.imprescindibles,
+          cantidadVisitas: datos.cantidadVisitas, desdeMin: datos.desdeMin, hastaMin: datos.hastaMin,
+          cantidadAlmuerzos: datos.cantidadAlmuerzos,
+          margenDescansoMin: MARGEN_DESCANSO_MIN, almuerzoDesdeMin: 780, almuerzoHastaMin: 840,
+          almuerzoInicioAntesDeMin: ALMUERZO_INICIO_ANTES_DE_MIN,
+          distanciaEstimadaKm: plan.distanciaEstimadaKm, metodoDistancia: 'GEODESICA_ESTIMADA',
+          generacion: { cantidadSolicitada: datos.cantidadVisitas, cantidadIncluida: plan.visitas.length,
+            metodo: plan.metodo, cumpleImprescindibles: plan.cumpleImprescindibles,
+            cantidadAlmuerzosSolicitada: datos.cantidadAlmuerzos, cantidadAlmuerzosIncluida: plan.cantidadAlmuerzosIncluida,
+            cumpleAlmuerzos: plan.cumpleAlmuerzos,
+            advertencias: plan.advertencias, noIncluidas: plan.noIncluidas } },
+        visitas: { create: preparadas },
+      }, include: incluirRuta });
+    });
+    res.status(201).json(presentarRuta(ruta));
+  });
   r.get('/:id', async (req, res) =>
     res.json(presentarRuta(await propia(db, id.parse(req.params.id), req.usuarioId))),
   );

@@ -38,11 +38,19 @@ export function ResultadoCard({
           <AppText variant="caption" color="text">
             {vino.bodega}
           </AppText>
+          {[vino.tipo, vino.perfil].some(Boolean) && (
+            <AppText variant="caption" color="malbec">
+              {[vino.tipo, vino.perfil].filter(Boolean).join(' · ')}
+            </AppText>
+          )}
           <AppText variant="caption">
-            {vino.varietal} · {vino.anio} · {vino.region}
+            {[vino.varietal, vino.anio].filter(Boolean).join(' · ')}
           </AppText>
+          {vino.region.length > 0 && <AppText variant="caption">{vino.region}</AppText>}
         </View>
       </View>
+
+      {vino.descripcion ? <AppText>{vino.descripcion}</AppText> : null}
 
       <View style={styles.divider} />
 

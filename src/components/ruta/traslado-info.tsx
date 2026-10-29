@@ -10,7 +10,7 @@ export function TrasladoInfo({ minutos, destino }: { minutos: number; destino: s
     <View style={styles.container}>
       <Icon name="car" size={12} color="textMuted" />
       <AppText variant="caption">
-        {minutos} min en auto hasta {destino}
+        {minutos} min estimados en auto hasta {destino}
       </AppText>
     </View>
   );

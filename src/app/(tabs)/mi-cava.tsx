@@ -76,16 +76,9 @@ export default function MiCavaScreen() {
         ListEmptyComponent={<AppText>{cargando ? '' : 'No hay vinos para mostrar.'}</AppText>}
         renderItem={({ item }) => (
           <View style={{ gap: Spacing.sm }}>
-            <VinoCavaCard vino={item} />
-            <Button
-              title="Editar añada, valoración o nota"
-              variant="outline"
-              onPress={() => editar(item)}
-            />
-            <Button
-              title="Quitar de mi cava"
-              variant="outline"
-              onPress={() =>
+            <VinoCavaCard
+              vino={item}
+              onQuitar={() =>
                 void (async () => {
                   if (await confirmar('Quitar vino', 'Solo se elimina esta entrada de tu cava.'))
                     try {
@@ -95,6 +88,11 @@ export default function MiCavaScreen() {
                     }
                 })()
               }
+            />
+            <Button
+              title="Editar añada, valoración o nota"
+              variant="outline"
+              onPress={() => editar(item)}
             />
           </View>
         )}

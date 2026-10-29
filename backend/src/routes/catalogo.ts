@@ -146,16 +146,19 @@ export function rutasCatalogo(db: DB) {
       ),
     ),
   );
-  r.get('/vinos/codigo/:codigo', async (req, res) =>
+  r.get('/vinos/codigo/:codigo', async (req, res) => {
+    const codigo = id.parse(req.params.codigo);
+    // iOS informa los UPC-A (12 dígitos) como EAN-13 con un 0 adelante.
+    const variantes = /^0\d{12}$/.test(codigo) ? [codigo, codigo.slice(1)] : [codigo];
     res.json(
       encontrado(
-        await db.vino.findUnique({
-          where: { codigoBarras: id.parse(req.params.codigo) },
+        await db.vino.findFirst({
+          where: { codigoBarras: { in: variantes } },
           include: incluirVino,
         }),
       ),
-    ),
-  );
+    );
+  });
   r.get('/vinos/:id', async (req, res) =>
     res.json(
       encontrado(

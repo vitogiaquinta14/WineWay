@@ -8,7 +8,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="index" options={{ title: 'Inicio' }} />
       <Tabs.Screen name="explorar" options={{ title: 'Explorar' }} />
       <Tabs.Screen name="escanear" options={{ title: 'Escanear' }} />
-      <Tabs.Screen name="mi-ruta" options={{ title: 'Mi Ruta' }} />
+      <Tabs.Screen name="mi-ruta" options={{ title: 'Mis Rutas' }} />
       <Tabs.Screen name="mi-cava" options={{ title: 'Mi Cava' }} />
     </Tabs>
   );

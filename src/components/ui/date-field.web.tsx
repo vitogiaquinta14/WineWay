@@ -7,6 +7,9 @@ import type { DateFieldProps } from './date-field.types';
 
 export function DateField({
   label,
+  hint = 'Debés tener 18 años cumplidos.',
+  minimumDate,
+  maximumDate,
   value,
   onChange,
   onBlur,
@@ -15,7 +18,7 @@ export function DateField({
   disabled,
 }: DateFieldProps) {
   return (
-    <View style={{ gap: Spacing.sm }}>
+    <View style={{ gap: Spacing.sm, width: '100%', minWidth: 0 }}>
       <AppText variant="label">
         {label}
         {required && <AppText color="error"> *</AppText>}
@@ -23,6 +26,9 @@ export function DateField({
       <View
         style={{
           position: 'relative',
+          width: '100%',
+          minWidth: 0,
+          overflow: 'hidden',
           minHeight: 48,
           borderWidth: error ? 2 : 1,
           borderColor: error ? Colors.error : Colors.border,
@@ -33,20 +39,24 @@ export function DateField({
         <View
           pointerEvents="none"
           style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: Spacing.sm,
-            padding: Spacing.md,
+            minHeight: 48,
+            justifyContent: 'center',
+            paddingVertical: Spacing.md,
+            paddingLeft: Spacing.md,
+            paddingRight: Spacing.md + 18 + Spacing.sm,
           }}
         >
-          <AppText color={value ? 'text' : 'textMuted'}>
-            {fechaVisible(value) || 'Elegí tu fecha en el calendario'}
+          <AppText color={value ? 'text' : 'textMuted'} numberOfLines={1} style={{ minWidth: 0 }}>
+            {fechaVisible(value) || 'Elegí fecha'}
           </AppText>
+        </View>
+        <View pointerEvents="none" style={{ position: 'absolute', right: Spacing.md, top: 15, width: 18, height: 18 }}>
           <Icon name="route" size={18} color="textMuted" />
         </View>
         <input
           type="date"
+          min={minimumDate}
+          max={maximumDate}
           value={value}
           required={required}
           disabled={disabled}
@@ -80,7 +90,7 @@ export function DateField({
         color={error ? 'error' : 'textMuted'}
         accessibilityLiveRegion="polite"
       >
-        {error ?? 'Debés tener 18 años cumplidos.'}
+        {error ?? hint}
       </AppText>
     </View>
   );

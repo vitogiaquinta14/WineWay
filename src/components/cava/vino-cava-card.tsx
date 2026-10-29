@@ -1,14 +1,15 @@
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/app-text';
 import { Card } from '@/components/ui/card';
+import { Icon } from '@/components/ui/icon';
 import { Photo } from '@/components/ui/photo';
 import { StarRating } from '@/components/ui/star-rating';
 import { Colors, Fonts, Radius, Spacing } from '@/constants/theme';
 import type { VinoGuardado } from '@/data/vinos';
 
 /** Vino de la colección personal: datos, rating y nota privados. */
-export function VinoCavaCard({ vino }: { vino: VinoGuardado }) {
+export function VinoCavaCard({ vino, onQuitar }: { vino: VinoGuardado; onQuitar?: () => void }) {
   return (
     <Card style={styles.card}>
       <Photo source={vino.imagen} style={styles.image} />
@@ -21,6 +22,15 @@ export function VinoCavaCard({ vino }: { vino: VinoGuardado }) {
           <AppText variant="caption" color="malbec" style={styles.year}>
             {vino.anio}
           </AppText>
+          {onQuitar && (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={`Quitar ${vino.nombre} de mi cava`}
+              hitSlop={8}
+              onPress={onQuitar}>
+              <Icon name="delete" size={18} color="malbec" />
+            </Pressable>
+          )}
         </View>
         <AppText variant="caption">{vino.bodega}</AppText>
         {vino.rating === null ? (

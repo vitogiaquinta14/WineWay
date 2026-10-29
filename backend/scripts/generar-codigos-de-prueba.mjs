@@ -61,7 +61,7 @@ const html = `<!doctype html>
   <script>
     document.querySelectorAll('svg.codigo').forEach((svg) => {
       const codigo = svg.dataset.codigo;
-      JsBarcode(svg, codigo, { format: /^\\d{13}$/.test(codigo) ? 'EAN13' : 'CODE128', height: 70, margin: 8, fontSize: 16 });
+      JsBarcode(svg, codigo, { format: /^\\d{13}$/.test(codigo) ? 'EAN13' : /^\\d{12}$/.test(codigo) ? 'UPC' : 'CODE128', height: 70, margin: 8, fontSize: 16 });
     });
   </script>
 </body>

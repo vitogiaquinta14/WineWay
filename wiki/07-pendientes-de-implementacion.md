@@ -4,13 +4,11 @@ Este documento resume el trabajo que falta después de implementar la base de da
 
 ## Trabajo principal
 
-### 1. Generación automática de rutas
+### 1. Generación automática de rutas — implementada para esta etapa
 
-- Implementar el algoritmo a partir de los parámetros que el usuario carga en la app y que ya se guardan con cada ruta.
-- Asignar fecha y hora concreta a cada visita, respetando la duración y los horarios semanales de la experiencia.
-- Considerar traslados, presupuesto por persona y preferencias; no proponer superposiciones ni recorridos inviables.
-- Revisar las decisiones todavía abiertas sobre medio de transporte, cantidad de propuestas y conflictos del itinerario en D-25 a D-27 de `05-dudas-pendientes.md`.
-- La ruta generada sigue siendo una planificación: no confirma reservas.
+- Selección voraz en el backend: filtro por fechas, imprescindibles, favoritas y puntuación, presupuesto por persona, cuota de almuerzos, horarios, descanso y cercanía dentro de cada día. Reglas y casos de aceptación en [Especificación SDD](09-seleccion-voraz-de-rutas.md).
+- La app permite marcar imprescindibles, ajustar la franja diaria y la cantidad de almuerzos, y consultar las explicaciones de resultados parciales.
+- Quedan para otra etapa las rutas viales y tráfico, los cupos y excepciones por fechas. La ruta generada sigue siendo una planificación: no confirma reservas.
 
 ### 2. Cargar el catálogo real de bodegas y vinos
 

@@ -21,7 +21,7 @@ export default function HomeScreen() {
   const focused = useIsFocused();
   const { usuario } = useSesion();
   const { bodegas, error, cargando, recargar } = useCatalogo();
-  const { rutas, seleccionar } = useRuta();
+  const { rutas } = useRuta();
   const bodegasRecomendadas = bodegas.filter((b) => b.recomendada);
   const siguiente = rutas
     .filter((r) => r.estado === 'VIGENTE')
@@ -61,10 +61,9 @@ export default function HomeScreen() {
             <SectionHeader title="Próximo viaje" />
             <NextTripCard
               viaje={proximoViaje}
-              onPress={() => {
-                seleccionar(siguiente.id);
-                router.navigate('/mi-ruta');
-              }}
+              onPress={() =>
+                router.push({ pathname: '/ruta/[id]', params: { id: siguiente.id } })
+              }
             />
           </View>
         )}

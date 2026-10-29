@@ -68,7 +68,11 @@ function RootNavigator() {
 
       <Stack.Protected guard={sesionIniciada}>
         <Stack.Screen name="crear-ruta" />
+        <Stack.Screen name="ruta/[id]" />
         <Stack.Screen name="perfil" />
+        <Stack.Screen name="mis-datos" />
+        <Stack.Screen name="mis-favoritos" />
+        <Stack.Screen name="mis-resenas" />
       </Stack.Protected>
       <Stack.Protected guard={!sesionIniciada}>
         <Stack.Screen name="(auth)" />

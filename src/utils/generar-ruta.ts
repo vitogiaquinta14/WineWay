@@ -1,8 +1,2 @@
-/** Parámetros previstos para el algoritmo que se implementará en una etapa posterior. */
-export type ConfiguracionViaje = {
-  dias: number;
-  personas: number;
-  presupuestoPersonaCentavos: number;
-  bodegasPorDia: number[];
-  preferencias: string[];
-};
+/** El cliente sólo envía parámetros; el planificador vive en Express. */
+export type { RutaGeneradaNueva as ConfiguracionViaje } from '@/data/rutas';

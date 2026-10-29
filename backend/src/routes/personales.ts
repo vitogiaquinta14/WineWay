@@ -40,7 +40,16 @@ export function rutasPersonales(db: DB) {
       }),
     ),
   );
-  r.use(['/cava', '/favoritos', '/vinos-manuales', '/bodegas/:id/mi-resena'], exigirSesion(db));
+  r.use(['/mis-resenas', '/cava', '/favoritos', '/vinos-manuales', '/bodegas/:id/mi-resena'], exigirSesion(db));
+  r.get('/mis-resenas', async (req, res) => {
+    const resenas = await db.resenaBodega.findMany({
+      where: { usuarioId: req.usuarioId },
+      select: { id: true, valoracion: true, comentario: true, creadoEn: true,
+        bodega: { select: { id: true, nombre: true, zona: true } } },
+      orderBy: { creadoEn: 'desc' },
+    });
+    res.json(resenas);
+  });
   r.get('/cava', async (req, res) =>
     res.json(
       await db.vinoEnCava.findMany({

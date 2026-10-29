@@ -12,7 +12,6 @@ type ItinerarioDiaProps = {
   onVisitaPress: (bodega: Bodega) => void;
   /** Badge de cada visita (por defecto "Planificado"). */
   badge?: string;
-  onEditarVisita?: (visita: Visita, bodega: Bodega) => void;
   onQuitarVisita?: (visita: Visita, bodega: Bodega) => void;
 };
 
@@ -21,7 +20,6 @@ export function ItinerarioDia({
   dia,
   onVisitaPress,
   badge,
-  onEditarVisita,
   onQuitarVisita,
 }: ItinerarioDiaProps) {
   return (
@@ -44,7 +42,6 @@ export function ItinerarioDia({
               bodega={bodega}
               badge={badge}
               onPress={() => onVisitaPress(bodega)}
-              onEdit={onEditarVisita && (() => onEditarVisita(visita, bodega))}
               onDelete={onQuitarVisita && (() => onQuitarVisita(visita, bodega))}
             />
           </View>

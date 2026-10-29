@@ -1,5 +1,5 @@
 {
-  "nota": "Catálogo de demostración. Precios \"desde\" por persona en ARS y horarios generales de apertura relevados en octubre de 2026: orientativos, no son tarifas ni turnos confirmados. Importes publicados en USD convertidos a 1 USD = 1.500 ARS. Los códigos de barras con prefijo 200 son internos de prueba (rango GS1 de uso interno) y no corresponden a etiquetas reales.",
+  "nota": "Catálogo de demostración. Precios \"desde\" por persona en ARS y horarios generales de apertura relevados en octubre de 2026: orientativos, no son tarifas ni turnos confirmados. Importes publicados en USD convertidos a 1 USD = 1.500 ARS. Los códigos de barras con prefijo 200 son internos de prueba (rango GS1 de uso interno) y no corresponden a etiquetas reales. ANAIA: el sitio no publica precios actuales de vinos; sus precios en este seed son estimaciones de demostración. Los importes de las experiencias también son ilustrativos y deben confirmarse con la bodega antes de usarse como tarifas. Pulenta Estate y Alpamanta: los precios de vinos y experiencias son importes ilustrativos de demostración, no publicados ni confirmados. Alpamanta publica las horas de inicio de sus experiencias; el calendario de lunes a sábado se contrastó con las guías de Turismo de Luján de Cuyo y Caminos del Vino. Domingo no se ofrece. Las duraciones de picnic, naturaleza, arte y bienestar son estimaciones de demostración porque la web no las informa. Sus coordenadas se toman del enlace de ubicación oficial; las de Pulenta, del enlace oficial de cómo llegar.",
   "tiposExperiencia": [
     {
       "id": "visita-cata",
@@ -217,7 +217,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://catenazapata.com/wp-content/uploads/2025/03/Catena-Zapata-Malbec-Argentino.jpg"
         },
         {
           "id": "catena-zapata-adrianna-vineyard-river-stones",
@@ -233,7 +234,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://catenazapata.com/wp-content/uploads/2025/03/Adrianna-Vineyard-River.jpg"
         },
         {
           "id": "catena-zapata-white-bones",
@@ -249,7 +251,8 @@
               "cepaId": "chardonnay",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://catenazapata.com/wp-content/uploads/2025/03/Adrianna-Vineyard-White-Bones.jpg"
         },
         {
           "id": "catena-zapata-estiba-reservada",
@@ -265,7 +268,8 @@
               "cepaId": "blend",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://catenazapata.com/wp-content/uploads/2025/03/Catena-Zapata-Estiba-Reservada.jpg"
         }
       ]
     },
@@ -278,7 +282,7 @@
       "zona": "Valle de Uco",
       "latitud": -33.7727778,
       "longitud": -69.1547222,
-      "sitioWeb": "https://www.zuccardiwines.com",
+      "sitioWeb": "https://zuccardiwines.com",
       "tipo": "Tradicional",
       "caracteristicas": [
         "Paisajes",
@@ -537,7 +541,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://zuccardiwines.com/wp-content/uploads/2024/03/4.viticultor-concreto-754x1024.png"
         },
         {
           "id": "zuccardi-piedra-infinita",
@@ -553,7 +558,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://zuccardiwines.com/wp-content/uploads/2024/03/4.finca-piedra-infinita-1.jpg"
         },
         {
           "id": "zuccardi-aluvional-gualtallary",
@@ -569,7 +575,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://zuccardiwines.com/wp-content/uploads/2024/03/5.-aluvional-gualtallary.jpg"
         },
         {
           "id": "zuccardi-fosil",
@@ -585,7 +592,8 @@
               "cepaId": "chardonnay",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://zuccardiwines.com/wp-content/uploads/2024/03/1.fosil_.png"
         }
       ]
     },
@@ -719,7 +727,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.bodegasalentein.com/imagenes/vinos/2023-09/SV_El_Tomillo.png"
         },
         {
           "id": "salentein-numina",
@@ -735,7 +744,8 @@
               "cepaId": "blend",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.bodegasalentein.com/imagenes/vinos/2023-09/Numina_Gran_Corte.png"
         },
         {
           "id": "salentein-primus-malbec",
@@ -751,7 +761,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.bodegasalentein.com/imagenes/vinos/2023-09/2019_ESP_primus_Malbec.png"
         },
         {
           "id": "salentein-reserve-sauvignon-blanc",
@@ -767,7 +778,8 @@
               "cepaId": "sauvignon-blanc",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.bodegasalentein.com/imagenes/vinos/2023-09/Reserva_Sauvignon__Blanc.png"
         }
       ]
     },
@@ -913,7 +925,8 @@
               "cepaId": "pinot-noir",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.chandon.com.ar/wp-content/uploads/2022/08/Blanc-De-Noir-vertical-768x682.png"
         },
         {
           "id": "chandon-extra-brut",
@@ -933,7 +946,8 @@
               "cepaId": "pinot-noir",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.chandon.com.ar/wp-content/uploads/2021/03/extrabrut-768x683.png"
         },
         {
           "id": "chandon-delice",
@@ -953,7 +967,8 @@
               "cepaId": "semillon",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.chandon.com.ar/wp-content/uploads/2023/08/delice-chandon-768x683.png"
         }
       ]
     },
@@ -1087,7 +1102,8 @@
               "cepaId": "blend",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://tienda.andeluna.com.ar/wp-content/uploads/2024/03/Pasionado-CC-1.png"
         },
         {
           "id": "andeluna-altitud-merlot",
@@ -1103,7 +1119,8 @@
               "cepaId": "merlot",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://tienda.andeluna.com.ar/wp-content/uploads/2020/09/Altitud-MR-683x1024.png"
         },
         {
           "id": "andeluna-enologos-cabernet-franc",
@@ -1289,7 +1306,9 @@
       "sitioWeb": "https://www.achaval-ferrer.com",
       "tipo": "Boutique",
       "caracteristicas": [],
-      "fotos": [],
+      "fotos": [
+        "https://www.achaval-ferrer.com/assets/video-portada-12f7c27a.jpeg"
+      ],
       "ratingDemostracion": 4.7,
       "recomendada": false,
       "activa": true,
@@ -1362,7 +1381,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.achaval-ferrer.com/assets/FincaAltamira_2021-03f6ed0b.webp"
         },
         {
           "id": "achaval-ferrer-quimera",
@@ -1378,7 +1398,8 @@
               "cepaId": "blend",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.achaval-ferrer.com/assets/bottle_quimeratinto-d34e05e6.png"
         },
         {
           "id": "achaval-ferrer-finca-bella-vista",
@@ -1394,7 +1415,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.achaval-ferrer.com/assets/Finca_Bella_Vista-2022_bottle-18c57a2e.png"
         }
       ]
     },
@@ -1540,7 +1562,8 @@
               "cepaId": "cabernet-sauvignon",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.casarena.com/images/vino/single/Single-Owen-Cabernet-Sauvignon.png"
         },
         {
           "id": "casarena-jamilla-s-vineyard-malbec",
@@ -1556,7 +1579,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.casarena.com/images/vino/single/Single-Jamilla-Malbec.png"
         },
         {
           "id": "casarena-505-syrah",
@@ -1705,7 +1729,8 @@
               "cepaId": "blend",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.diamandes.com/wp-content/uploads/2025/01/diamandes-grande-reserve-malbec-cabernet-2019-368x1024.png"
         },
         {
           "id": "diamandes-de-uco-viognier",
@@ -1721,7 +1746,8 @@
               "cepaId": "viognier",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.diamandes.com/wp-content/uploads/2025/06/diamandes-de-uco-viognier-2022-427x1024.png"
         },
         {
           "id": "diamandes-perlita-malbec-syrah",
@@ -1741,7 +1767,8 @@
               "cepaId": "syrah",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.diamandes.com/wp-content/uploads/2022/11/perlita-malbec-syrah-2020-371x1024.png"
         }
       ]
     },
@@ -2086,7 +2113,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://luigiboscaar.vteximg.com.br/arquivos/ids/157867-600-600/DS_MalbecDOC-1200x1200--1-.png"
         },
         {
           "id": "luigi-bosca-gala-1",
@@ -2110,7 +2138,8 @@
               "cepaId": "tannat",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://luigiboscaar.vteximg.com.br/arquivos/ids/155469-600-600/LB_Gala1.png"
         }
       ]
     },
@@ -2307,7 +2336,8 @@
               "cepaId": "blend",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.norton.com.ar/wp-content/uploads/2025/01/Gernot2021_2048x2048_crop_center@2x-1.jpg"
         },
         {
           "id": "norton-lote-malbec",
@@ -2339,7 +2369,8 @@
               "cepaId": "chardonnay",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://carrefourar.vteximg.com.br/arquivos/ids/272439-500-500/7792319003188_01.jpg"
         }
       ]
     },
@@ -2690,7 +2721,8 @@
               "cepaId": "cabernet-sauvignon",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.bodegaseptima.com/wp-content/uploads/2019/09/Septima-Obra-Cabernet-Sauvignon-Recortada-Baja-490x1024.png"
         },
         {
           "id": "septima-maria-codorniu",
@@ -2710,7 +2742,8 @@
               "cepaId": "chardonnay",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.bodegaseptima.com/wp-content/uploads/2019/02/Mar%C3%ADa-Codorn%C3%ADu-Metodo-Tradicional-330x1024.png"
         }
       ]
     },
@@ -2797,7 +2830,8 @@
               "cepaId": "blend",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.bodegasinfin.com/wp-content/uploads/2019/07/RED-BLEND.png"
         },
         {
           "id": "sinfin-guarda-cabernet-franc",
@@ -2813,7 +2847,8 @@
               "cepaId": "cabernet-franc",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.bodegasinfin.com/wp-content/uploads/2020/07/Guarda_CabernetFranc-576x1024.png"
         },
         {
           "id": "sinfin-fugaz-white-blend",
@@ -2978,7 +3013,8 @@
               "cepaId": "viognier",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://trapiche.com.ar/comin/wp-content/uploads/2017/03/Iscay-syrah-viognier.jpg"
         },
         {
           "id": "trapiche-terroir-series-malbec",
@@ -3010,7 +3046,8 @@
               "cepaId": "cabernet-sauvignon",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://carrefourar.vteximg.com.br/arquivos/ids/184185-500-500/7790240042467_01.jpg"
         }
       ]
     },
@@ -3139,7 +3176,8 @@
               "cepaId": "cabernet-sauvignon",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://bodegavistalba.com/tienda/120-large_default/vistalba-corte-a.jpg"
         },
         {
           "id": "vistalba-corte-b",
@@ -3163,7 +3201,8 @@
               "cepaId": "bonarda",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://bodegavistalba.com/tienda/576-large_default/vistalba-corte-b.jpg"
         },
         {
           "id": "vistalba-tomero-petit-verdot",
@@ -3179,7 +3218,8 @@
               "cepaId": "petit-verdot",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://bodegavistalba.com/tienda/556-large_default/gran-tomero-petit-verdot.jpg"
         }
       ]
     },
@@ -3324,7 +3364,8 @@
               "cepaId": "blend",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://bodegaslopez.com.ar/wp-content/uploads/2023/02/copia-de-copia-de-montchenot-15-anos-botella.png"
         },
         {
           "id": "lopez-chateau-vieux",
@@ -3340,7 +3381,8 @@
               "cepaId": "blend",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://bodegaslopez.com.ar/wp-content/uploads/2019/05/cvt.jpg"
         },
         {
           "id": "lopez-rincon-de-lopez-malbec",
@@ -3374,7 +3416,9 @@
       "caracteristicas": [
         "Arquitectura"
       ],
-      "fotos": [],
+      "fotos": [
+        "https://www.universovigil.com/assets/img/chachingo/_chachingo.jpg"
+      ],
       "ratingDemostracion": 4.8,
       "recomendada": false,
       "activa": true,
@@ -3499,7 +3543,8 @@
               "cepaId": "cabernet-franc",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://enemigowines.com/wp-content/uploads/2025/08/GE_GUALTA_CF_2.png"
         },
         {
           "id": "casa-vigil-el-enemigo-chardonnay",
@@ -3515,7 +3560,8 @@
               "cepaId": "chardonnay",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://enemigowines.com/wp-content/uploads/2025/08/E-CHARDO.png"
         },
         {
           "id": "casa-vigil-el-enemigo-malbec",
@@ -3531,7 +3577,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://enemigowines.com/wp-content/uploads/2025/08/E_M-1.png"
         }
       ]
     },
@@ -3549,7 +3596,9 @@
       "caracteristicas": [
         "Paisajes"
       ],
-      "fotos": [],
+      "fotos": [
+        "https://santajulia.com.ar/wp-content/uploads/2024/03/turismo-cosecha.webp"
+      ],
       "ratingDemostracion": 4.5,
       "recomendada": false,
       "activa": true,
@@ -3674,7 +3723,8 @@
               "cepaId": "blend",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://santajulia.com.ar/wp-content/uploads/2024/01/9.png"
         },
         {
           "id": "santa-julia-tintillo",
@@ -3694,7 +3744,8 @@
               "cepaId": "bonarda",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://santajulia.com.ar/wp-content/uploads/2024/01/tintillo.webp"
         },
         {
           "id": "santa-julia-organico-malbec",
@@ -3710,7 +3761,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://santajulia.com.ar/wp-content/uploads/2024/01/organica_malbec.webp"
         }
       ]
     },
@@ -3797,7 +3849,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://rutiniwines.com/wp-content/uploads/2026/10/Apartado-Gran-Malbec-4-516x1024.png"
         },
         {
           "id": "rutini-coleccion-cabernet-franc",
@@ -3813,7 +3866,8 @@
               "cepaId": "cabernet-franc",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://rutiniwines.com/wp-content/uploads/2024/09/Rutini-Cabernet-Franc-516x1024.jpg"
         },
         {
           "id": "rutini-antologia",
@@ -3829,7 +3883,8 @@
               "cepaId": "blend",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://rutiniwines.com/wp-content/uploads/2024/09/Antologia-XXXVIII-38-516x1024.jpg"
         }
       ]
     },
@@ -3975,7 +4030,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://cdn.shopify.com/s/files/1/0828/0752/1520/files/lindaflor-malbec_2017_institucional.png?v=1774572221&width=800"
         },
         {
           "id": "monteviejo-clos-de-los-siete",
@@ -3995,7 +4051,8 @@
               "cepaId": "blend",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://cdn.shopify.com/s/files/1/0650/4356/2708/files/clos-de-los-siete-202120260722180901.png?width=600"
         },
         {
           "id": "monteviejo-petite-fleur-chardonnay",
@@ -4011,7 +4068,8 @@
               "cepaId": "chardonnay",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://cdn.shopify.com/s/files/1/0828/0752/1520/files/PETITE-FLEUR-CHARDONNAY.png?v=1774576873&width=800"
         }
       ]
     },
@@ -4156,7 +4214,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.terrazasdelosandes.com/sites/default/files/styles/wine_thumbnail/public/node/wine/field_bottle/TERRAZAS%20PARCEL%2012%20-%202022.png.webp?itok=EOPVSTRP"
         },
         {
           "id": "terrazas-de-los-andes-grand-cabernet-sauvignon",
@@ -4172,7 +4231,8 @@
               "cepaId": "cabernet-sauvignon",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.terrazasdelosandes.com/sites/default/files/styles/wine_thumbnail/public/node/wine/field_bottle/TERRAZAS%20DE%20LOS%20ANDES%20Grand%20Cabernet%20Sauvignon%202023.png.webp?itok=a76pm9Jv"
         },
         {
           "id": "terrazas-de-los-andes-reserva-torrontes",
@@ -4188,7 +4248,8 @@
               "cepaId": "torrontes",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://images.vivino.com/thumbs/FvjlHDDmSI2iNshC5TiCbw_pb_x600.png"
         }
       ]
     },
@@ -4201,7 +4262,7 @@
       "zona": "Luján de Cuyo",
       "latitud": -33.0138,
       "longitud": -68.91,
-      "sitioWeb": "https://www.nietosenetiner.com",
+      "sitioWeb": "https://www.nietosenetiner.com.ar",
       "tipo": "Tradicional",
       "caracteristicas": [
         "Arquitectura"
@@ -4321,7 +4382,8 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.nietosenetiner.com.ar/wp-content/uploads/2019/11/DN_Barrel_Malbec_2022-scaled.png"
         },
         {
           "id": "nieto-senetiner-don-nicanor-villa-blanca-bonarda",
@@ -4357,7 +4419,8 @@
               "cepaId": "bonarda",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://www.nietosenetiner.com.ar/wp-content/uploads/2019/11/EMILIA-Malbec-Bonarda_2020-1-346x1536.png"
         }
       ]
     },
@@ -4375,7 +4438,9 @@
       "caracteristicas": [
         "Paisajes"
       ],
-      "fotos": [],
+      "fotos": [
+        "https://fincadecero.com/wp-content/uploads/2025/12/stage_vineyard_s-30.jpg"
+      ],
       "ratingDemostracion": 4.6,
       "recomendada": false,
       "activa": true,
@@ -4488,7 +4553,8 @@
               "cepaId": "petit-verdot",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://vintus.com/wp-content/uploads/2018/08/1300400NV-427x1024.png"
         },
         {
           "id": "decero-owl-bite-cabernet-sauvignon",
@@ -4504,7 +4570,8 @@
               "cepaId": "cabernet-sauvignon",
               "porcentaje": null
             }
-          ]
+          ],
+          "imagenUrl": "https://vintus.com/wp-content/uploads/2022/05/01301200NV-427x1024.png"
         },
         {
           "id": "decero-remolinos-vineyard-malbec",
@@ -4520,7 +4587,766 @@
               "cepaId": "malbec",
               "porcentaje": null
             }
+          ],
+          "imagenUrl": "https://vintus.com/wp-content/uploads/2025/08/Finca-Decero-Malbec-427x1024.png"
+        }
+      ]
+    },
+    {
+      "id": "anaia",
+      "nombre": "ANAIA Wines",
+      "descripcion": "Bodega boutique de Agrelo en una finca de 72 hectáreas. Su arquitectura se integra al paisaje andino; el proyecto combina respeto por la naturaleza, innovación y tecnología, con Wine Lounge y mates de concreto.",
+      "direccion": "Ruta Provincial 15 km 34, Agrelo, M5509 Luján de Cuyo, Mendoza",
+      "localidad": "Agrelo",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.137,
+      "longitud": -68.955,
+      "sitioWeb": "https://anaiawines.com/",
+      "tipo": "Boutique",
+      "caracteristicas": [
+        "Paisajes",
+        "Arquitectura",
+        "Accesibilidad"
+      ],
+      "fotos": [
+        "https://anaiawines.com/wp-content/uploads/2026/01/bodega-4_w-.webp"
+      ],
+      "ratingDemostracion": 5.0,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "anaia-visita",
+          "nombre": "Experiencia ANAIA",
+          "descripcion": "Copa de bienvenida, recorrido guiado por viñedos y bodega, y cata guiada de 5 vinos de las líneas Anaia, Gran Anaia y Grand Assemblage con bocados gourmet en el Wine Lounge.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 7950000,
+          "duracionMin": 90,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 1050,
+              "hasta": 1050
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 1050,
+              "hasta": 1050
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 1050,
+              "hasta": 1050
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 1050,
+              "hasta": 1050
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 1050,
+              "hasta": 1050
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 1050,
+              "hasta": 1050
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 690,
+              "hasta": 690
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            }
           ]
+        },
+        {
+          "id": "anaia-supreme",
+          "nombre": "Experiencia ANAIA Supreme",
+          "descripcion": "Recorrido detallado por viñedos y bodega y cata de 5 vinos de alta gama, incluidos Gran Anaia, Grand Assemblage, Disruptivo y Oblivion, con maridaje gourmet y vista a los Andes desde el Wine Lounge.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 11700000,
+          "duracionMin": 90,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 1050,
+              "hasta": 1050
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 1050,
+              "hasta": 1050
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 1050,
+              "hasta": 1050
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 1050,
+              "hasta": 1050
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 1050,
+              "hasta": 1050
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 1050,
+              "hasta": 1050
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 690,
+              "hasta": 690
+            },
+            {
+              "dia": 7,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "anaia-tinto-de-agrelo",
+          "nombre": "Tinto de Agrelo",
+          "descripcion": "Fruta roja fresca, acidez media y expresión amable del terroir de Agrelo. La composición varietal puede variar por añada.",
+          "precioCentavos": 1800000,
+          "codigoBarras": "2000000000787",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/01/AGRELO-TINTO-SIN-ANADA_w-.webp"
+        },
+        {
+          "id": "anaia-blanco-de-agrelo",
+          "nombre": "Blanco de Agrelo",
+          "descripcion": "Blend blanco de Sauvignon Blanc y Viognier, fresco y equilibrado, con notas florales, de durazno y cítricos.",
+          "precioCentavos": 1800000,
+          "codigoBarras": "2000000000794",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "sauvignon-blanc",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "viognier",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2025/12/AGRELO-BLANCO_w-.webp"
+        },
+        {
+          "id": "anaia-cabernet-franc",
+          "nombre": "Cabernet Franc",
+          "descripcion": "Rojo rubí, con notas de pimiento asado y especias; combina fruta y especias en boca.",
+          "precioCentavos": 2400000,
+          "codigoBarras": "2000000000800",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-franc",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/01/ANAIA-CF_w-.webp"
+        },
+        {
+          "id": "anaia-cofermentado",
+          "nombre": "Cofermentado",
+          "descripcion": "Rojo profundo con matices violetas, aromas de frutos rojos y notas florales; entrada dulce, cuerpo medio y final persistente.",
+          "precioCentavos": 2400000,
+          "codigoBarras": "2000000001005",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/04/anaia-cofermentado_w-.webp"
+        },
+        {
+          "id": "anaia-rose",
+          "nombre": "Rosé",
+          "descripcion": "Aromas de frutos rojos, pomelo rosado y frutilla; entrada dulce y textura untuosa.",
+          "precioCentavos": 2200000,
+          "codigoBarras": "2000000000817",
+          "codigoDePrueba": true,
+          "tipo": "Rosado",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/01/ANAIA-ROSE_w-.webp"
+        },
+        {
+          "id": "anaia-malbec",
+          "nombre": "Malbec",
+          "descripcion": "Color intenso y aromas florales y de frutos rojos; entrada dulce y equilibrada.",
+          "precioCentavos": 2400000,
+          "codigoBarras": "2000000000824",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/01/ANAIA-MALBEC_w-.webp"
+        },
+        {
+          "id": "anaia-cabernet-sauvignon",
+          "nombre": "Cabernet Sauvignon",
+          "descripcion": "Color rojo profundo, especias, pimienta y frutos negros; buen volumen y final largo.",
+          "precioCentavos": 2400000,
+          "codigoBarras": "2000000000831",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/01/ANAIA-CS_w-.webp"
+        },
+        {
+          "id": "anaia-sauvignon-blanc",
+          "nombre": "Sauvignon Blanc",
+          "descripcion": "Herbal, con predominio de ruda y notas cítricas; amarillo brillante con matices verdosos.",
+          "precioCentavos": 2200000,
+          "codigoBarras": "2000000000848",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "sauvignon-blanc",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/01/ANAIA-SB_w-.webp"
+        },
+        {
+          "id": "gran-anaia-cabernet-sauvignon",
+          "nombre": "Gran Cabernet Sauvignon",
+          "descripcion": "Notas vegetales de pimienta y aceituna negra, con ahumados, vainilla y chocolate aportados por el roble.",
+          "precioCentavos": 4200000,
+          "codigoBarras": "2000000000855",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/01/GRAN-ANAIA-CS_w-.webp"
+        },
+        {
+          "id": "gran-anaia-malbec",
+          "nombre": "Gran Malbec",
+          "descripcion": "Rojo intenso; el roble aporta sutilezas de vainilla y chocolate junto a aromas de frutos rojos.",
+          "precioCentavos": 4200000,
+          "codigoBarras": "2000000000862",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/03/Gran-Malbec_w-.webp"
+        },
+        {
+          "id": "gran-anaia-viognier",
+          "nombre": "Gran Viognier",
+          "descripcion": "Aromas de flores blancas, frutos tropicales y durazno, con notas de vainilla y persistencia.",
+          "precioCentavos": 4200000,
+          "codigoBarras": "2000000000879",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "viognier",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/01/GRAN-ANAIA-VIOGNIER_w-.webp"
+        },
+        {
+          "id": "gran-anaia-cabernet-franc",
+          "nombre": "Gran Cabernet Franc",
+          "descripcion": "Rojo rubí, con notas de pimiento asado y especias; fruta y especias en boca.",
+          "precioCentavos": 4200000,
+          "codigoBarras": "2000000000886",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-franc",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/01/GRAN-ANAIA-CF_w-.webp"
+        },
+        {
+          "id": "gran-anaia-rose",
+          "nombre": "Gran Rosé",
+          "descripcion": "Color rosa suave, aromas florales y cítricos; fresco, persistente y frutal.",
+          "precioCentavos": 3800000,
+          "codigoBarras": "2000000000893",
+          "codigoDePrueba": true,
+          "tipo": "Rosado",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2025/12/GRAN-ROSE_w-.webp"
+        },
+        {
+          "id": "gran-anaia-rose-extra-brut",
+          "nombre": "Gran Rosé Extra Brut",
+          "descripcion": "Color piel de cebolla, con aromas de ciruelas, frambuesas y cerezas; refrescante y voluptuoso.",
+          "precioCentavos": 4200000,
+          "codigoBarras": "2000000000909",
+          "codigoDePrueba": true,
+          "tipo": "Espumante",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2025/12/GRAN-ROSE-EXTRABRUT_w-.webp"
+        },
+        {
+          "id": "gran-anaia-sauvignon-blanc",
+          "nombre": "Gran Sauvignon Blanc",
+          "descripcion": "Partida de hileras seleccionadas de Agrelo, fermentada en partes iguales en acero y roble francés.",
+          "precioCentavos": 4200000,
+          "codigoBarras": "2000000000916",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "sauvignon-blanc",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/04/gran-anaia-sauvignon-blanc_w-.webp"
+        },
+        {
+          "id": "grand-assemblage-malbec-cabernet-sauvignon",
+          "nombre": "Grand Assemblage Malbec Cabernet Sauvignon",
+          "descripcion": "Blend de Malbec y Cabernet Sauvignon con aromas de fruta negra, especias, chocolate y vainilla.",
+          "precioCentavos": 6500000,
+          "codigoBarras": "2000000000923",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/01/GRAN-ASSEMBLAGE_w-1-1.webp"
+        },
+        {
+          "id": "disruptivo-malbec",
+          "nombre": "Disruptivo Malbec",
+          "descripcion": "Rojo rubí, con aromas de ciruelas y arándanos; franco, equilibrado y persistente.",
+          "precioCentavos": 5500000,
+          "codigoBarras": "763571852019",
+          "codigoDePrueba": false,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2025/12/DISRUPTIVO-5_w-.webp"
+        },
+        {
+          "id": "disruptivo-merlot",
+          "nombre": "Disruptivo Merlot",
+          "descripcion": "Color rubí, con aromas de hoja de tomate y especias; textura suave en boca.",
+          "precioCentavos": 5500000,
+          "codigoBarras": "2000000000947",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "merlot",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2025/12/DISRUPTIVO-4_w-.webp"
+        },
+        {
+          "id": "disruptivo-syrah",
+          "nombre": "Disruptivo Syrah",
+          "descripcion": "Rojo brillante, con aromas de frutas negras y grosellas; elegante y persistente.",
+          "precioCentavos": 5500000,
+          "codigoBarras": "2000000000954",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "syrah",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2025/12/DISRUPTIVO-1_w-.webp"
+        },
+        {
+          "id": "disruptivo-pinot-noir",
+          "nombre": "Disruptivo Pinot Noir",
+          "descripcion": "Rojo pálido, con notas de regaliz, zarzamora y cassis; suave y persistente.",
+          "precioCentavos": 5500000,
+          "codigoBarras": "2000000000961",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "pinot-noir",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2025/12/DISRUPTIVO-2_w-.webp"
+        },
+        {
+          "id": "disruptivo-petit-verdot",
+          "nombre": "Disruptivo Petit Verdot",
+          "descripcion": "Rojo violáceo, con notas herbales, frutos rojos y especias; equilibrado, intenso y aterciopelado.",
+          "precioCentavos": 5500000,
+          "codigoBarras": "2000000000978",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "petit-verdot",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/01/DIS-P-VERDOT_w-.webp"
+        },
+        {
+          "id": "oblivion-cabernet-sauvignon",
+          "nombre": "Oblivion Cabernet Sauvignon",
+          "descripcion": "Vino complejo, de buena estructura y taninos sedosos; equilibrado y untuoso.",
+          "precioCentavos": 12000000,
+          "codigoBarras": "2000000000985",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/01/OBLIVION-CS_w-1-1.webp"
+        },
+        {
+          "id": "oblivion-blend",
+          "nombre": "Oblivion Blend",
+          "descripcion": "Blend robusto y envolvente, de entrada amplia y sedosa que anticipa su complejidad.",
+          "precioCentavos": 12000000,
+          "codigoBarras": "2000000000992",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://anaiawines.com/wp-content/uploads/2026/01/OBLIVION-BLEND_w-.webp"
         }
       ]
     },
@@ -4536,12 +5362,887 @@
       "sitioWeb": "",
       "tipo": "Prueba",
       "caracteristicas": [],
-      "fotos": [],
-      "ratingDemostracion": null,
+      "fotos": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Vineyard_in_Mendoza%2C_Argentina.jpg/1280px-Vineyard_in_Mendoza%2C_Argentina.jpg"
+      ],
+      "ratingDemostracion": 4.5,
       "recomendada": false,
       "activa": false,
       "experiencias": [],
       "vinos": []
+    },
+    {
+      "id": "alpamanta",
+      "nombre": "Alpamanta",
+      "descripcion": "Bodega y viñedos biodinámicos en Ugarteche, Luján de Cuyo, a unos 950 msnm. La web informa agricultura orgánica y biodinámica. Atención al turista de lunes a sábado, 10:00 a 15:00. Las experiencias requieren reserva y confirmación de disponibilidad.",
+      "direccion": "Calle Cobos S/N, Ugarteche M5009, Luján de Cuyo, Mendoza",
+      "localidad": "Ugarteche",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.2354135,
+      "longitud": -68.9334902,
+      "sitioWeb": "https://alpamanta.com",
+      "tipo": "Boutique",
+      "caracteristicas": [
+        "Paisajes",
+        "Sustentabilidad",
+        "Vinos orgánicos"
+      ],
+      "fotos": [
+        "https://alpamanta.com/_next/static/media/footer_home.f81c11ff.jpg"
+      ],
+      "ratingDemostracion": 4.7,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "alpamanta-visita",
+          "nombre": "Visita y degustación",
+          "descripcion": "Recorrido de 90 minutos por viñedos, granja y huerta biodinámicos, con degustación de 4 vinos. La web publica turnos a las 10:00, 12:00 y 15:00, sin detallar días; requiere reserva con 48 horas de anticipación. Confirmar disponibilidad.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 6500000,
+          "duracionMin": 90,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 600,
+              "hasta": 600
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 600,
+              "hasta": 600
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 600,
+              "hasta": 600
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 600,
+              "hasta": 600
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 600,
+              "hasta": 600
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 600,
+              "hasta": 600
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
+            }
+          ]
+        },
+        {
+          "id": "alpamanta-picnic",
+          "nombre": "Visita y picnic",
+          "descripcion": "Recorrido por Alpamanta y almuerzo tipo picnic con vista a la cordillera. La web publica inicio a las 12:00, sin detallar días ni duración; los 120 minutos son una estimación de demostración; requiere reserva con 48 horas de anticipación. Confirmar disponibilidad.",
+          "tipoId": "visita-almuerzo",
+          "precioCentavos": 12000000,
+          "duracionMin": 120,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            }
+          ]
+        },
+        {
+          "id": "alpamanta-naturaleza",
+          "nombre": "Recorrido por la naturaleza",
+          "descripcion": "Visita de la granja y la finca para conocer la filosofía biodinámica; no incluye degustación. La web publica inicio a las 12:00, sin detallar días ni duración; los 90 minutos son una estimación de demostración; requiere reserva con 48 horas de anticipación. Confirmar disponibilidad.",
+          "tipoId": "visita",
+          "precioCentavos": 3500000,
+          "duracionMin": 90,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            }
+          ]
+        },
+        {
+          "id": "alpamanta-arte-vino",
+          "nombre": "Arte y vino",
+          "descripcion": "Recorrido, degustación de vinos y actividad creativa guiada con tintes naturales. La web publica inicio a las 12:00, sin detallar días ni duración; los 120 minutos son una estimación de demostración; consultar por opción con picnic.",
+          "tipoId": "taller",
+          "precioCentavos": 9500000,
+          "duracionMin": 120,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            }
+          ]
+        },
+        {
+          "id": "alpamanta-bienestar",
+          "nombre": "Experiencia y bienestar",
+          "descripcion": "Visita y degustación seguidas de una práctica de yoga de 30 minutos. La web publica inicio a las 12:00, sin detallar días ni duración total; requiere reserva con 48 horas de anticipación. Confirmar disponibilidad.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 8000000,
+          "duracionMin": 120,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 720,
+              "hasta": 720
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "alpamanta-natal-malbec",
+          "nombre": "Natal Malbec",
+          "descripcion": "Malbec joven de Ugarteche, sin paso por barrica; perfil fresco y frutado.",
+          "precioCentavos": 2200000,
+          "codigoBarras": "2000000001012",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://alpamanta.com/images/wines/bottleshots/bottle_natal_malbec.png"
+        },
+        {
+          "id": "alpamanta-natal-cabernet-sauvignon",
+          "nombre": "Natal Cabernet Sauvignon",
+          "descripcion": "Cabernet Sauvignon joven de primera zona, sin paso por barrica.",
+          "precioCentavos": 2200000,
+          "codigoBarras": "2000000001029",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://alpamanta.com/images/wines/bottleshots/bottle_natal_cabernetsauvignon.png"
+        },
+        {
+          "id": "alpamanta-campal-malbec",
+          "nombre": "Campal Malbec",
+          "descripcion": "Malbec natural de un solo viñedo, sin sulfitos agregados según la bodega.",
+          "precioCentavos": 3200000,
+          "codigoBarras": "2000000001036",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://alpamanta.com/images/wines/bottleshots/bottle_campal_new.png"
+        },
+        {
+          "id": "alpamanta-estate-malbec",
+          "nombre": "Estate Malbec",
+          "descripcion": "Malbec varietal criado 10 meses en barrica de roble francés.",
+          "precioCentavos": 4800000,
+          "codigoBarras": "2000000001043",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://alpamanta.com/images/wines/bottleshots/bottle_estate_2012.png"
+        },
+        {
+          "id": "alpamanta-estate-cabernet-sauvignon",
+          "nombre": "Estate Cabernet Sauvignon",
+          "descripcion": "Cabernet Sauvignon varietal criado 10 meses en barrica de roble francés.",
+          "precioCentavos": 4800000,
+          "codigoBarras": "2000000001050",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            }
+          ]
+        },
+        {
+          "id": "alpamanta-estate-cabernet-franc",
+          "nombre": "Estate Cabernet Franc",
+          "descripcion": "Cabernet Franc con notas herbales, criado 10 meses en barrica de roble francés.",
+          "precioCentavos": 4800000,
+          "codigoBarras": "2000000001067",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-franc",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://alpamanta.com/images/wines/bottleshots/bottle_estate_cf_new.png"
+        },
+        {
+          "id": "alpamanta-estate-chardonnay",
+          "nombre": "Estate Chardonnay",
+          "descripcion": "Chardonnay varietal criado 10 meses en barrica de roble francés.",
+          "precioCentavos": 4800000,
+          "codigoBarras": "2000000001074",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "chardonnay",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://alpamanta.com/images/wines/bottleshots/bottle_estate_chardonnay.png"
+        },
+        {
+          "id": "alpamanta-malbec",
+          "nombre": "Alpamanta Malbec",
+          "descripcion": "Malbec sin filtrado, criado en fudres de roble austríaco.",
+          "precioCentavos": 6200000,
+          "codigoBarras": "2000000001081",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://alpamanta.com/images/wines/bottleshots/bottle_alpamanta_malbec_new.png"
+        },
+        {
+          "id": "alpamanta-chardonnay",
+          "nombre": "Alpamanta Chardonnay",
+          "descripcion": "Chardonnay fermentado en parte con pieles y criado en fudres de roble austríaco.",
+          "precioCentavos": 6200000,
+          "codigoBarras": "2000000001098",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "chardonnay",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://alpamanta.com/images/wines/bottleshots/bottle_alpamanta_chardonnay_new.png"
+        },
+        {
+          "id": "alpamanta-cabernet-blend",
+          "nombre": "Alpamanta Cabernet Sauvignon / Cabernet Franc",
+          "descripcion": "Corte equilibrado de Cabernet Sauvignon y Cabernet Franc, criado en fudres de roble austríaco.",
+          "precioCentavos": 6200000,
+          "codigoBarras": "2000000001104",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            },
+            {
+              "cepaId": "cabernet-franc",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://alpamanta.com/images/wines/bottleshots/bottle_alpamanta_new.png"
+        },
+        {
+          "id": "alpamanta-terroir-malbec",
+          "nombre": "Terroir Malbec",
+          "descripcion": "Malbec de partidas limitadas, criado 18 meses en barrica nueva de roble francés.",
+          "precioCentavos": 9800000,
+          "codigoBarras": "2000000001111",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://alpamanta.com/images/wines/bottleshots/bottle_terroir.png"
+        },
+        {
+          "id": "alpamanta-breva-rose-syrah",
+          "nombre": "Breva Rosé Syrah",
+          "descripcion": "Rosado natural de Syrah elaborado en huevos de concreto.",
+          "precioCentavos": 5200000,
+          "codigoBarras": "2000000001128",
+          "codigoDePrueba": true,
+          "tipo": "Rosado",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "syrah",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://alpamanta.com/images/wines/bottleshots/bottle_breva_rosesyrah_2020.png"
+        },
+        {
+          "id": "alpamanta-respect-malbec",
+          "nombre": "Respect Malbec",
+          "descripcion": "Malbec elaborado con los primeros racimos de cada planta, según la bodega.",
+          "precioCentavos": 14500000,
+          "codigoBarras": "2000000001135",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://alpamanta.com/images/wines/bottleshots/bottle_respect.png"
+        }
+      ]
+    },
+    {
+      "id": "pulenta-estate",
+      "nombre": "Pulenta Estate",
+      "descripcion": "Bodega familiar ubicada en Alto Agrelo, Luján de Cuyo. La visita con degustación dura aproximadamente 1 h 15 min y requiere reserva confirmada.",
+      "direccion": "Ruta Provincial 86 km 6,5, Alto Agrelo, M5509 Luján de Cuyo, Mendoza",
+      "localidad": "Agrelo",
+      "zona": "Luján de Cuyo",
+      "latitud": -33.1964922,
+      "longitud": -68.9555344,
+      "sitioWeb": "https://www.pulentaestate.com",
+      "tipo": "Tradicional",
+      "caracteristicas": [
+        "Paisajes",
+        "Arquitectura",
+        "Vinos de autor"
+      ],
+      "fotos": [
+        "https://www.pulentaestate.com/uploads/slides/1536591913_slides.jpg"
+      ],
+      "ratingDemostracion": 4.6,
+      "recomendada": false,
+      "activa": true,
+      "experiencias": [
+        {
+          "id": "pulenta-visita-degustacion",
+          "nombre": "Visita con degustación",
+          "descripcion": "Recorrido para conocer la bodega, los métodos de vinificación y la historia de la familia Pulenta, con degustación. Dura aproximadamente 1 h 15 min. Reserva previa obligatoria y sujeta a disponibilidad; la solicitud debe ser confirmada.",
+          "tipoId": "visita-cata",
+          "precioCentavos": 7500000,
+          "duracionMin": 75,
+          "horarios": [
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 660,
+              "hasta": 660
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 690,
+              "hasta": 690
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 1,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 660,
+              "hasta": 660
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 690,
+              "hasta": 690
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 2,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 660,
+              "hasta": 660
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 690,
+              "hasta": 690
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 3,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 660,
+              "hasta": 660
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 690,
+              "hasta": 690
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 4,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 660,
+              "hasta": 660
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 690,
+              "hasta": 690
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 900,
+              "hasta": 900
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 930,
+              "hasta": 930
+            },
+            {
+              "dia": 5,
+              "tipo": "FIJO",
+              "desde": 960,
+              "hasta": 960
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 570,
+              "hasta": 570
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 660,
+              "hasta": 660
+            },
+            {
+              "dia": 6,
+              "tipo": "FIJO",
+              "desde": 690,
+              "hasta": 690
+            }
+          ]
+        }
+      ],
+      "vinos": [
+        {
+          "id": "pulenta-la-flor-malbec",
+          "nombre": "La Flor Malbec",
+          "descripcion": "Malbec de la línea La Flor de Pulenta Wines.",
+          "precioCentavos": 2500000,
+          "codigoBarras": "2000000001142",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://pulentaestate.com/LaFlor/img/Malbec-LaFlor-bottle.jpg"
+        },
+        {
+          "id": "pulenta-la-flor-cabernet-sauvignon",
+          "nombre": "La Flor Cabernet Sauvignon",
+          "descripcion": "Cabernet Sauvignon de la línea La Flor de Pulenta Wines.",
+          "precioCentavos": 2500000,
+          "codigoBarras": "2000000001159",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "cabernet-sauvignon",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://pulentaestate.com/LaFlor/img/Cabernet-sauvignon-LaFlor-bottle.jpg"
+        },
+        {
+          "id": "pulenta-la-flor-blend",
+          "nombre": "La Flor Blend",
+          "descripcion": "Vino de corte de la línea La Flor de Pulenta Wines.",
+          "precioCentavos": 2500000,
+          "codigoBarras": "2000000001166",
+          "codigoDePrueba": true,
+          "tipo": "Tinto",
+          "perfil": "Intenso",
+          "cepas": [
+            {
+              "cepaId": "blend",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://pulentaestate.com/LaFlor/img/Blend-LaFlor-bottle.jpg"
+        },
+        {
+          "id": "pulenta-la-flor-sauvignon-blanc",
+          "nombre": "La Flor Sauvignon Blanc",
+          "descripcion": "Sauvignon Blanc de la línea La Flor de Pulenta Wines.",
+          "precioCentavos": 2500000,
+          "codigoBarras": "2000000001173",
+          "codigoDePrueba": true,
+          "tipo": "Blanco",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "sauvignon-blanc",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://pulentaestate.com/LaFlor/img/Sauvignon-Blanc-LaFlor-bottle.jpg"
+        },
+        {
+          "id": "pulenta-la-flor-malbec-rose",
+          "nombre": "La Flor Malbec Rosé",
+          "descripcion": "Rosado elaborado con Malbec; la ficha técnica oficial documenta la cosecha 2021.",
+          "precioCentavos": 2500000,
+          "codigoBarras": "2000000001180",
+          "codigoDePrueba": true,
+          "tipo": "Rosado",
+          "perfil": "Fresco",
+          "cepas": [
+            {
+              "cepaId": "malbec",
+              "porcentaje": null
+            }
+          ],
+          "imagenUrl": "https://pulentaestate.com/LaFlor/img/Malbec-Rose-LaFlor-bottle.jpg"
+        }
+      ]
     }
   ]
 }

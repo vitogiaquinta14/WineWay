@@ -21,6 +21,9 @@ function fechaElegida(fecha: Date) {
 }
 export function DateField({
   label,
+  hint = 'Debés tener 18 años cumplidos.',
+  minimumDate,
+  maximumDate,
   value,
   onChange,
   onBlur,
@@ -38,6 +41,8 @@ export function DateField({
     <DateTimePicker
       value={fechaLocal(borrador || value || hoyMendoza())}
       mode="date"
+      minimumDate={minimumDate ? fechaLocal(minimumDate) : undefined}
+      maximumDate={maximumDate ? fechaLocal(maximumDate) : undefined}
       display={Platform.OS === 'ios' ? 'inline' : 'default'}
       presentation="dialog"
       themeVariant="light"
@@ -56,7 +61,7 @@ export function DateField({
     />
   );
   return (
-    <View style={{ gap: Spacing.sm }}>
+    <View style={{ gap: Spacing.sm, width: '100%', minWidth: 0 }}>
       <AppText variant="label">
         {label}
         {required && <AppText color="error"> *</AppText>}
@@ -73,17 +78,19 @@ export function DateField({
           setAbierto(true);
         }}
       >
-        <AppText color={value ? 'text' : 'textMuted'}>
-          {fechaVisible(value) || 'Elegí tu fecha en el calendario'}
+        <AppText color={value ? 'text' : 'textMuted'} numberOfLines={1} style={{ minWidth: 0 }}>
+          {fechaVisible(value) || 'Elegí fecha'}
         </AppText>
-        <Icon name="route" size={18} color="textMuted" />
+        <View pointerEvents="none" style={{ position: 'absolute', right: Spacing.md, top: 15, width: 18, height: 18 }}>
+          <Icon name="route" size={18} color="textMuted" />
+        </View>
       </Pressable>
       <AppText
         variant="caption"
         color={error ? 'error' : 'textMuted'}
         accessibilityLiveRegion="polite"
       >
-        {error ?? 'Debés tener 18 años cumplidos.'}
+        {error ?? hint}
       </AppText>
       {abierto &&
         (Platform.OS === 'android' ? (
@@ -97,7 +104,7 @@ export function DateField({
                   accessibilityLabel="Volver al formulario"
                   onPress={cerrar}
                 />
-                <AppText variant="heading">Fecha de nacimiento</AppText>
+                <AppText variant="heading">{label}</AppText>
                 {calendario}
                 <Button
                   title="Elegir fecha"
@@ -116,12 +123,15 @@ export function DateField({
 }
 const styles = StyleSheet.create({
   entrada: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: Spacing.sm,
+    position: 'relative',
+    width: '100%',
+    minWidth: 0,
+    overflow: 'hidden',
+    justifyContent: 'center',
     minHeight: 48,
-    padding: Spacing.md,
+    paddingVertical: Spacing.md,
+    paddingLeft: Spacing.md,
+    paddingRight: Spacing.md + 18 + Spacing.sm,
     borderWidth: 1,
     borderColor: Colors.border,
     borderRadius: Radius.md,

@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import * as WebBrowser from 'expo-web-browser';
 import { useCallback, useState } from 'react';
 import { useRecurso } from '@/state/use-recurso';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { BodegaHero } from '@/components/bodega/bodega-hero';
 import { ExperienciaCard } from '@/components/bodega/experiencia-card';
@@ -12,6 +12,7 @@ import { AppText } from '@/components/ui/app-text';
 import { Button } from '@/components/ui/button';
 import { IconButton } from '@/components/ui/icon-button';
 import { EmptyState } from '@/components/ui/empty-state';
+import { Icon } from '@/components/ui/icon';
 import { Screen } from '@/components/ui/screen';
 import { SectionHeader } from '@/components/ui/section-header';
 import { Spacing } from '@/constants/theme';
@@ -19,11 +20,11 @@ import type { Bodega } from '@/data/bodegas';
 import { useCatalogo } from '@/state/catalogo-context';
 import { useSesion } from '@/state/sesion-context';
 import { api } from '@/services/api';
-import { Chip } from '@/components/ui/chip';
 import { TextField } from '@/components/ui/text-field';
 import { StarRating } from '@/components/ui/star-rating';
-import { VisitaForm } from '@/components/ruta/visita-form';
+import { AgregarARutaSheet } from '@/components/ruta/agregar-a-ruta-sheet';
 import { useRuta } from '@/state/ruta-context';
+import { confirmar } from '@/utils/confirmar';
 
 function volver() {
   if (router.canGoBack()) {
@@ -41,7 +42,14 @@ export default function BodegaScreen() {
 function DetalleBodega({ id }: { id: string }) {
   const { getBodega, recargar } = useCatalogo();
   const { sesionIniciada, usuario } = useSesion();
-  const { rutas, ruta, seleccionar, agregarVisita } = useRuta();
+  const { rutas } = useRuta();
+  const [agregando, setAgregando] = useState(false);
+  const abrirAgregar = () => {
+    if (!sesionIniciada) router.push('/login');
+    else if (rutas.length === 0)
+      router.push({ pathname: '/crear-ruta', params: { aviso: 'sin-rutas' } });
+    else setAgregando(true);
+  };
   type Resena = {
     id: string;
     valoracion: number;
@@ -136,12 +144,19 @@ function DetalleBodega({ id }: { id: string }) {
 
         <View style={styles.section}>
           <View style={styles.actions}>
-            <Button
-              title="Reservar"
-              icon="external"
-              variant="outline"
-              onPress={() => WebBrowser.openBrowserAsync(bodega.sitioWeb)}
-            />
+            <View style={styles.action}>
+              <Button
+                title="Reservar"
+                icon="external"
+                variant="outline"
+                onPress={() => WebBrowser.openBrowserAsync(bodega.sitioWeb)}
+              />
+            </View>
+            {bodega.activa && (
+              <View style={styles.action}>
+                <Button title="Agregar a ruta" icon="plus" onPress={abrirAgregar} />
+              </View>
+            )}
           </View>
           <AppText variant="caption" align="center">
             La reserva se realiza en el sitio de la bodega.
@@ -158,46 +173,34 @@ function DetalleBodega({ id }: { id: string }) {
         )}
 
         <View style={styles.section}>
-          <SectionHeader title="Planificar una visita" />
-          {!sesionIniciada ? (
-            <Button title="Iniciar sesión" onPress={() => router.push('/login')} />
-          ) : rutas.length === 0 ? (
-            <Button title="Crear una ruta primero" onPress={() => router.push('/crear-ruta')} />
-          ) : (
-            <>
-              <ScrollView horizontal>
-                {rutas.map((r) => (
-                  <Chip
-                    key={r.id}
-                    label={r.nombre}
-                    selected={ruta?.id === r.id}
-                    onPress={() => seleccionar(r.id)}
-                  />
-                ))}
-              </ScrollView>
-              {ruta && bodega.activa && (
-                <VisitaForm
-                  key={ruta.id}
-                  bodega={bodega}
-                  fechaInicial={ruta.fechaInicio}
-                  onGuardar={(v) => agregarVisita(ruta.id, v)}
-                />
-              )}
-            </>
-          )}
-        </View>
-        <View style={styles.section}>
           <SectionHeader title="Reseñas WineWay" />
           {resenas.length === 0 && <AppText>Todavía no hay reseñas.</AppText>}
           {resenas.map((r) => (
-            <View key={r.id}>
-              <AppText variant="bodyBold">
-                {r.usuario.apodo ?? r.usuario.username} · {r.valoracion}/5
-              </AppText>
-              {r.comentario && <AppText>{r.comentario}</AppText>}
+            <View key={r.id} style={styles.resena}>
+              <View style={styles.resenaTexto}>
+                <AppText variant="bodyBold">
+                  {r.usuario.apodo ?? r.usuario.username} · {r.valoracion}/5
+                </AppText>
+                {r.comentario ? <AppText>{r.comentario}</AppText> : null}
+              </View>
+              {r.id === propia?.id && (
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel="Borrar mi reseña"
+                  hitSlop={8}
+                  disabled={enviando}
+                  onPress={() =>
+                    void (async () => {
+                      if (await confirmar('Borrar reseña', 'Tu reseña deja de verse en esta bodega.'))
+                        await mutar(`/bodegas/${id}/mi-resena`, 'DELETE');
+                    })()
+                  }>
+                  <Icon name="delete" size={18} color="malbec" />
+                </Pressable>
+              )}
             </View>
           ))}
-          {sesionIniciada && (
+          {sesionIniciada && !propia && (
             <>
               <AppText variant="heading">Tu reseña</AppText>
               <StarRating value={valoracion} onChange={setValoracion} />
@@ -207,7 +210,7 @@ function DetalleBodega({ id }: { id: string }) {
                 onChangeText={setComentario}
               />
               <Button
-                title="Guardar reseña"
+                title={enviando ? 'Publicando…' : 'Publicar reseña'}
                 disabled={!valoracion || enviando}
                 onPress={() =>
                   void mutar(`/bodegas/${id}/mi-resena`, 'PUT', {
@@ -216,14 +219,6 @@ function DetalleBodega({ id }: { id: string }) {
                   })
                 }
               />
-              {resenas.some((r) => r.usuario.username === usuario?.username) && (
-                <Button
-                  title="Eliminar mi reseña"
-                  variant="outline"
-                  disabled={enviando}
-                  onPress={() => void mutar(`/bodegas/${id}/mi-resena`, 'DELETE')}
-                />
-              )}
             </>
           )}
         </View>
@@ -243,6 +238,7 @@ function DetalleBodega({ id }: { id: string }) {
           </View>
         )}
       </View>
+      {agregando && <AgregarARutaSheet bodega={bodega} onClose={() => setAgregando(false)} />}
     </Screen>
   );
 }
@@ -255,6 +251,14 @@ const styles = StyleSheet.create({
   section: {
     gap: Spacing.md,
   },
+  resena: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: Spacing.sm,
+  },
+  resenaTexto: {
+    flex: 1,
+  },
   description: {
     lineHeight: 22,
   },
@@ -262,7 +266,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: Spacing.md,
   },
-  primaryAction: {
+  action: {
     flex: 1,
   },
   carousel: {

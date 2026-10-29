@@ -19,7 +19,7 @@ const tabLabels: Record<string, string> = {
   index: 'Inicio',
   explorar: 'Explorar',
   escanear: 'Escanear',
-  'mi-ruta': 'Mi Ruta',
+  'mi-ruta': 'Mis Rutas',
   'mi-cava': 'Mi Cava',
 };
 

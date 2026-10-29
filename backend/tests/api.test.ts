@@ -68,6 +68,87 @@ test('seed idempotente y catálogo/rating vienen de SQLite', async () => {
   await db.bodega.update({ where: { id: b.id }, data: { ratingDemostracion: 3.7 } });
   assert.equal((await request(app).get(`/api/bodegas/${b.id}`)).body.rating, 3.7);
 });
+test('seed incluye los vinos y experiencias publicados de Anaia', async () => {
+  const anaia = await db.bodega.findUnique({
+    where: { id: 'anaia' },
+    include: { vinos: true, experiencias: { include: { horarios: true } } },
+  });
+  assert.ok(anaia);
+  assert.equal(anaia.vinos.length, 23);
+  assert.deepEqual(
+    anaia.vinos.map((vino) => vino.nombre).sort(),
+    [
+      'Blanco de Agrelo',
+      'Cabernet Franc',
+      'Cabernet Sauvignon',
+      'Cofermentado',
+      'Disruptivo Malbec',
+      'Disruptivo Merlot',
+      'Disruptivo Petit Verdot',
+      'Disruptivo Pinot Noir',
+      'Disruptivo Syrah',
+      'Gran Cabernet Franc',
+      'Gran Cabernet Sauvignon',
+      'Gran Malbec',
+      'Gran Rosé',
+      'Gran Rosé Extra Brut',
+      'Gran Sauvignon Blanc',
+      'Gran Viognier',
+      'Grand Assemblage Malbec Cabernet Sauvignon',
+      'Malbec',
+      'Oblivion Blend',
+      'Oblivion Cabernet Sauvignon',
+      'Rosé',
+      'Sauvignon Blanc',
+      'Tinto de Agrelo',
+    ].sort(),
+  );
+  assert.deepEqual(
+    anaia.experiencias.map((experiencia) => experiencia.id).sort(),
+    ['anaia-supreme', 'anaia-visita'].sort(),
+  );
+  assert.ok(anaia.experiencias.every((experiencia) => experiencia.horarios.length > 0));
+});
+test('seed incorpora Alpamanta y Pulenta con vinos y horarios contrastados', async () => {
+  const alpamanta = await db.bodega.findUnique({
+    where: { id: 'alpamanta' },
+    include: { vinos: { include: { cepas: true } }, experiencias: { include: { horarios: true } } },
+  });
+  const pulenta = await db.bodega.findUnique({
+    where: { id: 'pulenta-estate' },
+    include: { vinos: { include: { cepas: true } }, experiencias: { include: { horarios: true } } },
+  });
+  assert.ok(alpamanta);
+  assert.ok(pulenta);
+  assert.equal(alpamanta.localidad, 'Ugarteche');
+  assert.equal(alpamanta.vinos.length, 13);
+  assert.equal(alpamanta.experiencias.length, 5);
+  assert.ok(alpamanta.vinos.some((vino) => vino.nombre === 'Alpamanta Cabernet Sauvignon / Cabernet Franc'));
+  assert.ok(alpamanta.vinos.every((vino) => vino.codigoDePrueba));
+  assert.deepEqual(
+    alpamanta.experiencias.map((experiencia) => experiencia.id).sort(),
+    ['alpamanta-arte-vino', 'alpamanta-bienestar', 'alpamanta-naturaleza', 'alpamanta-picnic', 'alpamanta-visita'].sort(),
+  );
+  assert.ok(alpamanta.experiencias.every((experiencia) => experiencia.horarios.length > 0));
+  assert.ok(alpamanta.experiencias.every((experiencia) => experiencia.horarios.every((horario) => horario.dia >= 1 && horario.dia <= 6)));
+  const visitaAlpamanta = alpamanta.experiencias.find((experiencia) => experiencia.id === 'alpamanta-visita');
+  assert.ok(visitaAlpamanta);
+  assert.equal(visitaAlpamanta.duracionMin, 90);
+  assert.equal(visitaAlpamanta.horarios.length, 18);
+  assert.match(visitaAlpamanta.descripcion, /10:00, 12:00 y 15:00/);
+  assert.ok(visitaAlpamanta.horarios.some((horario) => horario.dia === 1 && horario.desde === 600));
+  assert.ok(visitaAlpamanta.horarios.some((horario) => horario.dia === 6 && horario.desde === 900));
+  assert.ok(visitaAlpamanta.horarios.every((horario) => horario.dia <= 6));
+  assert.equal(pulenta.localidad, 'Agrelo');
+  assert.equal(pulenta.vinos.length, 5);
+  assert.equal(pulenta.experiencias.length, 1);
+  assert.ok(pulenta.vinos.some((vino) => vino.nombre === 'La Flor Sauvignon Blanc'));
+  assert.ok(pulenta.vinos.every((vino) => vino.codigoDePrueba));
+  const visitaPulenta = pulenta.experiencias.find((experiencia) => experiencia.id === 'pulenta-visita-degustacion');
+  assert.ok(visitaPulenta);
+  assert.equal(visitaPulenta.duracionMin, 75);
+  assert.ok(visitaPulenta.horarios.some((horario) => horario.dia === 6 && horario.desde === 570));
+});
 test('catálogo filtra y pagina; datos inválidos devuelven 400', async () => {
   const r = await request(app).get('/api/bodegas?zona=Valle%20de%20Uco&limite=1').expect(200);
   assert.equal(r.body.items.length, 1);
@@ -86,6 +167,13 @@ test('código textual exacto y desconocido inequívoco', async () => {
     vino.id,
   );
   await request(app).get('/api/vinos/codigo/0000000000000').expect(404);
+});
+test('UPC-A real de la botella se encuentra con 12 dígitos o como EAN-13 con 0 adelante', async () => {
+  const vino = await db.vino.findUniqueOrThrow({ where: { id: 'disruptivo-malbec' } });
+  assert.equal(vino.codigoBarras, '763571852019');
+  assert.equal(vino.codigoDePrueba, false);
+  for (const codigo of ['763571852019', '0763571852019'])
+    assert.equal((await request(app).get(`/api/vinos/codigo/${codigo}`).expect(200)).body.id, vino.id);
 });
 test('VinoCepa acepta porcentajes de 1 a 100 y la API los expone', async () => {
   const vino = await db.vino.findFirstOrThrow({ include: { cepas: true } });
@@ -311,6 +399,59 @@ test('rutas se crean completas, rechazan horarios, solapamientos y quedan atómi
     .expect(409);
   assert.equal(await db.visita.count(), 1);
 });
+test('planificador propone visitas desde SQLite y guarda el itinerario generado', async () => {
+  const body = { nombre: 'Ruta automática', fechaInicio: '2030-01-07', cantidadDias: 1,
+    cantidadPersonas: 2, presupuestoPersonaCentavos: 20000000, cantidadVisitas: 2,
+    cantidadAlmuerzos: 1, imprescindibles: ['catena-zapata'] };
+  await request(app).post('/api/rutas/generar').send(body).expect(401);
+  const respuesta = await request(app).post('/api/rutas/generar').set(auth()).send(body).expect(201);
+  assert.ok(respuesta.body.visitas.length >= 1);
+  assert.ok(respuesta.body.visitas.length <= 2);
+  assert.ok(respuesta.body.costoPersonaCentavos <= body.presupuestoPersonaCentavos);
+  assert.equal(respuesta.body.costoGrupoCentavos, respuesta.body.costoPersonaCentavos * 2);
+  assert.equal(respuesta.body.parametros.generacion.cumpleImprescindibles, false);
+  assert.ok(respuesta.body.parametros.generacion.noIncluidas.some((b: { bodegaId: string }) => b.bodegaId === 'catena-zapata'));
+  assert.deepEqual(respuesta.body.parametros.favoritas, ['catena-zapata']);
+  assert.equal(respuesta.body.parametros.generacion.metodo, 'VORAZ');
+  assert.equal(respuesta.body.parametros.cantidadAlmuerzos, 1);
+  assert.equal(respuesta.body.parametros.generacion.cantidadAlmuerzosIncluida, 1);
+  const guardadas = await db.ruta.count();
+  await request(app).post('/api/rutas/generar').set(auth()).send({ ...body, presupuestoPersonaCentavos: 0 }).expect(422);
+  assert.equal(await db.ruta.count(), guardadas);
+  const priorizada = await request(app).post('/api/rutas/generar').set(auth())
+    .send({ ...body, imprescindibles: ['zuccardi'] }).expect(201);
+  assert.ok(priorizada.body.visitas.some((v: { bodegaId: string }) => v.bodegaId === 'zuccardi'));
+  assert.deepEqual(priorizada.body.parametros.imprescindibles, ['zuccardi']);
+  assert.equal(await db.bodegaFavorita.count({ where: { usuarioId, bodegaId: 'zuccardi' } }), 0);
+  await request(app).delete(`/api/rutas/${priorizada.body.id}`).set(auth()).expect(204);
+  await request(app).post('/api/rutas/generar').set(auth()).send({ ...body, imprescindibles: ['no-existe'] }).expect(400);
+  await request(app).post('/api/rutas/generar').set(auth()).send({ ...body, desdeMin: 1080, hastaMin: 600 }).expect(400);
+  for (const cantidadAlmuerzos of [-1, 1.5, 2])
+    await request(app).post('/api/rutas/generar').set(auth()).send({ ...body, cantidadAlmuerzos }).expect(400);
+  await request(app).post('/api/rutas/generar').set(auth())
+    .send({ ...body, cantidadDias: 3, cantidadVisitas: 1, cantidadAlmuerzos: 2 }).expect(400);
+  await request(app).delete(`/api/rutas/${respuesta.body.id}`).set(auth()).expect(204);
+});
+test('la selección usa reseñas WineWay antes del rating de demostración', async () => {
+  const originales = await db.bodega.findMany({ select: { id: true, ratingDemostracion: true } });
+  const otro = await db.usuario.findUniqueOrThrow({ where: { username: 'otro' } });
+  const anterior = await db.resenaBodega.findUnique({ where: { usuarioId_bodegaId: { usuarioId: otro.id, bodegaId: 'chandon' } } });
+  let rutaId: string | undefined;
+  try {
+    await db.bodega.updateMany({ data: { ratingDemostracion: 1 } });
+    await request(app).put('/api/bodegas/chandon/mi-resena').set({ Authorization: `Bearer ${otroToken}` }).send({ valoracion: 5 }).expect(200);
+    const r = await request(app).post('/api/rutas/generar').set({ Authorization: `Bearer ${otroToken}` })
+      .send({ nombre: 'Por puntuación', fechaInicio: '2030-01-07', cantidadDias: 1,
+        cantidadPersonas: 1, cantidadVisitas: 1, presupuestoPersonaCentavos: 20000000, cantidadAlmuerzos: 0 }).expect(201);
+    rutaId = r.body.id;
+    assert.equal(r.body.visitas[0].bodegaId, 'chandon');
+  } finally {
+    for (const b of originales) await db.bodega.update({ where: { id: b.id }, data: { ratingDemostracion: b.ratingDemostracion } });
+    if (anterior) await db.resenaBodega.update({ where: { id: anterior.id }, data: { valoracion: anterior.valoracion, comentario: anterior.comentario } });
+    else await db.resenaBodega.deleteMany({ where: { usuarioId: otro.id, bodegaId: 'chandon' } });
+    if (rutaId) await db.ruta.delete({ where: { id: rutaId } });
+  }
+});
 test('visitas se agregan, reprograman y eliminan sin dejar rutas vacías', async () => {
   const ruta = await db.ruta.findFirstOrThrow();
   let r = await request(app)
@@ -401,6 +542,17 @@ test('sesiones vencidas o revocadas no autorizan', async () => {
       .send({ identificador: registro.email, password: registro.password })
   ).body.token;
 });
+test('mis reseñas exige sesión y aísla las cuentas', async () => {
+  await request(app).get('/api/mis-resenas').expect(401);
+  await request(app).put('/api/bodegas/catena-zapata/mi-resena').set(auth())
+    .send({ valoracion: 4, comentario: 'Mi experiencia' }).expect(200);
+  const res = await request(app).get('/api/mis-resenas').set(auth()).expect(200);
+  assert.ok(res.body.some((r: { bodega: { id: string }; comentario: string }) => r.bodega.id === 'catena-zapata' && r.comentario === 'Mi experiencia'));
+  const otras = await request(app).get('/api/mis-resenas').set({ Authorization: `Bearer ${otroToken}` }).expect(200);
+  assert.ok(otras.body.every((r: { comentario: string }) => r.comentario !== 'Mi experiencia'));
+  assert.equal(res.body[0].usuarioId, undefined);
+});
+
 test('borrar cuenta elimina datos privados/reseñas, conserva catálogo', async () => {
   const catalogo = await db.bodega.count();
   await request(app).delete('/api/yo').set(auth()).expect(204);
