@@ -22,7 +22,6 @@ function valoresUsuario(usuario: Usuario | null) {
     username: usuario?.username ?? '',
     fechaNacimiento: usuario?.fechaNacimiento ?? '',
     apodo: usuario?.apodo ?? '',
-    fotoUrl: usuario?.fotoUrl ?? '',
   };
 }
 export default function PerfilScreen() {
@@ -51,7 +50,6 @@ export default function PerfilScreen() {
         email: v.email.trim().toLowerCase(),
         username: v.username.trim().toLowerCase(),
         apodo: v.apodo.trim() || null,
-        fotoUrl: v.fotoUrl.trim() || null,
       });
       setEditando(false);
       setGuardado(true);
@@ -109,8 +107,6 @@ export default function PerfilScreen() {
             <AppText>{fechaVisible(usuario.fechaNacimiento)}</AppText>
             <AppText variant="label">Apodo</AppText>
             <AppText>{usuario.apodo ?? 'Sin apodo'}</AppText>
-            <AppText variant="label">Foto de perfil</AppText>
-            <AppText>{usuario.fotoUrl ?? 'Sin foto'}</AppText>
             <Button
               title="Editar mis datos"
               onPress={() => {

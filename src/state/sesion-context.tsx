@@ -9,7 +9,6 @@ export type Usuario = {
   username: string;
   fechaNacimiento: string;
   apodo: string | null;
-  fotoUrl: string | null;
 };
 export type Registro = {
   nombre: string;
@@ -20,8 +19,7 @@ export type Registro = {
   fechaNacimiento: string;
   apodo?: string;
 };
-export type DatosPerfil = Pick<Usuario, 'nombre' | 'apellido' | 'email' | 'username'> &
-  Pick<Usuario, 'apodo' | 'fotoUrl'>;
+export type DatosPerfil = Pick<Usuario, 'nombre' | 'apellido' | 'email' | 'username' | 'apodo'>;
 type Sesion = {
   usuario: Usuario | null;
   sesionIniciada: boolean;

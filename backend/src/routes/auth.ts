@@ -17,7 +17,6 @@ export const usuarioPublico = {
   username: true,
   fechaNacimiento: true,
   apodo: true,
-  fotoUrl: true,
 } as const;
 const obligatorio = (etiqueta: string) =>
   z
@@ -58,11 +57,6 @@ const datosUsuario = z
       .refine(fechaCalendario, 'Elegí una fecha de nacimiento válida.')
       .refine((v) => esMayorDeEdad(v, fechaLocal(new Date())), 'Debés tener 18 años cumplidos.'),
     apodo: obligatorio('El apodo').nullable().optional(),
-    fotoUrl: z
-      .url({ error: 'Ingresá una URL válida para la foto.' })
-      .refine((v) => /^https?:\/\//i.test(v), 'La URL debe empezar con http:// o https://.')
-      .nullable()
-      .optional(),
   })
   .strict();
 

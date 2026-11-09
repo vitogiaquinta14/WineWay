@@ -5,7 +5,6 @@ export const cuentaVacia = {
   username: '',
   fechaNacimiento: '',
   apodo: '',
-  fotoUrl: '',
   password: '',
   confirmPassword: '',
 };
@@ -55,14 +54,6 @@ export function validarCuenta(
   else if (!/^[a-z0-9_.-]+$/.test(username))
     errores.username = 'Usá letras sin acentos, números, punto, guion o guion bajo; sin espacios.';
   if (v.apodo.trim().length > 200) errores.apodo = 'Usá hasta 200 caracteres.';
-  if (v.fotoUrl.trim()) {
-    try {
-      const url = new URL(v.fotoUrl.trim());
-      if (!['http:', 'https:'].includes(url.protocol)) throw new Error();
-    } catch {
-      errores.fotoUrl = 'Ingresá una URL válida que empiece con http:// o https://.';
-    }
-  }
   if (modo === 'registro') {
     const fecha = v.fechaNacimiento;
     if (!fecha) errores.fechaNacimiento = 'La fecha de nacimiento es obligatoria.';
