@@ -85,15 +85,6 @@ export function CamposCuenta({
         />
       )}
       <TextField label="Apodo (opcional)" maxLength={200} {...entrada('apodo')} />
-      {modo === 'perfil' && (
-        <TextField
-          label="URL de foto de perfil (opcional)"
-          autoCapitalize="none"
-          autoCorrect={false}
-          keyboardType="url"
-          {...entrada('fotoUrl')}
-        />
-      )}
       {modo === 'registro' && (
         <>
           <TextField

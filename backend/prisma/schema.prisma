@@ -98,7 +98,6 @@ model Usuario {
   passwordHash String
   fechaNacimiento String
   apodo String?
-  fotoUrl String?
   creadoEn DateTime @default(now())
   sesiones Sesion[]
   cava VinoEnCava[]

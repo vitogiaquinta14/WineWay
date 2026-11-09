@@ -57,6 +57,32 @@ test('registro devuelve todos los errores por campo y rechaza nombres con númer
   }
 });
 
+test('la cuenta no expone ni acepta foto de perfil', async () => {
+  const datos = { ...registro, email: 'sin-foto@example.com', username: 'sin-foto' };
+  const cuenta = await request(app).post('/api/auth/registro').send(datos).expect(201);
+  const auth = { Authorization: `Bearer ${cuenta.body.token}` };
+  assert.equal(Object.hasOwn(cuenta.body.usuario, 'fotoUrl'), false);
+  const perfil = await request(app).get('/api/yo').set(auth).expect(200);
+  assert.equal(Object.hasOwn(perfil.body, 'fotoUrl'), false);
+  const login = await request(app)
+    .post('/api/auth/login')
+    .send({ identificador: datos.username, password: datos.password })
+    .expect(200);
+  assert.equal(Object.hasOwn(login.body.usuario, 'fotoUrl'), false);
+  await request(app)
+    .patch('/api/yo')
+    .set(auth)
+    .send({ fotoUrl: 'https://example.com/foto.jpg' })
+    .expect(400);
+  await request(app)
+    .post('/api/auth/registro')
+    .send({ ...datos, email: 'otra-foto@example.com', username: 'otra-foto', fotoUrl: null })
+    .expect(400);
+  const actualizado = await request(app).patch('/api/yo').set(auth).send({ apodo: 'Vino' }).expect(200);
+  assert.equal(actualizado.body.apodo, 'Vino');
+  assert.equal(Object.hasOwn(actualizado.body, 'fotoUrl'), false);
+});
+
 test('duplicados se asignan a email y username; disponibilidad normalizada y perfil propio', async () => {
   const cuenta = await request(app).post('/api/auth/registro').send(registro).expect(201);
   const auth = { Authorization: `Bearer ${cuenta.body.token}` };

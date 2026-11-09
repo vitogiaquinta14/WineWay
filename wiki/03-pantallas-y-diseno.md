@@ -72,7 +72,7 @@ Puede mostrar, cuando exista información disponible:
 - Próximo viaje.
 - Bodegas destacadas.
 
-El avatar permite acceder al Perfil.
+El botón de cuenta permite acceder al Perfil.
 
 ## C. Exploración de bodegas
 
@@ -354,7 +354,7 @@ Se propone una barra inferior con cinco accesos:
 4. **Escanear:** ofrece acceso directo a una acción frecuente durante la experiencia en bodegas.
 5. **Mi Cava:** mantiene visible la colección personal de vinos.
 
-Esta navegación representa los momentos centrales del producto: comenzar, descubrir, planificar o consultar, capturar y recordar. El Perfil queda fuera de la barra porque funciona como área secundaria de cuenta y se abre mediante el avatar desde Home.
+Esta navegación representa los momentos centrales del producto: comenzar, descubrir, planificar o consultar, capturar y recordar. El Perfil queda fuera de la barra porque funciona como área secundaria de cuenta y se abre mediante el botón de cuenta desde Home.
 
 ## Userflows
 

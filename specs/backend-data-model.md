@@ -43,7 +43,7 @@ El equipo mantiene el catálogo mediante archivos de carga/importación. En esta
 
 ## 3. Usuarios y acceso
 
-`Usuario` guarda nombre, apellido, email único, username único, hash de contraseña, fecha de nacimiento, apodo opcional y referencia de foto opcional. Nombre, apellido, email, username, contraseña y fecha de nacimiento son obligatorios al registrarse.
+`Usuario` guarda nombre, apellido, email único, username único, hash de contraseña, fecha de nacimiento, apodo opcional. Nombre, apellido, email, username, contraseña y fecha de nacimiento son obligatorios al registrarse.
 
 - Se exige tener 18 años cumplidos al registrarse; se calcula desde la fecha de nacimiento, no con una edad guardada.
 - El username se guarda siempre en minúsculas y se compara normalizado para evitar duplicados por mayúsculas. Email y username se limpian de espacios exteriores; el email se normaliza para su comparación.
@@ -137,7 +137,7 @@ Las dos referencias alternativas de `VinoEnCava` son excluyentes: una entrada no
 
 ## 8. Imágenes y trabajo posterior del frontend
 
-SQLite guarda referencias a archivos, no imágenes binarias. Se usan fotos precargadas del catálogo; los campos opcionales de foto de perfil quedan preparados. La subida de fotos de perfil/reseñas y la elección del almacenamiento externo se postergan sin bloquear este modelo.
+SQLite guarda referencias a archivos, no imágenes binarias. Se usan fotos precargadas del catálogo. La subida de fotos de reseñas y la elección del almacenamiento externo se postergan sin bloquear este modelo.
 
 Pendientes del frontend al implementar estos flujos:
 
