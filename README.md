@@ -14,7 +14,7 @@ Personas que viajan a Mendoza y quieren organizar visitas a bodegas según su ti
 
 ## Estado del proyecto
 
-🚧 En desarrollo — **Sprint 1 (FrontEnd)**. Todavía no hay backend: las pantallas se construyen con datos estáticos, y el foco de esta etapa es la navegación y el frontend con Expo.
+En desarrollo. La app consume una API con Express y Prisma; el catálogo y los datos de cada usuario se guardan en SQLite.
 
 ## Stack técnico
 
@@ -22,6 +22,7 @@ Personas que viajan a Mendoza y quieren organizar visitas a bodegas según su ti
 - **Expo Router** (navegación basada en archivos)
 - **Context API de React** (gestión de estado: sesión, ruta en construcción, Mi Cava)
 - Componentes de UI propios en `src/components/ui`
+- **Express** + **Prisma** + **SQLite** (API y persistencia)
 
 ## Alcance del MVP
 
@@ -86,12 +87,42 @@ Tipografía: **Inter**, en cuatro pesos (Regular, Medium, SemiBold, Bold). La id
 
 ## Cómo correr el proyecto
 
+Requiere Node.js 22.12 o superior de la rama 22, npm y Expo Go en el teléfono. Desde la raíz del repositorio:
+
 ```bash
-npm install
-npx expo start
+npm ci
+npm ci --prefix backend
+cp .env.example .env.local
+cp backend/.env.example backend/.env
 ```
 
-Escaneá el QR con **Expo Go** (Android/iOS) o iniciá un emulador desde la terminal.
+Los comandos `cp` son para Linux/macOS; en Windows se pueden copiar los archivos manualmente. No reemplaces archivos de entorno si ya los tenés configurados.
+
+En `.env.local`, configurá `EXPO_PUBLIC_API_URL`:
+
+- **Teléfono:** `http://IP_DE_TU_COMPUTADORA:3001/api`. Ambos dispositivos deben estar en la misma red Wi-Fi. `localhost` en el teléfono apunta al propio teléfono.
+- **Web en la computadora:** `http://localhost:3001/api`.
+
+Inicializá la base y dejá el backend corriendo:
+
+```bash
+npm run db:init --prefix backend
+npm run dev --prefix backend
+```
+
+SQLite se crea automáticamente con las migraciones y el catálogo de demostración. No hace falta instalar un servidor de base de datos ni recibir un `.env` o una base de otra persona.
+
+En otra terminal, desde la raíz, iniciá Expo:
+
+```bash
+npm start
+```
+
+Escaneá el QR con Expo Go o presioná `w` para abrir la versión web en `http://localhost:8081`. Mantené ambas terminales abiertas. Si cambiás la URL de la API, reiniciá Expo.
+
+Podés explorar sin iniciar sesión; para guardar datos, creá una cuenta desde Registro. No hay usuarios precargados. Para probar el escáner, abrí `docs/codigos-de-prueba.html` en la computadora y apuntá con el teléfono.
+
+Más detalles de la API y la base en [backend/README.md](./backend/README.md).
 
 ## Exportar una ruta al calendario
 
