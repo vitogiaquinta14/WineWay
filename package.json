@@ -33,9 +33,11 @@
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.22",
+    "@types/node": "22",
     "@types/react": "~19.3.0",
     "eslint": "^9.0.0",
     "eslint-config-expo": "~58.0.4",
+    "tsx": "4.23.15",
     "typescript": "~6.0.3"
   },
   "scripts": {
@@ -44,7 +46,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "test": "node --test tests/*.mjs"
+    "test": "node --import tsx --test tests/*.mjs tests/*.test.ts",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tests/tsconfig.json"
   },
   "private": true
 }

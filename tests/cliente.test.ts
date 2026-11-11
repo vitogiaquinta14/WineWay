@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 test('cliente HTTP agrega sesión y JSON, devuelve datos reales y respeta 204', async () => {
   const { crearCliente } = await import(
-    new URL('../../src/services/api-core.ts', import.meta.url).href
+    new URL('../src/services/api-core.ts', import.meta.url).href
   );
   const llamadas: { url: string; options: RequestInit }[] = [];
   const cliente = crearCliente({
@@ -29,7 +29,7 @@ test('cliente HTTP agrega sesión y JSON, devuelve datos reales y respeta 204', 
 });
 test('cliente propaga error e invalida sesión ante 401 protegido', async () => {
   const { crearCliente } = await import(
-    new URL('../../src/services/api-core.ts', import.meta.url).href
+    new URL('../src/services/api-core.ts', import.meta.url).href
   );
   let invalidaciones = 0;
   const cliente = crearCliente({
@@ -49,7 +49,7 @@ test('cliente propaga error e invalida sesión ante 401 protegido', async () => 
 });
 test('cliente conserva errores de campo para mostrarlos en la entrada correspondiente', async () => {
   const { crearCliente } = await import(
-    new URL('../../src/services/api-core.ts', import.meta.url).href
+    new URL('../src/services/api-core.ts', import.meta.url).href
   );
   const campos = { username: 'Este usuario ya existe.', email: 'Este email ya está registrado.' };
   const cliente = crearCliente({

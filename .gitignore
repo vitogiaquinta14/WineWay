@@ -47,10 +47,3 @@ Seguimiento de desarrollo.md
 # Claude Code (local)
 .claude/
 CLAUDE.md
-
-# Backend local/generated
-/backend/.env
-/backend/generated/
-/backend/dist/
-/backend/**/*.db*
-/backend/**/*.sqlite*

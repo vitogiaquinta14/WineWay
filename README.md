@@ -52,7 +52,7 @@ WineWay permite **planificar** una visita, no reservarla dentro de la app:
 | [07 · Sensores, cámara y ubicación](./wiki/07-sensores-camara-y-ubicacion.md)  | Implementación de cámara, ubicación y mapa             |
 | [08 · Pendientes de implementación](./wiki/08-pendientes-de-implementacion.md) | Trabajo que falta después de la base y la API          |
 | [09 · Generación de rutas](./wiki/09-generacion-de-rutas.md)                   | Especificación histórica del generador (backtracking)  |
-| [10 · Selección voraz de rutas](./wiki/10-seleccion-voraz-de-rutas.md)         | Especificación vigente del generador de rutas          |
+| [10 · Selección voraz de rutas](https://github.com/valencalzetta/WineWay-backend/blob/main/wiki/10-seleccion-voraz-de-rutas.md)         | Especificación vigente del generador de rutas          |
 
 ## Componentes nativos
 
@@ -87,13 +87,26 @@ Tipografía: **Inter**, en cuatro pesos (Regular, Medium, SemiBold, Bold). La id
 
 ## Cómo correr el proyecto
 
-Requiere Node.js 22.12 o superior de la rama 22, npm y Expo Go en el teléfono. Desde la raíz del repositorio:
+Requiere Node.js 22.12 o superior de la rama 22, npm y Expo Go en el teléfono. El backend se instala por separado desde [WineWay-backend](https://github.com/valencalzetta/WineWay-backend).
+
+Primero, en una terminal, cloná e iniciá el backend (una sola vez para instalar e inicializar):
+
+```bash
+git clone git@github.com:valencalzetta/WineWay-backend.git
+cd WineWay-backend
+npm ci
+cp .env.example .env
+npm run db:init
+npm run dev
+```
+
+SQLite se crea con las migraciones y el catálogo de demostración. No hace falta instalar un servidor de base de datos. En los próximos arranques del backend basta con `npm run dev`.
+
+Desde la raíz de este repositorio, instalá el frontend:
 
 ```bash
 npm ci
-npm ci --prefix backend
 cp .env.example .env.local
-cp backend/.env.example backend/.env
 ```
 
 Los comandos `cp` son para Linux/macOS; en Windows se pueden copiar los archivos manualmente. No reemplaces archivos de entorno si ya los tenés configurados.
@@ -103,15 +116,6 @@ En `.env.local`, configurá `EXPO_PUBLIC_API_URL`:
 - **Teléfono:** `http://IP_DE_TU_COMPUTADORA:3001/api`. Ambos dispositivos deben estar en la misma red Wi-Fi. `localhost` en el teléfono apunta al propio teléfono.
 - **Web en la computadora:** `http://localhost:3001/api`.
 
-Inicializá la base y dejá el backend corriendo:
-
-```bash
-npm run db:init --prefix backend
-npm run dev --prefix backend
-```
-
-SQLite se crea automáticamente con las migraciones y el catálogo de demostración. No hace falta instalar un servidor de base de datos ni recibir un `.env` o una base de otra persona.
-
 En otra terminal, desde la raíz, iniciá Expo:
 
 ```bash
@@ -120,9 +124,9 @@ npm start
 
 Escaneá el QR con Expo Go o presioná `w` para abrir la versión web en `http://localhost:8081`. Mantené ambas terminales abiertas. Si cambiás la URL de la API, reiniciá Expo.
 
-Podés explorar sin iniciar sesión; para guardar datos, creá una cuenta desde Registro. No hay usuarios precargados. Para probar el escáner, abrí `docs/codigos-de-prueba.html` en la computadora y apuntá con el teléfono.
+Podés explorar sin iniciar sesión; para guardar datos, creá una cuenta desde Registro. No hay usuarios precargados. Para probar el escáner, abrí `docs/codigos-de-prueba.html` del repo del backend en la computadora y apuntá con el teléfono.
 
-Más detalles de la API y la base en [backend/README.md](./backend/README.md).
+Más detalles de la API y la base en [README del backend](https://github.com/valencalzetta/WineWay-backend#readme).
 
 ## Exportar una ruta al calendario
 
@@ -153,3 +157,7 @@ Verificación del formato y los horarios: `node --test tests/calendario.test.mjs
 [@vitogiaquinta14](https://github.com/vitogiaquinta14)
 [@valencalzetta](https://github.com/valencalzetta)
 — Proyecto académico, PUCA (Facultad de Ingeniería y Ciencias Agrarias).
+
+## Pruebas del frontend
+
+`npm test` ejecuta las pruebas del cliente HTTP, formularios, identificación de vinos, incorporación a rutas, calendario y separación de mapas. Las pruebas de la API y de SQLite se ejecutan en el repositorio del backend.

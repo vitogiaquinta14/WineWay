@@ -42,6 +42,8 @@ Docs: https://docs.expo.dev/eas/index.md
 
 ## Backend de WineWay
 
+El backend vive en `../WineWay-backend` (https://github.com/valencalzetta/WineWay-backend). No recrear una carpeta backend en este repo. Las siguientes reglas se aplican al trabajar en ese repositorio.
+
 - Seguí como referencia de trabajo la práctica `Práctica Prisma — Express + Prisma + SQLite + Expo`: explicá el recorrido de los datos entre la app, la API, la capa de persistencia y la base.
 - Mantené una arquitectura sencilla por responsabilidades: Expo solicita y presenta datos; Express expone HTTP, procesa middleware y valida; Prisma define y consulta el modelo; la base persiste.
 - No conectes Expo directamente a la base ni mezcles reglas de validación con la interfaz o con el schema de persistencia.

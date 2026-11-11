@@ -1,6 +1,6 @@
 # Especificación — generación de rutas (SDD + TDD)
 
-Especificación histórica. La selección vigente se define en [Selección voraz de rutas](10-seleccion-voraz-de-rutas.md).
+Especificación histórica. La selección vigente se define en [Selección voraz de rutas](https://github.com/valencalzetta/WineWay-backend/blob/main/wiki/10-seleccion-voraz-de-rutas.md).
 
 ## Reglas acordadas
 

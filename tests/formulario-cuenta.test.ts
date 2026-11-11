@@ -3,7 +3,7 @@ import { test } from 'node:test';
 
 test('formulario acepta nombres compuestos y detecta todos los obligatorios/confirmación', async () => {
   const { validarCuenta, cuentaVacia } = await import(
-    new URL('../../src/utils/validar-cuenta.ts', import.meta.url).href
+    new URL('../src/utils/validar-cuenta.ts', import.meta.url).href
   );
   const vacio = validarCuenta(cuentaVacia, 'registro', '2026-10-22');
   assert.deepEqual(Object.keys(vacio).sort(), [
@@ -41,7 +41,7 @@ test('formulario acepta nombres compuestos y detecta todos los obligatorios/conf
 
 test('calendario y mayoría de edad coinciden en el límite exacto y los días bisiestos', async () => {
   const { validarCuenta, cuentaVacia, limiteNacimiento } = await import(
-    new URL('../../src/utils/validar-cuenta.ts', import.meta.url).href
+    new URL('../src/utils/validar-cuenta.ts', import.meta.url).href
   );
   assert.equal(limiteNacimiento('2028-02-29'), '2010-02-28');
   assert.ok(

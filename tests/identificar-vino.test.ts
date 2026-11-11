@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-const modulo = () => import(new URL('../../src/data/vinos.ts', import.meta.url).href);
+const modulo = () => import(new URL('../src/data/vinos.ts', import.meta.url).href);
 const vinoAPI = {
   id: 'blend',
   nombre: 'Blend',

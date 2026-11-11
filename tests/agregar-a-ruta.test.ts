@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-const modulo = () => import(new URL('../../src/utils/agregar-a-ruta.ts', import.meta.url).href);
+const modulo = () => import(new URL('../src/utils/agregar-a-ruta.ts', import.meta.url).href);
 // 2030-01-07 es lunes (dia 1); 2030-01-09 es miércoles (dia 3).
 const ruta = { fechaInicio: '2030-01-07', cantidadDias: 3, visitas: [] as { experienciaId: string; inicio: string; duracionMin: number }[] };
 const flexible = { id: 'e1', duracionMin: 60, horarios: [{ dia: 1, tipo: 'FLEXIBLE', desde: 600, hasta: 750 }] };
