@@ -46,16 +46,16 @@ function coincide(bodega: Bodega, busqueda: string) {
 }
 
 export default function ExplorarScreen() {
-  const { bodegas, error, cargando, recargar } = useCatalogo();
+  const { bodegas, error, cargando, recargar } = useCatalogo();//useCatalogo() es un hook que devuelve el estado del catálogo de bodegas, incluyendo la lista de bodegas, si hay un error, si está cargando y una función para recargar los datos. Un hook es una función que permite usar el estado y otras características de React en componentes funcionales. En este caso, useCatalogo() se usa para obtener los datos del catálogo de bodegas y su estado asociado.
   const [busqueda, setBusqueda] = useState('');
-  const [busquedaAplicada, setBusquedaAplicada] = useState('');
-  const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
-  const [vista, setVista] = useState<Vista>('lista');
-  const [zona, setZona] = useState<Zona | null>(null);
+  const [busquedaAplicada, setBusquedaAplicada] = useState('');//useState es un hook que permite agregar estado a un componente funcional. En este caso, se usa para almacenar el texto de búsqueda que el usuario ingresa y el texto de búsqueda que se aplica al filtrar las bodegas. La diferencia es que busqueda se actualiza cada vez que el usuario escribe, mientras que busquedaAplicada solo se actualiza cuando el usuario presiona buscar o selecciona una bodega. 
+  const [mostrarSugerencias, setMostrarSugerencias] = useState(false);//muestra sugerencias al tipear busqueda
+  const [vista, setVista] = useState<Vista>('lista');//esto define el estado de la vista actual, que puede ser 'lista' o 'mapa'. Se inicializa con 'lista'.
+  const [zona, setZona] = useState<Zona | null>(null);//se usa para filtrar las bodegas por zona. Se inicializa con null ==> no hay filtro de zona aplicado.
   const [precioMinimo, setPrecioMinimo] = useState<Precio>(PRECIO_MINIMO);
   const [precioMaximo, setPrecioMaximo] = useState<Precio>(PRECIO_MAXIMO);
   const [filtrosAbiertos, setFiltrosAbiertos] = useState(false);
-  const [bodegaSeleccionada, setBodegaSeleccionada] = useState<Bodega>();
+  const [bodegaSeleccionada, setBodegaSeleccionada] = useState<Bodega>();//se usa para almacenar la bodega que el usuario selecciona en la vista de mapa. Se inicializa con undefined ==> no hay bodega seleccionada.
 
   const resultados = bodegas.filter(
     (bodega) =>
@@ -123,10 +123,10 @@ export default function ExplorarScreen() {
         <View style={styles.searchRow}>
           <View style={styles.searchField}>
             <SearchField
-              value={busqueda}
-              onChangeText={escribirBusqueda}
-              placeholder="Escribí una bodega y tocá buscar"
-              onSubmitEditing={buscar}
+              value={busqueda} //propiedad (prop) value del componente SearchField, que representa el texto actual de búsqueda
+              onChangeText={escribirBusqueda} //propiedad (prop) onChangeText del componente SearchField, que se llama cuando el usuario cambia el texto de búsqueda (evento --> onChangeText)
+              placeholder="Escribí una bodega y tocá buscar" //entrada de texto que se muestra cuando el campo está vacío
+              onSubmitEditing={buscar} //se ejecuta cuando el usuario presiona el botón de búsqueda en el teclado
             />
           </View>
           <IconButton
@@ -207,7 +207,7 @@ export default function ExplorarScreen() {
   );
 }
 
-type FiltersSheetProps = {
+type FiltersSheetProps = { //esto define el tipo de las props que recibe el componente FiltersSheet. Es un objeto con las siguientes propiedades:
   visible: boolean;
   zona: Zona | null;
   precioMinimo: Precio;

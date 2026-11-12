@@ -19,6 +19,7 @@ export function crearCliente(config: {
     if (!config.baseUrl)
       throw new Error('Configurá EXPO_PUBLIC_API_URL con la dirección del backend.');
     const token = opciones.sinSesion ? null : config.getToken();
+    //- : Response: indica a TypeScript que guardará una respuesta HTTP de fetch
     let respuesta: Response;
     try {
       respuesta = await (config.fetcher ?? fetch)(`${config.baseUrl.replace(/\/$/, '')}${ruta}`, {
@@ -36,6 +37,7 @@ export function crearCliente(config: {
       );
     }
     if (respuesta.status === 204) return undefined as T;
+    //lee el cuerpo y convierte el JSON en un objeto JavaScript
     const datos = await respuesta.json();
     if (!respuesta.ok) {
       if (respuesta.status === 401 && !opciones.sinSesion) config.onUnauthorized?.();
