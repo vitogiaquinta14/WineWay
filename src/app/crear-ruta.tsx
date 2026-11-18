@@ -57,6 +57,7 @@ export default function CrearRutaScreen() {
   const [error, setError] = useState<string | null>(null);
   const [guardando, setGuardando] = useState(false);
   const validar = (generacion: boolean) => {
+    //guarda los fallos que encuentra el validador dentro del util formulario-ruta
     const fallos = validarFormularioRuta({ fechaInicio, fechaFin, personas, presupuesto, cantidadVisitas, cantidadAlmuerzos, automatico: generacion });
     if (generacion) {
       if (Number(cantidadVisitas) < imprescindibles.length) fallos.cantidadVisitas = 'La cantidad debe incluir todas las imprescindibles seleccionadas.';
@@ -67,8 +68,9 @@ export default function CrearRutaScreen() {
     return fallos;
   };
   const fallosActuales = validar(!existente);
-  const formularioValido = Object.keys(fallosActuales).length === 0;
+  const formularioValido = Object.keys(fallosActuales).length === 0; //Confirma que no tiene errores el formulario
   const errorCampo = (campo: string, valor: string) =>
+    //A continuacion se transforma lo ingresado a lo que espera la API
     valor.trim() ? fallosActuales[campo] : errores[campo];
   const guardar = async () => {
     const fallos = validar(!existente);

@@ -16,6 +16,7 @@ type Rutas = {
   quitarVisita: (rutaId: string, id: string) => Promise<void>;
 };
 const Contexto = createContext<Rutas | null>(null);
+
 export function RutaProvider({ children }: { children: ReactNode }) {
   const { usuario } = useSesion();
   const cargar = useCallback(async () => (usuario ? api<Ruta[]>('/rutas') : []), [usuario]);
@@ -29,6 +30,7 @@ export function RutaProvider({ children }: { children: ReactNode }) {
     await recargar();
     return nueva;
   };
+  
   const generar = async (datos: RutaGeneradaNueva) => {
     const nueva = await api<Ruta>('/rutas/generar', { method: 'POST', body: datos });
     await recargar();
@@ -53,6 +55,7 @@ export function RutaProvider({ children }: { children: ReactNode }) {
     </Contexto>
   );
 }
+
 export function useRuta() {
   const valor = use(Contexto);
   if (!valor) throw new Error('Falta RutaProvider');

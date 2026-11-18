@@ -30,9 +30,11 @@ type Sesion = {
   cerrarSesion: () => Promise<void>;
 };
 const Contexto = createContext<Sesion | null>(null);
+
 export function SesionProvider({ children }: { children: ReactNode }) {
   const [usuario, setUsuario] = useState<Usuario | null>(null);
   const [cargando, setCargando] = useState(true);
+
   const limpiar = useCallback(() => {
     configurarSesion(null);
     setUsuario(null);
@@ -45,7 +47,8 @@ export function SesionProvider({ children }: { children: ReactNode }) {
         const token = await leerToken();
         if (token) {
           configurarSesion(token, limpiar);
-          const u = await api<Usuario>('/yo');
+          //manda el token en el header, y el backend lo verifica con exigirSesion y devuelve el usuario
+          const u = await api<Usuario>('/yo'); 
           if (activo) setUsuario(u);
         }
       } catch {
@@ -58,6 +61,7 @@ export function SesionProvider({ children }: { children: ReactNode }) {
       activo = false;
     };
   }, [limpiar]);
+
   const autenticar = async (ruta: string, body: unknown) => {
     const r = await api<{ token: string; usuario: Usuario }>(ruta, {
       method: 'POST',
@@ -68,6 +72,7 @@ export function SesionProvider({ children }: { children: ReactNode }) {
     configurarSesion(r.token, limpiar);
     setUsuario(r.usuario);
   };
+
   const cerrarSesion = async () => {
     try {
       await api('/auth/logout', { method: 'POST' });
@@ -75,10 +80,12 @@ export function SesionProvider({ children }: { children: ReactNode }) {
       limpiar();
     }
   };
+
   const actualizarPerfil = async (datos: DatosPerfil) => {
     const actualizado = await api<Usuario>('/yo', { method: 'PATCH', body: datos });
     setUsuario(actualizado);
   };
+
   return (
     <Contexto
       value={{
@@ -96,6 +103,7 @@ export function SesionProvider({ children }: { children: ReactNode }) {
     </Contexto>
   );
 }
+
 export function useSesion() {
   const contexto = use(Contexto);
   if (!contexto) throw new Error('Falta SesionProvider');

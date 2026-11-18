@@ -33,6 +33,7 @@ type Cava = {
   editarEntrada: (id: string, datos: Record<string, unknown>) => Promise<void>;
 };
 const Contexto = createContext<Cava | null>(null);
+
 export function CavaProvider({ children }: { children: ReactNode }) {
   const { usuario } = useSesion();
   const cargar = useCallback(async (): Promise<VinoGuardado[]> => {
@@ -83,6 +84,7 @@ export function CavaProvider({ children }: { children: ReactNode }) {
     </Contexto>
   );
 }
+
 export function useCava() {
   const valor = use(Contexto);
   if (!valor) throw new Error('Falta CavaProvider');
