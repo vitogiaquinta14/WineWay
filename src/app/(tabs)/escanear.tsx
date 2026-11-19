@@ -33,6 +33,7 @@ export default function EscanearScreen() {
   const [descripcion, setDescripcion] = useState('');
   const [precio, setPrecio] = useState('');
   const [guardando, setGuardando] = useState(false);
+
   const buscar = async (valor: string) => {
     if (bloqueado.current || !valor.trim()) return;
     bloqueado.current = true;
@@ -117,6 +118,7 @@ export default function EscanearScreen() {
         <CameraViewfinder
           active={focused && fase === 'camara'}
           procesando={fase === 'procesando'}
+          // expo-camera llama a esto al detectar un código; r.data es el código y buscar() lo consulta al backend.
           onBarcodeScanned={(r) => void buscar(r.data)}
         />
         {error && <AppText color="malbec">{error}</AppText>}

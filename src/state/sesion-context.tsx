@@ -47,6 +47,7 @@ export function SesionProvider({ children }: { children: ReactNode }) {
     setUsuario(null);
     void borrarToken().catch(() => {});
   }, []);
+  
   useEffect(() => {
     let activo = true;
     void (async () => {
@@ -84,7 +85,7 @@ export function SesionProvider({ children }: { children: ReactNode }) {
     await guardarToken(r.token);
     //lo guarda en una nueva variable en memoria, que es la que usa api-core para mandar el token en el header de las consultas al backend.
     configurarSesion(r.token, limpiar);
-    //guarda el usuario en el estado de React. 
+    //guarda el usuario en el estado de React.
     //Eso hace que SesionProvider se vuelva a ejecutar, que sesionIniciada pase a true, y que el Stack.Protected habilite las pantallas protegidas.
     setUsuario(r.usuario);
   };
