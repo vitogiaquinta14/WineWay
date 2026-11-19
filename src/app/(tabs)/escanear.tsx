@@ -1,24 +1,29 @@
-import { router, useIsFocused } from 'expo-router';
-import { useRef, useState } from 'react';
-import { View } from 'react-native';
 import { CameraViewfinder } from '@/components/escanear/camera-viewfinder';
 import { ResultadoCard } from '@/components/escanear/resultado-card';
 import { AppText } from '@/components/ui/app-text';
 import { Button } from '@/components/ui/button';
 import { Screen } from '@/components/ui/screen';
-import { TextField } from '@/components/ui/text-field';
 import { StarRating } from '@/components/ui/star-rating';
+import { TextField } from '@/components/ui/text-field';
 import { Spacing } from '@/constants/theme';
-import { identificarVino, type VinoIdentificado, type VinoAPI } from '@/data/vinos';
-import { useCava } from '@/state/cava-context';
-import { useSesion } from '@/state/sesion-context';
+import { identificarVino, type VinoAPI, type VinoIdentificado } from '@/data/vinos';
 import { api } from '@/services/api';
 import { ErrorAPI } from '@/services/api-core';
+import { useCava } from '@/state/cava-context';
+import { useSesion } from '@/state/sesion-context';
+import { router, useIsFocused } from 'expo-router';
+import { useRef, useState } from 'react';
+import { View } from 'react-native';
 export default function EscanearScreen() {
+  //hook de navegacion 
   const focused = useIsFocused();
+  //valor que viene de SesionProvider
   const { sesionIniciada } = useSesion();
+  //funciones que vienen de cava-context. 
   const { guardarVino, guardarManual } = useCava();
+  // 
   const bloqueado = useRef(false);
+  //estados, llaman a useState para guardar el estado de la pantalla. CUando algo cambia, React vuelve a renderizar la pantalla con los nuevos valores de estado.
   const [fase, setFase] = useState<'camara' | 'procesando' | 'resultado' | 'manual'>('camara');
   const [codigo, setCodigo] = useState('');
   const [vino, setVino] = useState<VinoIdentificado | null>(null);
@@ -36,12 +41,15 @@ export default function EscanearScreen() {
 
   const buscar = async (valor: string) => {
     if (bloqueado.current || !valor.trim()) return;
+    //solo una consulta a la vez: si ya hay una en curso, no hace nada. Esto evita que el usuario haga varias consultas seguidas y se sobrecargue el servidor.
     bloqueado.current = true;
     setCodigo(valor.trim());
     setFase('procesando');
     setError(null);
     try {
       const producto = await api<VinoAPI>(`/vinos/codigo/${encodeURIComponent(valor.trim())}`);
+      //identificarVino convierte el objeto de la API en un objeto VinoIdentificado que contiene solo los campos que se muestran en la app.
+      //setVino guarda el vino identificado en el estado, React vuelve a renderizar EscanearScreen.
       setVino(identificarVino(producto));
       setFase('resultado');
     } catch (e) {
@@ -58,6 +66,7 @@ export default function EscanearScreen() {
       bloqueado.current = false;
     }
   };
+
   const reiniciar = () => {
     setFase('camara');
     setVino(null);
@@ -115,12 +124,18 @@ export default function EscanearScreen() {
             onPress={() => router.push('/login')}
           />
         )}
+        
+
         <CameraViewfinder
           active={focused && fase === 'camara'}
           procesando={fase === 'procesando'}
+          //la llama onBarcodeScanned cuando la cámara detecta un código de barras.
           // expo-camera llama a esto al detectar un código; r.data es el código y buscar() lo consulta al backend.
           onBarcodeScanned={(r) => void buscar(r.data)}
         />
+        
+
+
         {error && <AppText color="malbec">{error}</AppText>}
         {fase === 'camara' && (
           <>

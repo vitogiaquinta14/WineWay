@@ -1,4 +1,3 @@
-import { createContext, use, useCallback, type ReactNode } from 'react';
 import {
   identificarVino,
   type VinoAPI,
@@ -6,8 +5,9 @@ import {
   type VinoIdentificado,
 } from '@/data/vinos';
 import { api } from '@/services/api';
-import { useRecurso } from './use-recurso';
+import { createContext, use, useCallback, type ReactNode } from 'react';
 import { useSesion } from './sesion-context';
+import { useRecurso } from './use-recurso';
 type Entrada = {
   id: string;
   vino: VinoAPI | null;
@@ -67,6 +67,7 @@ export function CavaProvider({ children }: { children: ReactNode }) {
         error,
         cargando,
         recargar,
+        //aca se llama desde escaner.tsx desde la funcion guardar, que llama a guardarVino o guardarManual dependiendo de si el vino fue escaneado o cargado manualmente.
         guardarVino: (vino, rating, nota, anada) =>
           mutar('/cava', 'POST', {
             vinoId: vino.vinoId,
