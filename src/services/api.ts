@@ -4,6 +4,7 @@ let token: string | null = null;
 let sesionVencida: () => void = () => {};
 
 export function configurarSesion(valor: string | null, alVencer?: () => void) {
+  //se guarda el token en la variable token para que esté disponible para agregarlo a cada petición HTTP. Si se pasa una función alVencer, se guarda en sesionVencida para que se llame cuando la sesión caduque.
   token = valor;
   if (alVencer) sesionVencida = alVencer;
 }

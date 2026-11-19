@@ -26,7 +26,9 @@ export function crearCliente(config: {
         method: opciones.method ?? 'GET',
         headers: {
           Accept: 'application/json',
+          //si hay un body, se agrega la cabecera Content-Type para indicar que el cuerpo es JSON. Si no hay body, no se agrega nada.
           ...(opciones.body === undefined ? {} : { 'Content-Type': 'application/json' }),
+          //si hay un token, se agrega a la cabecera Authorization para que el backend pueda verificar la sesión del usuario. Si no hay token, no se agrega nada.
           ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
         body: opciones.body === undefined ? undefined : JSON.stringify(opciones.body),

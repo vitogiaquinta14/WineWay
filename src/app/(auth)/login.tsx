@@ -15,10 +15,11 @@ import { volver } from '@/utils/navegacion';
 export default function LoginScreen() {
   const [identificador, setIdentificador] = useState('');
   const [password, setPassword] = useState('');
-
+  //LoginScreen llama a useSesion(), recibe un objeto y de ese objeto extrae la función iniciarSesion.
   const { iniciarSesion } = useSesion();
   const [error, setError] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
+  
   const enviar = async () => {
     if (!identificador.trim() || !password) {
       setError('Ingresá tu email o usuario y contraseña.');
